@@ -1,0 +1,37 @@
+{
+  "page": {
+    "lang": "ru",
+    "title": "",
+    "description": "",
+    "canonical": "",
+    "og_site_name": "",
+    "og_title": "",
+    "og_description": "",
+    "og_image": "./images/video-poster/video-poster-sm.jpeg",
+    "og_image_type": "image/jpeg",
+    "og_image_width": "380",
+    "og_image_height": "253"
+  },
+  "menu": [
+    {
+      "title": "Menu item",
+      "link": "#id"
+    },
+    {
+      "title": "Menu item 2",
+      "link": "#id2"
+    }
+  ],
+  "socials": [
+    {
+      "title": "Menu item",
+      "link": "#id",
+      "icon": "icon-facebook"
+    },
+    {
+      "title": "Menu item 2",
+      "link": "#id2",
+      "icon": "icon-facebook"
+    }
+  ]
+}

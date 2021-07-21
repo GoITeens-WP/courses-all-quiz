@@ -1,0 +1,20 @@
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 105px 0;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  &.is-open {
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
+    transition: transform var(--slow) ease-in-out, opacity var(--fast) linear;
+  }
+}
