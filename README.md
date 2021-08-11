@@ -1,4 +1,4 @@
-# Starter kit for GoWeb
+# Starter kit for GoWeb 👾
 
 ## Запуск сборки
 
