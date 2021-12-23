@@ -1,13 +1,13 @@
-import $ from 'jquery';
+import jQuery from 'jquery';
 
-$(document).ready(function() {
+jQuery(function () {
   const openModalBtn = document.querySelectorAll('.btn-modal');
   const modal = document.querySelector('[data-modal]');
   const closeModalBtn = document.querySelector('[data-modal-close]');
   const body = document.querySelector('body');
   const backdrop = document.querySelector('.backdrop');
 
-  openModalBtn.forEach(function(btn) {
+  openModalBtn.forEach(function (btn) {
     btn.addEventListener('click', e => {
       e.preventDefault();
       setTimeout(() => {

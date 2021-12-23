@@ -7,8 +7,6 @@
 
   @include mq(mobile) {
     max-width: 480px;
-    margin-right: auto;
-    margin-left: auto;
   }
 
   @include mq(tablet) {
