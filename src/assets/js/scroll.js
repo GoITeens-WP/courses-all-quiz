@@ -1,6 +1,6 @@
-import $ from 'jquery';
+import jQuery from 'jquery';
 
-$(document).ready(function () {
+jQuery(function () {
   const links = document.querySelectorAll('.nav-link');
   links.forEach(link => link.addEventListener('click', linkHandler));
 });
