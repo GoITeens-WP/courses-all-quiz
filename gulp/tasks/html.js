@@ -4,6 +4,7 @@ const data = require('gulp-data');
 const nunjucksRender = require('gulp-nunjucks-render');
 const htmlmin = require('gulp-htmlmin');
 const cachebust = require('gulp-cache-bust');
+const rename = require('gulp-rename');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
 
@@ -41,6 +42,7 @@ const html = () => {
     )
     .pipe(mode.production(htmlmin(htmlminConfig)))
     .pipe(mode.production(cachebust(cachebustConfig)))
+    .pipe(mode.production(rename({ extname: '.php' })))
     .pipe(gulp.dest(paths.build.html));
 };
 
