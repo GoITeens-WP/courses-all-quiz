@@ -1,17 +1,15 @@
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
-const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const gcmq = require('gulp-group-css-media-queries');
 const size = require('gulp-size');
-const rename = require('gulp-rename');
 const mode = require('gulp-mode')();
-const testFolder = './src/projects/pages/';
 const paths = require('../paths');
 const fs = require('fs');
+const tailwindcss = require('tailwindcss');
+const concat = require('gulp-concat'); //For Concatinating js,css files
+const cleanCSS = require('gulp-clean-css'); //To Minify CSS files
+const purgecss = require('gulp-purgecss'); // Remove Unused CSS from Styles
 
 const css = done => {
   return gulp
@@ -19,16 +17,28 @@ const css = done => {
     .pipe(plumber())
     .pipe(mode.development(sourcemaps.init()))
     .pipe(
-      sass({
-        sourceMap: true,
-        precision: 3,
-        errLogToConsole: true,
-      }).on('error', sass.logError),
+      postcss([
+        require('tailwindcss/nesting'),
+        tailwindcss('./tailwind.config.js'),
+        require('autoprefixer'),
+      ]),
     )
-    .pipe(mode.production(gcmq()))
-    .pipe(mode.production(postcss([autoprefixer(), cssnano()])))
-    .pipe(mode.development(sourcemaps.write()))
+    .pipe(
+      mode.production(
+        purgecss({
+          content: ['src/**/*.{html,js}'],
+          defaultExtractor: content => {
+            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
+            const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
+            return broadMatches.concat(innerMatches);
+          },
+        }),
+      ),
+    )
+    .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
+    .pipe(concat({ path: 'style.css' }))
     .pipe(size({ showFiles: true }))
+    .pipe(mode.development(sourcemaps.write('./')))
     .pipe(gulp.dest(paths.build.css));
 
   done();

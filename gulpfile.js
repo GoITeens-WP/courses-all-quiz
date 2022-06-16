@@ -24,7 +24,10 @@ const watcher = done => {
   watch(paths.watch.html).on('change', parallel(tasks.html.html, browserSync.reload));
   watch(paths.watch.data).on('change', parallel(tasks.html.html, browserSync.reload));
 
-  watch(paths.watch.css).on('change', series(tasks.css, browserSync.reload));
+  watch(['./tailwind.config.js', paths.watch.css]).on(
+    'change',
+    series(tasks.css, browserSync.reload),
+  );
   watch(paths.watch.js).on('change', series(tasks.scripts, browserSync.reload));
   watch(paths.watch.images, tasks.images);
   watch(paths.watch.fonts, tasks.fonts);

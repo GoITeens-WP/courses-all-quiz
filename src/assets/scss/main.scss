@@ -1,22 +1,36 @@
-@import './vendors/modern-normalize';
+.hero-heading {
+  @apply text-4xl mb-10 text-white font-medium;
+}
 
-@import './utils/mixins';
-@import './utils/variables';
+.instructions {
+  .sub-title {
+    @apply text-gray-900 pb-2 border-b-2 border-gray-400 mb-5 text-xl font-medium;
 
-@import './base/fonts';
-@import './base/common';
-@import './base/container';
-@import './base/card-set';
-@import './base/section';
+    & + p {
+      @apply mb-3;
+    }
+  }
+  .code {
+    @apply block border rounded bg-gray-100 text-gray-700 px-4 py-5 leading-normal text-sm shadow;
 
-@import './components/buttons';
-@import './components/forms';
-@import './components/mobile-menu';
-@import './components/menu';
-@import './components/modal';
-@import './components/socials';
+    &.pre {
+      @apply whitespace-pre;
+    }
 
-@import './layouts/header';
-@import './sections/hero';
+    em {
+      @apply opacity-75;
+    }
+  }
+}
 
-@import './layouts/footer';
+.social {
+  @apply block pt-6 text-gray-700;
+
+  a {
+    @apply text-blue-500 font-medium p-4;
+
+    &:hover {
+      @apply text-blue-700;
+    }
+  }
+}
