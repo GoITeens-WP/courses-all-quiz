@@ -7,6 +7,7 @@ const cachebust = require('gulp-cache-bust');
 const rename = require('gulp-rename');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
+const strip = require('gulp-strip-comments');
 
 const htmlminConfig = {
   collapseWhitespace: true,
@@ -40,6 +41,7 @@ const html = () => {
         watch: true,
       }),
     )
+    .pipe(mode.production(strip()))
     .pipe(mode.production(htmlmin(htmlminConfig)))
     .pipe(mode.production(cachebust(cachebustConfig)))
     .pipe(mode.production(rename({ extname: '.php' })))

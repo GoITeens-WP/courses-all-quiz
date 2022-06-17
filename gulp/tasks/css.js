@@ -7,9 +7,9 @@ const mode = require('gulp-mode')();
 const paths = require('../paths');
 const fs = require('fs');
 const tailwindcss = require('tailwindcss');
-const concat = require('gulp-concat'); //For Concatinating js,css files
-const cleanCSS = require('gulp-clean-css'); //To Minify CSS files
-const purgecss = require('gulp-purgecss'); // Remove Unused CSS from Styles
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
+const purgecss = require('gulp-purgecss');
 
 const css = done => {
   return gulp
@@ -17,11 +17,14 @@ const css = done => {
     .pipe(plumber())
     .pipe(mode.development(sourcemaps.init()))
     .pipe(
-      postcss([
-        require('tailwindcss/nesting'),
-        tailwindcss('./tailwind.config.js'),
-        require('autoprefixer'),
-      ]),
+      postcss(
+        [
+          require('tailwindcss/nesting'),
+          tailwindcss('./tailwind.config.js'),
+          require('autoprefixer'),
+        ],
+        { parser: require('postcss-scss') },
+      ),
     )
     .pipe(
       mode.production(
