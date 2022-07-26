@@ -1,22 +1,26 @@
 module.exports = {
   src: {
-    html: 'src/html/pages/**/*.+(html|nunjucks)',
-    css: 'src/assets/scss/*.scss',
+    html: 'src/html/pages/**/*.+(html|nunjucks|njk)',
+    css: 'src/assets/scss/**/*.scss',
     js: 'src/assets/js/**/*.js',
     images: 'src/assets/images/**/*',
     fonts: 'src/assets/fonts/**/*',
     data: 'src/json/*',
     db: 'src/json/map-style.json',
     php: 'src/*.php',
+    app: 'src/app/**',
+    crm: 'src/crm/*',
   },
   watch: {
-    html: 'src/html/**/*.html',
+    html: 'src/html/**/*.+(html|nunjucks|njk)',
     css: 'src/assets/scss/**/*.scss',
     js: 'src/assets/js/**/*.js',
     images: 'src/assets/images/**/*',
     fonts: 'src/assets/fonts/**/*',
     data: 'src/json/data.json',
     db: 'src/json/map-style.json',
+    app: 'src/app/*',
+    crm: 'src/crm/*',
   },
   build: {
     html: 'build/',
@@ -26,6 +30,8 @@ module.exports = {
     images: 'build/assets/images/',
     db: 'build/assets/json/',
     php: 'build/',
+    app: 'build/app/',
+    crm: 'build/crm/',
   },
   clean: 'build/',
 };

@@ -29,7 +29,8 @@ const css = done => {
     .pipe(
       mode.production(
         purgecss({
-          content: ['src/**/*.{html,js}'],
+          content: ['src/**/*.{html,js,njk}'],
+          skippedContentGlobs: ['node_modules/**'],
           defaultExtractor: content => {
             const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
             const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];

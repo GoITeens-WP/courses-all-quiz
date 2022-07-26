@@ -44,7 +44,8 @@
     "node-gyp": "^9.0.0",
     "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
-    "postcss-nesting": "^10.1.8"
+    "postcss-nesting": "^10.1.8",
+    "prettier-plugin-tailwindcss": "^0.1.13"
   },
   "dependencies": {
     "gulp-clean-css": "^4.3.0",
