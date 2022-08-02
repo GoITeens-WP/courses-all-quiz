@@ -1,4 +1,4 @@
-{% set page = page %}
+{% set page = page %} {% include 'params.html' %}
 
 <!DOCTYPE html>
 <html lang="{{ page.lang }}">
@@ -7,6 +7,17 @@
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=<?= $params['GTM'] ?>"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div class="page bg-main">{% block content %} {% endblock %}</div>
 
     {% include 'modal.html' %}

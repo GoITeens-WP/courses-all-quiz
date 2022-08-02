@@ -21,17 +21,18 @@ const serve = () => {
 };
 
 const watcher = done => {
-  watch(paths.watch.html).on('change', parallel(tasks.html.html, browserSync.reload));
-  watch(paths.watch.data).on('change', parallel(tasks.html.html, browserSync.reload));
+  watch(paths.watch.html).on('change', parallel(tasks.html.html, tasks.css, browserSync.reload));
+  watch(paths.watch.data).on('change', parallel(tasks.db, tasks.html.html, browserSync.reload));
 
   watch(['./tailwind.config.js', paths.watch.css]).on(
     'change',
     series(tasks.css, browserSync.reload),
   );
-  watch(paths.watch.html).on('change', parallel(tasks.css, browserSync.reload));
   watch(paths.watch.js).on('change', series(tasks.scripts, browserSync.reload));
   watch(paths.watch.images, tasks.images);
   watch(paths.watch.fonts, tasks.fonts);
+  watch(paths.watch.crm, tasks.crm);
+  watch(paths.watch.app, tasks.app);
 
   done();
 };
@@ -46,6 +47,8 @@ exports.start = series(
     tasks.fonts,
     tasks.scripts,
     tasks.html.html,
+    tasks.crm,
+    tasks.app,
   ),
   watcher,
   serve,
@@ -54,12 +57,14 @@ exports.start = series(
 exports.build = series(
   tasks.clean,
   parallel(
-    tasks.php,
     tasks.db,
+    tasks.php,
     tasks.images,
     tasks.css,
     tasks.fonts,
     tasks.scripts,
     tasks.html.html,
+    tasks.crm,
+    tasks.app,
   ),
 );

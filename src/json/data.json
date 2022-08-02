@@ -7,10 +7,11 @@
     "og_site_name": "",
     "og_title": "",
     "og_description": "",
-    "og_image": "./images/video-poster/video-poster-sm.jpeg",
-    "og_image_type": "image/jpeg",
-    "og_image_width": "380",
-    "og_image_height": "253"
+    "og_image": "",
+    "og_image_type": "image/png",
+    "og_image_width": "1200",
+    "og_image_height": "630",
+    "tw_image": ""
   },
   "menu": [
     {
@@ -33,5 +34,21 @@
       "link": "#id2",
       "icon": "icon-facebook"
     }
-  ]
+  ],
+  "hero": {
+    "id": "hero",
+    "title": "",
+    "description": ""
+  },
+  "modal": {
+    "btn_close_aria": "кнопка закриття модального вікна",
+    "title": "Реєстрація",
+    "name": "Ім'я",
+    "phone": "Мобільний телефон",
+    "email": "Email",
+    "btn": "Зареєструватися",
+    "text": "Зачекайте кілька секунд... майже отримали Вашу заявку",
+    "advice": "Завершіть реєстрацію!",
+    "advice_text": "Перейдіть по кнопці в телеграм і натисніть <strong>/start</strong>, щоб <span class=\"advice-accent\">забронювати місце</span>."
+  }
 }

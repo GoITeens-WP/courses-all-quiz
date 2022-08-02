@@ -6,8 +6,8 @@ module.exports = {
     screens: {
       sm: '480px',
       md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      lg: '1024px',
+      xl: '1280px',
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],
@@ -16,22 +16,25 @@ module.exports = {
     extend: {
       backgroundColor: theme => ({
         ...theme('colors'),
-        primary: '#456FAB',
-        secondary: '#ffffff',
-        main: '#f8f8ff',
+        body: '#FFF8EF',
       }),
       colors: {
-        primary: colors.emerald,
+        orange: '#FF6C00',
+        black: '#202020',
       },
       container: {
         center: true,
         padding: {
-          default: '1rem',
-          sm: '0.5rem',
+          DEFAULT: '1rem',
+          sm: '2rem',
           md: '2rem',
-          lg: '3.5rem',
-          xl: '5rem',
+          lg: '2rem',
+          xl: '1.4rem',
         },
+        sm: '20px',
+        md: '20px',
+        lg: '40px',
+        xl: '80px',
       },
       keyframes: {
         side: {

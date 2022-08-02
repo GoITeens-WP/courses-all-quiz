@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+      url('../fonts/Montserrat-Bold.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
+      url('../fonts/Montserrat-Medium.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+      url('../fonts/Montserrat-Regular.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+      url('../fonts/Montserrat-SemiBold.woff') format('woff');
+  }
+}
+
+body {
+  @apply bg-body font-['Montserrat',_sans-serif] text-black;
+}
+
+// .section-title {
+//   @apply;
+// }
+
+.section {
+  @apply py-5  md:py-8 lg:py-14;
+}
+
+.btn {
+  @apply duration-300;
+}
+
+// .btn-main {
+//   @apply;
+// }
+// .btn-second {
+//   @apply;
+// }

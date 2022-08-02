@@ -8,6 +8,8 @@ const rename = require('gulp-rename');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
 const strip = require('gulp-strip-comments');
+const fs = require('fs');
+const path = require('path');
 
 const htmlminConfig = {
   collapseWhitespace: true,
@@ -24,7 +26,7 @@ const manageEnvironment = function (environment) {
 };
 
 const getDataForFile = file => {
-  return require('../../src/json/data.json');
+  return JSON.parse(fs.readFileSync('./src/json/data.json'));
 };
 
 const html = () => {
