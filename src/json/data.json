@@ -37,7 +37,7 @@
   ],
   "hero": {
     "id": "hero",
-    "title": "",
+    "title": "<span class=\"test test2\">hero test</span>",
     "description": ""
   },
   "modal": {

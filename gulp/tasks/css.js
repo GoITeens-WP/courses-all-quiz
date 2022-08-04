@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
+const sass = require('gulp-sass')(require('sass'));
+const gcmq = require('gulp-group-css-media-queries');
 const postcss = require('gulp-postcss');
 const size = require('gulp-size');
 const mode = require('gulp-mode')();
@@ -17,13 +19,24 @@ const css = done => {
     .pipe(plumber())
     .pipe(mode.development(sourcemaps.init()))
     .pipe(
+      sass({
+        sourceMap: true,
+        precision: 3,
+        errLogToConsole: true,
+      }).on('error', sass.logError),
+    )
+    .pipe(mode.production(gcmq()))
+    .pipe(
       postcss(
         [
-          require('tailwindcss/nesting'),
+          require('postcss-import'),
           tailwindcss('./tailwind.config.js'),
+          require('tailwindcss/nesting'),
           require('autoprefixer'),
         ],
-        { parser: require('postcss-scss') },
+        {
+          parser: require('postcss-scss'),
+        },
       ),
     )
     .pipe(

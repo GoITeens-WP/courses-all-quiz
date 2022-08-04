@@ -19,7 +19,6 @@ const name = document.querySelector('#register_form_input_name');
 const phone = document.querySelector('#register_form_input_tel');
 const email = document.querySelector('#register_form_input_email');
 
-
 // Validation vars
 let nameValid = false;
 let telValid = false;

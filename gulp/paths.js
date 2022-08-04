@@ -1,7 +1,7 @@
 module.exports = {
   src: {
     html: 'src/html/pages/**/*.+(html|nunjucks|njk)',
-    css: 'src/assets/scss/**/*.scss',
+    css: 'src/assets/scss/*.scss',
     js: 'src/assets/js/**/*.js',
     images: 'src/assets/images/**/*',
     fonts: 'src/assets/fonts/**/*',

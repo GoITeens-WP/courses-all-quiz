@@ -37,10 +37,6 @@ body {
   @apply bg-body font-['Montserrat',_sans-serif] text-black;
 }
 
-// .section-title {
-//   @apply;
-// }
-
 .section {
   @apply py-5  md:py-8 lg:py-14;
 }
@@ -48,10 +44,3 @@ body {
 .btn {
   @apply duration-300;
 }
-
-// .btn-main {
-//   @apply;
-// }
-// .btn-second {
-//   @apply;
-// }
