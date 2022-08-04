@@ -3,34 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    src: url('../fonts/Montserrat-Bold.woff2') format('woff2'),
-      url('../fonts/Montserrat-Bold.woff') format('woff');
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
-      url('../fonts/Montserrat-Medium.woff') format('woff');
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
-      url('../fonts/Montserrat-Regular.woff') format('woff');
-  }
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
-      url('../fonts/Montserrat-SemiBold.woff') format('woff');
-  }
+  @include font-face('Montserrat', '../fonts/Montserrat-Regular', 400);
+  @include font-face('Montserrat', '../fonts/Montserrat-Medium', 500);
+  @include font-face('Montserrat', '../fonts/Montserrat-SemiBold', 600);
+  @include font-face('Montserrat', '../fonts/Montserrat-Bold', 700);
 }
 
 body {
@@ -38,7 +14,7 @@ body {
 }
 
 .section {
-  @apply py-5  md:py-8 lg:py-14;
+  @apply py-5 md:py-8 lg:py-14;
 }
 
 .btn {
