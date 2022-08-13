@@ -10,82 +10,82 @@ use PhpOption\Some;
 
 final class PutenvAdapter implements AdapterInterface
 {
-  /**
-   * Create a new putenv adapter instance.
-   *
-   * @return void
-   */
-  private function __construct()
-  {
-    //
-  }
-
-  /**
-   * Create a new instance of the adapter, if it is available.
-   *
-   * @return \PhpOption\Option<\Dotenv\Repository\Adapter\AdapterInterface>
-   */
-  public static function create()
-  {
-    if (self::isSupported()) {
-      /** @var \PhpOption\Option<AdapterInterface> */
-      return Some::create(new self());
+    /**
+     * Create a new putenv adapter instance.
+     *
+     * @return void
+     */
+    private function __construct()
+    {
+        //
     }
 
-    return None::create();
-  }
+    /**
+     * Create a new instance of the adapter, if it is available.
+     *
+     * @return \PhpOption\Option<\Dotenv\Repository\Adapter\AdapterInterface>
+     */
+    public static function create()
+    {
+        if (self::isSupported()) {
+            /** @var \PhpOption\Option<AdapterInterface> */
+            return Some::create(new self());
+        }
 
-  /**
-   * Determines if the adapter is supported.
-   *
-   * @return bool
-   */
-  private static function isSupported()
-  {
-    return \function_exists('getenv') && \function_exists('putenv');
-  }
+        return None::create();
+    }
 
-  /**
-   * Read an environment variable, if it exists.
-   *
-   * @param string $name
-   *
-   * @return \PhpOption\Option<string>
-   */
-  public function read(string $name)
-  {
-    /** @var \PhpOption\Option<string> */
-    return Option::fromValue(\getenv($name), false)->filter(static function ($value) {
-      return \is_string($value);
-    });
-  }
+    /**
+     * Determines if the adapter is supported.
+     *
+     * @return bool
+     */
+    private static function isSupported()
+    {
+        return \function_exists('getenv') && \function_exists('putenv');
+    }
 
-  /**
-   * Write to an environment variable, if possible.
-   *
-   * @param string $name
-   * @param string $value
-   *
-   * @return bool
-   */
-  public function write(string $name, string $value)
-  {
-    \putenv("$name=$value");
+    /**
+     * Read an environment variable, if it exists.
+     *
+     * @param string $name
+     *
+     * @return \PhpOption\Option<string>
+     */
+    public function read(string $name)
+    {
+        /** @var \PhpOption\Option<string> */
+        return Option::fromValue(\getenv($name), false)->filter(static function ($value) {
+            return \is_string($value);
+        });
+    }
 
-    return true;
-  }
+    /**
+     * Write to an environment variable, if possible.
+     *
+     * @param string $name
+     * @param string $value
+     *
+     * @return bool
+     */
+    public function write(string $name, string $value)
+    {
+        \putenv("$name=$value");
 
-  /**
-   * Delete an environment variable, if possible.
-   *
-   * @param string $name
-   *
-   * @return bool
-   */
-  public function delete(string $name)
-  {
-    \putenv($name);
+        return true;
+    }
 
-    return true;
-  }
+    /**
+     * Delete an environment variable, if possible.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function delete(string $name)
+    {
+        \putenv($name);
+
+        return true;
+    }
 }

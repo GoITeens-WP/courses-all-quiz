@@ -1,58 +1,67 @@
 <?php
-if ($_POST) { 
-	$name = htmlspecialchars($_POST["name"]); 
-	$phone = htmlspecialchars($_POST["email-or-phone"]);
-	$message = htmlspecialchars($_POST["message"]);
-	$subject = "Subject";
-	$body = "\n\n Name: $name \n\n Contact info: $phone \n\n Message: $message";
-	$json = array(); 
+// Файлы phpmailer
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/Exception.php';
+
+// Переменные, которые отправляет пользователь
+$inputJSON = file_get_contents('php://input');
+$input = json_decode($inputJSON, true);
+logRequest($input);
+
+$title = $input['title'];
+$name = $input['name'];
+$email = $input['email'];
+$phone = $input['phone'];
+$message = $input['message'];
+$recipient = $input['recipient'];
 
 
-	function mime_header_encode($str, $data_charset, $send_charset) { 
-		if($data_charset != $send_charset)
-		$str=iconv($data_charset,$send_charset.'//IGNORE',$str);
-		return ('=?'.$send_charset.'?B?'.base64_encode($str).'?=');
+// Формирование самого письма
+$body = "Name: $name \n
+        Phone: $phone \n
+        Email: $email \n
+        Message: $message";
+
+// Настройки PHPMailer
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+$mail->CharSet = 'UTF-8';
+try {
+	$mail->From = $email;
+	$mail->FromName = $name;
+	// Получатель письма
+	$mail->addAddress($recipient);
+
+	// Отправка сообщения
+	$mail->isHTML(false);
+	$mail->Subject = $title;
+	$mail->Body = $body;
+
+	// Проверяем отравленность сообщения
+	if ($mail->send()) {
+		$result = 'success';
+	} else {
+		$result = 'error';
 	}
-
-	class TEmail {
-	public $from_email;
-	public $from_name;
-	public $to_email;
-	public $subject='text/plain';
-	public $data_charset='UTF-8';
-	public $send_charset='windows-1251';
-	public $body='';
-	public $type='text/plain';
-
-	function send(){
-		$dc=$this->data_charset;
-		$sc=$this->send_charset;
-		$enc_to=mime_header_encode($this->to_name,$dc,$sc).' <'.$this->to_email.'>';
-		$enc_subject=mime_header_encode($this->subject,$dc,$sc);
-		$enc_from=mime_header_encode($this->from_name,$dc,$sc).' <'.$this->from_email.'>';
-		$enc_body=$dc==$sc?$this->body:iconv($dc,$sc.'//IGNORE',$this->body);
-		$headers='';
-		$headers.="Mime-Version: 1.0\r\n";
-		$headers.="Content-type: ".$this->type."; charset=".$sc."\r\n";
-		$headers.="From: ".$enc_from."\r\n";
-		return mail($enc_to,$enc_subject,$enc_body,$headers);
-	}
-
-	}
-
-	$emailgo= new TEmail; 
-	$emailgo->from_email= $phone;
-	$emailgo->from_name= $name;
-	
-	$emailgo->to_email= 'email@gmail.com';
-	$emailgo->subject= $subject;
-	$emailgo->body= $body; 
-	$emailgo->send(); 
-
-	$json['error'] = 0; 
-
-	echo json_encode($json); 
-} else { 
-	echo 'GET LOST!'; 
+} catch (Exception $e) {
+	$result = 'error';
+	$status = "The message was not sent. The reason for the error: {$mail->ErrorInfo}";
 }
-?>
+
+$mail->ClearAddresses();
+$mail->clearAttachments();
+
+// Отображение результата
+echo json_encode(['result' => $result, 'resultfile' => $rfile, 'status' => $status]);
+
+function logRequest($request)
+{
+	$file = fopen('mail.log', 'a+');
+	$date = date(DATE_RFC822);
+
+	$string = [
+		'date' => $date,
+		'input' => $request,
+	];
+	fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',');
+	fclose($file);
+}

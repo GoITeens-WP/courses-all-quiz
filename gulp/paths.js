@@ -10,6 +10,7 @@ module.exports = {
     php: 'src/*.php',
     app: 'src/app/**',
     crm: 'src/crm/*',
+    phpmailer: 'src/phpmailer/*',
   },
   watch: {
     html: 'src/html/**/*.+(html|nunjucks|njk)',
@@ -21,6 +22,7 @@ module.exports = {
     db: 'src/json/map-style.json',
     app: 'src/app/*',
     crm: 'src/crm/*',
+    phpmailer: 'src/phpmailer/*',
   },
   build: {
     html: 'build/',
@@ -32,6 +34,7 @@ module.exports = {
     php: 'build/',
     app: 'build/app/',
     crm: 'build/crm/',
+    phpmailer: 'build/phpmailer/',
   },
   clean: 'build/',
 };

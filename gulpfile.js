@@ -33,6 +33,7 @@ const watcher = done => {
   watch(paths.watch.fonts, tasks.fonts);
   watch(paths.watch.crm, tasks.crm);
   watch(paths.watch.app, tasks.app);
+  watch(paths.watch.phpmailer, tasks.phpmailer);
 
   done();
 };
@@ -49,6 +50,7 @@ exports.start = series(
     tasks.html.html,
     tasks.crm,
     tasks.app,
+    tasks.phpmailer,
   ),
   watcher,
   serve,
@@ -66,5 +68,6 @@ exports.build = series(
     tasks.html.html,
     tasks.crm,
     tasks.app,
+    tasks.phpmailer,
   ),
 );

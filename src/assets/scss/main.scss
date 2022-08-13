@@ -1,12 +1,11 @@
 @use 'sass:math';
 
-// @import './utils/modern-normalize';
 @import 'utils/mixins';
 
 @import 'vendors/tailwind.scss';
 @import 'vendors/intTelInput';
 
 @import 'components/modal';
-@import 'components/modal';
+@import 'components/modal-form';
 
 @import 'layouts/hero';
