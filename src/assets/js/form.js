@@ -1,13 +1,11 @@
 import $ from 'jquery';
 import Cookies from 'js-cookie';
-import Inputmask from 'inputmask';
 import intlTelInput from 'intl-tel-input';
 import crm from '../../crm/submit.js';
 
 // Params
 const params = {
-  phoneCountry: 'Europe',
-  needsRedirectLeeloo: true,
+  needsRedirectLeeloo: window.leelooHash ? true : false,
   loadingMessage: 'Зачекайте декілька секунд… майже отримали Вашу заявку',
   successMessage: 'Отримали заявку',
   errorMessage: 'Помилка, щось пішло не так! Спробуйте пізніше.',
@@ -50,28 +48,17 @@ if (content) {
 }
 
 $(document).ready(function () {
-  function getNumber() {
-    if (params.phoneCountry.toLowerCase() === 'europe') {
-      iti = intlTelInput(phone, {
-        initialCountry: 'ua',
-        hiddenInput: 'full_phone',
-        preferredCountries: ['ua'],
-        excludeCountries: ['ru'],
-        utilsScript: './utils.js',
-      });
-      return iti.getNumber();
-    } else {
-      let im = new Inputmask('+389999999999');
-      im.mask($('input[type="tel"]'));
-      return phone.value;
-    }
-  }
-
-  getNumber();
+  iti = intlTelInput(phone, {
+    initialCountry: 'ua',
+    hiddenInput: 'full_phone',
+    preferredCountries: ['ua'],
+    excludeCountries: ['ru', 'by'],
+    utilsScript: './utils.js',
+  });
 
   $(form).submit(function (event) {
     event.preventDefault();
-    const phoneNumber = getNumber();
+    const phoneNumber = iti.getNumber();
     if (!validate()) {
       return;
     }
@@ -227,26 +214,11 @@ function validName(nameInput) {
   return valid;
 }
 function validPhone(phoneInput) {
-  const phoneValue = removeExtraCharactersInPhoneNumber(phoneInput.value);
-  let regex = /^((\+?3)?8)?((0\(\d{2}\)?)|(\(0\d{2}\))|(0\d{2}))\d{7}$/;
-
-  switch (params.phoneCountry.toLowerCase()) {
-    case 'europe':
-      const isValid = iti.isValidNumber();
-      !isValid
-        ? (phoneInput.style.border = '2px solid red')
-        : (phoneInput.style.border = '2px solid #ccc');
-      return isValid;
-
-    default:
-      break;
-  }
-
-  const valid = regex.test(phoneValue);
-  !valid
+  const isValid = iti.isValidNumber();
+  !isValid
     ? (phoneInput.style.border = '2px solid red')
     : (phoneInput.style.border = '2px solid #ccc');
-  return valid;
+  return isValid;
 }
 function validMail(emailInput) {
   const emailValue = emailInput.value;
@@ -256,15 +228,4 @@ function validMail(emailInput) {
     ? (emailInput.style.border = '2px solid red')
     : (emailInput.style.border = '2px solid #ccc');
   return valid;
-}
-function removeExtraCharactersInPhoneNumber(phoneNumber) {
-  const validSymbolsArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  const arr = phoneNumber.split('');
-  const newCleanArray = [];
-  arr.forEach(el => {
-    if (validSymbolsArray.includes(el)) {
-      newCleanArray.push(el);
-    }
-  });
-  return newCleanArray.join('');
 }
