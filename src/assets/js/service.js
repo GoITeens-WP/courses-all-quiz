@@ -143,7 +143,7 @@ const validationFields = {
     },
     {
       rule: 'customRegexp',
-      value: /^[a-zñáéíóúü ,.'-]+$/i,
+      value: getNameRegex(),
       errorMessage: 'Name is invalid!',
     },
     {
@@ -232,7 +232,7 @@ const validationFields = {
  * @param validationForm - the form to validate
  * @returns A validation form
  */
-function setFormValidation(validationForm, locale = window.locale) {
+function setFormValidation(validationForm) {
   const inputs = validationForm.form.elements;
 
   // apply rules to form fields
@@ -1418,6 +1418,30 @@ const postalCodesRegex = [
     name: 'Zimbabwe',
   },
 ];
+
+/**
+ * It returns a regular expression that matches a name in the given locale
+ * @param [locale] - The locale of the user.
+ * @returns A regular expression that matches a string of characters that are allowed in a name.
+ */
+function getNameRegex(locale = window.locale) {
+  switch (locale) {
+    case en:
+      return /^[a-zñáéíóúü ,.'-]+$/i;
+
+    case pl:
+      return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
+
+    case es:
+      return /^[a-zñáéíóúü ,.'-]+$/i;
+
+    case ro:
+      return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
+
+    default:
+      return /^.*[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ ,.'`-]{2,}$/i;
+  }
+}
 
 /**
  * It takes a country code as a parameter and returns a regular expression that can be used to validate
