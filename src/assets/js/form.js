@@ -22,7 +22,7 @@ $(window).on('load', async function () {
 
     forms: [
       {
-        formId: 'register_form',
+        formId: 'leadForm',
 
         /*
         ! Required params if you need send email

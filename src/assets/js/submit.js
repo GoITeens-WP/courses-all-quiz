@@ -18,6 +18,7 @@ function generateData(
     Projects: 'GoIT',
     Course: productId,
     website: 'website',
+    SiteURL: window.location.href,
   };
   return ensureUtmData(data);
 }

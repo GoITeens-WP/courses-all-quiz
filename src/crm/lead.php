@@ -10,7 +10,7 @@ function send($token, $data, $input)
 {
   $ch = curl_init();
   $curl_options = [];
-  $url = 'https://crm.goit.ua/api/v1/lead/create';
+  $url = 'https://goit-connectors.place/goit/';
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
   $curl_options[CURLOPT_HEADER] = 1;

@@ -22,7 +22,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 
     &:nth-last-child(2) {
       margin-bottom: 40px;
@@ -137,4 +137,8 @@
 
 .scroll-hidden {
   overflow: hidden;
+}
+
+[type='tel'] + .just-validate-error-label {
+  position: absolute;
 }

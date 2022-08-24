@@ -1426,20 +1426,20 @@ const postalCodesRegex = [
  */
 function getNameRegex(locale = window.locale) {
   switch (locale) {
-    case en:
+    case 'en':
       return /^[a-zñáéíóúü ,.'-]+$/i;
 
-    case pl:
+    case 'pl':
       return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
 
-    case es:
+    case 'es':
       return /^[a-zñáéíóúü ,.'-]+$/i;
 
-    case ro:
+    case 'ro':
       return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
 
     default:
-      return /^.*[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ ,.'`-]{2,}$/i;
+      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ0-9 ,.'`-]{1,19}$/gm;
   }
 }
 

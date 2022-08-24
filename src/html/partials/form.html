@@ -1,0 +1,9 @@
+<div class="form-wrapper">
+    <p class="title form-title">{{ form.title }}</p>
+    <form class="form" id="{{form.ID}}" novalidate autocomplete="on">
+        {% block formFields %} {% endblock %}
+        <div class="btn-cont">
+            <button class="btn btn-submit" type="submit">{{ form.btnSubmit }}</button>
+        </div>
+    </form>
+</div>
