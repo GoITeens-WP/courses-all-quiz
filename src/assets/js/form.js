@@ -208,7 +208,7 @@ function setUrlParameter(key, value) {
 }
 function validName(nameInput) {
   const nameValue = nameInput.value;
-  const re = /^.*[a-zA-Zа-яА-ЯёЁ ,.'`-]{2,}$/i;
+  const re = /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ0-9 ,.’'`-]{1,19}$/gm;
   const valid = re.test(nameValue);
   !valid ? (nameInput.style.border = '2px solid red') : (nameInput.style.border = '2px solid #ccc');
   return valid;
@@ -222,10 +222,12 @@ function validPhone(phoneInput) {
 }
 function validMail(emailInput) {
   const emailValue = emailInput.value;
-  const re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+  const re =
+    /^(?=^.{3,63}$)(((^[^-\\.\/][^<>()[\],;:\s@"]{2,}(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,10})))$/gm;
   const valid = re.test(emailValue);
   !valid
     ? (emailInput.style.border = '2px solid red')
     : (emailInput.style.border = '2px solid #ccc');
   return valid;
 }
+
