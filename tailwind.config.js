@@ -6,11 +6,10 @@ module.exports = {
     screens: {
       sm: '480px',
       md: '768px',
-      lg: '1024px',
       xl: '1280px',
     },
     fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
+      montserrat: ['Montserrat', 'sans-serif'],
     },
 
     extend: {
@@ -25,16 +24,14 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
+          DEFAULT: '1.25rem',
+          sm: '1.25rem',
           md: '2rem',
-          lg: '2rem',
-          xl: '1.4rem',
+          xl: '2.5rem',
         },
         sm: '20px',
-        md: '20px',
-        lg: '40px',
-        xl: '80px',
+        md: '32px',
+        xl: '40px',
       },
       keyframes: {
         side: {

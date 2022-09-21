@@ -10,11 +10,11 @@
 }
 
 body {
-  @apply bg-body font-['Montserrat',_sans-serif] text-black;
+  @apply bg-body font-montserrat text-black;
 }
 
 .section {
-  @apply py-5 md:py-8 lg:py-14;
+  @apply py-5 md:py-8 xl:py-14;
 }
 
 .btn {
