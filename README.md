@@ -1,17 +1,19 @@
-# Starter kit for GoWeb 👾
+# СсылкаНаМакет
+
+# Tailwind CSS starter kit for GoWeb 👾
 
 ## Запуск сборки
 
-Инсталяция зависимостей
+Инсталяция зависимостей проекта
 
 ```
-npm i
+yarn
 ```
 
 Сборка запускается командой
 
 ```
-npm start
+yarn start
 ```
 
 ## Структура проекта

@@ -1,44 +1,21 @@
 {
   "page": {
-    "lang": "ru",
-    "title": "",
-    "description": "",
-    "canonical": "",
-    "og_site_name": "",
-    "og_title": "",
-    "og_description": "",
-    "og_image": "",
-    "og_image_type": "image/png",
+    "lang": "uk",
+    "title": "title",
+    "description": "description",
+    "canonical": "canonical",
     "og_image_width": "1200",
     "og_image_height": "630",
-    "tw_image": ""
+    "og_image_type": "image/png",
+    "og_fb": "assets/images/ogp/fb.png",
+    "og_tw": "assets/images/ogp/tw.png"
   },
-  "menu": [
-    {
-      "title": "Menu item",
-      "link": "#id"
-    },
-    {
-      "title": "Menu item 2",
-      "link": "#id2"
-    }
-  ],
-  "socials": [
-    {
-      "title": "Menu item",
-      "link": "#id",
-      "icon": "icon-facebook"
-    },
-    {
-      "title": "Menu item 2",
-      "link": "#id2",
-      "icon": "icon-facebook"
-    }
-  ],
   "hero": {
     "id": "hero",
-    "title": "<span class=\"test test2\">hero test</span>",
-    "description": ""
+    "title": "Header-hero"
+  },
+  "footer": {
+    "id": "footer"
   },
   "modal": {
     "btn_close_aria": "кнопка закриття модального вікна",

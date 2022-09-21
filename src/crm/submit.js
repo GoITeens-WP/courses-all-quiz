@@ -11,7 +11,7 @@ function generateData(name, phone = null, email = null) {
     Potential_Category: 'Course',
     Projects: 'GoIT',
     Course: window.productId,
-    website: 'marathon',
+    website: window.website,
   };
   return ensureUtmData(data);
 }

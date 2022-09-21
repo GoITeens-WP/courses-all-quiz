@@ -230,4 +230,3 @@ function validMail(emailInput) {
     : (emailInput.style.border = '2px solid #ccc');
   return valid;
 }
-
