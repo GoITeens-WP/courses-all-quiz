@@ -99,7 +99,7 @@ $(document).ready(function () {
       redirectLeeLoo(data);
     }
     response
-      .then(resp => {
+      .then((resp) => {
         if (resp.ok) {
           afterSend($form);
         } else {
@@ -107,7 +107,7 @@ $(document).ready(function () {
           showError();
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         showError();
       });
@@ -121,6 +121,7 @@ function validate() {
 
   return !!(nameValid && telValid && emailValid);
 }
+
 function afterSend(form) {
   const $progress = $('.progress');
   const $progressBar = $('.modal-progress-bar');
@@ -148,7 +149,9 @@ function afterSend(form) {
       document.getElementsByTagName('head')[0].appendChild(js);
     };
     LEELOO();
-    window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(window.leelooHash);
+    window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(
+      window.leelooHash
+    );
 
     leeloo.classList.add('leeloo--active');
     message.classList.toggle('modal-message--show');
@@ -160,6 +163,7 @@ function afterSend(form) {
 
   modal.style.minHeight = 'initial';
 }
+
 function redirectLeeLoo(formData) {
   let fields = {
     utm_source: 'utm_source',
@@ -187,6 +191,7 @@ function redirectLeeLoo(formData) {
 
   window.history.pushState({}, document.title, url);
 }
+
 function getUrlParameter(sParam) {
   let sPageURL = decodeURIComponent(window.location.search.substring(1)),
     sURLVariables = sPageURL.split('&'),
@@ -201,18 +206,33 @@ function getUrlParameter(sParam) {
     }
   }
 }
+
 function setUrlParameter(key, value) {
   const url = new URL(window.location);
   url.searchParams.set(key, value);
   window.history.pushState({}, document.title, url);
 }
+
 function validName(nameInput) {
   const nameValue = nameInput.value;
+  // UA
   const re = /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ0-9 ,.’'`-]{1,19}$/gm;
+  // PL
+  // const re = /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{2,}$/i;
+  // MX
+  // const re = /^[a-zñáéíóúü ,.'-]+$/i;
+  // RO
+  // const re = /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
+  // US
+  // const re = /^[a-zA-Z0-9 ,.'-]{2,}$/i;
+
   const valid = re.test(nameValue);
-  !valid ? (nameInput.style.border = '2px solid red') : (nameInput.style.border = '2px solid #ccc');
+  !valid
+    ? (nameInput.style.border = '2px solid red')
+    : (nameInput.style.border = '2px solid #ccc');
   return valid;
 }
+
 function validPhone(phoneInput) {
   const isValid = iti.isValidNumber();
   !isValid
@@ -220,6 +240,7 @@ function validPhone(phoneInput) {
     : (phoneInput.style.border = '2px solid #ccc');
   return isValid;
 }
+
 function validMail(emailInput) {
   const emailValue = emailInput.value;
   const re =
