@@ -1,4 +1,3 @@
-.DS_Store
 # Logs
 logs
 *.log
@@ -104,4 +103,21 @@ dist
 
 # TernJS port file
 .tern-port
+
+# MacOS files
 .DS_Store
+__MACOS__
+
+# Windows files
+thumb.db
+
+# IDE
+.idea
+
+# ARCHIVE
+*.7z
+*.rar
+*.zip
+
+# EXE
+*.exe
