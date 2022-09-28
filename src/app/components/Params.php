@@ -12,7 +12,7 @@ class Params
       fwrite($file, "PRODUCT_ID=\"{$_POST['product_id']}\"\n");
       fwrite($file, "GTM=\"{$_POST['gtm']}\"\n");
       fwrite($file, "LEELOO_HASH=\"{$_POST['leeloo_hash']}\"\n");
-      fwrite($file, "START_DATE=\"{$_POST['start_date']}\"\n");
+      fwrite($file, "START_DATE={$_POST['start_date']}\n");
       fclose($file);
     } else {
       echo 'Wrong password!';
