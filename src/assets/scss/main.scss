@@ -3,10 +3,10 @@
 @import './utils/mixins';
 @import './utils/variables';
 
-@import './vendors/tailwind.scss';
+@import './vendors/tailwind';
 @import './vendors/intTelInput';
 
 @import './components/modal';
 @import './components/modal-form';
 
-@import './layouts/hero';
+@import './sections/hero';

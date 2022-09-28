@@ -7,7 +7,8 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Header-hero"
+    "title": "Header-hero",
+    "test": "html <span class=\"jsonCss\">jsonCss</span> <span class=\"font-bold text-blue-400\">tailwindcss</span>"
   },
   "footer": {
     "id": "footer"

@@ -1,0 +1,9 @@
+.hero {
+  & .html {
+    color: red;
+  }
+
+  & .jsonCss {
+    color: green;
+  }
+}
