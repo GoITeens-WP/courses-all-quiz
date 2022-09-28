@@ -21,11 +21,11 @@ const serve = () => {
 };
 
 const watcher = done => {
+  watch(paths.watch.html).on('change', series(tasks.html.html, tasks.css, browserSync.reload));
   watch(paths.watch.data).on(
     'change',
     series(tasks.db, tasks.html.html, tasks.css, browserSync.reload)
   );
-  watch(paths.watch.html).on('change', series(tasks.html.html, tasks.css, browserSync.reload));
   watch([paths.watch.tailwindcss, paths.watch.css]).on(
     'change',
     series(tasks.css, browserSync.reload)
@@ -40,32 +40,28 @@ const watcher = done => {
 
 exports.start = series(
   tasks.clean,
-  parallel(
-    tasks.php,
-    tasks.db,
-    tasks.images,
-    tasks.css,
-    tasks.fonts,
-    tasks.scripts,
-    tasks.html.html,
-    tasks.crm,
-    tasks.app
-  ),
+  tasks.html.html,
+  tasks.db,
+  tasks.css,
+  tasks.fonts,
+  tasks.scripts,
+  tasks.php,
+  tasks.crm,
+  tasks.app,
+  tasks.images,
   watcher,
   serve
 );
 
 exports.build = series(
   tasks.clean,
-  parallel(
-    tasks.db,
-    tasks.php,
-    tasks.images,
-    tasks.css,
-    tasks.fonts,
-    tasks.scripts,
-    tasks.html.html,
-    tasks.crm,
-    tasks.app
-  )
+  tasks.html.html,
+  tasks.db,
+  tasks.css,
+  tasks.fonts,
+  tasks.scripts,
+  tasks.php,
+  tasks.crm,
+  tasks.app,
+  tasks.images
 );
