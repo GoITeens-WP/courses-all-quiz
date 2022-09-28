@@ -7,7 +7,7 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Header-hero <p class=\"text-4xl\">test</p>"
+    "title": "Header-hero <p class=\"text-8xl\">test</p>"
   },
   "footer": {
     "id": "footer"

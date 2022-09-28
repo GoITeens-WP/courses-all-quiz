@@ -40,28 +40,18 @@ const watcher = done => {
 
 exports.start = series(
   tasks.clean,
-  tasks.html.html,
+  parallel(tasks.fonts, tasks.php, tasks.crm, tasks.app, tasks.scripts, tasks.images),
   tasks.db,
+  tasks.html.html,
   tasks.css,
-  tasks.fonts,
-  tasks.scripts,
-  tasks.php,
-  tasks.crm,
-  tasks.app,
-  tasks.images,
   watcher,
   serve
 );
 
 exports.build = series(
   tasks.clean,
-  tasks.html.html,
+  parallel(tasks.fonts, tasks.php, tasks.crm, tasks.app, tasks.scripts, tasks.images),
   tasks.db,
-  tasks.css,
-  tasks.fonts,
-  tasks.scripts,
-  tasks.php,
-  tasks.crm,
-  tasks.app,
-  tasks.images
+  tasks.html.html,
+  tasks.css
 );

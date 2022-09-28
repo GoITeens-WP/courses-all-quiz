@@ -1,9 +1,10 @@
 module.exports = {
   src: {
     html: 'src/html/pages/**/*.+(html|nunjucks|njk)',
-    css: 'src/assets/scss/**/*.scss',
+    css: 'src/assets/scss/*.scss',
     js: 'src/assets/js/**/*.js',
     images: 'src/assets/images/**/*',
+    video: 'src/assets/video/**/*',
     fonts: 'src/assets/fonts/**/*',
     data: 'src/json/*',
     php: 'src/**/*.php',
@@ -16,9 +17,10 @@ module.exports = {
     tailwindcss: './tailwind.config.js',
     js: 'src/assets/js/**/*.js',
     images: 'src/assets/images/**/*',
+    video: 'src/assets/video/**/*',
     fonts: 'src/assets/fonts/**/*',
     data: 'src/json/data.json',
-    app: 'src/app/*',
+    app: 'src/app/**',
     crm: 'src/crm/*',
   },
   build: {
@@ -27,6 +29,7 @@ module.exports = {
     js: 'build/assets/js/',
     fonts: 'build/assets/fonts/',
     images: 'build/assets/images/',
+    video: 'build/assets/video/',
     db: 'build/assets/json/',
     php: 'build/',
     app: 'build/app/',
