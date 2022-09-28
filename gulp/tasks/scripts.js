@@ -21,7 +21,7 @@ const scripts = done => {
           })(err);
           this.emit('end');
         },
-      }),
+      })
     )
     .pipe(
       webpackStream({
@@ -41,7 +41,7 @@ const scripts = done => {
             },
           ],
         },
-      }),
+      })
     )
     .pipe(gulp.dest(paths.build.js));
 };

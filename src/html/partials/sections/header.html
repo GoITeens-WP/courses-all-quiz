@@ -2,5 +2,12 @@
 <header class="section {{section.id}}">
   <div class="container">
     <h1>{{section.title}}</h1>
+    <div class="hidden bg-orange-400 p-6 smOnly:block">smOnly</div>
+    <div class="block bg-orange-400 p-6">sm</div>
+    <div class="hidden bg-blue-400 p-6 mdOnly:block">mdOnly</div>
+    <div class="hidden bg-blue-400 p-6 md:block">md</div>
+    <div class="hidden bg-green-400 p-6 notXl:block">notXl</div>
+    <div class="hidden bg-green-400 p-6 xl:block">xl</div>
+    <button type="button" class="mt-5 border border-black p-6" data-modal-open>Open Modal</button>
   </div>
 </header>

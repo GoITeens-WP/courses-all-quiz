@@ -1,7 +1,7 @@
 import jQuery from 'jquery';
 
 jQuery(function () {
-  const openModalBtn = document.querySelectorAll('.btn-modal');
+  const openModalBtn = document.querySelectorAll('[data-modal-open]');
   const modal = document.querySelector('[data-modal]');
   const closeModalBtn = document.querySelector('[data-modal-close]');
   const body = document.querySelector('body');

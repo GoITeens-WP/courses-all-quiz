@@ -26,7 +26,7 @@ const watcher = done => {
 
   watch(['./tailwind.config.js', paths.watch.css]).on(
     'change',
-    series(tasks.css, browserSync.reload),
+    series(tasks.css, browserSync.reload)
   );
   watch(paths.watch.js).on('change', series(tasks.scripts, browserSync.reload));
   watch(paths.watch.images, tasks.images);
@@ -48,10 +48,10 @@ exports.start = series(
     tasks.scripts,
     tasks.html.html,
     tasks.crm,
-    tasks.app,
+    tasks.app
   ),
   watcher,
-  serve,
+  serve
 );
 
 exports.build = series(
@@ -65,6 +65,6 @@ exports.build = series(
     tasks.scripts,
     tasks.html.html,
     tasks.crm,
-    tasks.app,
-  ),
+    tasks.app
+  )
 );

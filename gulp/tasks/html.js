@@ -41,7 +41,7 @@ const html = () => {
           autoescape: false,
         },
         watch: true,
-      }),
+      })
     )
     .pipe(mode.production(strip()))
     .pipe(mode.production(htmlmin(htmlminConfig)))

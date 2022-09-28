@@ -23,7 +23,7 @@ const css = done => {
         sourceMap: true,
         precision: 3,
         errLogToConsole: true,
-      }).on('error', sass.logError),
+      }).on('error', sass.logError)
     )
     .pipe(mode.production(gcmq()))
     .pipe(
@@ -36,8 +36,8 @@ const css = done => {
         ],
         {
           parser: require('postcss-scss'),
-        },
-      ),
+        }
+      )
     )
     .pipe(
       mode.production(
@@ -49,8 +49,8 @@ const css = done => {
             const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
             return broadMatches.concat(innerMatches);
           },
-        }),
-      ),
+        })
+      )
     )
     .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat({ path: 'style.css' }))

@@ -99,7 +99,7 @@ $(document).ready(function () {
       redirectLeeLoo(data);
     }
     response
-      .then((resp) => {
+      .then(resp => {
         if (resp.ok) {
           afterSend($form);
         } else {
@@ -107,7 +107,7 @@ $(document).ready(function () {
           showError();
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         showError();
       });
@@ -149,9 +149,7 @@ function afterSend(form) {
       document.getElementsByTagName('head')[0].appendChild(js);
     };
     LEELOO();
-    window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(
-      window.leelooHash
-    );
+    window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(window.leelooHash);
 
     leeloo.classList.add('leeloo--active');
     message.classList.toggle('modal-message--show');
@@ -227,9 +225,7 @@ function validName(nameInput) {
   // const re = /^[a-zA-Z0-9 ,.'-]{2,}$/i;
 
   const valid = re.test(nameValue);
-  !valid
-    ? (nameInput.style.border = '2px solid red')
-    : (nameInput.style.border = '2px solid #ccc');
+  !valid ? (nameInput.style.border = '2px solid red') : (nameInput.style.border = '2px solid #ccc');
   return valid;
 }
 

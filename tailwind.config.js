@@ -5,12 +5,12 @@ module.exports = {
   theme: {
     // MEDIA QUERIES
     screens: {
-      smOnly: {'max': '767.98px'},
+      smOnly: { max: '767.98px' },
       sm: '480px',
-      mdOnly: {'min': '768px', 'max': '1279.98px'},
+      mdOnly: { min: '768px', max: '1279.98px' },
       md: '768px',
       xl: '1280px',
-      notXl: {'max': '1279.98px'},
+      notXl: { max: '1279.98px' },
     },
     // BASE FONT
     fontFamily: {
@@ -28,19 +28,19 @@ module.exports = {
       }),
       // ALL COLORS
       colors: {
-        body: '#FFF8EF', // class="bg-body"
+        body: '#FFFFFF', // class="bg-body"
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
-          light: "#202020", // class="bg-black-light text-black-light border-black-light"
-          dark: "#010101"
+          light: '#202020', // class="bg-black-light text-black-light border-black-light"
+          dark: '#010101',
         },
         white: {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
-          dark: "#fafafa" // class="bg-white-dark text-white-dark border-white-dark"
+          dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
         },
-        accent: '#FF6C00',
-        primary: "#f1f1f1",
-        second: "#f2f2f2",
+        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
+        primary: '#f1f1f1',
+        second: '#f2f2f2',
       },
       // CONTAINER
       container: {

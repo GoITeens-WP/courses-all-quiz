@@ -24,8 +24,8 @@ const images = done => {
           imagemin.mozjpeg(imageMinConfig.mozjpeg),
           imagemin.optipng(imageMinConfig.optipng),
           imagemin.svgo(imageMinConfig.svgo),
-        ]),
-      ),
+        ])
+      )
     )
     .pipe(size({ showFiles: true }))
     .pipe(size({ showFiles: false }))

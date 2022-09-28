@@ -17,7 +17,7 @@ const db = () => {
       nunjucksRender({
         src: 'src/json/',
         extension: 'inherit',
-      }),
+      })
     )
     .pipe(gulp.dest(paths.build.db));
 };
