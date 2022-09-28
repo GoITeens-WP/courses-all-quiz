@@ -28,7 +28,7 @@ module.exports = {
       }),
       // ALL COLORS
       colors: {
-        body: '#FFFFFF', // class="bg-body"
+        body: '#ffffff', // class="bg-body"
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           light: '#202020', // class="bg-black-light text-black-light border-black-light"
