@@ -5,18 +5,20 @@ node("all-biulds"){
         withCredentials([
             string(credentialsId: 'goit_jenkins_build_bot_api_key', variable: 'telegramNotifyChannelBotApiToken'),
             string(credentialsId: 'goit_jenkins_build_chat_id', variable: 'telegramNotifyChannelChatId'),
-
             string(credentialsId: 'tech_alert_bot_api_key', variable: 'telegramAlertChannelBotApiToken'),
             string(credentialsId: 'tech_alert_chat_id', variable: 'telegramAlertChannelChatId'),
 
-            //add ftp credential for SITELINK
+            //ADD FTP CREDENTIAL
             string(credentialsId: 'ftp_user_pass_host_for_s_w_global', variable: 'ftpUserAndPass')
         ]) {
+                env.gitRepository = 'git@github.com:GoWeb-Studio/lp-students-and-parents-usa.git';
+                env.gitBranch = 'main';
+                env.folderPath = './us/';
+                //
                 env.telegramNotifyChannelBotApiToken = telegramNotifyChannelBotApiToken;
                 env.telegramNotifyChannelChatId = telegramNotifyChannelChatId;
                 env.telegramAlertChannelBotApiToken = telegramAlertChannelBotApiToken;
                 env.telegramAlertChannelChatId = telegramAlertChannelChatId;
-
                 env.ftpUserAndPass = ftpUserAndPass;
         }
     }
@@ -36,15 +38,13 @@ node("all-biulds"){
             env.telegramNotifyChannelChatId,
             env.startBuildText
         );
-
     }
 
     stage('Clone Git Repo') {
         catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-            git branch: 'main', credentialsId: 'pasha-goitacad-ssh', url: 'git@github.com:GoWeb-Studio/lp-students-and-parents-usa.git'
+            git branch: env.gitBranch, credentialsId: 'pasha-goitacad-ssh', url: env.gitRepository
         }
     }
-
 
    stage('Build'){
        def success = 'SUCCESS'.equals(currentBuild.currentResult);
@@ -61,8 +61,8 @@ node("all-biulds"){
 
         if (success) {
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                //sent files to SITELINK
-                sh "ncftpput ${env.ftpUserAndPass} ./us/ ./build/*"
+                //sent files to url
+                sh "ncftpput ${env.ftpUserAndPass} ${env.folderPath} ./build/*"
                 sh "rm -r *"
             }
         }
@@ -71,11 +71,13 @@ node("all-biulds"){
     stage('Post Build Notify') {
         def success = 'SUCCESS'.equals(currentBuild.currentResult);
         def previousBuildSuccess = true;
+
         if (currentBuild.previousBuild != null && !'SUCCESS'.equals(currentBuild.previousBuild.currentResult)) {
             previousBuildSuccess = false;
         }
 
         def message = '';
+
         if (success) {
             message = env.successBuildText;
         } else {
