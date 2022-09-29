@@ -7,12 +7,15 @@ const cachebust = require('gulp-cache-bust');
 const rename = require('gulp-rename');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
-const strip = require('gulp-strip-comments');
 const fs = require('fs');
 const path = require('path');
 
 const htmlminConfig = {
-  collapseWhitespace: true,
+  removeComments: true, // Strip HTML comments
+  collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
+  collapseBooleanAttributes: true, // Omit attribute values from boolean attributes
+  removeRedundantAttributes: true, // Remove attributes when value matches default.
+  removeEmptyAttributes: true, // Remove all attributes with whitespace-only values
 };
 
 const cachebustConfig = {
@@ -43,7 +46,6 @@ const html = () => {
         watch: true,
       })
     )
-    .pipe(mode.production(strip()))
     .pipe(mode.production(htmlmin(htmlminConfig)))
     .pipe(mode.production(cachebust(cachebustConfig)))
     .pipe(mode.production(rename({ extname: '.php' })))

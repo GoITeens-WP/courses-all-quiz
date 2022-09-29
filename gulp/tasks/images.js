@@ -10,8 +10,13 @@ const imageMinConfig = {
   mozjpeg: { quality: 75, progressive: true },
   optipng: { optimizationLevel: 5 },
   svgo: {
-    plugins: [{ removeViewBox: true }, { cleanupIDs: false }],
-  },
+    plugins: [
+        { removeViewBox: true },
+        { cleanupIDs: false },
+        { removeComments: true },
+        { removeEmptyContainers: true },
+    ],
+},
 };
 
 const images = done => {
@@ -28,7 +33,6 @@ const images = done => {
       )
     )
     .pipe(size({ showFiles: true }))
-    .pipe(size({ showFiles: false }))
     .pipe(gulp.dest(paths.build.images));
   done();
 };

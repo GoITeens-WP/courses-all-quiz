@@ -40,7 +40,6 @@
     "gulp-rigger": "^0.5.8",
     "gulp-size": "^4.0.1",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-strip-comments": "^2.5.2",
     "gulp-uglify": "^3.0.2",
     "intl-tel-input": "^17.0.18",
     "js-cookie": "^3.0.1",
