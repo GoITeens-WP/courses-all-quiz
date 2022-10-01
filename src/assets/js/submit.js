@@ -7,6 +7,9 @@ function generateData(
   productName = window.productName,
   productId = window.productId,
 ) {
+  const { origin, pathname } = window.location;
+  const action_source = `${origin}${pathname}`;
+
   let data = {
     google_id: readCookie('_ga'),
     name: name,
@@ -18,7 +21,13 @@ function generateData(
     Projects: 'GoIT',
     Course: productId,
     website: 'website',
-    SiteURL: window.location.href,
+    SiteURL: action_source,
+    leadFormat: window.leadFormat || 'marathon',
+    leadActionSource: action_source,
+    leadUserAgent: window.navigator.userAgent,
+    leadFBP: getCookie('_fbp'),
+    leadFBC: getCookie('_fbc'),
+    leadIP: window.ipData.ip || '',
   };
   return ensureUtmData(data);
 }

@@ -3,45 +3,67 @@ const { colors } = require(`tailwindcss/defaultTheme`);
 module.exports = {
   content: ['./src/**/*.{html,js}'],
   theme: {
+    // MEDIA QUERIES
     screens: {
+      smOnly: { max: '767.98px' },
       sm: '480px',
+      mdOnly: { min: '768px', max: '1279.98px' },
       md: '768px',
-      lg: '1024px',
       xl: '1280px',
+      notXl: { max: '1279.98px' },
     },
+    // BASE FONT
     fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
+      montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
+      // exo: ['"Exo 2"', 'sans-serif'],
     },
-
+    // SHADOW
+    boxShadow: {
+      orange: '2px 8px 29px rgba(240, 127, 46, 0.2)', // class="shadow-orange"
+    },
+    // THEME
     extend: {
       backgroundColor: theme => ({
         ...theme('colors'),
-        body: '#FFF8EF',
       }),
-      colors: {
-        orange: '#FF6C00',
-        black: '#202020',
+      backgroundImage: {
+        check: "url('../images/check.svg')",
       },
+      // ALL COLORS
+      colors: {
+        body: '#FFF8EF', // class="bg-body"
+        black: {
+          DEFAULT: '#000000', // class="bg-black text-black border-black"
+          light: '#202020', // class="bg-black-light text-black-light border-black-light"
+          dark: '#010101',
+        },
+        white: {
+          DEFAULT: '#ffffff', // class="bg-white text-white border-white"
+          dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
+        },
+        accent: '#FF6B0A',
+        primary: '#f1f1f1',
+        second: '#f2f2f2',
+        quiz: 'rgb(47, 64, 212)',
+      },
+      // CONTAINER
       container: {
         center: true,
         padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
+          DEFAULT: '1.25rem',
+          sm: '1.25rem',
           md: '2rem',
-          lg: '2rem',
-          xl: '1.4rem',
+          xl: '2.5rem',
         },
-        sm: '20px',
-        md: '20px',
-        lg: '40px',
-        xl: '80px',
       },
+      // KEYFRAMES
       keyframes: {
         side: {
           '0%, 100%': { transform: 'translateX(25%)' },
           '50%': { transform: ' translateY(0)' },
         },
       },
+      // ANIMATION
       animation: {
         side: 'side 1s ease-in-out infinite',
       },

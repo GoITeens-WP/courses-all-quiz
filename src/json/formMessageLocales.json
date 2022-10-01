@@ -75,5 +75,27 @@
       "es": "Error!",
       "ro": "Eroare!"
     }
+  },
+  {
+    "key": "emailNotExists",
+    "dict": {
+      "en": "Email does not exist",
+      "ru": "Email не существует",
+      "uk": "Email не існує",
+      "pl": "Email nie istnieje",
+      "es": "Email no existe",
+      "ro": "Email nu există"
+    }
+  },
+  {
+    "key": "telegramBackendMessage",
+    "dict": {
+      "en": "There is only one step left! Go to telegram 👇",
+      "ru": "Остался всего один шаг! Перейдите в телеграм 👇",
+      "uk": "Залишився всього один крок! Перейдіть в телеграм 👇",
+      "pl": "Pozostał tylko jeden krok! Przejdź do telegramu 👇",
+      "es": "Solo queda un paso! Ve a telegrama 👇",
+      "ro": "Este doar un pas! Mergeți la telegrama 👇"
+    }
   }
 ]

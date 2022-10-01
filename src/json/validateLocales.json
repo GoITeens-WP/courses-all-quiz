@@ -120,7 +120,17 @@
     }
   },
   {
-    "key": "Field is required",
+    "key": "Zip code is invalid!",
+    "dict": {
+      "ru": "Почтовый индекс неверный!",
+      "uk": "Поштовий індекс невірний!",
+      "pl": "Kod pocztowy jest nieprawidłowy!",
+      "es": "El código postal es inválido!",
+      "ro": "Codul postal este invalid!"
+    }
+  },
+  {
+    "key": "The field is required",
     "dict": {
       "ru": "Обязательное поле",
       "uk": "Обов’язкове поле",

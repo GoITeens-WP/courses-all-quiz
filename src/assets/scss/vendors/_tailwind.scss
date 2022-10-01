@@ -13,10 +13,13 @@ body {
   @apply bg-body font-['Montserrat',_sans-serif] text-black;
 }
 
-.section {
-  @apply py-5 md:py-8 lg:py-14;
-}
-
-.btn {
-  @apply duration-300;
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }

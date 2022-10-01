@@ -29,7 +29,7 @@ const css = done => {
     .pipe(
       postcss(
         [
-          require('postcss-import'),
+          require('postcss-import')(),
           tailwindcss('./tailwind.config.js'),
           require('tailwindcss/nesting'),
           require('autoprefixer'),

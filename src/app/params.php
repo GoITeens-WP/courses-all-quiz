@@ -30,6 +30,10 @@ $ini_array = parse_ini_file('params.ini');
     <label for="GTM">GTM</label>
     <input type="text" id="GTM" name="GTM" value="<?= $ini_array['GTM'] ?>" placeholder="<?= $ini_array['GTM'] ?>">
 
+    <label for="CAPI_LEAD_FORMAT">CAPI Lead Format</label>
+    <input type="text" id="CAPI_LEAD_FORMAT" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
+        placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>">
+
     <label for="LEELOO_HASH">Leeloo Hash</label>
     <input type="text" id="LEELOO_HASH" name="LEELOO_HASH" value="<?= $ini_array['LEELOO_HASH'] ?>"
         placeholder="<?= $ini_array['LEELOO_HASH'] ?>">

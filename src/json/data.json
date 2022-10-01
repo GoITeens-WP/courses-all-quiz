@@ -1,6 +1,6 @@
 {
   "page": {
-    "lang": "ru",
+    "lang": "uk",
     "title": "",
     "description": "",
     "canonical": "",
@@ -49,28 +49,31 @@
   "form": {
     "ID": "leadForm",
     "title": "Please fill in the form",
-    "steps": ["Registration", "WhatsApp Chat"],
+    "steps": ["1", "2", "Done"],
     "inputs": [
       {
-        "title": "Your Name",
+        "title": "Name",
         "type": "text",
         "name": "name",
         "placeholder": "Tom Bradley",
-        "dataField": "name"
+        "dataField": "name",
+        "required": true
       },
       {
-        "title": "Your Email Address",
-        "type": "email",
-        "name": "email",
-        "placeholder": "@gmail.com",
-        "dataField": "email"
-      },
-      {
-        "title": "Your Phone",
+        "title": "Phone",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
-        "dataField": "phone"
+        "dataField": "phone",
+        "required": true
+      },
+      {
+        "title": "Email",
+        "type": "email",
+        "name": "email",
+        "placeholder": "@gmail.com",
+        "dataField": "email",
+        "required": true
       },
       {
         "title": "Your Question",
@@ -80,11 +83,19 @@
         "dataField": "message"
       },
       {
+        "title": "Country",
+        "type": "text",
+        "name": "country",
+        "placeholder": "",
+        "dataField": "",
+        "class": "input-wrap-half"
+      },
+      {
         "title": "Zipcode",
         "type": "text",
         "name": "zipCode",
         "placeholder": "00000",
-        "dataField": "zip",
+        "dataField": "",
         "class": "input-wrap-half"
       },
       {
@@ -92,6 +103,8 @@
         "type": "checkbox",
         "name": "agree",
         "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
         "links": [
           { "text": "Privacy Policy", "href": "policy/" },
           { "text": "Site Terms", "href": "terms/" }

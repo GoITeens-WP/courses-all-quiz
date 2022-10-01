@@ -1,5 +1,5 @@
 <div class="backdrop is-hidden" data-modal>
-  <div class="modal">
+  <div class="text-white bg-pink-900 modal">
     <button class="modal-close-btn" type="button" data-modal-close aria-label="{{modal.btn_close_aria}}">
       <svg class="modal-btn-close-svg" width="30" height="30">
         <use href="./assets/images/sprite.svg#icon-close-menu"></use>
@@ -8,27 +8,9 @@
 
     <img class="logo" src="./assets/images/logo.svg" alt="logo" width="100" height="30" loading="lazy" />
 
-    <div class="modal-progress">
-      <ul class="list modal-progress-bar">
-        <li class="item is-active"><span>1</span></li>
-        <li class="item"><span>2</span></li>
-        <li class="item"><span>Готово</span></li>
-      </ul>
-    </div>
-    <form class="modal-form" id="{{form.ID}}" novalidate autocomplete="on">
-      {% import './macro/input.njk' as fields %} {% for field in form.inputs %} {{
-      fields.inputField(field, form.ID) }} {% endfor %}
-      <button class="btn modal-form__btn" type="submit">{{form.btnSubmit}}</button>
-    </form>
-    <div class="modal-message">
-      <p class="modal-text">{{modal.text}}</p>
-      <div class="progress">
-        <div class="color"></div>
-      </div>
-    </div>
-    <div class="modal-advice modal-advice--hidden">
-      <h2 class="title">{{modal.advice}}</h2>
-      <p>{{modal.advice_text}}</p>
-    </div>
+    {% import './components/macro/step.html' as service %}
+    {{service.stepDiv(form.steps, form.ID)}}
+
+    {% include './components/form.njk' %}
   </div>
 </div>

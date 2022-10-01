@@ -7,15 +7,68 @@ import validateLocales from '../../json/validateLocales.json';
 import formMessageLocales from '../../json/formMessageLocales.json';
 
 /**
+ * It makes a request to Cloudflare's `cdn-cgi/trace` endpoint, parses the response, and returns an
+ * object with the parsed data
+ * @returns An object with the following properties:
+ *   - colo
+ *   - http_x_forwarded_for
+ *   - ip
+ *   - loc
+ *   - org
+ *   - query_status
+ *   - ray
+ *   - server_name
+ *   - uag
+ *   - uip
+ *   - visid_incap_<id>
+ *   - visid_inc
+ */
+async function getIpInfo() {
+  try {
+    const { data } = await axios.get('https://www.cloudflare.com/cdn-cgi/trace');
+
+    return data
+      .trim()
+      .split('\n')
+      .reduce(function (obj, pair) {
+        pair = pair.split('=');
+        return (obj[pair[0]] = pair[1]), obj;
+      }, {});
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+}
+
+/**
  * It makes a request to a free API that returns the country code of the user's IP address
  * @returns The country code of the user's IP address.
  */
 async function geoIpLookup(defaultCountry = 'ua') {
-  const res = await axios.get('https://ip.nf/me.json');
-  return res.data?.ip?.country_code.toLowerCase() || defaultCountry;
+  if (window.ipData?.loc) {
+    return window.ipData?.loc?.toLowerCase() || defaultCountry;
+  } else {
+    try {
+      const { data } = await axios.get('https://ip.nf/me.json');
+
+      return data?.ip?.country_code?.toLowerCase() || defaultCountry;
+    } catch (error) {
+      console.error(error);
+      return defaultCountry;
+    }
+  }
 }
 
-// get iti config
+/**
+ * It returns a configuration object for the intl-tel-input library
+ * @param preferredCountries - An array of country codes that you want to be at the top of the list.
+ * @param excludeCountries - An array of country codes to exclude from the dropdown.
+ * @returns An object with the following properties:
+ * initialCountry: The country code of the country that the user is in.
+ * preferredCountries: An array of country codes that will be displayed at the top of the dropdown.
+ * excludeCountries: An array of country codes that will be excluded from the dropdown.
+ * utilsScript: The path to the utils.js file.
+ */
 async function getItiConfig(preferredCountries, excludeCountries) {
   const country_code = window.itiInitialCountry || (await geoIpLookup());
 
@@ -27,14 +80,23 @@ async function getItiConfig(preferredCountries, excludeCountries) {
   };
 }
 
-// get config for country select js
-async function getCountryConfig() {
+/**
+ * It returns a configuration object for the intl-tel-input library
+ * @param preferredCountries - An array of country codes that you want to be at the top of the list.
+ * @param excludeCountries - An array of country codes to exclude from the dropdown.
+ * @returns An object with the following properties:
+ *   defaultCountry: The country code of the user's country
+ *   preferredCountries: An array of country codes that are preferred
+ *   excludeCountries: An array of country codes that are excluded
+ *   responsiveDropdown: A boolean that determines whether the dropdown is responsive
+ */
+async function getCountryConfig(preferredCountries, excludeCountries) {
   const country_code = window.itiInitialCountry || (await geoIpLookup());
-  window.itiInitialCountry = country_code;
 
   return {
     defaultCountry: country_code,
-    preferredCountries: ['us'],
+    preferredCountries,
+    excludeCountries,
     responsiveDropdown: false,
   };
 }
@@ -134,98 +196,125 @@ function getValidationLocale(locale = window.locale) {
   });
 }
 
-/* The above code is a JavaScript object that contains the validation rules for each field. */
-const validationFields = {
-  name: [
-    {
-      rule: 'required',
-      errorMessage: 'Name is required',
-    },
-    {
-      rule: 'customRegexp',
-      value: getNameRegex(),
-      errorMessage: 'Name is invalid!',
-    },
-    {
-      rule: 'minLength',
-      value: 3,
-      errorMessage: 'The field must contain a minimum of 3 characters',
-    },
-    {
-      rule: 'maxLength',
-      value: 30,
-      errorMessage: 'The field must contain a maximum of 30 characters',
-    },
-  ],
-  phone: [
-    {
-      rule: 'required',
-      errorMessage: 'Phone number is required',
-    },
-  ],
-  email: [
-    {
-      rule: 'required',
-      errorMessage: 'Email is required',
-    },
-    {
-      rule: 'email',
-      errorMessage: 'Email is invalid!',
-    },
-  ],
-  message: [
-    {
-      rule: 'minLength',
-      value: 3,
-      errorMessage: 'The field must contain a minimum of 3 characters',
-    },
-    {
-      rule: 'maxLength',
-      value: 1000,
-      errorMessage: 'The field must contain a maximum of 1000 characters',
-    },
-  ],
-  checkbox: [
-    {
-      rule: 'required',
-    },
-  ],
-  zip: [
-    {
-      rule: 'required',
-      errorMessage: 'Zip code is required',
-    },
-  ],
-  text: [
-    {
-      rule: 'minLength',
-      value: 3,
-      errorMessage: 'The field must contain a minimum of 3 characters',
-    },
-    {
-      rule: 'maxLength',
-      value: 100,
-      errorMessage: 'The field must contain a maximum of 100 characters',
-    },
-  ],
-  textarea: [
-    {
-      rule: 'minLength',
-      value: 3,
-      errorMessage: 'The field must contain a minimum of 3 characters',
-    },
-    {
-      rule: 'maxLength',
-      value: 500,
-      errorMessage: 'The field must contain a maximum of 500 characters',
-    },
-  ],
-  select: [
-    {
-      rule: 'required',
-    },
-  ],
-};
+function getValidationFields(input, allInputs) {
+  const { required } = input;
+  const { field } = input.dataset;
+
+  /* The above code is a JavaScript object that contains the validation rules for each field. */
+  const fields = {
+    name: [
+      {
+        rule: 'required',
+        errorMessage: 'Name is required',
+      },
+      {
+        rule: 'customRegexp',
+        value: getNameRegex(),
+        errorMessage: 'Name is invalid!',
+      },
+      {
+        rule: 'minLength',
+        value: 3,
+        errorMessage: 'The field must contain a minimum of 3 characters',
+      },
+      {
+        rule: 'maxLength',
+        value: 30,
+        errorMessage: 'The field must contain a maximum of 30 characters',
+      },
+    ],
+    phone: [
+      {
+        rule: 'required',
+        errorMessage: 'Phone number is required',
+      },
+    ],
+    email: [
+      {
+        rule: 'required',
+        errorMessage: 'Email is required',
+      },
+      {
+        rule: 'email',
+        errorMessage: 'Email is invalid!',
+      },
+    ],
+    message: [
+      {
+        rule: 'minLength',
+        value: 3,
+        errorMessage: 'The field must contain a minimum of 3 characters',
+      },
+      {
+        rule: 'maxLength',
+        value: 1000,
+        errorMessage: 'The field must contain a maximum of 1000 characters',
+      },
+    ],
+    checkbox: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
+      },
+    ],
+    zip: [
+      {
+        rule: 'required',
+        errorMessage: 'Zip code is required',
+      },
+    ],
+    text: [
+      {
+        rule: 'minLength',
+        value: 3,
+        errorMessage: 'The field must contain a minimum of 3 characters',
+      },
+      {
+        rule: 'maxLength',
+        value: 100,
+        errorMessage: 'The field must contain a maximum of 100 characters',
+      },
+    ],
+    textarea: [
+      {
+        rule: 'minLength',
+        value: 3,
+        errorMessage: 'The field must contain a minimum of 3 characters',
+      },
+      {
+        rule: 'maxLength',
+        value: 500,
+        errorMessage: 'The field must contain a maximum of 500 characters',
+      },
+    ],
+    select: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
+      },
+    ],
+  };
+
+  // ToDo: Finish country and zip code validation
+
+  const country = allInputs.find(input => input.name === 'country');
+  if (country) {
+    const regex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
+    if (regex) {
+      fields.zip.push({
+        validator: value => {
+          const regex = new RegExp(regex, 'i');
+          return regex.test(value);
+        },
+        errorMessage: 'Zip code is invalid!',
+      });
+    }
+  }
+
+  return fields[field]
+    .filter(({ rule }) => rule !== 'required')
+    .concat(required ? fields[field][0] : []);
+}
 
 /**
  * It takes a form and applies validation rules to each of its fields
@@ -244,12 +333,14 @@ function setFormValidation(validationForm) {
       return acc;
     }, [])
     .filter(input => input.dataset.field)
-    .map(input => {
+    .map((input, index, arr) => {
       const { id } = input;
+
+      /* Adding an event listener to the input field. */
       $(input).on('input', () => {
         validationForm.revalidateField(`#${id}`);
       });
-      validationForm.addField(`#${id}`, validationFields[input.dataset.field]);
+      validationForm.addField(`#${id}`, getValidationFields(input, arr));
     });
 
   return validationForm;
@@ -278,8 +369,14 @@ function getFormMessageLocale(locale) {
  * @param locale - The locale of the form message.
  * @returns The message for the key that matches the key passed in.
  */
-function translate(key, locale = 'en') {
-  return getFormMessageLocale(locale).find(({ key: k }) => k === key).msg;
+function translate(key, locale = window.locale) {
+  const message = getFormMessageLocale(locale).find(({ key: k }) => k === key)?.msg;
+
+  if (!message) {
+    throw new Error(`No message found for key ${key}`);
+  }
+
+  return message;
 }
 
 const postalCodesRegex = [
@@ -1451,7 +1548,7 @@ function getNameRegex(locale = window.locale) {
  */
 function getZipRegex(countryCode) {
   return (
-    postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode).postal || ''
+    postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode)?.postal || ''
   );
 }
 
@@ -1463,8 +1560,9 @@ function setParamsForLeeloo(formData) {
   let fields = {
     utm_source: 'utm_source',
     utm_medium: 'utm_medium',
-    umt_content: 'umt_content',
     utm_term: 'utm_term',
+    utm_campaign: 'utm_campaign',
+    umt_content: 'umt_content',
     phone: 'phone',
     email: 'email',
     name: 'first_name',
@@ -1488,15 +1586,16 @@ function setParamsForLeeloo(formData) {
 }
 
 /**
- * It creates a div with a class of leeloo, appends it to the element you specify, and then calls the
- * LEELOO function
- * @param appendElementSelector - The element to append the Leeloo widget to.
+ * It creates a div with a class of leeloo and appends it to the form's parent element
+ * @param form - The form you want to add Leeloo to.
+ * @param [leelooHash] - This is the hash that you can find in the Leeloo init code.
  */
-function initializeLeeloo(appendElementSelector) {
-  const leeloo = $(
-    `<div class='leeloo'><div class="wepster-hash-${window.leelooHash}"></div></div>`,
-  ).css('display', 'none');
-  $(appendElementSelector).append(leeloo);
+function initializeLeeloo(form, leelooHash = window.leelooHash) {
+  const leeloo = $(`<div class='leeloo'><div class="wepster-hash-${leelooHash}"></div></div>`).css(
+    'display',
+    'none',
+  );
+  $(form).parent().append(leeloo);
 
   window.LEELOO = function () {
     window.LEELOO_INIT = { id: '5d0cb9cdaad9f4000e4b8e07' };
@@ -1506,7 +1605,7 @@ function initializeLeeloo(appendElementSelector) {
     document.getElementsByTagName('head')[0].appendChild(js);
   };
   LEELOO();
-  window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(window.leelooHash);
+  window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(leelooHash);
 
   $('.leeloo').css('display', 'block');
 }
@@ -1535,59 +1634,59 @@ function saveParamsToCookies(array) {
   });
 }
 
-/* It shows a loading message when you call the show() method and hides it when you call the hide()
-method */
+/* It creates a loading div with a progress bar and message, and then removes it when the loading is
+complete */
 class Loading {
-  constructor(loadAttribute, message = 'Loading...', modalWrapperSelector = '') {
+  constructor(form, message = 'Loading...', closeModal = false) {
+    this.form = form;
     this.message = message;
-    this.loading = $(`[${loadAttribute}]`)[0];
-    this.modalWrapper = $(modalWrapperSelector);
-    this.loadingMessage = this.loading?.querySelector('.modal__subtitle');
-    this.wrapper = !modalWrapperSelector ? document.querySelector('.modal__wrapper--right') : '';
+    this.closeModal = closeModal;
   }
 
   show() {
-    if (this.loadingMessage) {
-      this.loadingMessage.textContent = this.message;
-    }
-    if (this.modalWrapper) {
-      this.modalWrapper.css('display', 'none');
-      $(this.wrapper).addClass('is-loading');
-    }
-    $(this.loading).css('display', 'block');
+    const loadingDiv = `<div data-${this.form.id}-loading><p>${this.message}</p><div class="progress-bar"><div class="color"></div></div></div>`;
+    $(this.form).parent().append(loadingDiv);
   }
 
   hide() {
-    if (this.modalWrapper) {
-      this.modalWrapper.css('display', 'block');
-      $(this.wrapper).removeClass('is-loading');
+    $(`[data-${this.form.id}-loading]`).remove();
+    if (this.closeModal) {
+      closeModalItem();
     }
-    $(this.loading).css('display', 'none');
   }
 }
 
-function showError(
-  errorMessage,
-  autoClose = true,
-  closeModal = false,
-  modal = null,
-  loading = null,
-) {
-  // if ($('body').hasClass('scroll-hidden')) {
-  //   toggleMenu();
-  // }
+/**
+ * When the user clicks on the close button, the modal is hidden and the body is no longer
+ * scroll-hidden
+ */
 
-  // if (loading) {
-  //   loading.hide();
-  // }
+function closeModalItem() {
+  $('[data-modal]').addClass('is-hidden');
+  $('body').removeClass('scroll-hidden');
+}
 
-  // if (closeModal) {
-  //   MicroModal.close(modal);
-  // }
+/**
+ * It shows an error message to the user
+ * @param errorMessage - The error message to display.
+ * @param [autoClose=true] - If true, the alert will automatically close after 2 seconds.
+ * @param [loading=null] - The loading object that you can pass to showLoading() to hide it.
+ * @param [closeModal=false] - If the modal should be closed after the error is shown.
+ */
+function showError(errorMessage, autoClose = true, loading = null, closeModal = false) {
+  if (loading) {
+    loading.hide();
+  }
+
+  if (closeModal) {
+    closeModalItem();
+  }
+
+  let timerInterval;
 
   const options = {
-    titleText: translate('error', window.locale),
-    text: errorMessage || translate('tryAgain', window.locale),
+    titleText: translate('error'),
+    text: errorMessage || translate('tryAgain'),
     icon: 'error',
     buttonsStyling: false,
     customClass: {
@@ -1596,45 +1695,52 @@ function showError(
   };
 
   if (autoClose) {
-    (options.didOpen = () => {
+    options.timer = 2000;
+    options.timerProgressBar = true;
+    options.didOpen = () => {
       Swal.showLoading();
-      const b = Swal.getHtmlContainer().querySelector('b');
-      timerInterval = setInterval(() => {
-        b.textContent = Swal.getTimerLeft();
-      }, 100);
-    }),
-      (options.willClose = () => {
-        clearInterval(timerInterval);
-      });
+      timerInterval = setInterval(() => {}, 100);
+    };
+
+    options.willClose = () => {
+      clearInterval(timerInterval);
+    };
   }
 
   Swal.fire(options);
 }
 
+/**
+ * It shows a success message to the user
+ * @param successMessage - The message to display in the alert.
+ * @param [autoClose=true] - If true, the alert will close automatically after 2 seconds.
+ * @param [loading=null] - The loading element that you want to hide.
+ * @param [closeModal=false] - If you want to close the modal after the success message is shown, set
+ * this to true.
+ * @param [btnLink=null] - The link to open in a new tab
+ * @param [btnText=null] - The text of the button.
+ */
 function showSuccess(
   successMessage,
   autoClose = true,
-  closeModal = false,
-  modal = null,
   loading = null,
+  closeModal = false,
   btnLink = null,
   btnText = null,
 ) {
-  // if ($('body').hasClass('scroll-hidden')) {
-  //   toggleMenu();
-  // }
+  if (loading) {
+    loading.hide();
+  }
 
-  // if (loading) {
-  //   loading.hide();
-  // }
+  if (closeModal) {
+    closeModalItem();
+  }
 
-  // if (closeModal) {
-  //   MicroModal.close(modal);
-  // }
+  let timerInterval;
 
   const options = {
-    titleText: translate('thanks', window.locale),
-    text: successMessage || translate('reply', window.locale),
+    titleText: translate('thanks'),
+    text: successMessage || translate('reply'),
     icon: 'success',
     iconColor: '#FF6C00',
     showCloseButton: true,
@@ -1649,16 +1755,16 @@ function showSuccess(
   }
 
   if (autoClose) {
-    (options.didOpen = () => {
+    options.timer = 2000;
+    options.timerProgressBar = true;
+    options.didOpen = () => {
       Swal.showLoading();
-      const b = Swal.getHtmlContainer().querySelector('b');
-      timerInterval = setInterval(() => {
-        b.textContent = Swal.getTimerLeft();
-      }, 100);
-    }),
-      (options.willClose = () => {
-        clearInterval(timerInterval);
-      });
+      timerInterval = setInterval(() => {}, 100);
+    };
+
+    options.willClose = () => {
+      clearInterval(timerInterval);
+    };
   }
 
   Swal.fire(options).then(result => {
@@ -1669,18 +1775,14 @@ function showSuccess(
 }
 
 /**
- * It sends the data to the backend, gets the telegram UID and redirect link, and then shows the button
- * @param data - The data object that we're sending to the backend.
+ * It sends the data to the backend, and if the backend responds with success, it adds a button to the
+ * form that redirects the user to the Telegram bot
+ * @param form - The form element
+ * @param data - The data object that is sent to the backend.
  */
-function redirectToTelegramBackend(data) {
-  const $formInfo = $('#form_info');
-  const $formInfoBtn = $('#form_info_btn');
-
+async function redirectToTelegramBackend(form, data) {
   //Send data async to inner telegram admin bot
-  // !Remove in production
-  // const apiUrl = `${window.telegramBackendUrl}/api/v2/telegram/user/uid/variables/set`;
-
-  const apiUrl = window.telegramBackendUrl;
+  const apiUrl = `${window.telegramBackendUrl}/api/v2/telegram/user/uid/variables/set`;
 
   const telegramUid = uid();
 
@@ -1720,30 +1822,29 @@ function redirectToTelegramBackend(data) {
     redirectLink += '__FROM-' + fromID;
   }
 
-  $.ajax({
-    type: 'POST',
-    url: apiUrl,
-    data: JSON.stringify(setTelegramVariablesRequest),
-    dataType: 'json',
-    contentType: 'application/json',
-    complete: function (xhr, status) {
-      console.log('Redirecting to telegram...');
+  const telegramDiv = `<div data-${form.id}-telegram><p class="text-center">${translate(
+    'telegramBackendMessage',
+  )}</p><button type="button" class="form-btn">Telegram</button></div>`;
 
-      $formInfoBtn.on('click', function (e) {
-        this.classList.add('clicked');
-        setTimeout(() => {
-          window.open(redirectLink, '_blank');
+  //Send data to telegram backend
+  try {
+    const { data } = await axios.post(apiUrl, setTelegramVariablesRequest);
 
-          // Todo add check for modal
-          showSuccess();
-        }, 500);
+    if (data.success) {
+      $(form).parent().append(telegramDiv);
+
+      $(`[data-${form.id}-telegram] button`).on('click', function (e) {
+        window.open(redirectLink, '_blank');
+        $(`[data-${form.id}-telegram]`).remove();
+        showSuccess();
       });
-      $formInfo.css('display', 'block');
-    },
-    error: function (jqXHR, exception) {
-      console.log(jqXHR);
-    },
-  });
+    } else {
+      showError();
+    }
+  } catch (error) {
+    console.log(error);
+    showError();
+  }
 }
 
 /**
@@ -1758,14 +1859,41 @@ function uid() {
   });
 }
 
+/**
+ * It sends an HTTP request to the server, and returns true if the server says the email is available,
+ * and false if the server says the email is not available
+ * @param email - The email address to check.
+ * @returns A boolean value.
+ */
+async function checkEmailDomain(email) {
+  try {
+    const { data } = await axios.post('./check-email.php', { email });
+    return data?.status === 'ok' ? true : false;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
+
+/**
+ * It takes a form and a step number, and toggles the active class on the current step and the next
+ * step
+ * @param form - the form element
+ * @param nextStep - The next step to show.
+ */
+function changeFormStep(form, nextStep) {
+  $('li').index($(`[data-${form.id}-steps] .active`).toggleClass('active'));
+  $(`[data-${form.id}-steps] li:nth-child(${nextStep})`).toggleClass('active');
+}
+
 export default {
   validationOptions,
-  validationFields,
   getValidationLocale,
   setFormValidation,
   translate,
   Loading,
   getItiConfig,
+  getIpInfo,
   geoIpLookup,
   isNumeric,
   getFormData,
@@ -1780,4 +1908,6 @@ export default {
   redirectToTelegramBackend,
   sendEmail,
   saveParamsToCookies,
+  checkEmailDomain,
+  changeFormStep,
 };
