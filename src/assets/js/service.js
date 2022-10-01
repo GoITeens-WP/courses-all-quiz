@@ -2,6 +2,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import countrySelect from 'country-select-js';
 
 import validateLocales from '../../json/validateLocales.json';
 import formMessageLocales from '../../json/formMessageLocales.json';
@@ -196,6 +197,12 @@ function getValidationLocale(locale = window.locale) {
   });
 }
 
+/**
+ * It returns an array of validation rules for each field
+ * @param input - The input element that is being validated.
+ * @param allInputs - An array of all the inputs in the form.
+ * @returns an array of objects.
+ */
 function getValidationFields(input, allInputs) {
   const { required } = input;
   const { field } = input.dataset;
@@ -262,6 +269,16 @@ function getValidationFields(input, allInputs) {
         rule: 'required',
         errorMessage: 'Zip code is required',
       },
+      {
+        rule: 'minLength',
+        value: 2,
+        errorMessage: 'The field must contain a minimum of 2 symbols',
+      },
+      {
+        rule: 'maxLength',
+        value: 20,
+        errorMessage: 'The field must contain a maximum of 20 symbols',
+      },
     ],
     text: [
       {
@@ -295,16 +312,20 @@ function getValidationFields(input, allInputs) {
     ],
   };
 
-  // ToDo: Finish country and zip code validation
-
   const country = allInputs.find(input => input.name === 'country');
   if (country) {
-    const regex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
-    if (regex) {
+    const zipRegex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
+    if (zipRegex) {
       fields.zip.push({
         validator: value => {
-          const regex = new RegExp(regex, 'i');
-          return regex.test(value);
+          if (value.length > 1) {
+            const regex = new RegExp(
+              getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
+              'i',
+            );
+            return regex.test(value);
+          }
+          return true;
         },
         errorMessage: 'Zip code is invalid!',
       });
@@ -335,12 +356,16 @@ function setFormValidation(validationForm) {
     .filter(input => input.dataset.field)
     .map((input, index, arr) => {
       const { id } = input;
+      const validationOptionField = getValidationFields(input, arr);
 
-      /* Adding an event listener to the input field. */
-      $(input).on('input', () => {
-        validationForm.revalidateField(`#${id}`);
-      });
-      validationForm.addField(`#${id}`, getValidationFields(input, arr));
+      if (validationOptionField.length) {
+        /* Adding an event listener to the input field. */
+        $(input).on('input', () => {
+          validationForm.revalidateField(`#${id}`);
+        });
+
+        validationForm.addField(`#${id}`, getValidationFields(input, arr));
+      }
     });
 
   return validationForm;
