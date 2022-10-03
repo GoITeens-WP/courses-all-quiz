@@ -11,8 +11,8 @@ npm i
 npm run build
 
 # Copy app & crm folders
-cp -r ./src/app ./build/app
-cp -r ./src/crm ./build/crm
+# cp -r ./src/app ./build/app
+# cp -r ./src/crm ./build/crm
 
 # Remove non-used params.ini file
 rm ./build/app/params.ini
