@@ -32,6 +32,7 @@ const watcher = done => {
   );
   watch(paths.watch.js).on('change', series(tasks.scripts, browserSync.reload));
   watch(paths.watch.images, tasks.images);
+  watch(paths.watch.sprite, tasks.sprite);
   watch(paths.watch.fonts, tasks.fonts);
   watch(paths.watch.crm, tasks.crm);
   watch(paths.watch.app, tasks.app);
@@ -46,6 +47,7 @@ exports.start = series(
     tasks.php,
     tasks.db,
     tasks.images,
+    tasks.sprite,
     tasks.css,
     tasks.fonts,
     tasks.scripts,
@@ -65,6 +67,7 @@ exports.build = series(
     tasks.php,
     tasks.images,
     tasks.imagesWebp,
+    tasks.sprite,
     tasks.css,
     tasks.fonts,
     tasks.scripts,
