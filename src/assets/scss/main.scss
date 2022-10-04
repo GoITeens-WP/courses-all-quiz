@@ -1,12 +1,16 @@
 @use 'sass:math';
 
-@import './utils/mixins';
-@import './utils/variables';
+/*! purgecss start ignore */
+@import 'vendors/modern-normalize';
+@import 'vendors/intTelInput';
+@import 'vendors/country-select';
+/*! purgecss end ignore */
 
-@import './vendors/tailwind';
-@import './vendors/intTelInput';
+@import 'utils/mixins';
+@import 'vendors/tailwind';
 
-@import './components/modal';
-@import './components/modal-form';
+@import 'components/input';
+@import 'components/form';
+@import 'components/modal';
 
 @import './sections/hero';

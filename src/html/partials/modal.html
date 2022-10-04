@@ -1,74 +1,15 @@
 <div class="backdrop is-hidden" data-modal>
-  <div class="modal">
-    <button
-      class="modal-close-btn"
-      type="button"
-      data-modal-close
-      aria-label="{{modal.btn_close_aria}}"
-    >
+  <div class="text-white bg-pink-900 modal">
+    <button class="modal-close-btn" type="button" data-modal-close aria-label="{{modal.btn_close_aria}}">
       <svg class="modal-btn-close-svg" width="30" height="30">
         <use href="./assets/images/sprite.svg#icon-close-menu"></use>
       </svg>
     </button>
 
-    <img
-      class="logo"
-      src="./assets/images/logo.svg"
-      alt="{{modal.logo_alt}}"
-      width="100"
-      height="30"
-      loading="lazy"
-    />
+    <img class="logo" src="./assets/images/logo.svg" alt="logo" width="100" height="30" loading="lazy" />
 
-    <div class="modal-progress">
-      <ul class="list modal-progress-bar">
-        <li class="item is-active"><span>{{modal.progress[0]}}</span></li>
-        <li class="item"><span>{{modal.progress[1]}}</span></li>
-        <li class="item"><span>{{modal.progress[2]}}</span></li>
-      </ul>
-    </div>
-    <form class="modal-form" id="register_form" novalidate data-form>
-      <h2 class="modal-title section__title accent-text">{{modal.title}}</h2>
-      <div class="modal-group">
-        <!-- <label class="modal-label"> {{modal.name}} </label> -->
-        <input
-          class="modal-input"
-          id="register_form_input_name"
-          name="first_name"
-          type="text"
-          placeholder="{{modal.name}}"
-          required
-        />
-      </div>
-      <div class="modal-group">
-        <!-- <label class="modal-label"> {{modal.phone}} </label> -->
-        <input class="modal-input" id="register_form_input_tel" name="phone" type="tel" required />
-      </div>
-      <div class="modal-group">
-        <!-- <label class="modal-label"> {{modal.email}} </label> -->
-        <input
-          class="modal-input"
-          id="register_form_input_email"
-          name="email"
-          type="email"
-          placeholder="{{modal.email}}"
-          required
-        />
-      </div>
-      <div class="btn-cont">
-        <button class="btn" type="submit">{{modal.btn}}</button>
-      </div>
-    </form>
-    <div class="modal-message">
-      <p class="modal-text">{{modal.text}}</p>
-      <div class="progress">
-        <div class="color"></div>
-      </div>
-    </div>
-    <div class="modal-advice modal-advice--hidden">
-      <h2 class="title">{{modal.advice}}</h2>
-      <p>{{modal.advice_text}}</p>
-    </div>
-    <div class="leeloo"></div>
+    {% import './components/macro/step.html' as service %}
+    {{service.stepDiv(form.steps, form.ID)}}
+    {% include './components/form.njk' %}
   </div>
 </div>

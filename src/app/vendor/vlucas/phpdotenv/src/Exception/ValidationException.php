@@ -8,5 +8,5 @@ use RuntimeException;
 
 final class ValidationException extends RuntimeException implements ExceptionInterface
 {
-  //
+    //
 }

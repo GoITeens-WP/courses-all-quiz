@@ -1,249 +1,276 @@
+// Form.js - v1.1.0 - 2022-09-30 @Suzuya_re1
+
 import $ from 'jquery';
-import Cookies from 'js-cookie';
 import intlTelInput from 'intl-tel-input';
-import crm from '../../crm/submit.js';
+import JustValidate from 'just-validate';
+import countrySelect from 'country-select-js';
+import service from './service.js';
+import crm from './submit.js';
 
-// Params
-const params = {
-  needsRedirectLeeloo: window.leelooHash ? true : false,
-  loadingMessage: 'Зачекайте декілька секунд… майже отримали Вашу заявку',
-  successMessage: 'Отримали заявку',
-  errorMessage: 'Помилка, щось пішло не так! Спробуйте пізніше.',
-};
+$(window).on('load', async function () {
+  // Params
+  const params = {
+    needsRedirectToLeeloo: window.leelooHash ? true : false,
+    needsRedirectToTelegramBackend: window.telegramBackendUrl ? true : false,
 
-// Refs
-const form = document.querySelector('#register_form');
-const name = document.querySelector('#register_form_input_name');
-const phone = document.querySelector('#register_form_input_tel');
-const email = document.querySelector('#register_form_input_email');
+    /* It's a check that the domain has MX records on dns server */
+    needsCheckEmailDomain: true,
 
-// Validation vars
-let nameValid = false;
-let telValid = false;
-let emailValid = false;
-let iti = null;
+    utmMarks: ['utm_source', 'utm_medium', 'utm_content', 'utm_term', 'utm_campaign'],
+    referralMarks: ['SRC', 'from'],
 
-// Get UTM marks
-const source = getUrlParameter('utm_source');
-const medium = getUrlParameter('utm_medium');
-const term = getUrlParameter('utm_term');
-const campaign = getUrlParameter('utm_campaign');
-const content = getUrlParameter('utm_content');
+    defaultLocale: 'uk',
+    defaultPhoneCountry: 'ua',
+    preferredPhoneCountries: ['ua'],
+    excludePhoneCountries: ['ru', 'by'],
 
-// Set the cookies
-if (source) {
-  Cookies.set('utm_source', source);
-}
-if (medium) {
-  Cookies.set('utm_medium', medium);
-}
-if (term) {
-  Cookies.set('utm_term', term);
-}
-if (campaign) {
-  Cookies.set('utm_campaign', campaign);
-}
-if (content) {
-  Cookies.set('utm_content', content);
-}
+    forms: [
+      {
+        formId: 'leadForm',
 
-$(document).ready(function () {
-  iti = intlTelInput(phone, {
-    initialCountry: 'ua',
-    hiddenInput: 'full_phone',
-    preferredCountries: ['ua'],
-    excludeCountries: ['ru', 'by'],
-    utilsScript: './utils.js',
-  });
+        /*
+        ! Required params if you need send email
+        needSendEmail: false,
+        onlySendEmail: false,
+        emailTitle: 'title',
+        emailRecipient: 'test@test.test',
 
-  $(form).submit(function (event) {
-    event.preventDefault();
-    const phoneNumber = iti.getNumber();
-    if (!validate()) {
-      return;
-    }
-
-    const $form = $(this);
-    const $progress = $('.progress');
-    const $progressBar = $('.modal-progress-bar');
-
-    $form.css('display', 'none');
-    $progress.css('display', 'block');
-    $progressBar.css('display', 'none');
-    const modal = document.querySelector('.modal');
-    const message = document.querySelector('.modal-message');
-    const messageText = message.querySelector('.modal-text');
-
-    messageText.textContent = params.loadingMessage;
-    const modalHeight = modal.style.minHeight;
-    modal.style.minHeight = 'initial';
-    message.classList.toggle('modal-message--show');
-    $('button[type="submit"]').attr('disabled', true);
-
-    const showError = () => {
-      messageText.textContent = params.errorMessage;
-      $progress.css('display', 'none');
-      setTimeout(() => {
-        $form.css('display', 'block');
-        $progressBar.css('display', 'flex');
-        $('button[type="submit"]').removeAttr('disabled');
-        modal.style.minHeight = modalHeight;
-        message.classList.toggle('modal-message--show');
-      }, 5000);
-    };
-
-    let data = crm.generateData(name.value, phoneNumber, email.value);
-    let response = crm.submit(name.value, phoneNumber, email.value);
-    dataLayer.push({ event: 'lead' });
-    if (params.needsRedirectLeeloo) {
-      redirectLeeLoo(data);
-    }
-    response
-      .then(resp => {
-        if (resp.ok) {
-          afterSend($form);
-        } else {
-          console.log('error ', resp.statusText);
-          showError();
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        showError();
-      });
-  });
-});
-
-function validate() {
-  nameValid = validName(name);
-  telValid = validPhone(phone);
-  emailValid = validMail(email);
-
-  return !!(nameValid && telValid && emailValid);
-}
-
-function afterSend(form) {
-  const $progress = $('.progress');
-  const $progressBar = $('.modal-progress-bar');
-  const modal = document.querySelector('.modal');
-  const message = document.querySelector('.modal-message');
-  const messageText = message.querySelector('.modal-text');
-
-  // Show next step
-  $progressBar.find('.is-active').toggleClass('is-active');
-  $progressBar.css('display', 'flex');
-
-  if (params.needsRedirectLeeloo) {
-    setUrlParameter('name2', name.value);
-
-    const leeloo = document.querySelector('.leeloo');
-    const wepster = `<div class="wepster-hash-${window.leelooHash}" data-leeloo></div>`;
-    leeloo.insertAdjacentHTML('beforeend', wepster);
-
-    $progressBar.children('.item')[1].classList.add('is-active');
-    window.LEELOO = function () {
-      window.LEELOO_INIT = { id: '5d0cb9cdaad9f4000e4b8e07' };
-      var js = document.createElement('script');
-      js.src = 'https://app.leeloo.ai/init.js';
-      js.async = true;
-      document.getElementsByTagName('head')[0].appendChild(js);
-    };
-    LEELOO();
-    window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(window.leelooHash);
-
-    leeloo.classList.add('leeloo--active');
-    message.classList.toggle('modal-message--show');
-  } else {
-    $progressBar.children('.item')[2].classList.add('is-active');
-    messageText.textContent = params.successMessage;
-    $progress.css('display', 'none');
-  }
-
-  modal.style.minHeight = 'initial';
-}
-
-function redirectLeeLoo(formData) {
-  let fields = {
-    utm_source: 'utm_source',
-    utm_medium: 'utm_medium',
-    umt_content: 'umt_content',
-    utm_term: 'utm_term',
-    phone: 'phone',
-    email: 'email',
-    name: 'first_name',
-    google_id: 'ga',
+        !Zoho CRM params, window vars by default
+        productName: 'dummy_product',
+        productId: 'dummy_product_id',
+        */
+      },
+    ],
   };
 
-  let keys = Object.keys(formData);
-  let url = new URL(window.location);
+  /* It's a check that the locale is set. If not, it sets the default locale. */
+  if (!window.locale) {
+    console.log('Locale is not set, setting default locale: ' + params.defaultLocale);
+    window.locale = params.defaultLocale;
+  }
 
-  for (let i = 0; i < keys.length; i++) {
-    if (formData[keys[i]] !== undefined && formData[keys[i]] !== null) {
-      if (fields.hasOwnProperty(keys[i])) {
-        if (formData[keys[i]].length > 0) {
-          url.searchParams.set(fields[keys[i]], formData[keys[i]]);
+  /* It's a check that you can use only one of the following methods: redirect to leeloo or redirect to
+telegram backend. */
+  if (params.needsRedirectToLeeloo && params.needsRedirectToTelegramBackend) {
+    throw new Error(
+      'You can use only one of the following methods: redirect to leeloo or redirect to telegram backend'
+    );
+  }
+
+  /* It's a function that gets the user's IP address. */
+  await service.getIpInfo().then(data => (window.ipData = data));
+
+  /* It's a function that gets the country code from the user's IP address. */
+  await service
+    .geoIpLookup(params.defaultPhoneCountry)
+    .then(country_code => (window.itiInitialCountry = country_code));
+
+  /* It's a function that saves the UTM marks to cookies. */
+  service.saveParamsToCookies(params.utmMarks);
+
+  /* It's a function that saves the referral marks to cookies. */
+  params.telegramBackendUrl && service.saveParamsToCookies(params.referralMarks);
+
+  /* It's a function that takes an array of forms and validates them. */
+  Promise.all(params.forms.map(async form => await formHandler(form)));
+
+  /**
+   * It's a function that initializes the form
+   * @param formParams - form params
+   */
+  async function formHandler(formParams) {
+    const {
+      formId,
+      needSendEmail = false,
+      onlySendEmail = false,
+      emailTitle = 'New request',
+      emailRecipient = 'info@goit.ua',
+      productName = window.productName,
+      productId = window.productId,
+    } = formParams;
+
+    // Refs
+    const form = document.getElementById(formId);
+
+    if (!form) {
+      throw new Error(`Form with id ${formId} not found`);
+    }
+
+    const name = form.querySelector('[name="name"]');
+    const phone = form.querySelector('[type="tel"]');
+    const email = form.querySelector('[name="email"]');
+    const country = form.querySelector('[name="country"]');
+
+    // Vars
+    const iti = intlTelInput(
+      phone,
+      await service.getItiConfig(params.preferredPhoneCountries, params.excludePhoneCountries)
+    );
+
+    $(country).countrySelect(
+      await service.getCountryConfig(params.preferredPhoneCountries, params.excludePhoneCountries)
+    );
+
+    /* It's a function that initializes the validation library. */
+    const validationForm = new JustValidate(
+      form,
+      service.validationOptions,
+      service.getValidationLocale()
+    );
+
+    validationForm.setCurrentLocale(window.locale);
+
+    // apply rules to form fields
+    service
+      .setFormValidation(validationForm)
+      .addField(`#${phone.id}`, [
+        {
+          validator: value => iti.isValidNumber(),
+          errorMessage: 'Phone number is invalid!',
+        },
+      ])
+      // submit form
+      .onSuccess(async function (event) {
+        event.preventDefault();
+
+        /* It's a check that the email domain has MX records on dns server. */
+        if (params.needsCheckEmailDomain && !(await service.checkEmailDomain(email.value))) {
+          return service.showError(service.translate('emailNotExists'));
         }
-      }
-    }
+
+        /* It's a function that removes extra spaces */
+        name.value = name.value.trim();
+
+        /* It's a function that gets the phone number from the input field. */
+        const phoneNumber = iti.getNumber();
+
+        const loading = new service.Loading(form, service.translate('loadingMessage'));
+        $(form).css('display', 'none');
+        loading.show();
+
+        if (needSendEmail) {
+          await service
+            .sendEmail({
+              title: emailTitle,
+              name: name.value,
+              phone: phoneNumber,
+              email: email.value,
+              recipient: emailRecipient,
+              // ToDo - add message, attach file, etc.
+            })
+            .then(res => {
+              /* It's a check that the form is only for sending an email.
+              If so, it hides the loading block and shows the success block. */
+              if (onlySendEmail) {
+                service.showSuccess();
+              }
+            })
+            .catch(error => {
+              console.log(error);
+              service.showError();
+            })
+            .finally(() => {
+              if (onlySendEmail) {
+                service.changeFormStep(form, 3);
+                loading.hide();
+              }
+            });
+        }
+
+        const crmParams = [name.value, phoneNumber, email.value, productName, productId];
+
+        /* It's a function that generates data for the CRM. */
+        const data = crm.generateData(...crmParams);
+        /* It's a function that sends data to the CRM. */
+        const response = crm.submit(...crmParams);
+
+        /* It's a Google Tag Manager event. */
+        dataLayer.push({ event: 'lead' });
+
+        if (!onlySendEmail) {
+          // https://www.youtube.com/watch?v=sqcLjcSloXs
+
+          service.changeFormStep(form, 2);
+
+          switch (true) {
+            case params.needsRedirectToLeeloo:
+              return showLeelooBlock();
+
+            case params.needsRedirectToTelegramBackend:
+              return showTelegramBackendBlock();
+
+            default:
+              return showDefaultBlock();
+          }
+
+          /* It's a function that redirects the user to the Leeloo CRM. */
+          async function showLeelooBlock() {
+            service.setParamsForLeeloo(data);
+
+            response
+              .then(resp => {
+                if (resp.status === 200) {
+                  service.setUrlParameter('name2', name.value);
+
+                  service.initializeLeeloo(form);
+                  $(form).css('display', 'none');
+                  $(form).trigger('reset');
+                  service.changeFormStep(form, 3);
+
+                  const checkLeeloo = setInterval(() => {
+                    const iframe = form.querySelector('.leeloo-lgt-form');
+                    if (iframe) {
+                      clearInterval(checkLeeloo);
+                      dataLayer.push({ event: 'появилось окно с кнопкой' });
+                    }
+                  }, 2000);
+                } else {
+                  console.log('error ', resp.statusText);
+                  $(form).css('display', 'block');
+                  service.showError();
+                }
+              })
+              .catch(err => {
+                console.log(err);
+                $(form).css('display', 'block');
+                service.showError();
+              })
+              .finally(() => {
+                loading.hide();
+              });
+          }
+
+          /* It's a function that redirects the user to the Telegram backend. */
+          async function showTelegramBackendBlock() {
+            response.finally(async () => {
+              await service.redirectToTelegramBackend(form, data).finally(() => {
+                service.changeFormStep(form, 3);
+                loading.hide();
+              });
+            });
+          }
+
+          async function showDefaultBlock() {
+            response
+              .then(resp => {
+                if (resp.status === 200) {
+                  $(form).trigger('reset');
+                  service.changeFormStep(form, 3);
+                  service.showSuccess(service.translate('reply'), true, loading, true);
+                } else {
+                  console.log('error ', resp.statusText);
+                  $(form).css('display', 'block');
+                  service.showError();
+                }
+              })
+              .catch(err => {
+                console.log(err);
+                $(form).css('display', 'block');
+                service.showError();
+                loading.hide();
+              });
+          }
+        }
+      });
   }
-
-  window.history.pushState({}, document.title, url);
-}
-
-function getUrlParameter(sParam) {
-  let sPageURL = decodeURIComponent(window.location.search.substring(1)),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
-
-  for (i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split('=');
-
-    if (sParameterName[0] === sParam) {
-      return sParameterName[1] === 'undefined' ? true : sParameterName[1];
-    }
-  }
-}
-
-function setUrlParameter(key, value) {
-  const url = new URL(window.location);
-  url.searchParams.set(key, value);
-  window.history.pushState({}, document.title, url);
-}
-
-function validName(nameInput) {
-  const nameValue = nameInput.value;
-  // UA
-  const re = /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ0-9 ,.’'`-]{1,19}$/gm;
-  // PL
-  // const re = /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]{2,}$/i;
-  // MX
-  // const re = /^[a-zñáéíóúü ,.'-]+$/i;
-  // RO
-  // const re = /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
-  // US
-  // const re = /^[a-zA-Z0-9 ,.'-]{2,}$/i;
-
-  const valid = re.test(nameValue);
-  !valid ? (nameInput.style.border = '2px solid red') : (nameInput.style.border = '2px solid #ccc');
-  return valid;
-}
-
-function validPhone(phoneInput) {
-  const isValid = iti.isValidNumber();
-  !isValid
-    ? (phoneInput.style.border = '2px solid red')
-    : (phoneInput.style.border = '2px solid #ccc');
-  return isValid;
-}
-
-function validMail(emailInput) {
-  const emailValue = emailInput.value;
-  const re =
-    /^(?=^.{3,63}$)(((^[^-\\.\/][^<>()[\],;:\s@"]{2,}(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,10})))$/gm;
-  const valid = re.test(emailValue);
-  !valid
-    ? (emailInput.style.border = '2px solid red')
-    : (emailInput.style.border = '2px solid #ccc');
-  return valid;
-}
+});

@@ -1,7 +1,6 @@
-/* ! purgecss start ignore */
 .iti {
   position: relative;
-  display: inline-block;
+  display: block;
 }
 .iti * {
   box-sizing: border-box;
@@ -60,12 +59,13 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
   background-color: white;
   border: 1px solid #ccc;
+  color: black;
   white-space: nowrap;
   max-height: 200px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
-.iti__country-list--dropup {
+.iti__country-list--group {
   bottom: 100%;
   margin-bottom: -1px;
 }

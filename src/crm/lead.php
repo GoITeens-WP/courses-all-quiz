@@ -2,14 +2,15 @@
 $token = 'DNBC-3VgDWLIIrpyBab0l9bISr0C-0VO';
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
-logRequest($input);
-echo send($token, ['Lead' => $input]);
 
-function send($token, $data)
+logRequest($input);
+echo send($token, ['Lead' => $input], $input);
+
+function send($token, $data, $input)
 {
   $ch = curl_init();
   $curl_options = [];
-  $url = 'https://crm.goit.ua/api/v1/lead/create';
+  $url = 'https://goit-connectors.place/goit/';
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
   $curl_options[CURLOPT_HEADER] = 1;
@@ -36,32 +37,31 @@ function send($token, $data)
   } else {
     $msg = 'Success send status';
   }
-  logResponse($msg, $log);
+  logResponse($msg, $log, $input);
   return $body;
 }
-
-function logResponse($msg, $response)
+function logResponse($msg, $response, $input)
 {
-  $file = fopen('response.log', 'a+');
+  $file = fopen("$input[product_name]_response.log", 'a+');
   $date = date(DATE_RFC822);
 
   $string = [
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
   ];
-  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',');
+  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',') . PHP_EOL . PHP_EOL;
   fclose($file);
 }
 
 function logRequest($request)
 {
-  $file = fopen('request.log', 'a+');
+  $file = fopen("$request[product_name].log", 'a+');
   $date = date(DATE_RFC822);
 
   $string = [
     'date' => $date,
     'input' => $request,
   ];
-  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',');
+  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',') . PHP_EOL . PHP_EOL;
   fclose($file);
 }

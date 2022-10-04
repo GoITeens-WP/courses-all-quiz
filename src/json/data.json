@@ -13,16 +13,38 @@
     "id": "footer"
   },
   "modal": {
-    "btn_close_aria": "кнопка закриття модального вікна",
-    "logo_alt": "логотип гоу айтi",
-    "progress": ["1", "2", "Готово"],
-    "title": "Реєстрація",
-    "name": "Ім'я",
-    "phone": "Телефон",
-    "email": "Пошта",
-    "btn": "Зареєструватися",
-    "text": "Зачекайте кілька секунд... майже отримали Вашу заявку",
-    "advice": "Завершіть реєстрацію!",
-    "advice_text": "Перейдіть по кнопці в телеграм і натисніть <strong>/start</strong>, щоб <span class=\"advice-accent\">забронювати місце</span>."
+    "btn_close_aria": "кнопка закриття модального вікна"
+  },
+  "form": {
+    "ID": "leadForm",
+    "title": "Please fill in the form",
+    "steps": ["1", "2", "Done"],
+    "inputs": [
+      {
+        "title": "Name",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Tom Bradley",
+        "dataField": "name",
+        "required": true
+      },
+      {
+        "title": "Phone",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true
+      },
+      {
+        "title": "Email",
+        "type": "email",
+        "name": "email",
+        "placeholder": "@gmail.com",
+        "dataField": "email",
+        "required": true
+      }
+    ],
+    "btnSubmit": "Continue"
   }
 }

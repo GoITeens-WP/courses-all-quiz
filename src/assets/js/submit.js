@@ -1,17 +1,33 @@
-'use strict';
+import axios from 'axios';
 
-function generateData(name, phone = null, email = null) {
+function generateData(
+  name,
+  phone = null,
+  email = null,
+  productName = window.productName,
+  productId = window.productId
+) {
+  const { origin, pathname } = window.location;
+  const action_source = `${origin}${pathname}`;
+
   let data = {
     google_id: readCookie('_ga'),
     name: name,
     phone: phone,
     email: email,
-    product_name: window.productName,
-    product_id: window.productId,
+    product_name: productName,
+    product_id: productId,
     Potential_Category: 'Course',
     Projects: 'GoIT',
-    Course: window.productId,
-    website: window.website,
+    Course: productId,
+    website: 'website',
+    SiteURL: action_source,
+    leadFormat: window.leadFormat || 'marathon',
+    leadActionSource: action_source,
+    leadUserAgent: window.navigator.userAgent,
+    leadFBP: getCookie('_fbp'),
+    leadFBC: getCookie('_fbc'),
+    leadIP: window.ipData.ip || '',
   };
   return ensureUtmData(data);
 }
@@ -23,15 +39,6 @@ function ensureUtmData(data) {
   data.utm_content = getCookie('utm_content');
 
   return data;
-}
-function send(data) {
-  return fetch('./crm/lead.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
 }
 function getCookie(name) {
   var nameEQ = name + '=';
@@ -57,10 +64,24 @@ function readCookie(name) {
   }
   return null;
 }
-function submit(name, phone = null, email = null) {
-  let data = generateData(name, phone, email);
+async function send(data) {
+  return await axios({
+    method: 'post',
+    url: './crm/lead.php',
+    data: data,
+  });
+}
+async function submit(
+  name,
+  phone = null,
+  email = null,
+  productName = window.productName,
+  productId = window.productId
+) {
+  let data = generateData(name, phone, email, productName, productId);
+  const response = await send(data);
 
-  return send(data);
+  return response;
 }
 export default {
   submit,

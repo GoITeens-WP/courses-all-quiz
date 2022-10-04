@@ -35,21 +35,41 @@ const watcher = done => {
   watch(paths.watch.fonts, tasks.fonts);
   watch(paths.watch.crm, tasks.crm);
   watch(paths.watch.app, tasks.app);
+  watch(paths.watch.phpmailer, tasks.phpmailer);
+
   done();
 };
 
 exports.start = series(
   tasks.clean,
-  parallel(tasks.db, tasks.fonts, tasks.php, tasks.crm, tasks.app, tasks.scripts, tasks.images),
-  tasks.html.html,
-  tasks.css,
+  parallel(
+    tasks.php,
+    tasks.db,
+    tasks.images,
+    tasks.css,
+    tasks.fonts,
+    tasks.scripts,
+    tasks.html.html,
+    tasks.crm,
+    tasks.app,
+    tasks.phpmailer
+  ),
   watcher,
   serve
 );
 
 exports.build = series(
   tasks.clean,
-  parallel(tasks.db, tasks.fonts, tasks.php, tasks.crm, tasks.app, tasks.scripts, tasks.images),
-  tasks.html.html,
-  tasks.css
+  parallel(
+    tasks.db,
+    tasks.php,
+    tasks.images,
+    tasks.css,
+    tasks.fonts,
+    tasks.scripts,
+    tasks.html.html,
+    tasks.crm,
+    tasks.app,
+    tasks.phpmailer
+  )
 );

@@ -26,6 +26,9 @@ module.exports = {
       backgroundColor: theme => ({
         ...theme('colors'),
       }),
+      backgroundImage: {
+        check: "url('../images/check.svg')",
+      },
       // ALL COLORS
       colors: {
         body: '#ffffff', // class="bg-body"

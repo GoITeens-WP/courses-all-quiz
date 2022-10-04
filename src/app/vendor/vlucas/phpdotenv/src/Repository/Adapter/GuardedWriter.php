@@ -6,80 +6,80 @@ namespace Dotenv\Repository\Adapter;
 
 final class GuardedWriter implements WriterInterface
 {
-  /**
-   * The inner writer to use.
-   *
-   * @var \Dotenv\Repository\Adapter\WriterInterface
-   */
-  private $writer;
+    /**
+     * The inner writer to use.
+     *
+     * @var \Dotenv\Repository\Adapter\WriterInterface
+     */
+    private $writer;
 
-  /**
-   * The variable name allow list.
-   *
-   * @var string[]
-   */
-  private $allowList;
+    /**
+     * The variable name allow list.
+     *
+     * @var string[]
+     */
+    private $allowList;
 
-  /**
-   * Create a new guarded writer instance.
-   *
-   * @param \Dotenv\Repository\Adapter\WriterInterface $writer
-   * @param string[]                                   $allowList
-   *
-   * @return void
-   */
-  public function __construct(WriterInterface $writer, array $allowList)
-  {
-    $this->writer = $writer;
-    $this->allowList = $allowList;
-  }
-
-  /**
-   * Write to an environment variable, if possible.
-   *
-   * @param string $name
-   * @param string $value
-   *
-   * @return bool
-   */
-  public function write(string $name, string $value)
-  {
-    // Don't set non-allowed variables
-    if (!$this->isAllowed($name)) {
-      return false;
+    /**
+     * Create a new guarded writer instance.
+     *
+     * @param \Dotenv\Repository\Adapter\WriterInterface $writer
+     * @param string[]                                   $allowList
+     *
+     * @return void
+     */
+    public function __construct(WriterInterface $writer, array $allowList)
+    {
+        $this->writer = $writer;
+        $this->allowList = $allowList;
     }
 
-    // Set the value on the inner writer
-    return $this->writer->write($name, $value);
-  }
+    /**
+     * Write to an environment variable, if possible.
+     *
+     * @param string $name
+     * @param string $value
+     *
+     * @return bool
+     */
+    public function write(string $name, string $value)
+    {
+        // Don't set non-allowed variables
+        if (!$this->isAllowed($name)) {
+            return false;
+        }
 
-  /**
-   * Delete an environment variable, if possible.
-   *
-   * @param string $name
-   *
-   * @return bool
-   */
-  public function delete(string $name)
-  {
-    // Don't clear non-allowed variables
-    if (!$this->isAllowed($name)) {
-      return false;
+        // Set the value on the inner writer
+        return $this->writer->write($name, $value);
     }
 
-    // Set the value on the inner writer
-    return $this->writer->delete($name);
-  }
+    /**
+     * Delete an environment variable, if possible.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function delete(string $name)
+    {
+        // Don't clear non-allowed variables
+        if (!$this->isAllowed($name)) {
+            return false;
+        }
 
-  /**
-   * Determine if the given variable is allowed.
-   *
-   * @param string $name
-   *
-   * @return bool
-   */
-  private function isAllowed(string $name)
-  {
-    return \in_array($name, $this->allowList, true);
-  }
+        // Set the value on the inner writer
+        return $this->writer->delete($name);
+    }
+
+    /**
+     * Determine if the given variable is allowed.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    private function isAllowed(string $name)
+    {
+        return \in_array($name, $this->allowList, true);
+    }
 }

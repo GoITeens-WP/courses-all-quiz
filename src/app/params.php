@@ -3,47 +3,56 @@
 use components\Params;
 
 require_once 'vendor/autoload.php';
-//load .env
+
+
+/* It loads the .env file */
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 if (!empty($_POST)) {
-  $saver = new Params();
-  $saver->save();
+    $saver = new Params();
+    $saver->save();
 }
 
 $ini_array = parse_ini_file('params.ini');
 ?>
 
-<form action="" method="post" style="display: flex; flex-direction: column">
+<form action="" method="post" style="display: flex; flex-direction: column; gap: 8px;">
 
-    <label for="product_name">Zoho Product Name</label>
-    <input type="text" id="product_name" name="product_name" style="margin-bottom: 10px; max-width: 300px" value="<?= $ini_array[
-      'PRODUCT_NAME'
-    ] ?>" placeholder="<?= $ini_array['PRODUCT_NAME'] ?>">
+  <label for="PRODUCT_NAME">Product name</label>
+  <input type="text" id="PRODUCT_NAME" name="PRODUCT_NAME" value="<?= $ini_array['PRODUCT_NAME'] ?>"
+    placeholder="<?= $ini_array['PRODUCT_NAME'] ?>">
 
-    <label for="product_id">Zoho Product ID</label>
-    <input type="text" id="product_id" name="product_id" style="margin-bottom: 10px; max-width: 300px" value="<?= $ini_array[
-      'PRODUCT_ID'
-    ] ?>" placeholder="<?= $ini_array['PRODUCT_ID'] ?>">
+  <label for="PRODUCT_ID">Product Id</label>
+  <input type="text" id="PRODUCT_ID" name="PRODUCT_ID" value="<?= $ini_array['PRODUCT_ID'] ?>"
+    placeholder="<?= $ini_array['PRODUCT_ID'] ?>">
 
-    <label for="gtm">GTM</label>
-    <input type="text" id="gtm" name="gtm" value="<?= $ini_array[
-      'GTM'
-    ] ?>" placeholder="<?= $ini_array['GTM'] ?>">
+  <label for="GTM">GTM</label>
+  <input type="text" id="GTM" name="GTM" value="<?= $ini_array['GTM'] ?>" placeholder="<?= $ini_array['GTM'] ?>">
 
-    <label for="leeloo_hash">Leeloo Hash</label>
-    <input type="text" id="leeloo_hash" name="leeloo_hash" style="margin-bottom: 10px; max-width: 300px" value="<?= $ini_array[
-      'LEELOO_HASH'
-    ] ?>" placeholder="<?= $ini_array['LEELOO_HASH'] ?>">
+  <label for="CAPI_LEAD_FORMAT">CAPI Lead Format</label>
+  <input type="text" id="CAPI_LEAD_FORMAT" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
+    placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>">
 
-    <label for="start_date">Start Date</label>
-    <input type="text" id="start_date" name="start_date" style="margin-bottom: 10px; max-width: 300px" value="<?= $ini_array[
-      'START_DATE'
-    ] ?>" placeholder="<?= $ini_array['START_DATE'] ?>">
+  <label for="LEELOO_HASH">Leeloo Hash</label>
+  <input type="text" id="LEELOO_HASH" name="LEELOO_HASH" value="<?= $ini_array['LEELOO_HASH'] ?>"
+    placeholder="<?= $ini_array['LEELOO_HASH'] ?>">
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" style="margin-bottom: 10px; max-width: 300px">
+  <label for="TELEGRAM_BACKEND_URL">Telegram Backend URL</label>
+  <input style="margin-bottom: 10px; max-width: 300px" type="text" id="TELEGRAM_BACKEND_URL" name="TELEGRAM_BACKEND_URL"
+    value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>">
 
-    <button type="submit" style="max-width: 300px">Save</button>
+
+  <label for="TELEGRAM_BOT">Telegram Bot</label>
+  <input style="margin-bottom: 10px; max-width: 300px" type="text" id="TELEGRAM_BOT" name="TELEGRAM_BOT"
+    value="<?= $ini_array['TELEGRAM_BOT'] ?>" placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>">
+
+  <label for="START_DATE">Start date</label>
+  <input type="text" id="START_DATE" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>"
+    placeholder="<?= $ini_array['START_DATE'] ?>">
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password">
+
+  <button type="submit">Save</button>
 </form>

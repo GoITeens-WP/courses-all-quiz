@@ -10,80 +10,80 @@ use PhpOption\Some;
 
 final class ApacheAdapter implements AdapterInterface
 {
-  /**
-   * Create a new apache adapter instance.
-   *
-   * @return void
-   */
-  private function __construct()
-  {
-    //
-  }
-
-  /**
-   * Create a new instance of the adapter, if it is available.
-   *
-   * @return \PhpOption\Option<\Dotenv\Repository\Adapter\AdapterInterface>
-   */
-  public static function create()
-  {
-    if (self::isSupported()) {
-      /** @var \PhpOption\Option<AdapterInterface> */
-      return Some::create(new self());
+    /**
+     * Create a new apache adapter instance.
+     *
+     * @return void
+     */
+    private function __construct()
+    {
+        //
     }
 
-    return None::create();
-  }
+    /**
+     * Create a new instance of the adapter, if it is available.
+     *
+     * @return \PhpOption\Option<\Dotenv\Repository\Adapter\AdapterInterface>
+     */
+    public static function create()
+    {
+        if (self::isSupported()) {
+            /** @var \PhpOption\Option<AdapterInterface> */
+            return Some::create(new self());
+        }
 
-  /**
-   * Determines if the adapter is supported.
-   *
-   * This happens if PHP is running as an Apache module.
-   *
-   * @return bool
-   */
-  private static function isSupported()
-  {
-    return \function_exists('apache_getenv') && \function_exists('apache_setenv');
-  }
+        return None::create();
+    }
 
-  /**
-   * Read an environment variable, if it exists.
-   *
-   * @param string $name
-   *
-   * @return \PhpOption\Option<string>
-   */
-  public function read(string $name)
-  {
-    /** @var \PhpOption\Option<string> */
-    return Option::fromValue(apache_getenv($name))->filter(static function ($value) {
-      return \is_string($value) && $value !== '';
-    });
-  }
+    /**
+     * Determines if the adapter is supported.
+     *
+     * This happens if PHP is running as an Apache module.
+     *
+     * @return bool
+     */
+    private static function isSupported()
+    {
+        return \function_exists('apache_getenv') && \function_exists('apache_setenv');
+    }
 
-  /**
-   * Write to an environment variable, if possible.
-   *
-   * @param string $name
-   * @param string $value
-   *
-   * @return bool
-   */
-  public function write(string $name, string $value)
-  {
-    return apache_setenv($name, $value);
-  }
+    /**
+     * Read an environment variable, if it exists.
+     *
+     * @param string $name
+     *
+     * @return \PhpOption\Option<string>
+     */
+    public function read(string $name)
+    {
+        /** @var \PhpOption\Option<string> */
+        return Option::fromValue(apache_getenv($name))->filter(static function ($value) {
+            return \is_string($value) && $value !== '';
+        });
+    }
 
-  /**
-   * Delete an environment variable, if possible.
-   *
-   * @param string $name
-   *
-   * @return bool
-   */
-  public function delete(string $name)
-  {
-    return apache_setenv($name, '');
-  }
+    /**
+     * Write to an environment variable, if possible.
+     *
+     * @param string $name
+     * @param string $value
+     *
+     * @return bool
+     */
+    public function write(string $name, string $value)
+    {
+        return apache_setenv($name, $value);
+    }
+
+    /**
+     * Delete an environment variable, if possible.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function delete(string $name)
+    {
+        return apache_setenv($name, '');
+    }
 }
