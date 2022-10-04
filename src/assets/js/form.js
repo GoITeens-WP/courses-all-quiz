@@ -29,15 +29,16 @@ $(window).on('load', async function () {
         formId: 'leadForm',
 
         /*
+        !Zoho CRM params, window vars by default
+        productName: 'dummy_product',
+        productId: 'dummy_product_id',
+
         ! Required params if you need send email
         needSendEmail: false,
         onlySendEmail: false,
         emailTitle: 'title',
         emailRecipient: 'test@test.test',
 
-        !Zoho CRM params, window vars by default
-        productName: 'dummy_product',
-        productId: 'dummy_product_id',
         */
       },
     ],
@@ -81,12 +82,12 @@ telegram backend. */
   async function formHandler(formParams) {
     const {
       formId,
+      productName = window.productName,
+      productId = window.productId,
       needSendEmail = false,
       onlySendEmail = false,
       emailTitle = 'New request',
       emailRecipient = 'info@goit.ua',
-      productName = window.productName,
-      productId = window.productId,
     } = formParams;
 
     // Refs
