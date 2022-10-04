@@ -4,19 +4,18 @@ const newer = require('gulp-newer');
 const size = require('gulp-size');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
-const fs = require('fs');
 
 const imageMinConfig = {
   mozjpeg: { quality: 75, progressive: true },
   optipng: { optimizationLevel: 5 },
   svgo: {
     plugins: [
-        { removeViewBox: true },
-        { cleanupIDs: false },
-        { removeComments: true },
-        { removeEmptyContainers: true },
+      { removeViewBox: true },
+      { cleanupIDs: false },
+      { removeComments: true },
+      { removeEmptyContainers: true },
     ],
-},
+  },
 };
 
 const images = done => {

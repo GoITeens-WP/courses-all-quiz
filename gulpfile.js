@@ -64,6 +64,7 @@ exports.build = series(
     tasks.db,
     tasks.php,
     tasks.images,
+    tasks.imagesWebp,
     tasks.css,
     tasks.fonts,
     tasks.scripts,
