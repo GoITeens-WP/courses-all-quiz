@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env PORT=3000 gulp start --development ",
     "build": "gulp build --production",
-    "prettier": "prettier --write \".\""
+    "prettier": "prettier --write \".\"",
+    "htmlhint": "npx htmlhint \"**/*.html\""
   },
   "homepage": "",
   "repository": "https://github.com/GoWeb-Studio/gulp-nunjucks-starter-kit",
@@ -42,6 +43,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svg-sprite": "^2.0.0",
     "gulp-uglify": "^3.0.2",
+    "htmlhint": "^1.1.4",
     "imagemin-webp": "^6.0.0",
     "intl-tel-input": "^17.0.19",
     "js-cookie": "^3.0.1",

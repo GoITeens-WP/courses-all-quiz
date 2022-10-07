@@ -1,4 +1,6 @@
 {
+  // htmlhint
+  "htmlhint.enable": true,
   // lint
   "scss.lint.duplicateProperties": "warning",
   "css.lint.duplicateProperties": "warning",
@@ -15,5 +17,5 @@
   "files.trimTrailingWhitespace": true,
   "files.associations": {
     "*.njk": "html"
-  },
+  }
 }
