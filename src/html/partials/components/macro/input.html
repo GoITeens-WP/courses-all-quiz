@@ -35,7 +35,7 @@
     <input class="input-field" type="{{ arg.type }}" id="{{ id }}_input_{{ arg.name }}" name="{{ arg.name }}" {% if
         arg.required %} required="" {% endif %} data-field="{{ arg.dataField }}" {% if arg.readOnly %}
         readonly="{{ arg.readOnly }}" {% endif %} {% if arg.placeholder %} placeholder="{{ arg.placeholder }}" {% endif
-        %} />
+        %} data-type="{{ arg.type }}" />
     {% endif %}
 </div>
 {% endmacro %}-

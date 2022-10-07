@@ -18,7 +18,7 @@
   @apply resize-none;
 }
 
-input[type='text'].input-field,
+input[data-type='text'].input-field,
 input[type='email'].input-field,
 input[type='tel'].input-field {
   @apply h-10 py-2 px-4;
