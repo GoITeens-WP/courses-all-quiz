@@ -4,16 +4,13 @@
 <html lang="{{ page.lang }}">
   <head>
     {% include 'head.html' %}
-
-    <link rel="preload" as="style" href="./assets/css/style.css" />
-    <link rel="preload" as="script" href="./assets/js/app.js" />
-
-    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
 
   <body>
-    <div class="page bg-main">{% block content %} {% endblock %}</div>
-    {% include 'modal.html' %}
+    <div class="page">{% block content %} {% endblock %}</div>
+
+    {% include 'components/modal.html' %}
+    <script src="./assets/js/app.js"></script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -25,6 +22,5 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <script src="./assets/js/app.js"></script>
   </body>
 </html>

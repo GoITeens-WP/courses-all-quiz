@@ -1,14 +1,14 @@
 /*! purgecss start ignore */
 // Leeloo div styles
 .leeloo {
-  @apply mt-5 mx-auto overflow-hidden;
+  @apply mx-auto mt-5 overflow-hidden;
 
   .leeloo-lgt-form-wrapper {
     @apply block;
   }
 
   iframe {
-    @apply block mx-auto;
+    @apply mx-auto block;
   }
 }
 /*! purgecss end ignore */
@@ -18,7 +18,7 @@
   @apply relative h-[10px] w-full rounded-2xl;
 
   & .color {
-    @apply absolute bg-accent w-0 h-[10px] rounded-2xl;
+    @apply absolute h-[10px] w-0 rounded-2xl bg-accent;
     animation: progress 4s infinite linear;
   }
 }
@@ -46,14 +46,14 @@
 }
 
 .steps-bar {
-  @apply flex justify-between p-0 my-4;
+  @apply my-4 flex justify-between p-0;
 
   & .active:before {
-    @apply bg-white border-accent;
+    @apply border-accent bg-white;
   }
 
   & > .item {
-    @apply relative pb-5 text-accent font-semibold whitespace-nowrap overflow-visible text-center border-b-4 border-accent;
+    @apply relative overflow-visible whitespace-nowrap border-b-4 border-accent pb-5 text-center font-semibold text-accent;
     flex: 2;
 
     &:first-child,
@@ -62,7 +62,7 @@
     }
 
     &:first-child {
-      @apply text-left pl-3;
+      @apply pl-3 text-left;
     }
 
     &:last-child {
@@ -70,7 +70,7 @@
     }
 
     &:before {
-      @apply block content-[""] w-[30px] h-[30px] bg-white rounded-full border-4 border-accent absolute left-[calc(50%_-_15px)] -bottom-4 duration-300 ease-linear;
+      @apply absolute left-[calc(50%_-_15px)] -bottom-4 block h-[30px] w-[30px] rounded-full border-4 border-accent bg-white duration-300 ease-linear content-[""];
     }
 
     &:first-child:before {
@@ -96,5 +96,5 @@
 }
 
 .form-btn {
-  @apply w-full p-6 mt-10 font-bold text-center duration-150 ease-linear border-2 border-transparent outline-none focus:text-accent hover:text-accent bg-accent rounded-2xl hover:bg-transparent hover:border-accent focus:bg-transparent focus:border-accent;
+  @apply mt-10 w-full rounded-2xl border-2 border-transparent bg-accent p-6 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent;
 }

@@ -1,23 +1,18 @@
 .backdrop {
-  @apply visible opacity-100 fixed inset-0 flex z-[100] overflow-auto duration-100 ease-linear;
+  @apply visible fixed inset-0 z-[100] flex overflow-auto opacity-100 duration-100 ease-linear;
   background-color: rgba(0, 0, 0, 0.55);
 
   &.is-hidden {
-    @apply invisible opacity-0 pointer-events-none;
+    @apply pointer-events-none invisible opacity-0;
   }
 }
 
-.modal-logo,
 .modal-close-btn {
-  @apply absolute top-5;
-}
-
-.modal-close-btn {
-  @apply right-5 top-5 rounded-full grid place-items-center fill-accent duration-300 ease-linear hover:fill-white focus:fill-white p-0 w-8 h-8 md:right-10 md:top-10;
+  @apply absolute right-8 top-6 grid h-8 w-8 place-items-center rounded-full fill-black-light p-0 duration-300 ease-linear hover:fill-accent focus:fill-accent;
 }
 
 .modal {
-  @apply m-auto translate-x-0 translate-y-0 scale-100 flex flex-col justify-evenly w-full max-w-lg rounded-lg p-8 ease-linear duration-300;
+  @apply m-auto flex w-full max-w-lg translate-x-0 translate-y-0 scale-100 flex-col justify-evenly rounded-lg p-8 duration-300 ease-linear;
 
   .is-hidden & {
     @apply translate-y-full scale-0;

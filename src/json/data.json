@@ -7,29 +7,30 @@
   },
   "hero": {
     "id": "hero",
-    "title": "Header-hero <p class=\"text-8xl\">test</p>"
+    "title": "header-hero"
   },
   "footer": {
     "id": "footer"
   },
   "modal": {
-    "btn_close_aria": "кнопка закриття модального вікна"
+    "btn_close_aria": "кнопка закриття модального вікна",
+    "logo_aria": "Логотип"
   },
   "form": {
     "ID": "leadForm",
-    "title": "Please fill in the form",
-    "steps": ["1", "2", "Done"],
+    "title": "Реєстрація",
+    "steps": ["1", "2", "Готово"],
     "inputs": [
       {
-        "title": "Name",
+        "title": "Імʼя *",
         "type": "text",
         "name": "name",
-        "placeholder": "Tom Bradley",
+        "placeholder": "",
         "dataField": "name",
         "required": true
       },
       {
-        "title": "Phone",
+        "title": "Телефон *",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -37,7 +38,7 @@
         "required": true
       },
       {
-        "title": "Email",
+        "title": "Пошта *",
         "type": "email",
         "name": "email",
         "placeholder": "@gmail.com",
@@ -45,6 +46,6 @@
         "required": true
       }
     ],
-    "btnSubmit": "Continue"
+    "btnSubmit": "Зареєструватися"
   }
 }
