@@ -14,7 +14,6 @@ const htmlminConfig = {
   removeComments: true, // Strip HTML comments
   collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
   collapseBooleanAttributes: true, // Omit attribute values from boolean attributes
-  removeRedundantAttributes: true, // Remove attributes when value matches default.
   removeEmptyAttributes: true, // Remove all attributes with whitespace-only values
 };
 
