@@ -189,7 +189,7 @@ function getValidationLocale(locale = window.locale) {
 
     if (!dict[locale]) {
       throw new Error(
-        `No locale found for ${locale}. Please add it to the validateLocales.json file.`,
+        `No locale found for ${locale}. Please add it to the validateLocales.json file.`
       );
     }
 
@@ -206,7 +206,8 @@ function getValidationLocale(locale = window.locale) {
 function getValidationFields(input, allInputs) {
   const { required } = input;
   const { field } = input.dataset;
-
+  const mailregex =
+    /^(?=^.{3,63}$)(((^[^-\\!?&.\/][^<>!?&()[\],;:\s@"]{2,}(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,10})))$/;
   /* The above code is a JavaScript object that contains the validation rules for each field. */
   const fields = {
     name: [
@@ -243,6 +244,11 @@ function getValidationFields(input, allInputs) {
       },
       {
         rule: 'email',
+        errorMessage: 'Email is invalid!',
+      },
+      {
+        rule: 'customRegexp',
+        value: mailregex,
         errorMessage: 'Email is invalid!',
       },
     ],
@@ -321,7 +327,7 @@ function getValidationFields(input, allInputs) {
           if (value.length > 1) {
             const regex = new RegExp(
               getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
-              'i',
+              'i'
             );
             return regex.test(value);
           }
@@ -380,7 +386,7 @@ function getFormMessageLocale(locale) {
   return formMessageLocales.map(({ key, dict }) => {
     if (!dict[locale]) {
       throw new Error(
-        `No locale found for ${locale}. Please add it to the formMessageLocale.json file.`,
+        `No locale found for ${locale}. Please add it to the formMessageLocale.json file.`
       );
     }
 
@@ -1618,7 +1624,7 @@ function setParamsForLeeloo(formData) {
 function initializeLeeloo(form, leelooHash = window.leelooHash) {
   const leeloo = $(`<div class='leeloo'><div class="wepster-hash-${leelooHash}"></div></div>`).css(
     'display',
-    'none',
+    'none'
   );
   $(form).parent().append(leeloo);
 
@@ -1751,7 +1757,7 @@ function showSuccess(
   loading = null,
   closeModal = false,
   btnLink = null,
-  btnText = null,
+  btnText = null
 ) {
   if (loading) {
     loading.hide();
@@ -1848,7 +1854,7 @@ async function redirectToTelegramBackend(form, data) {
   }
 
   const telegramDiv = `<div data-${form.id}-telegram><p class="text-center">${translate(
-    'telegramBackendMessage',
+    'telegramBackendMessage'
   )}</p><button type="button" class="form-btn">Telegram</button></div>`;
 
   //Send data to telegram backend
