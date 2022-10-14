@@ -11,6 +11,31 @@ function send($token, $data, $input)
   $ch = curl_init();
   $curl_options = [];
   $url = 'https://goit-connectors.place/goit/';
+/*
+// UA
+// https://goit-connectors.place/goit/
+//
+// PL
+//  https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
+//
+// MX
+// https://integrations.goit.global/connector_usa_mex/connector.php
+//
+// RO
+// https://goit-connectors.place/romania/goit/connector.php
+//
+// US
+// https://integrations.goit.global/connector_usa_mex/connector.php
+//
+// KZ
+// https://goit-connectors.place/goit/
+//
+// GOITEENS UA
+// https://universalcrmconnector.goiteens.ua/connector.php
+//
+// GOITEENS PL
+// https://goit-connectors.place/pl/newcrm/goiteens/connectorPL.php
+*/
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
   $curl_options[CURLOPT_HEADER] = 1;
