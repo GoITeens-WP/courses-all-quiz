@@ -5,9 +5,8 @@
     "description": "description",
     "canonical": "link"
   },
-  "hero": {
-    "id": "hero",
-    "title": "header-hero"
+  "header": {
+    "id": "header"
   },
   "footer": {
     "id": "footer"
