@@ -47,6 +47,7 @@ exports.start = series(
     tasks.php,
     tasks.db,
     tasks.images,
+    tasks.imagesWebp,
     tasks.sprite,
     tasks.css,
     tasks.fonts,
