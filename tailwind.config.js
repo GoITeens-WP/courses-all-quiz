@@ -49,10 +49,10 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1.25rem',
-          sm: '1.25rem',
+          DEFAULT: '1.5rem',
+          sm: '1.5rem',
           md: '2rem',
-          xl: '2.5rem',
+          xl: '2rem',
         },
       },
       // KEYFRAMES
