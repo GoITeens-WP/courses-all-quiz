@@ -10,7 +10,7 @@ class Params
       $file = fopen(dirname(__FILE__, 2) . '/params.ini', 'w+');
       fwrite($file, "PRODUCT_NAME={$_POST['PRODUCT_NAME']}\n");
       fwrite($file, "PRODUCT_ID={$_POST['PRODUCT_ID']}\n");
-      fwrite($file, "GTM={$_POST['GTM']}\n");
+      // fwrite($file, "GTM={$_POST['GTM']}\n");
       fwrite($file, "CAPI_LEAD_FORMAT={$_POST['CAPI_LEAD_FORMAT']}\n");
       fwrite($file, "LEELOO_HASH={$_POST['LEELOO_HASH']}\n");
       fwrite($file, "TELEGRAM_BACKEND_URL='{$_POST['TELEGRAM_BACKEND_URL']}'\n");
