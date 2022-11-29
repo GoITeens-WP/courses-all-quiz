@@ -26,9 +26,7 @@ import formMessageLocales from '../../json/formMessageLocales.json';
  */
 async function getIpInfo() {
   try {
-    const { data } = await axios.get(
-      'https://www.cloudflare.com/cdn-cgi/trace'
-    );
+    const { data } = await axios.get('https://www.cloudflare.com/cdn-cgi/trace');
 
     return data
       .trim()
@@ -219,7 +217,7 @@ function getValidationFields(input, allInputs) {
       {
         rule: 'customRegexp',
         value: getNameRegex(),
-        errorMessage: 'Name is invalid!',
+        errorMessage: 'Name is invalid',
       },
       {
         rule: 'minLength',
@@ -236,6 +234,11 @@ function getValidationFields(input, allInputs) {
       {
         rule: 'required',
         errorMessage: 'Phone number is required',
+      },
+      {
+        rule: 'customRegexp',
+        value: getPhoneRegex(),
+        errorMessage: 'Phone number is invalid!',
       },
     ],
     email: [
@@ -319,19 +322,15 @@ function getValidationFields(input, allInputs) {
     ],
   };
 
-  const country = allInputs.find((input) => input.name === 'country');
+  const country = allInputs.find(input => input.name === 'country');
   if (country) {
-    const zipRegex = getZipRegex(
-      $(country).countrySelect('getSelectedCountryData').iso2
-    );
+    const zipRegex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
     if (zipRegex) {
       fields.zip.push({
-        validator: (value) => {
+        validator: value => {
           if (value.length > 1) {
             const regex = new RegExp(
-              getZipRegex(
-                $(country).countrySelect('getSelectedCountryData').iso2
-              ),
+              getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
               'i'
             );
             return regex.test(value);
@@ -364,7 +363,7 @@ function setFormValidation(validationForm) {
       }
       return acc;
     }, [])
-    .filter((input) => input.dataset.field)
+    .filter(input => input.dataset.field)
     .map((input, index, arr) => {
       const { id } = input;
       const validationOptionField = getValidationFields(input, arr);
@@ -406,9 +405,7 @@ function getFormMessageLocale(locale) {
  * @returns The message for the key that matches the key passed in.
  */
 function translate(key, locale = window.locale) {
-  const message = getFormMessageLocale(locale).find(
-    ({ key: k }) => k === key
-  )?.msg;
+  const message = getFormMessageLocale(locale).find(({ key: k }) => k === key)?.msg;
 
   if (!message) {
     throw new Error(`No message found for key ${key}`);
@@ -1559,27 +1556,37 @@ const postalCodesRegex = [
  * @param [locale] - The locale of the user.
  * @returns A regular expression that matches a string of characters that are allowed in a name.
  */
+
 function getNameRegex(locale = window.locale) {
   switch (locale) {
+    // США - en
     case 'en':
       return /^[a-zñáéíóúü ,.'-]+$/i;
 
+    // Польша - pl
     case 'pl':
       return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
 
+    // Мексика - es / Колумбия - es
     case 'es':
       return /^[a-zñáéíóúü ,.'-]+$/i;
 
+    // Румыния - ro
     case 'ro':
       return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
 
+    // Украинский - uk
     default:
-      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ0-9 ,.'`-]{1,19}$/gm;
+      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,30}$/gm;
   }
 }
 
 function getEmailRegex() {
   return /^(?=^.{3,63}$)(^[A-Za-z0-9]+(([_\.\-](?=[A-Za-z0-9]))[a-zA-Z0-9]+([\-\.](?=[A-Za-z0-9]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
+}
+
+function getPhoneRegex() {
+  return /^.[0-9]$/gm;
 }
 
 /**
@@ -1590,9 +1597,7 @@ function getEmailRegex() {
  */
 function getZipRegex(countryCode) {
   return (
-    postalCodesRegex.find(
-      (country) => country.abbrev.toLowerCase() === countryCode
-    )?.postal || ''
+    postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode)?.postal || ''
   );
 }
 
@@ -1635,9 +1640,10 @@ function setParamsForLeeloo(formData) {
  * @param [leelooHash] - This is the hash that you can find in the Leeloo init code.
  */
 function initializeLeeloo(form, leelooHash = window.leelooHash) {
-  const leeloo = $(
-    `<div class='leeloo'><div class="wepster-hash-${leelooHash}"></div></div>`
-  ).css('display', 'none');
+  const leeloo = $(`<div class='leeloo'><div class="wepster-hash-${leelooHash}"></div></div>`).css(
+    'display',
+    'none'
+  );
   $(form).parent().append(leeloo);
 
   window.LEELOO = function () {
@@ -1648,9 +1654,7 @@ function initializeLeeloo(form, leelooHash = window.leelooHash) {
     document.getElementsByTagName('head')[0].appendChild(js);
   };
   LEELOO();
-  window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(
-    leelooHash
-  );
+  window.LEELOO_LEADGENTOOLS = (window.LEELOO_LEADGENTOOLS || []).concat(leelooHash);
 
   $('.leeloo').css('display', 'block');
 }
@@ -1671,7 +1675,7 @@ async function sendEmail(data) {
  * @param array - an array of utm marks to save to cookies
  */
 function saveParamsToCookies(array) {
-  array.forEach((utmMark) => {
+  array.forEach(utmMark => {
     const utm = getUrlParameter(utmMark);
     if (utm) {
       Cookies.set(utmMark, utm);
@@ -1718,12 +1722,7 @@ function closeModalItem() {
  * @param [loading=null] - The loading object that you can pass to showLoading() to hide it.
  * @param [closeModal=false] - If the modal should be closed after the error is shown.
  */
-function showError(
-  errorMessage,
-  autoClose = true,
-  loading = null,
-  closeModal = false
-) {
+function showError(errorMessage, autoClose = true, loading = null, closeModal = false) {
   if (loading) {
     loading.hide();
   }
@@ -1817,7 +1816,7 @@ function showSuccess(
     };
   }
 
-  Swal.fire(options).then((result) => {
+  Swal.fire(options).then(result => {
     if (result.isConfirmed && btnLink) {
       window.open(btnLink, '_blank');
     }
@@ -1872,9 +1871,7 @@ async function redirectToTelegramBackend(form, data) {
     redirectLink += '__FROM-' + fromID;
   }
 
-  const telegramDiv = `<div data-${
-    form.id
-  }-telegram><p class="text-center">${translate(
+  const telegramDiv = `<div data-${form.id}-telegram><p class="text-center">${translate(
     'telegramBackendMessage'
   )}</p><button type="button" class="form-btn">Telegram</button></div>`;
 
