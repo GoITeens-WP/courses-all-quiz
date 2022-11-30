@@ -11,7 +11,7 @@ node("all-biulds"){
         ]) {
                 env.gitRepository = 'git@github.com:GoWeb-Studio/your-repo-name.git';
                 env.gitBranch = 'main';
-                env.folderPath = './us/';
+                env.folderPath = './ua/';
                 //
                 env.telegramNotifyChannelBotApiToken = telegramNotifyChannelBotApiToken;
                 env.telegramNotifyChannelChatId = telegramNotifyChannelChatId;
