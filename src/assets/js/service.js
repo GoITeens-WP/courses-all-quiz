@@ -149,7 +149,6 @@ function isNumeric(str) {
  * @param  - The form element that you want to get the data from.
  * @returns An object with the form data.
  */
-
 function getFormData($form) {
   const unindexed_array = $form.serializeArray();
   const indexed_array = {};
@@ -161,7 +160,9 @@ function getFormData($form) {
   return indexed_array;
 }
 
-/* Setting the validation options for the form. */
+/**
+ * Setting the validation options for the form.
+ */
 const validationOptions = {
   errorFieldCssClass: 'is-invalid',
   errorFieldStyle: {
@@ -414,6 +415,52 @@ function translate(key, locale = window.locale) {
   return message;
 }
 
+/**
+ * It returns a regular expression that matches a name in the given locale
+ * @param [locale] - The locale of the user.
+ * @returns A regular expression that matches a string of characters that are allowed in a name.
+ */
+function getNameRegex(locale = window.locale) {
+  switch (locale) {
+    // США - en
+    case 'en':
+      return /^[a-zñáéíóúü ,.'-]+$/i;
+
+    // Польша - pl
+    case 'pl':
+      return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
+
+    // Мексика - es / Колумбия - es
+    case 'es':
+      return /^[a-zñáéíóúü ,.'-]+$/i;
+
+    // Румыния - ro
+    case 'ro':
+      return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
+
+    // Украинский - uk
+    default:
+      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,30}$/gm;
+  }
+}
+
+/**
+ * It returns the Email regular expression
+ */
+function getEmailRegex() {
+  return /^(?=^.{3,63}$)(^[A-Za-z0-9]+(([_\.\-](?=[A-Za-z0-9]))[a-zA-Z0-9]+([\-\.](?=[A-Za-z0-9]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
+}
+
+/**
+ * It returns the Phone regular expression
+ */
+function getPhoneRegex() {
+  return /^.[0-9]$/gm;
+}
+
+/**
+ * Postal codes regex for getZipRegex function
+ */
 const postalCodesRegex = [
   {
     abbrev: 'AF',
@@ -1552,44 +1599,6 @@ const postalCodesRegex = [
 ];
 
 /**
- * It returns a regular expression that matches a name in the given locale
- * @param [locale] - The locale of the user.
- * @returns A regular expression that matches a string of characters that are allowed in a name.
- */
-
-function getNameRegex(locale = window.locale) {
-  switch (locale) {
-    // США - en
-    case 'en':
-      return /^[a-zñáéíóúü ,.'-]+$/i;
-
-    // Польша - pl
-    case 'pl':
-      return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
-
-    // Мексика - es / Колумбия - es
-    case 'es':
-      return /^[a-zñáéíóúü ,.'-]+$/i;
-
-    // Румыния - ro
-    case 'ro':
-      return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
-
-    // Украинский - uk
-    default:
-      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,30}$/gm;
-  }
-}
-
-function getEmailRegex() {
-  return /^(?=^.{3,63}$)(^[A-Za-z0-9]+(([_\.\-](?=[A-Za-z0-9]))[a-zA-Z0-9]+([\-\.](?=[A-Za-z0-9]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
-}
-
-function getPhoneRegex() {
-  return /^.[0-9]$/gm;
-}
-
-/**
  * It takes a country code as a parameter and returns a regular expression that can be used to validate
  * a postal code for that country
  * @param countryCode - The country code of the country you want to validate the postal code for.
@@ -1683,8 +1692,10 @@ function saveParamsToCookies(array) {
   });
 }
 
-/* It creates a loading div with a progress bar and message, and then removes it when the loading is
-complete */
+/**
+ * It creates a loading div with a progress bar and message, and then removes it when the loading is
+ * complete
+ */
 class Loading {
   constructor(form, message = 'Loading...', closeModal = false) {
     this.form = form;
@@ -1709,10 +1720,32 @@ class Loading {
  * When the user clicks on the close button, the modal is hidden and the body is no longer
  * scroll-hidden
  */
-
 function closeModalItem() {
   $('[data-modal]').addClass('is-hidden');
   $('body').removeClass('scroll-hidden');
+}
+
+/**
+ * Selects button with type submit.
+ */
+const submitButton = $('button[type="submit"]');
+
+/**
+ * Adds "disabled" attribute to button with type submit.
+ */
+function addDisabledAttributeToSubmitBtn() {
+  if (submitButton) {
+    return submitButton.attr('disabled', true);
+  }
+}
+
+/**
+ * Removes "disabled" attribute from button with type submit.
+ */
+function removeDisabledAttributeFromSubmitBtn() {
+  if (submitButton) {
+    return submitButton.removeAttr('disabled');
+  }
 }
 
 /**
@@ -1755,6 +1788,8 @@ function showError(errorMessage, autoClose = true, loading = null, closeModal = 
       clearInterval(timerInterval);
     };
   }
+
+  removeDisabledAttributeFromSubmitBtn();
 
   Swal.fire(options);
 }
@@ -1815,6 +1850,8 @@ function showSuccess(
       clearInterval(timerInterval);
     };
   }
+
+  removeDisabledAttributeFromSubmitBtn();
 
   Swal.fire(options).then(result => {
     if (result.isConfirmed && btnLink) {
@@ -1950,6 +1987,7 @@ export default {
   getZipRegex,
   getUrlParameter,
   setUrlParameter,
+  addDisabledAttributeToSubmitBtn,
   showError,
   showSuccess,
   setParamsForLeeloo,

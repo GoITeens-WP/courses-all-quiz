@@ -134,6 +134,9 @@ telegram backend. */
       .onSuccess(async function (event) {
         event.preventDefault();
 
+        /* Adds "disabled" attribute to button with type submit. */
+        service.addDisabledAttributeToSubmitBtn();
+
         /* It's a check that the email domain has MX records on dns server. */
         if (params.needsCheckEmailDomain && !(await service.checkEmailDomain(email.value))) {
           return service.showError(service.translate('emailNotExists'));
