@@ -438,7 +438,7 @@ function getNameRegex(locale = window.locale) {
     case 'ro':
       return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
 
-    // Украинский - uk
+    // Украина - uk
     default:
       return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,30}$/gm;
   }
