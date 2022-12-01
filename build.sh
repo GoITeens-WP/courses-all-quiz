@@ -7,8 +7,8 @@ rm -rf ./build
 rm -rf node_modules
 
 # Build app
-npm i
-npm run build
+yarn
+yarn build
 
 # Remove non-used params.ini file
 rm ./build/app/params.ini
