@@ -41,7 +41,7 @@
         "title": "Пошта *",
         "type": "email",
         "name": "email",
-        "placeholder": "@gmail.com",
+        "placeholder": "email@gmail.com",
         "dataField": "email",
         "required": true
       }
