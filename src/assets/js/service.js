@@ -236,11 +236,6 @@ function getValidationFields(input, allInputs) {
         rule: 'required',
         errorMessage: 'Phone number is required',
       },
-      {
-        rule: 'customRegexp',
-        value: getPhoneRegex(),
-        errorMessage: 'Phone number is invalid!',
-      },
     ],
     email: [
       {
@@ -449,13 +444,6 @@ function getNameRegex(locale = window.locale) {
  */
 function getEmailRegex() {
   return /^(?=^.{3,63}$)(^[A-Za-z0-9]+(([_\.\-](?=[A-Za-z0-9]))[a-zA-Z0-9]+([\-\.](?=[A-Za-z0-9]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
-}
-
-/**
- * It returns the Phone regular expression
- */
-function getPhoneRegex() {
-  return /^.[0-9]$/gm;
 }
 
 /**

@@ -126,7 +126,7 @@ telegram backend. */
       .setFormValidation(validationForm)
       .addField(`#${phone.id}`, [
         {
-          validator: value => iti.isValidNumber(),
+          validator: value => iti.isValidNumber() && service.isNumeric(value),
           errorMessage: 'Phone number is invalid!',
         },
       ])
