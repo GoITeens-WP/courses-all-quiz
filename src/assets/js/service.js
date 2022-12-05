@@ -431,7 +431,7 @@ function getNameRegex(locale = window.locale) {
 
     // Румыния - ro
     case 'ro':
-      return /^[a-zA-Z0-9À-ž ,.'-]{2,}$/i;
+      return /^.[a-zA-ZĂÂÎȘȚăâîșț 'ʼ`-]{1,30}$/gm;
 
     // Украина - uk
     default:
