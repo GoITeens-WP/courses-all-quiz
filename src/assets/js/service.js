@@ -316,6 +316,12 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'The field is required',
       },
     ],
+    file: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
+      },
+    ],
   };
 
   const country = allInputs.find(input => input.name === 'country');

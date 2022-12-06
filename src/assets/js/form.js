@@ -1,4 +1,8 @@
-// Form.js - v1.1.0 - 2022-09-30 @Suzuya_re1
+/**
+ * Form.js - v1.2.0
+ * Created @Suzuya_re1 at 2022-10-01
+ * Updated @Dizardmk at 2022-12-06
+ */
 
 import $ from 'jquery';
 import intlTelInput from 'intl-tel-input';
@@ -32,14 +36,14 @@ $(window).on('load', async function () {
         !Zoho CRM params, window vars by default
         productName: 'dummy_product',
         productId: 'dummy_product_id',
-
-        ! Required params if you need send email
-        needSendEmail: false,
-        onlySendEmail: false,
-        emailTitle: 'title',
-        emailRecipient: 'test@test.test',
-
         */
+
+        /* Required params if you need send email */
+
+        // needSendEmail: true,
+        // onlySendEmail: true,
+        // emailTitle: 'Email title',
+        // emailRecipient: 'hr@goit.global',
       },
     ],
   };
@@ -148,20 +152,18 @@ telegram backend. */
         /* It's a function that gets the phone number from the input field. */
         const phoneNumber = iti.getNumber();
 
+        /* It's a function that gets the form data from the form and adds the fields emailTitle and emailRecipient */
+        const formData = new FormData(form);
+        formData.append('emailTitle', emailTitle);
+        formData.append('emailRecipient', emailRecipient);
+
         const loading = new service.Loading(form, service.translate('loadingMessage'));
         $(form).css('display', 'none');
         loading.show();
 
         if (needSendEmail) {
           await service
-            .sendEmail({
-              title: emailTitle,
-              name: name.value,
-              phone: phoneNumber,
-              email: email.value,
-              recipient: emailRecipient,
-              // ToDo - add message, attach file, etc.
-            })
+            .sendEmail(formData)
             .then(res => {
               /* It's a check that the form is only for sending an email.
               If so, it hides the loading block and shows the success block. */
@@ -181,17 +183,17 @@ telegram backend. */
             });
         }
 
-        const crmParams = [name.value, phoneNumber, email.value, productName, productId];
-
-        /* It's a function that generates data for the CRM. */
-        const data = crm.generateData(...crmParams);
-        /* It's a function that sends data to the CRM. */
-        const response = crm.submit(...crmParams);
-
-        /* It's a Google Tag Manager event. */
-        dataLayer.push({ event: 'lead' });
-
         if (!onlySendEmail) {
+          const crmParams = [name.value, phoneNumber, email.value, productName, productId];
+
+          /* It's a function that generates data for the CRM. */
+          const data = crm.generateData(...crmParams);
+          /* It's a function that sends data to the CRM. */
+          const response = crm.submit(...crmParams);
+
+          /* It's a Google Tag Manager event. */
+          dataLayer.push({ event: 'lead' });
+
           // https://www.youtube.com/watch?v=sqcLjcSloXs
 
           service.changeFormStep(form, 2);

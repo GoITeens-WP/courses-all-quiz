@@ -4,23 +4,20 @@ require 'phpmailer/PHPMailer.php';
 require 'phpmailer/Exception.php';
 
 // Переменные, которые отправляет пользователь
-$inputJSON = file_get_contents('php://input');
-$input = json_decode($inputJSON, true);
-logRequest($input);
+$title = $_POST['emailTitle'];
+$recipient = $_POST['emailRecipient'];
+$name = $_POST['name'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$message = $_POST['message'];
+$file_tmp  = $_FILES['file']['tmp_name'];
+$file_name = $_FILES['file']['name'];
 
-$title = $input['title'];
-$name = $input['name'];
-$email = $input['email'];
-$phone = $input['phone'];
-$message = $input['message'];
-$recipient = $input['recipient'];
-
+// Логирование запроса в mail.log
+logRequest($_POST);
 
 // Формирование самого письма
-$body = "Name: $name \n
-        Phone: $phone \n
-        Email: $email \n
-        Message: $message";
+$body = "Name: $name \nPhone: $phone \nEmail: $email \nMessage: $message";
 
 // Настройки PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -28,8 +25,12 @@ $mail->CharSet = 'UTF-8';
 try {
 	$mail->From = $email;
 	$mail->FromName = $name;
+
 	// Получатель письма
 	$mail->addAddress($recipient);
+
+	// Прикрипление файла к письму
+  $mail->AddAttachment($file_tmp, $file_name);
 
 	// Отправка сообщения
 	$mail->isHTML(false);

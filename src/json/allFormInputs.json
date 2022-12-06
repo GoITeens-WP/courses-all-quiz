@@ -20,9 +20,17 @@
       "title": "Email",
       "type": "email",
       "name": "email",
-      "placeholder": "@gmail.com",
+      "placeholder": "email@gmail.com",
       "dataField": "email",
       "required": true
+    },
+    {
+      "title": "File",
+      "type": "file",
+      "name": "file",
+      "dataField": "file",
+      "required": true,
+      "accept": ".doc, .docx, .pdf, .rtf"
     },
     {
       "title": "Your Question",
@@ -30,22 +38,6 @@
       "name": "message",
       "placeholder": "Ask your question",
       "dataField": "message"
-    },
-    {
-      "title": "Country",
-      "type": "text",
-      "name": "country",
-      "placeholder": "",
-      "dataField": "select",
-      "class": "input-wrap-half"
-    },
-    {
-      "title": "Zipcode",
-      "type": "text",
-      "name": "zipCode",
-      "placeholder": "00000",
-      "dataField": "zip",
-      "class": "input-wrap-half"
     },
     {
       "title": "By submitting this form, you agree to receive admissions and marketing communications via email or automated text, and you agree to our ",
@@ -58,6 +50,22 @@
         { "text": "Privacy Policy", "href": "policy/" },
         { "text": "Site Terms", "href": "terms/" }
       ]
+    },
+    {
+      "title": "Zipcode",
+      "type": "text",
+      "name": "zipCode",
+      "placeholder": "00000",
+      "dataField": "zip",
+      "class": "input-wrap-half"
+    },
+    {
+      "title": "Country",
+      "type": "text",
+      "name": "country",
+      "placeholder": "",
+      "dataField": "select",
+      "class": "input-wrap-half"
     }
   ]
 }
