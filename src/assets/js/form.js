@@ -134,7 +134,7 @@ telegram backend. */
           errorMessage: 'Phone number is invalid!',
         },
       ])
-      // submit form
+          // submit form
       .onSuccess(async function (event) {
         event.preventDefault();
 

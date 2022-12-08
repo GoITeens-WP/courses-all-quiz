@@ -58,6 +58,6 @@ input[type='tel'].input-field {
 
 /*! purgecss start ignore */
 .just-validate-error-label {
-  @apply absolute bottom-0 left-0 mt-1 translate-y-[calc(100%_+_4px)] text-sm font-medium;
+  @apply absolute bottom-0 left-0 mt-1 translate-y-[calc(100%_+_4px)]  text-[0.6rem] font-medium leading-[1.1];
 }
 /*! purgecss end ignore */
