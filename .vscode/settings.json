@@ -1,13 +1,68 @@
 {
-  // htmlhint
-  "htmlhint.enable": true,
   // lint
   "scss.lint.duplicateProperties": "warning",
   "css.lint.duplicateProperties": "warning",
   "scss.lint.unknownAtRules": "ignore",
   "css.lint.unknownAtRules": "ignore",
+  // prettier
+  "prettier.printWidth": 80,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.quoteProps": "as-needed",
+  "prettier.jsxSingleQuote": false,
+  "prettier.trailingComma": "es5",
+  "prettier.bracketSpacing": true,
+  "prettier.bracketSameLine": false,
+  "prettier.arrowParens": "always",
+  "prettier.proseWrap": "always",
+  // htmlhint
+  "htmlhint.enable": true,
+  "htmlhint.options": {
+    "doctype-first": false,
+    "doctype-html5": true,
+    "html-lang-require": true,
+    "head-script-disabled": true,
+    "style-disabled": true,
+    "script-disabled": false,
+    "title-require": false,
+    //
+    "attr-lowercase": false,
+    "attr-no-duplication": false,
+    "attr-no-unnecessary-whitespace": true,
+    "attr-unsafe-chars": true,
+    "attr-value-double-quotes": true,
+    "attr-value-single-quotes": false,
+    "attr-value-not-empty": false,
+    "attr-sorted": false,
+    "attr-whitespace": true,
+    "alt-require": true,
+    "input-requires-label": true,
+    //
+    "tags-check": false,
+    "tag-pair": true,
+    "tag-self-close": false,
+    "tagname-lowercase": true,
+    "tagname-specialchars": true,
+    "empty-tag-not-self-closed": false,
+    "src-not-empty": true,
+    "href-abs-or-rel": false,
+    //
+    "id-class-ad-disabled": true,
+    "id-class-value": true,
+    "id-unique": true,
+    //
+    "inline-script-disabled": true,
+    "inline-style-disabled": false,
+    //
+    "space-tab-mixed-disabled": "space",
+    "spec-char-escape": false
+  },
   // editor
+  "editor.wordSeparators": "`~!@#$%^&*()-_=+[{]}\\|;:'\",.<>/?",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.linkedEditing": true,
   "editor.wordWrap": "on",
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
