@@ -19,7 +19,7 @@ function send($token, $data, $input)
 //  https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
 //
 // MX
-// https://integrations.goit.global/connector_usa_mex/connector.php
+// https://goit-connectors.place/latam/connector/connector.php
 //
 // RO
 // https://goit-connectors.place/romania/goit/connector.php
