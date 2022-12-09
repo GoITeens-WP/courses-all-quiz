@@ -111,6 +111,10 @@ __MACOS__
 # Windows files
 thumb.db
 
+# Lock files
+package-lock.json
+yarn.lock
+
 # IDE
 .idea
 
