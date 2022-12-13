@@ -426,19 +426,19 @@ function getNameRegex(locale = window.locale) {
   switch (locale) {
     // США - en
     case 'en':
-      return /^[a-zñáéíóúü ,.'-]+$/i;
+      return /^.[a-zA-Z 'ʼ`-]{1,30}$/gm;
 
     // Польша - pl
     case 'pl':
-      return /^.*[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ,.'-]{2,}$/i;
+      return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,30}$/i;
 
     // Мексика - es / Колумбия - es
     case 'es':
-      return /^[a-zñáéíóúü ,.'-]+$/i;
+      return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,50}$/gm;
 
     // Румыния - ro
     case 'ro':
-      return /^.[a-zA-ZĂÂÎȘȚăâîșț 'ʼ`-]{1,30}$/gm;
+      return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,30}$/gm;
 
     // Украина - uk
     default:
