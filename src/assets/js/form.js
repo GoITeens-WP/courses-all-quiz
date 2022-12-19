@@ -130,11 +130,12 @@ telegram backend. */
       .setFormValidation(validationForm)
       .addField(`#${phone.id}`, [
         {
-          validator: value => iti.isValidNumber() && service.isNumeric(value) && !value.includes('.'),
+          validator: value =>
+            iti.isValidNumber() && service.isNumeric(value) && !value.includes('.'),
           errorMessage: 'Phone number is invalid!',
         },
       ])
-          // submit form
+      // submit form
       .onSuccess(async function (event) {
         event.preventDefault();
 
