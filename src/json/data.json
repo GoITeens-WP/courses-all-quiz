@@ -68,6 +68,7 @@
         "dataField": "checkbox",
         "required": true,
         "class": "input-wrap-checkbox",
+        "linkSeparator": "та",
         "links": [
           { "text": "Політика конфіденційності", "href": "https://goit.global/ua/privacy-policy/" },
           { "text": "Умови користування послугами", "href": "https://goit.global/ua/terms-of-use/" }
