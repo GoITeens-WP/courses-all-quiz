@@ -25,20 +25,6 @@ const css = done => {
         errLogToConsole: true,
       }).on('error', sass.logError)
     )
-    .pipe(mode.production(gcmq()))
-    .pipe(
-      postcss(
-        [
-          require('postcss-import')(),
-          tailwindcss('./tailwind.config.js'),
-          require('tailwindcss/nesting'),
-          require('autoprefixer'),
-        ],
-        {
-          parser: require('postcss-scss'),
-        }
-      )
-    )
     .pipe(
       mode.production(
         purgecss({
@@ -52,6 +38,20 @@ const css = done => {
         })
       )
     )
+    .pipe(
+      postcss(
+        [
+          require('postcss-import')(),
+          tailwindcss('./tailwind.config.js'),
+          require('tailwindcss/nesting'),
+          require('autoprefixer'),
+        ],
+        {
+          parser: require('postcss-scss'),
+        }
+      )
+    )
+    .pipe(mode.production(gcmq()))
     .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat({ path: 'style.css' }))
     .pipe(size({ showFiles: true }))

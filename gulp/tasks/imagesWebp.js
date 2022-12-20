@@ -8,7 +8,13 @@ const rename = require('gulp-rename');
 
 const imagesWebp = done => {
   return gulp
-    .src(paths.src.images + '/*.{jpg,png}')
+    .src([
+      `${paths.src.images}/*.{jpg,png}`,
+      `!src/assets/images/ogp/*.{jpg,png}`,
+      `!src/assets/images/favicon/*.{jpg,png}`,
+      `!src/assets/images/intTelInput/*.{jpg,png}`,
+      `!src/assets/images/countrySelect/*.{jpg,png}`,
+    ])
     .pipe(newer(paths.build.images))
     .pipe(
       imagemin([
