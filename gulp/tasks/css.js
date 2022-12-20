@@ -25,7 +25,6 @@ const css = done => {
         errLogToConsole: true,
       }).on('error', sass.logError)
     )
-    .pipe(mode.production(gcmq()))
     .pipe(
       postcss(
         [
@@ -39,6 +38,7 @@ const css = done => {
         }
       )
     )
+    .pipe(mode.production(gcmq()))
     .pipe(
       mode.production(
         purgecss({
