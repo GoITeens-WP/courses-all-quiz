@@ -26,6 +26,19 @@ const css = done => {
       }).on('error', sass.logError)
     )
     .pipe(
+      mode.production(
+        purgecss({
+          content: ['src/**/*.{html,js,njk,json}'],
+          skippedContentGlobs: ['node_modules/**'],
+          defaultExtractor: content => {
+            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
+            const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
+            return broadMatches.concat(innerMatches);
+          },
+        })
+      )
+    )
+    .pipe(
       postcss(
         [
           require('postcss-import')(),
@@ -39,19 +52,6 @@ const css = done => {
       )
     )
     .pipe(mode.production(gcmq()))
-    .pipe(
-      mode.production(
-        purgecss({
-          content: ['src/**/*.{html,js,njk,json}'],
-          skippedContentGlobs: ['node_modules/**'],
-          defaultExtractor: content => {
-            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
-            const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
-            return broadMatches.concat(innerMatches);
-          },
-        })
-      )
-    )
     .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
     .pipe(concat({ path: 'style.css' }))
     .pipe(size({ showFiles: true }))
