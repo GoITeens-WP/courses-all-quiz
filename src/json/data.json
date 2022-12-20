@@ -7,8 +7,7 @@
     "canonical": "link"
   },
   "header": {
-    "id": "header",
-    "title": "<span class=\"text-red-500\"> Red text</span>title black"
+    "id": "header"
   },
   "footer": {
     "id": "footer"
