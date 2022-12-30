@@ -22,9 +22,9 @@ node("all-biulds"){
     stage('Setup texts') {
         def buildUrl = env.RUN_DISPLAY_URL;
 
-        env.startBuildText = java.net.URLEncoder.encode("Build *${JOB_NAME}* started\n[Go to build](${buildUrl})", "UTF-8");
-        env.successBuildText = java.net.URLEncoder.encode("Build *${JOB_NAME}* finished SUCCESS.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
-        env.failedBuildText = java.net.URLEncoder.encode("Build *${JOB_NAME}* FAILED.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
+        env.startBuildText = java.net.URLEncoder.encode("➡️ *${JOB_NAME}* started.\n[Go to build](${buildUrl})", "UTF-8");
+        env.successBuildText = java.net.URLEncoder.encode("✅ *${JOB_NAME}* SUCCESS.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
+        env.failedBuildText = java.net.URLEncoder.encode("❌ *${JOB_NAME}* FAILED.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
     }
 
     stage('Pre Build Notify') {
