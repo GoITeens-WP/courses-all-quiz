@@ -1,5 +1,5 @@
 .backdrop {
-  @apply visible fixed inset-0 z-[100] flex portrait:overflow-hidden landscape:overflow-auto xl:landscape:overflow-hidden opacity-100 duration-100 ease-linear;
+  @apply visible fixed inset-0 z-[100] flex overflow-auto opacity-100 duration-100 ease-linear;
   background-color: rgba(0, 0, 0, 0.55);
 
   &.is-hidden {
