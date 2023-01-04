@@ -1,6 +1,7 @@
 <?php
 $token = 'DNBC-3VgDWLIIrpyBab0l9bISr0C-0VO';
 $inputJSON = file_get_contents('php://input');
+
 $input = json_decode($inputJSON, true);
 
 logRequest($input);
@@ -16,7 +17,7 @@ function send($token, $data, $input)
 // https://goit-connectors.place/goit/
 //
 // PL
-//  https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
+// https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
 //
 // CO/MX
 // https://goit-connectors.place/latam/connector/connector.php
@@ -67,26 +68,21 @@ function send($token, $data, $input)
 }
 function logResponse($msg, $response, $input)
 {
-  $file = fopen("$input[product_name]_response.log", 'a+');
   $date = date(DATE_RFC822);
 
   $string = [
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
   ];
-  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',') . PHP_EOL . PHP_EOL;
-  fclose($file);
+file_put_contents("log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }
 
 function logRequest($request)
 {
-  $file = fopen("$request[product_name].log", 'a+');
   $date = date(DATE_RFC822);
-
   $string = [
     'date' => $date,
     'input' => $request,
   ];
-  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',') . PHP_EOL . PHP_EOL;
-  fclose($file);
+file_put_contents("log/".date("Y-m-d")."-Req.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }
