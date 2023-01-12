@@ -1,9 +1,8 @@
 <?php
+
 $token = 'DNBC-3VgDWLIIrpyBab0l9bISr0C-0VO';
 $inputJSON = file_get_contents('php://input');
-
 $input = json_decode($inputJSON, true);
-
 logRequest($input);
 echo send($token, ['Lead' => $input], $input);
 
@@ -66,6 +65,7 @@ function send($token, $data, $input)
   logResponse($msg, $log, $input);
   return $body;
 }
+
 function logResponse($msg, $response, $input)
 {
   $date = date(DATE_RFC822);

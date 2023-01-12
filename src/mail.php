@@ -1,4 +1,5 @@
 <?php
+
 // Файлы phpmailer
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/Exception.php';
@@ -22,6 +23,7 @@ $body = "Name: $name \nPhone: $phone \nEmail: $email \nMessage: $message";
 // Настройки PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->CharSet = 'UTF-8';
+
 try {
 	$mail->From = $email;
 	$mail->FromName = $name;
