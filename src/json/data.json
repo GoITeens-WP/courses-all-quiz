@@ -46,21 +46,8 @@
         "dataField": "email",
         "required": true
       },
-      {
-        "title": "CV *",
-        "type": "file",
-        "name": "file",
-        "dataField": "file",
-        "required": true,
-        "accept": ".doc, .docx, .pdf, .rtf"
-      },
-      {
-        "title": "Мотиваційний лист",
-        "type": "textarea",
-        "name": "message",
-        "placeholder": "",
-        "dataField": "message"
-      },
+
+  
       {
         "title": "Згоден з ",
         "type": "checkbox",
