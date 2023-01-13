@@ -1,15 +1,15 @@
 {
   "inputs": [
     {
-      "title": "Name",
+      "title": "Імʼя *",
       "type": "text",
       "name": "name",
-      "placeholder": "Tom Bradley",
+      "placeholder": "",
       "dataField": "name",
       "required": true
     },
     {
-      "title": "Phone",
+      "title": "Телефон *",
       "type": "tel",
       "name": "phone",
       "placeholder": "",
@@ -17,7 +17,7 @@
       "required": true
     },
     {
-      "title": "Email",
+      "title": "Пошта *",
       "type": "email",
       "name": "email",
       "placeholder": "email@gmail.com",
@@ -25,7 +25,7 @@
       "required": true
     },
     {
-      "title": "File",
+      "title": "CV *",
       "type": "file",
       "name": "file",
       "dataField": "file",
@@ -33,22 +33,23 @@
       "accept": ".doc, .docx, .pdf, .rtf"
     },
     {
-      "title": "Your Question",
+      "title": "Мотиваційний лист / Сообщение / Вопрос",
       "type": "textarea",
       "name": "message",
-      "placeholder": "Ask your question",
+      "placeholder": "",
       "dataField": "message"
     },
     {
-      "title": "By submitting this form, you agree to receive admissions and marketing communications via email or automated text, and you agree to our ",
+      "title": "Згоден з ",
       "type": "checkbox",
       "name": "agree",
       "dataField": "checkbox",
       "required": true,
       "class": "input-wrap-checkbox",
+      "linkSeparator": "та",
       "links": [
-        { "text": "Privacy Policy", "href": "policy/" },
-        { "text": "Site Terms", "href": "terms/" }
+        { "text": "Політика конфіденційності", "href": "https://goit.global/ua/privacy-policy/" },
+        { "text": "Умови користування послугами", "href": "https://goit.global/ua/terms-of-use/" }
       ]
     },
     {

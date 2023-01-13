@@ -46,8 +46,6 @@
         "dataField": "email",
         "required": true
       },
-
-  
       {
         "title": "Згоден з ",
         "type": "checkbox",
