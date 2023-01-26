@@ -7,6 +7,7 @@ rm -rf ./build
 rm -rf node_modules
 
 # Build app
+yarn cache clean
 yarn
 yarn build
 

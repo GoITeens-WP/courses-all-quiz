@@ -12,15 +12,15 @@ const imagesWebp = done => {
       `${paths.src.images}/*.{jpg,png}`,
       `!src/assets/images/ogp/*.{jpg,png}`,
       `!src/assets/images/favicon/*.{jpg,png}`,
-      `!src/assets/images/intTelInput/*.{jpg,png}`,
-      `!src/assets/images/countrySelect/*.{jpg,png}`,
+      `!src/assets/images/intTelInput/*.{jpg,png,webp}`,
+      `!src/assets/images/countrySelect/*.{jpg,png,webp}`,
     ])
     .pipe(newer(paths.build.images))
     .pipe(
       imagemin([
         webp({
-          // lossless: true, if pngs turn out sucky uncomment this and redo just pngs
-          quality: 80,
+          quality: 75,
+          // lossless: true, // if pngs turn out sucky uncomment this and redo just pngs
         }),
       ])
     )

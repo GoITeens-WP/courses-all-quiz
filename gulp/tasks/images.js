@@ -10,8 +10,8 @@ const imageMinConfig = {
   optipng: { optimizationLevel: 5 },
   svgo: {
     plugins: [
-      { removeViewBox: true },
       { cleanupIDs: false },
+      { removeViewBox: true },
       { removeComments: true },
       { removeEmptyContainers: true },
     ],
