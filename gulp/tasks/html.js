@@ -11,10 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const htmlminConfig = {
-  collapseBooleanAttributes: true, // Omit attribute values from boolean attributes
-  collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
   removeComments: true, // Strip HTML comments
-  removeEmptyAttributes: true, // Remove all attributes with whitespace-only values
 };
 
 const cachebustConfig = {
