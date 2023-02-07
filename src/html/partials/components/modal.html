@@ -1,9 +1,5 @@
-<div class="backdrop is-hidden" data-modal>
+<section class="backdrop is-hidden smOnly:px-2" data-modal>
   <div class="modal bg-white text-black-light">
-    <svg class="logo" width="74" height="24" aria-label="{{modal.logo_aria}}">
-      <use href="./assets/images/sprite.svg#icon-goit-logo"></use>
-    </svg>
-
     <button
       class="modal-close-btn"
       type="button"
@@ -15,7 +11,9 @@
       </svg>
     </button>
 
+    <h2 class="text-center text-2xl font-bold">{{ form.title }}</h2>
+
     {% import './macro/step.html' as service %} {{service.stepDiv(form.steps, form.ID)}} {% include
     './formFields.njk' %}
   </div>
-</div>
+</section>

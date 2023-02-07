@@ -20,6 +20,16 @@
     }
   },
   {
+    "key": "The field must contain a minimum of 2 characters",
+    "dict": {
+      "ru": "Поле должно содержать минимум 2 символа",
+      "uk": "Поле повинно містити мінімум 2 символи",
+      "pl": "Pole musi zawierać minimum 2 znaki",
+      "es": "El campo debe contener un mínimo de 2 caracteres",
+      "ro": "Câmpul trebuie să conțină un minim de 2 caractere"
+    }
+  },
+  {
     "key": "The field must contain a minimum of 3 characters",
     "dict": {
       "ru": "Поле должно содержать минимум 3 символа",

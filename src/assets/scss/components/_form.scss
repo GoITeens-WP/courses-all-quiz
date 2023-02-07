@@ -11,6 +11,16 @@
     @apply mx-auto block;
   }
 }
+
+.leeloo > div .leeloo-lgt-form-wrapper .leeloo-lgt-form {
+  width: 100% !important;
+}
+.leeloo .leeloo-lgt-form {
+  width: 100% !important;
+}
+.leeloo > div {
+  width: 100%;
+}
 /*! purgecss end ignore */
 
 // Progress bar styles
@@ -46,7 +56,7 @@
 }
 
 .steps-bar {
-  @apply my-4 flex justify-between p-0;
+  @apply mb-4 flex justify-between p-0;
 
   & .active:before {
     @apply border-accent bg-white;
@@ -96,15 +106,5 @@
 }
 
 .form-btn {
-  @apply mt-10 w-full rounded-2xl border-2 border-transparent bg-accent p-6 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent;
-}
-
-.leeloo > div .leeloo-lgt-form-wrapper .leeloo-lgt-form {
-  width: 100% !important;
-}
-.leeloo .leeloo-lgt-form {
-  width: 100% !important;
-}
-.leeloo > div {
-  width: 100%;
+  @apply mt-6 w-full rounded-2xl border-2 border-transparent bg-accent p-4 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent;
 }
