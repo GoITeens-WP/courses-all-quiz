@@ -1,5 +1,9 @@
-<form class="mt-10 text-lg" id="{{form.ID}}" novalidate autocomplete="on">
-  <h2 class="mb-6 text-center text-2xl">{{ form.title }}</h2>
+<form class="mt-6 text-lg" id="{{form.ID}}" novalidate autocomplete="on">
   <div class="flex flex-wrap gap-6">{% block formFields %} {% endblock %}</div>
-  <button class="form-btn disabled:bg-gray-200 disabled:border-none disabled:hover:text-white" type="submit">{{ form.btnSubmit }}</button>
+  <button
+    class="form-btn disabled:border-none disabled:bg-gray-200 disabled:hover:text-white"
+    type="submit"
+  >
+    {{ form.btnSubmit }}
+  </button>
 </form>

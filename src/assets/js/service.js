@@ -217,19 +217,19 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'Name is required',
       },
       {
-        rule: 'customRegexp',
-        value: getNameRegex(),
-        errorMessage: 'Name is invalid',
-      },
-      {
         rule: 'minLength',
-        value: 3,
-        errorMessage: 'The field must contain a minimum of 3 characters',
+        value: 2,
+        errorMessage: 'The field must contain a minimum of 2 characters',
       },
       {
         rule: 'maxLength',
         value: 30,
         errorMessage: 'The field must contain a maximum of 30 characters',
+      },
+      {
+        rule: 'customRegexp',
+        value: getNameRegex(),
+        errorMessage: 'Name is invalid',
       },
     ],
     phone: [
@@ -426,23 +426,23 @@ function getNameRegex(locale = window.locale) {
   switch (locale) {
     // США - en
     case 'en':
-      return /^.[a-zA-Z 'ʼ`-]{1,30}$/gm;
+      return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
 
     // Польша - pl
     case 'pl':
-      return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,30}$/i;
+      return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,}$/i;
 
     // Мексика - es / Колумбия - es
     case 'es':
-      return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,50}$/gm;
+      return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,}$/gm;
 
     // Румыния - ro
     case 'ro':
-      return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,30}$/gm;
+      return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,}$/gm;
 
     // Украина - uk
     default:
-      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,30}$/gm;
+      return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,}$/gm;
   }
 }
 
