@@ -22,10 +22,14 @@ $(window).on('load', async function () {
 
     utmMarks: ['utm_source', 'utm_medium', 'utm_content', 'utm_term', 'utm_campaign'],
     referralMarks: ['SRC', 'from'],
-
-    // defaultLocale: Украина(uk), Польша(pl), Мексика-Колумбия(es), США(en), Румыния(ro)
+    /**
+     * defaultLocale: Украина(uk), Польша(pl), Мексика-Колумбия(es), США(en), Румыния(ro)
+     */
     defaultLocale: 'uk',
-    // phoneCountry: Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), США(us), Румыния(ro)
+    /**
+     * defaultPhoneCountry & preferredPhoneCountries: Украина(ua), Польша(pl), Мексика(mx),
+     * Колумбия(co), США(us), Румыния(ro)
+     */
     defaultPhoneCountry: 'ua',
     preferredPhoneCountries: ['ua'],
     excludePhoneCountries: ['ru', 'by'],
@@ -41,7 +45,6 @@ $(window).on('load', async function () {
         */
 
         /* Required params if you need send email */
-
         // needSendEmail: true,
         // onlySendEmail: true,
         // emailTitle: 'Email title',

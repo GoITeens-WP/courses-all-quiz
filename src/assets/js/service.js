@@ -424,23 +424,23 @@ function translate(key, locale = window.locale) {
  */
 function getNameRegex(locale = window.locale) {
   switch (locale) {
-    // США - en
+    // США(en)
     case 'en':
       return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
 
-    // Польша - pl
+    // Польша(pl)
     case 'pl':
       return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,}$/i;
 
-    // Мексика - es / Колумбия - es
+    // Мексика-Колумбия(es)
     case 'es':
       return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,}$/gm;
 
-    // Румыния - ro
+    // Румыния(ro)
     case 'ro':
       return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,}$/gm;
 
-    // Украина - uk
+    // Украина(uk)
     default:
       return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,}$/gm;
   }
