@@ -1,4 +1,6 @@
-# СсылкаНаМакет
+# Ссылка на макет
+
+https://www.figma.com/file/yourMarkUpHere
 
 # Tailwind CSS starter kit for GoWeb 👾
 
