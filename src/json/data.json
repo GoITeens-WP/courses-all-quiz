@@ -13,8 +13,7 @@
     "id": "footer"
   },
   "modal": {
-    "btn_close_aria": "кнопка закриття модального вікна",
-    "logo_aria": "Логотип"
+    "btn_close_aria": "кнопка закриття модального вікна"
   },
   "form": {
     "ID": "leadForm",
