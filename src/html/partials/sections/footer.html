@@ -1,78 +1,53 @@
 {% set section = footer %}
-<footer class="bg-black py-10 text-white xl:pt-[52px] xl:pb-[34px]">
+<footer class="bg-black py-10 text-white">
   <div class="container">
-    <a class="mx-auto inline-block mb-8" href="{{page.canonical}}" aria-label="{{header.link_logo_aria}}">
-          <svg aria-label="{{header.logo_aria}}" width="100" height="30" class="fill-white/30">
-            <use href="./assets/images/sprite.svg#logo"></use>
-          </svg>
-        </a>
-    <div class="md:mb-10 md:flex md:justify-between xl:mb-[34px] xl:items-center">
-      <ul
-        class="mx-auto mb-5 w-max text-[12px] font-medium leading-[2] tracking-[0.215em] md:mb-0 xl:mx-0 xl:text-[14px] xl:leading-[1.7] mdOnly:mx-0"
-      >
-        {% for contact in section.contacts %}
-        <li class="w-max whitespace-nowrap duration-300 hover:text-primary md:whitespace-normal">
-          <a href="{{contact.link}}">{{contact.text}}</a>
-        </li>
-        {% endfor %}
-      </ul>
-      <a
-        class="mx-auto mb-5 block w-max text-[12px] font-medium leading-[2] tracking-[0.095em] duration-300 hover:text-primary md:mb-0 xl:text-[14px] xl:leading-[1.7] mdOnly:mx-0"
-        href="{{section.mail.link}}"
-        >{{section.mail.text}}</a
-      >
-      <address
-        class="mx-auto mb-7 w-max text-center text-[12px] font-medium not-italic leading-[1.3] md:mb-0 md:text-start mdOnly:mx-0"
-      >
-        {{section.address}}
-      </address>
-
-      <ul class="mx-auto mb-7 flex w-max gap-[6px] md:mb-0 mdOnly:mx-0">
+    <div class="md:mb-6 md:flex md:justify-between">
+      <div class="flex items-center justify-between smOnly:mb-6 md:gap-x-[84px] xl:gap-x-[250px]">
+        <ul class="w-max text-[12px] font-medium leading-[2] tracking-[0.05em]">
+          {% for contact in section.contacts %}
+          <li class="w-max whitespace-nowrap duration-300 hover:text-primary md:whitespace-normal">
+            <a href="{{contact.link}}">{{contact.text}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <address
+          class="w-max text-[12px] font-medium leading-[2] tracking-[0.05em] not-italic">
+          {{section.address}}
+        </address>
+      </div>
+      <a class="smOnly:mx-auto smOnly:mb-6 block w-max text-[12px] font-medium leading-[2] tracking-[0.095em] duration-300 hover:text-primary mdOnly:mx-0"
+        href="{{section.mail.link}}">{{section.mail.text}}</a>
+        <ul class="smOnly:mx-auto mb-7 flex w-max gap-[6px]">
         {% for social in section.socialLinks %}
-        <li>
-          <a
-            class="link"
-            href="{{social.link}}"
-            aria-label="посилання на {{social.alt}}"
-            rel="noopener noreferrer nofollow"
-            target="_blank"
-          >
-            <img
-              class="duration-300 hover:scale-125"
-              src="./assets/images/social/{{social.type}}.svg"
-              alt="лого {{social.alt}}"
-              loading="lazy"
-              height="24"
-              width="24"
-            />
+        <li class="social_link">
+          <a class="link" href="{{social.link}}" aria-label="{{social.altLink}}" rel="noopener noreferrer nofollow"
+            target="_blank">
+            <svg class="duration-300 hover:scale-125 social"
+              aria-label="{{social.alt}}" height="24" width="24">
+              <use href="./assets/images/sprite.svg#{{social.type}}"></use>
+            </svg>
           </a>
         </li>
         {% endfor %}
       </ul>
     </div>
-    <div class="md:flex md:flex-row-reverse md:items-center md:justify-between">
-      <div class="mb-7 md:mb-0 md:flex md:gap-10">
+    <div class="md:flex md:flex-row-reverse md:items-end md:justify-between">
         {% for agreement in section.agreementList %}
-        <div
-          class="mx-auto mb-3 w-max text-[10px] font-medium leading-[1.2] opacity-30 duration-300 last:mb-0 hover:opacity-100 md:mb-0"
-        >
-          <a
-            href="{{agreement.link}}"
-            class="whitespace-nowrap md:whitespace-normal"
-            rel="noopener noreferrer nofollow"
-            target="_blank"
-          >
-            {{agreement.text}}
-          </a>
-        </div>
+        <a href="{{agreement.link}}"
+          class="whitespace-nowrap md:whitespace-normal text-center block smOnly:mx-auto mb-3 w-max text-[10px] font-medium leading-[1.2] opacity-30 duration-300 last:mb-0 hover:opacity-100 md:mb-0"
+          rel="noopener noreferrer nofollow" target="_blank">
+          {{agreement.text}}
+        </a>
         {% endfor %}
-      </div>
-      <div class="flex items-center justify-center gap-5">
-
-        <span class="text-[10px] font-medium leading-[1.2] opacity-30" id="copyright"
-          >{{section.copyright.text}}</span
-        >
-      </div>
+        <p class="text-[10px] smOnly:mt-8 smOnly:mb-8 font-medium leading-[1.2] text-center opacity-30">{{section.copyright.text}}
+        <span id="copyright">&copy; {{section.copyright.year}}</span>
+        <script>document.getElementById('copyright').insertAdjacentText('beforeend',new Date().getFullYear());</script>
+        </p>
+        <a class="mdOnly:hidden flex justify-center" href="{{page.canonical}}" aria-label="{{section.linkLogoAria}}">
+        <svg aria-label="{{section.logoAria}}" width="100" height="30" class="fill-white/30">
+          <use href="./assets/images/sprite.svg#logo"></use>
+        </svg>
+        </a>
     </div>
   </div>
 </footer>

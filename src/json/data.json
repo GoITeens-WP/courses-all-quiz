@@ -10,6 +10,8 @@
     "id": "header"
   },
   "footer": {
+    "linkLogoAria": "Посилання на головну сторінку сайту",
+    "logoAria": "Логотип сайту",
     "contacts": [
       {
         "text": "(050) 366 17 77",
@@ -28,30 +30,39 @@
       {
         "link": "https://www.facebook.com/goITclub/",
         "type": "facebook",
-        "alt": "фейсбук"
+        "alt": "Логотип фейсбук",
+        "altLink": "Посилання на фейсбук"
       },
       {
         "link": "https://www.instagram.com/goitclub/",
         "type": "instagram",
-        "alt": "iнстаграм"
+        "alt": "Логотип iнстаграм",
+        "altLink": "Посилання на iнстаграм"
       },
       {
         "link": "https://t.me/junior_developer_ua",
         "type": "telegram",
-        "alt": "телеграм"
+        "alt": "Логотип телеграм",
+        "altLink": "Посилання на телеграм"
       },
       {
         "link": "https://www.youtube.com/channel/UCN7NQEBOUuIoXrJZzqVb58Q/videos",
         "type": "youtube",
-        "alt": "ютуб"
+        "alt": "Логотип ютуб",
+        "altLink": "Посилання на ютуб"
       },
       {
         "link": "https://www.linkedin.com/company/goit-start-your-career-in-it/",
         "type": "linkedin",
-        "alt": "лiнкедин"
+        "alt": "Логотип лiнкедин",
+        "altLink": "Посилання на лiнкедин"
       }
     ],
     "agreementList": [
+      {
+        "text": "Умови користування послугами",
+        "link": "https://goit.global/ua/terms-of-use/"
+      },
       {
         "text": "Політика конфіденційності",
         "link": "https://goit.global/ua/privacy-policy/"
@@ -63,7 +74,8 @@
     ],
     "address": "Ю. Іллєнка, 12 <br/>Київ, Україна",
     "copyright": {
-      "text": "GoIT &copy; 2014 - <script>document.getElementById('copyright').insertAdjacentText('beforeend', new Date().getFullYear());</script>"
+      "text": "GoIT",
+      "year": "2014-"
     }
   },
   "modal": {
