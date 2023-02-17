@@ -18,7 +18,11 @@
   "form": {
     "ID": "leadForm",
     "title": "Реєстрація",
-    "steps": ["1", "2", "Готово"],
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ],
     "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
@@ -54,8 +58,14 @@
         "class": "input-wrap-checkbox",
         "linkSeparator": "та",
         "links": [
-          { "text": "Політика конфіденційності", "href": "https://goit.global/ua/privacy-policy/" },
-          { "text": "Умови користування послугами", "href": "https://goit.global/ua/terms-of-use/" }
+          {
+            "text": "Політика конфіденційності",
+            "href": "https://goit.global/ua/privacy-policy/"
+          },
+          {
+            "text": "Умови користування послугами",
+            "href": "https://goit.global/ua/terms-of-use/"
+          }
         ]
       }
     ],

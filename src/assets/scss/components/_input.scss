@@ -11,7 +11,7 @@
 }
 
 .input-label {
-  @apply mb-1 inline-block;
+  @apply mb-1 inline-block text-[14px] font-medium leading-[1.2] md:mb-2 md:text-[16px] md:leading-[1.6];
 }
 
 .input-message {
@@ -21,7 +21,7 @@
 input[data-type='text'].input-field,
 input[type='email'].input-field,
 input[type='tel'].input-field {
-  @apply h-10 py-2 px-4;
+  @apply h-11 p-3 text-[14px] font-medium leading-[1.2] md:text-[16px] md:leading-[1.25];
 }
 
 input[type='tel'].input-field {
@@ -29,7 +29,7 @@ input[type='tel'].input-field {
 }
 
 .input-field {
-  @apply w-full rounded-2xl border border-gray-400 bg-transparent py-2 px-4;
+  @apply w-full rounded-lg border border-gray-400 bg-transparent py-2 px-4;
 
   &::placeholder {
     @apply text-gray-400;
@@ -40,7 +40,7 @@ input[type='tel'].input-field {
   }
 
   &.is-invalid {
-    @apply border-2 border-red-600;
+    @apply border-2 border-[#CA381F];
   }
 }
 
@@ -48,20 +48,20 @@ input[type='tel'].input-field {
   @apply absolute left-0 top-0 inline-block h-6 w-6 rounded-full border border-gray-400 bg-contain bg-center bg-no-repeat;
 
   [type='checkbox']:checked + & {
-    @apply bg-check;
+    @apply border-accent bg-check;
   }
 }
 
 .input-label-checkbox {
-  @apply relative inline-block cursor-pointer pl-10 text-sm;
+  @apply relative inline-block cursor-pointer pl-10 text-[10px] font-medium leading-[1.4] md:text-[12px];
 
   & > .is-invalid + .checkbox {
-    @apply border-2 border-red-600;
+    @apply border-2 border-[#CA381F];
   }
 }
 
 /*! purgecss start ignore */
 .just-validate-error-label {
-  @apply absolute bottom-0 left-0 mt-1 translate-y-[calc(100%_+_4px)]  text-[0.6rem] font-bold leading-[1.1];
+  @apply absolute bottom-0 left-0 mt-1 translate-y-[calc(100%_+_4px)]  text-[10px] font-light leading-[1.1];
 }
 /*! purgecss end ignore */

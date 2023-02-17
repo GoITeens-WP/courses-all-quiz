@@ -1,4 +1,4 @@
-<section class="backdrop is-hidden smOnly:px-2" data-modal>
+<section class="backdrop is-hidden smOnly:px-5" data-modal>
   <div class="modal bg-white text-black-light">
     <button
       class="modal-close-btn"
@@ -6,12 +6,19 @@
       data-modal-close
       aria-label="{{modal.btn_close_aria}}"
     >
-      <svg class="modal-btn-close-svg" width="30" height="30" aria-label="{{modal.btn_close_aria}}">
+      <svg
+        class="modal-btn-close-svg md:h-8 md:w-8"
+        width="24"
+        height="24"
+        aria-label="{{modal.btn_close_aria}}"
+      >
         <use href="./assets/images/sprite.svg#icon-close-menu"></use>
       </svg>
     </button>
 
-    <h2 class="text-center text-2xl font-bold">{{ form.title }}</h2>
+    <h2 class="mb-[26px] text-[20px] font-bold leading-[1.2] md:mb-9 md:text-[24px]">
+      {{ form.title }}
+    </h2>
 
     {% import './macro/step.html' as service %} {{service.stepDiv(form.steps, form.ID)}} {% include
     './formFields.njk' %}

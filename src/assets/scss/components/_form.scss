@@ -56,14 +56,14 @@
 }
 
 .steps-bar {
-  @apply mb-4 flex justify-between p-0;
+  @apply relative flex justify-between py-0 px-[18px] md:px-10;
 
   & .active:before {
     @apply border-accent bg-white;
   }
 
   & > .item {
-    @apply relative overflow-visible whitespace-nowrap border-b-4 border-accent pb-5 text-center font-semibold text-accent;
+    @apply relative overflow-visible whitespace-nowrap border-b border-accent text-center font-semibold text-accent;
     flex: 2;
 
     &:first-child,
@@ -76,11 +76,11 @@
     }
 
     &:last-child {
-      @apply text-right;
+      @apply pr-3 text-right;
     }
 
     &:before {
-      @apply absolute left-[calc(50%_-_15px)] -bottom-4 block h-[30px] w-[30px] rounded-full border-4 border-accent bg-white duration-300 ease-linear content-[""];
+      @apply absolute left-[calc(50%_-_15px)] -bottom-4 block h-[28px] w-[28px] rounded-full border border-accent bg-white duration-300 ease-linear content-[""] md:h-8 md:w-8;
     }
 
     &:first-child:before {
@@ -92,19 +92,24 @@
     }
 
     &.active:before {
-      @apply scale-[1.33];
+      @apply border-none bg-[#FFB584] text-[#010101];
     }
 
     span {
-      @apply duration-300 ease-linear;
+      @apply absolute -top-[6px] text-[14px] leading-[1.2] text-[#010101] duration-300 ease-linear md:-top-2.5 md:text-[16px];
     }
-
+    &:last-child span {
+      @apply right-2.5 md:right-3;
+    }
+    &:nth-child(2) span {
+      @apply right-[calc(50%_-_3px)] md:right-[calc(50%_-_6px)];
+    }
     &:not(.active) span {
-      @apply opacity-0;
+      @apply border-accent bg-white text-[#979797];
     }
   }
 }
 
 .form-btn {
-  @apply mt-6 w-full rounded-2xl border-2 border-transparent bg-accent p-4 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent;
+  @apply mt-7 w-full rounded-2xl border-2 border-transparent bg-accent p-4 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent;
 }
