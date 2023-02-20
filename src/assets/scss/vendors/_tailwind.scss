@@ -39,7 +39,15 @@ body {
 //этот клас необходим для иконки инстаграма в футере, так как спрайт не воспринимает градиент для фона
 .social_link:nth-child(2) {
   & .social {
-    background: linear-gradient(315deg, #FBE18A 0.96%, #FCBB45 21.96%, #F75274 38.96%, #D53692 52.96%, #8F39CE 74.96%, #5B4FE9 100.96%);
+    background: linear-gradient(
+      315deg,
+      #fbe18a 0.96%,
+      #fcbb45 21.96%,
+      #f75274 38.96%,
+      #d53692 52.96%,
+      #8f39ce 74.96%,
+      #5b4fe9 100.96%
+    );
     border-radius: 16px;
   }
 }

@@ -1,17 +1,20 @@
 {
   "page": {
-    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Мексика-Колумбия(es), США(en), Румыния(ro)",
+    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro)",
     "lang": "uk",
     "title": "title",
     "description": "description",
-    "canonical": "link"
+    "canonical": "./"
+  },
+  "logo": {
+    "link_logo_aria": "Посилання на головну сторінку сайту",
+    "logo_aria": "Логотип сайту"
   },
   "header": {
     "id": "header"
   },
   "footer": {
-    "linkLogoAria": "Посилання на головну сторінку сайту",
-    "logoAria": "Логотип сайту",
+    "id": "footer",
     "contacts": [
       {
         "text": "(050) 366 17 77",
@@ -29,33 +32,33 @@
     "socialLinks": [
       {
         "link": "https://www.facebook.com/goITclub/",
-        "type": "facebook",
+        "svg": "facebook",
         "alt": "Логотип фейсбук",
-        "altLink": "Посилання на фейсбук"
+        "link_alt": "Посилання на фейсбук"
       },
       {
         "link": "https://www.instagram.com/goitclub/",
-        "type": "instagram",
+        "svg": "instagram",
         "alt": "Логотип iнстаграм",
-        "altLink": "Посилання на iнстаграм"
+        "link_alt": "Посилання на iнстаграм"
       },
       {
         "link": "https://t.me/junior_developer_ua",
-        "type": "telegram",
+        "svg": "telegram",
         "alt": "Логотип телеграм",
-        "altLink": "Посилання на телеграм"
+        "link_alt": "Посилання на телеграм"
       },
       {
         "link": "https://www.youtube.com/channel/UCN7NQEBOUuIoXrJZzqVb58Q/videos",
-        "type": "youtube",
+        "svg": "youtube",
         "alt": "Логотип ютуб",
-        "altLink": "Посилання на ютуб"
+        "link_alt": "Посилання на ютуб"
       },
       {
         "link": "https://www.linkedin.com/company/goit-start-your-career-in-it/",
-        "type": "linkedin",
+        "svg": "linkedin",
         "alt": "Логотип лiнкедин",
-        "altLink": "Посилання на лiнкедин"
+        "link_alt": "Посилання на лiнкедин"
       }
     ],
     "agreementList": [

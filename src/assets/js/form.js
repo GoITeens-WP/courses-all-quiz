@@ -23,12 +23,13 @@ $(window).on('load', async function () {
     utmMarks: ['utm_source', 'utm_medium', 'utm_content', 'utm_term', 'utm_campaign'],
     referralMarks: ['SRC', 'from'],
     /**
-     * defaultLocale: Украина(uk), Польша(pl), Мексика-Колумбия(es), США(en), Румыния(ro)
+     * defaultLocale:
+     * Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro)
      */
     defaultLocale: 'uk',
     /**
-     * defaultPhoneCountry & preferredPhoneCountries: Украина(ua), Польша(pl), Мексика(mx),
-     * Колумбия(co), США(us), Румыния(ro)
+     * defaultPhoneCountry & preferredPhoneCountries:
+     * Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), США(us), Румыния(ro), Филиппины(ph)
      */
     defaultPhoneCountry: 'ua',
     preferredPhoneCountries: ['ua'],

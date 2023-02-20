@@ -1,30 +1,41 @@
 {% set section = footer %}
-<footer class="bg-black py-10 text-white">
+<footer class="{{section.id}} bg-black py-10 text-white">
   <div class="container">
     <div class="md:mb-6 md:flex md:justify-between">
-      <div class="flex items-center justify-between smOnly:mb-6 md:gap-x-[84px] xl:gap-x-[250px]">
+      <div class="flex items-center justify-between md:gap-x-[84px] xl:gap-x-[250px] smOnly:mb-6">
         <ul class="w-max text-[12px] font-medium leading-[2] tracking-[0.05em]">
           {% for contact in section.contacts %}
-          <li class="w-max whitespace-nowrap duration-300 hover:text-primary md:whitespace-normal">
+          <li class="w-max whitespace-nowrap duration-300 hover:text-accent md:whitespace-normal">
             <a href="{{contact.link}}">{{contact.text}}</a>
           </li>
           {% endfor %}
         </ul>
-        <address
-          class="w-max text-[12px] font-medium leading-[2] tracking-[0.05em] not-italic">
+        <address class="w-max text-[12px] font-medium not-italic leading-[2] tracking-[0.05em]">
           {{section.address}}
         </address>
       </div>
-      <a class="smOnly:mx-auto smOnly:mb-6 block w-max text-[12px] font-medium leading-[2] tracking-[0.095em] duration-300 hover:text-primary mdOnly:mx-0"
-        href="{{section.mail.link}}">{{section.mail.text}}</a>
-        <ul class="smOnly:mx-auto mb-7 flex w-max gap-[6px]">
+      <a
+        class="block w-max text-[12px] font-medium leading-[2] tracking-[0.095em] duration-300 hover:text-accent smOnly:mx-auto smOnly:mb-6 mdOnly:mx-0"
+        href="{{section.mail.link}}"
+        >{{section.mail.text}}</a
+      >
+      <ul class="mb-7 flex w-max gap-[6px] smOnly:mx-auto">
         {% for social in section.socialLinks %}
         <li class="social_link">
-          <a class="link" href="{{social.link}}" aria-label="{{social.altLink}}" rel="noopener noreferrer nofollow"
-            target="_blank">
-            <svg class="duration-300 hover:scale-125 social"
-              aria-label="{{social.alt}}" height="24" width="24">
-              <use href="./assets/images/sprite.svg#{{social.type}}"></use>
+          <a
+            href="{{social.link}}"
+            aria-label="{{social.link_alt}}"
+            rel="noopener noreferrer nofollow"
+            target="_blank"
+          >
+            <svg
+              class="social duration-300 hover:scale-125"
+              height="24"
+              width="24"
+              aria-label="{{social.alt}}"
+            >
+              <title>{{social.alt}}</title>
+              <use href="./assets/images/sprite.svg#{{social.svg}}"></use>
             </svg>
           </a>
         </li>
@@ -32,22 +43,37 @@
       </ul>
     </div>
     <div class="md:flex md:flex-row-reverse md:items-end md:justify-between">
-        {% for agreement in section.agreementList %}
-        <a href="{{agreement.link}}"
-          class="whitespace-nowrap md:whitespace-normal text-center block smOnly:mx-auto mb-3 w-max text-[10px] font-medium leading-[1.2] opacity-30 duration-300 last:mb-0 hover:opacity-100 md:mb-0"
-          rel="noopener noreferrer nofollow" target="_blank">
-          {{agreement.text}}
-        </a>
-        {% endfor %}
-        <p class="text-[10px] smOnly:mt-8 smOnly:mb-8 font-medium leading-[1.2] text-center opacity-30">{{section.copyright.text}}
+      {% for agreement in section.agreementList %}
+      <a
+        class="mb-3 block w-max whitespace-nowrap text-center text-[10px] font-medium leading-[1.2] opacity-30 duration-300 last:mb-0 hover:opacity-100 md:mb-0 md:whitespace-normal smOnly:mx-auto"
+        href="{{agreement.link}}"
+        rel="noopener noreferrer nofollow"
+        target="_blank"
+      >
+        {{agreement.text}}
+      </a>
+      {% endfor %}
+      <p
+        class="text-center text-[10px] font-medium leading-[1.2] opacity-30 smOnly:mt-8 smOnly:mb-8"
+      >
+        {{section.copyright.text}}
         <span id="copyright">&copy; {{section.copyright.year}}</span>
-        <script>document.getElementById('copyright').insertAdjacentText('beforeend',new Date().getFullYear());</script>
-        </p>
-        <a class="mdOnly:hidden flex justify-center" href="{{page.canonical}}" aria-label="{{section.linkLogoAria}}">
-        <svg aria-label="{{section.logoAria}}" width="100" height="30" class="fill-white/30">
-          <use href="./assets/images/sprite.svg#logo"></use>
+        <script>
+          document
+            .getElementById('copyright')
+            .insertAdjacentText('beforeend', new Date().getFullYear());
+        </script>
+      </p>
+      <a
+        class="flex justify-center mdOnly:hidden"
+        href="{{page.canonical}}"
+        aria-label="{{logo.link_logo_aria}}"
+      >
+        <svg class="fill-white/30" width="100" height="30" aria-label="{{logo.logo_aria}}">
+          <title>{{logo.logo_aria}}</title>
+          <use href="./assets/images/sprite.svg#logo-transparent"></use>
         </svg>
-        </a>
+      </a>
     </div>
   </div>
 </footer>
