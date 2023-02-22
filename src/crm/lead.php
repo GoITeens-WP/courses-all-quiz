@@ -18,6 +18,9 @@ function send($token, $data, $input)
 // PL
 // https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
 //
+// PH
+// https://goit-connectors.place/phillipines/zoho/loader.php
+//
 // CO/MX
 // https://goit-connectors.place/latam/connector/connector.php
 //
