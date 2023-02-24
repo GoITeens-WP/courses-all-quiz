@@ -29,7 +29,7 @@
         "title": "Імʼя *",
         "type": "text",
         "name": "name",
-        "placeholder": "",
+        "placeholder": "Ім’я",
         "dataField": "name",
         "required": true
       },

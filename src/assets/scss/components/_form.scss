@@ -63,7 +63,7 @@
   }
 
   & > .item {
-    @apply relative overflow-visible whitespace-nowrap border-b border-accent text-center font-semibold text-accent;
+    @apply relative overflow-visible whitespace-nowrap border-b border-accent font-normal;
     flex: 2;
 
     &:first-child,
@@ -72,11 +72,11 @@
     }
 
     &:first-child {
-      @apply pl-3 text-left;
+      @apply pl-3;
     }
 
     &:last-child {
-      @apply pr-3 text-right;
+      @apply pr-3;
     }
 
     &:before {
@@ -96,14 +96,22 @@
     }
 
     span {
-      @apply absolute -top-[6px] text-[14px] leading-[1.2] text-[#010101] duration-300 ease-linear md:-top-2.5 md:text-[16px];
+      @apply text-[14px] leading-[1.2] text-[#010101] duration-300 ease-linear md:text-[16px];
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+
+    &:first-child span {
+      @apply left-[23%] md:left-[20%];
+    }
+
     &:last-child span {
-      @apply right-2.5 md:right-3;
+      @apply left-[77%] md:left-[80%];
     }
-    &:nth-child(2) span {
-      @apply right-[calc(50%_-_3px)] md:right-[calc(50%_-_6px)];
-    }
+
     &:not(.active) span {
       @apply border-accent bg-white text-[#979797];
     }
