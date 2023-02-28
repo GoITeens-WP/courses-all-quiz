@@ -32,7 +32,7 @@
       >
       <ul class="smOnly:mb-7 flex w-max gap-[6px] smOnly:mx-auto">
         {% for social in section.socialLinks %}
-        <li class="social_link">
+        <li>
           <a
             href="{{social.link}}"
             aria-label="{{social.link_alt}}"
@@ -40,7 +40,7 @@
             target="_blank"
           >
             <svg
-              class="social duration-300 hover:scale-125"
+              class="duration-300 hover:scale-125"
               height="24"
               width="24"
               aria-label="{{social.alt}}"
