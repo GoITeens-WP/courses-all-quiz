@@ -1,17 +1,16 @@
-const gulp = require('gulp');
-const sourcemaps = require('gulp-sourcemaps');
-const plumber = require('gulp-plumber');
-const sass = require('gulp-sass')(require('sass'));
+const cleanCSS = require('gulp-clean-css');
+const concat = require('gulp-concat');
 const gcmq = require('gulp-group-css-media-queries');
-const postcss = require('gulp-postcss');
-const size = require('gulp-size');
+const gulp = require('gulp');
 const mode = require('gulp-mode')();
 const paths = require('../paths');
-const fs = require('fs');
-const tailwindcss = require('tailwindcss');
-const concat = require('gulp-concat');
-const cleanCSS = require('gulp-clean-css');
+const plumber = require('gulp-plumber');
+const postcss = require('gulp-postcss');
 const purgecss = require('gulp-purgecss');
+const sass = require('gulp-sass')(require('sass'));
+const size = require('gulp-size');
+const sourcemaps = require('gulp-sourcemaps');
+const tailwindcss = require('tailwindcss');
 
 const css = done => {
   return gulp

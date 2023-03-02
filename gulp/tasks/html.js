@@ -1,14 +1,12 @@
-const gulp = require('gulp');
-const nunjucks = require('gulp-nunjucks');
-const data = require('gulp-data');
-const nunjucksRender = require('gulp-nunjucks-render');
-const htmlmin = require('gulp-htmlmin');
 const cachebust = require('gulp-cache-bust');
-const rename = require('gulp-rename');
-const mode = require('gulp-mode')();
-const paths = require('../paths');
+const data = require('gulp-data');
 const fs = require('fs');
-const path = require('path');
+const gulp = require('gulp');
+const htmlmin = require('gulp-htmlmin');
+const mode = require('gulp-mode')();
+const nunjucksRender = require('gulp-nunjucks-render');
+const paths = require('../paths');
+const rename = require('gulp-rename');
 
 const htmlminConfig = {
   removeComments: true, // Strip HTML comments

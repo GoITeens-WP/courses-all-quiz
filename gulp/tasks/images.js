@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
-const newer = require('gulp-newer');
-const size = require('gulp-size');
 const mode = require('gulp-mode')();
+const newer = require('gulp-newer');
 const paths = require('../paths');
+const size = require('gulp-size');
 
 const imageMinConfig = {
   mozjpeg: { quality: 75, progressive: true },

@@ -1,10 +1,10 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
-const size = require('gulp-size');
 const paths = require('../paths');
-const webp = require('imagemin-webp');
 const rename = require('gulp-rename');
+const size = require('gulp-size');
+const webp = require('imagemin-webp');
 
 const imagesWebp = done => {
   return gulp

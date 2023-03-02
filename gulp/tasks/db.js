@@ -1,6 +1,6 @@
+const data = require('gulp-data');
 const gulp = require('gulp');
 const nunjucksRender = require('gulp-nunjucks-api');
-const data = require('gulp-data');
 const paths = require('../paths');
 
 function getDataForFile(file) {

@@ -1,11 +1,11 @@
-const gulp = require('gulp');
-const plumber = require('gulp-plumber');
 const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
+const gulp = require('gulp');
 const mode = require('gulp-mode');
 const notify = require('gulp-notify');
 const paths = require('../paths');
+const plumber = require('gulp-plumber');
+const uglify = require('gulp-uglify');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 

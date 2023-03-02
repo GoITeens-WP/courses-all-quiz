@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const svgSprite = require('gulp-svg-sprite');
 const newer = require('gulp-newer');
-const size = require('gulp-size');
 const paths = require('../paths');
+const size = require('gulp-size');
+const svgSprite = require('gulp-svg-sprite');
 
 const sprite = done => {
   return gulp
