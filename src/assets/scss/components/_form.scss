@@ -3,23 +3,25 @@
 .leeloo {
   @apply mx-auto mt-5 overflow-hidden;
 
-  .leeloo-lgt-form-wrapper {
+  & iframe {
+    @apply mx-auto block;
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  & > div .leeloo-lgt-form-wrapper .leeloo-lgt-form {
+    width: 100% !important;
+  }
+
+  & .leeloo-lgt-form-wrapper {
     @apply block;
   }
 
-  iframe {
-    @apply mx-auto block;
+  & .leeloo-lgt-form {
+    width: 100% !important;
   }
-}
-
-.leeloo > div .leeloo-lgt-form-wrapper .leeloo-lgt-form {
-  width: 100% !important;
-}
-.leeloo .leeloo-lgt-form {
-  width: 100% !important;
-}
-.leeloo > div {
-  width: 100%;
 }
 /*! purgecss end ignore */
 
