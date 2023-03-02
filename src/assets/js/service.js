@@ -559,7 +559,7 @@ class Loading {
   }
 
   show() {
-    const loadingDiv = `<div class="mt-6" data-${this.form.id}-loading><p>${this.message}</p><div class="progress-bar"><div class="color"></div></div></div>`;
+    const loadingDiv = `<div class="mt-12" data-${this.form.id}-loading><p>${this.message}</p><div class="progress-bar"><div class="color"></div></div></div>`;
     $(this.form).parent().append(loadingDiv);
   }
 
