@@ -15,40 +15,108 @@ if (!empty($_POST)) {
 $ini_array = parse_ini_file('params.ini');
 ?>
 
-<form action="" method="post" style="display:flex; flex-direction:column; gap:10px; max-width:300px;">
-  <label for="PRODUCT_NAME">Zoho Product Name</label>
-  <input type="text" id="PRODUCT_NAME" name="PRODUCT_NAME" value="<?= $ini_array['PRODUCT_NAME'] ?>"
-    placeholder="<?= $ini_array['PRODUCT_NAME'] ?>">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="stars"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+      <div class="form-box">
+        <form action="" method="post">
+          <h2>Admin Form</h2>
+          <label
+            >Zoho Product Name
+            <input
+              type="text"
+              name="PRODUCT_NAME"
+              value="<?= $ini_array['PRODUCT_NAME'] ?>"
+              placeholder="<?= $ini_array['PRODUCT_NAME'] ?>"
+          /></label>
 
-  <label for="PRODUCT_ID">Zoho Product ID</label>
-  <input type="text" id="PRODUCT_ID" name="PRODUCT_ID" value="<?= $ini_array['PRODUCT_ID'] ?>"
-    placeholder="<?= $ini_array['PRODUCT_ID'] ?>">
+          <label
+            >Zoho Product ID
+            <input
+              type="text"
+              name="PRODUCT_ID"
+              value="<?= $ini_array['PRODUCT_ID'] ?>"
+              placeholder="<?= $ini_array['PRODUCT_ID'] ?>"
+            />
+          </label>
 
-  <label for="LEELOO_HASH">Leeloo Hash</label>
-  <input type="text" id="LEELOO_HASH" name="LEELOO_HASH" value="<?= $ini_array['LEELOO_HASH'] ?>"
-    placeholder="<?= $ini_array['LEELOO_HASH'] ?>">
+          <label
+            >Leeloo Hash
+            <input
+              type="text"
+              name="LEELOO_HASH"
+              value="<?= $ini_array['LEELOO_HASH'] ?>"
+              placeholder="<?= $ini_array['LEELOO_HASH'] ?>"
+            />
+          </label>
 
-  <label for="TELEGRAM_BACKEND_URL">Telegram Backend URL</label>
-  <input type="text" id="TELEGRAM_BACKEND_URL" name="TELEGRAM_BACKEND_URL"
-    value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>">
+          <label for="TELEGRAM_BACKEND_URL"
+            >Telegram Backend URL
+            <input
+              type="text"
+              name="TELEGRAM_BACKEND_URL"
+              value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>"
+              placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>"
+          /></label>
 
-  <label for="TELEGRAM_BOT">Telegram Bot</label>
-  <input type="text" id="TELEGRAM_BOT" name="TELEGRAM_BOT"
-    value="<?= $ini_array['TELEGRAM_BOT'] ?>" placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>">
+          <label for="TELEGRAM_BOT"
+            >Telegram Bot
+            <input
+              type="text"
+              name="TELEGRAM_BOT"
+              value="<?= $ini_array['TELEGRAM_BOT'] ?>"
+              placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>"
+          /></label>
 
-  <label for="CAPI_LEAD_FORMAT">CAPI Lead Format</label>
-  <input type="text" id="CAPI_LEAD_FORMAT" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
-    placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>">
+          <label
+            >CAPI Lead Format
+            <input
+              type="text"
+              name="CAPI_LEAD_FORMAT"
+              value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
+              placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
+          /></label>
 
-  <label for="GTM">GTM</label>
-  <input type="text" id="GTM" name="GTM" value="<?= $ini_array['GTM'] ?>" placeholder="<?= $ini_array['GTM'] ?>">
+          <label
+            >GTM
+            <input
+              type="text"
+              name="GTM"
+              value="<?= $ini_array['GTM'] ?>"
+              placeholder="<?= $ini_array['GTM'] ?>"
+            />
+          </label>
 
-  <label for="START_DATE">Start Date</label>
-  <input type="text" id="START_DATE" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>"
-    placeholder="<?= $ini_array['START_DATE'] ?>">
+          <label
+            >Start Date
+            <input
+              type="text"
+              name="START_DATE"
+              value="<?= $ini_array['START_DATE'] ?>"
+              placeholder="<?= $ini_array['START_DATE'] ?>"
+          /></label>
 
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password">
+          <label>Password <input type="password" name="password" /></label>
 
-  <button type="submit">Save</button>
-</form>
+          <button class="glowing-btn" type="submit">
+            <span class="glowing-txt"
+              >S<span class="faulty-letter">A</span>VE</span
+            >
+          </button>
+        </form>
+      </div>
+      <div id="icon-animation"></div>
+    </div>
+  </body>
+</html>
