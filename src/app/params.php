@@ -22,7 +22,7 @@ $ini_array = parse_ini_file('params.ini');
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
-    <title>Admin Page</title>
+    <title>Params</title>
   </head>
   <body>
     <div class="wrapper">
@@ -31,9 +31,9 @@ $ini_array = parse_ini_file('params.ini');
       <div id="stars3"></div>
       <div class="form-box">
         <form action="" method="post">
-          <h2>Admin Form</h2>
-          <label
-            >Zoho Product Name
+          <h2>Params</h2>
+          <label>
+            Zoho Product Name
             <input
               type="text"
               name="PRODUCT_NAME"
@@ -41,8 +41,8 @@ $ini_array = parse_ini_file('params.ini');
               placeholder="<?= $ini_array['PRODUCT_NAME'] ?>"
           /></label>
 
-          <label
-            >Zoho Product ID
+          <label>
+            Zoho Product ID
             <input
               type="text"
               name="PRODUCT_ID"
@@ -51,8 +51,8 @@ $ini_array = parse_ini_file('params.ini');
             />
           </label>
 
-          <label
-            >Leeloo Hash
+          <label>
+            Leeloo Hash
             <input
               type="text"
               name="LEELOO_HASH"
@@ -61,8 +61,8 @@ $ini_array = parse_ini_file('params.ini');
             />
           </label>
 
-          <label for="TELEGRAM_BACKEND_URL"
-            >Telegram Backend URL
+          <label>
+            Telegram Backend URL
             <input
               type="text"
               name="TELEGRAM_BACKEND_URL"
@@ -70,8 +70,8 @@ $ini_array = parse_ini_file('params.ini');
               placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>"
           /></label>
 
-          <label for="TELEGRAM_BOT"
-            >Telegram Bot
+          <label>
+            Telegram Bot
             <input
               type="text"
               name="TELEGRAM_BOT"
@@ -79,8 +79,8 @@ $ini_array = parse_ini_file('params.ini');
               placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>"
           /></label>
 
-          <label
-            >CAPI Lead Format
+          <label>
+            CAPI Lead Format
             <input
               type="text"
               name="CAPI_LEAD_FORMAT"
@@ -88,8 +88,8 @@ $ini_array = parse_ini_file('params.ini');
               placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
           /></label>
 
-          <label
-            >GTM
+          <label>
+            GTM
             <input
               type="text"
               name="GTM"
@@ -98,8 +98,8 @@ $ini_array = parse_ini_file('params.ini');
             />
           </label>
 
-          <label
-            >Start Date
+          <label>
+            Start Date
             <input
               type="text"
               name="START_DATE"
@@ -107,16 +107,16 @@ $ini_array = parse_ini_file('params.ini');
               placeholder="<?= $ini_array['START_DATE'] ?>"
           /></label>
 
-          <label>Password <input type="password" name="password" /></label>
+          <label>
+            Password
+            <input type="password" name="password"
+          /></label>
 
           <button class="glowing-btn" type="submit">
-            <span class="glowing-txt"
-              >S<span class="faulty-letter">A</span>VE</span
-            >
+            <span class="glowing-txt">S<span class="faulty-letter">A</span>VE</span>
           </button>
         </form>
       </div>
-      <div id="icon-animation"></div>
     </div>
   </body>
 </html>
