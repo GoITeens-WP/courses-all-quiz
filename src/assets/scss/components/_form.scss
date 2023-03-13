@@ -58,64 +58,22 @@
 }
 
 .steps-bar {
-  @apply relative flex justify-between py-0 px-[18px] md:px-10;
+  @apply relative mx-[18px] flex justify-between border-b border-accent py-0 md:mx-10;
 
-  & .active:before {
-    @apply border-accent bg-white;
+  & > .item.active {
+    @apply border-none bg-[#FFB584] text-[#010101];
   }
-
   & > .item {
-    @apply relative overflow-visible whitespace-nowrap border-b border-accent font-normal;
-    flex: 2;
-
-    &:first-child,
-    &:last-child {
-      @apply flex-1;
-    }
+    @apply absolute -top-3.5 h-7 w-7 overflow-visible whitespace-nowrap rounded-full border border-accent bg-white text-center font-normal text-[#979797];
 
     &:first-child {
-      @apply pl-3;
-    }
-
-    &:last-child {
-      @apply pr-3;
-    }
-
-    &:before {
-      @apply absolute left-[calc(50%_-_15px)] -bottom-4 block h-[28px] w-[28px] rounded-full border border-accent bg-white duration-300 ease-linear content-[""] md:h-8 md:w-8;
-    }
-
-    &:first-child:before {
       @apply left-0;
     }
-
-    &:last-child:before {
-      @apply right-0 left-auto;
+    &:nth-child(2) {
+      left: calc(50% - 10px);
     }
-
-    &.active:before {
-      @apply border-none bg-[#FFB584] text-[#010101];
-    }
-
-    span {
-      @apply text-[14px] leading-[1.2] text-[#010101] duration-300 ease-linear md:text-[16px];
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    &:first-child span {
-      @apply left-[23%] md:left-[20%];
-    }
-
-    &:last-child span {
-      @apply left-[77%] md:left-[80%];
-    }
-
-    &:not(.active) span {
-      @apply border-accent bg-white text-[#979797];
+    &:last-child {
+      @apply right-0;
     }
   }
 }
