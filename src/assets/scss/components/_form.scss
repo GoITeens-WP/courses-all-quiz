@@ -64,7 +64,7 @@
     @apply border-none bg-[#FFB584] text-[#010101];
   }
   & > .item {
-    @apply absolute -top-3.5 h-7 w-7 overflow-visible whitespace-nowrap rounded-full border border-accent bg-white text-center font-normal text-[#979797];
+    @apply absolute -top-3.5 flex h-7 w-7 items-center justify-center overflow-visible whitespace-nowrap rounded-full border border-accent bg-white text-center font-normal text-[#979797];
 
     &:first-child {
       @apply left-0;
