@@ -18,7 +18,7 @@ class Params
       fwrite($file, "START_DATE={$_POST['START_DATE']}\n");
       fclose($file);
     } else {
-      echo 'Wrong password';
+      echo "<p>Wrong password</p>";
     }
   }
 

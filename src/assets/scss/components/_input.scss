@@ -18,18 +18,8 @@
   @apply resize-none;
 }
 
-input[data-type='text'].input-field,
-input[type='email'].input-field,
-input[type='tel'].input-field {
-  @apply h-11 p-3 text-[14px] font-medium leading-[1.2] md:text-[16px] md:leading-[1.25];
-}
-
-input[type='tel'].input-field {
-  @apply pl-14 pr-2;
-}
-
 .input-field {
-  @apply w-full rounded-lg border border-gray-400 bg-transparent py-2 px-4;
+  @apply h-11 w-full rounded-lg border border-gray-400 bg-transparent py-2 px-4 text-[14px] font-medium leading-[1.2] md:text-[16px] md:leading-[1.25];
 
   &::placeholder {
     @apply text-gray-400;
@@ -42,6 +32,10 @@ input[type='tel'].input-field {
   &.is-invalid {
     @apply border-2 border-[#CA381F];
   }
+}
+
+input[type='tel'].input-field {
+  @apply pl-14 pr-4;
 }
 
 .checkbox {

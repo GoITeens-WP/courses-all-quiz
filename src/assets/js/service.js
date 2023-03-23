@@ -2,8 +2,8 @@ import $ from 'jquery';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
-import countrySelect from 'country-select-js';
-import postalCodesRegex from './postalCodesRegex';
+// import countrySelect from 'country-select-js';
+// import postalCodesRegex from './postalCodesRegex';
 
 import validateLocales from '../../json/validateLocales.json';
 import formMessageLocales from '../../json/formMessageLocales.json';
@@ -92,16 +92,16 @@ async function getItiConfig(preferredCountries, excludeCountries) {
  *   excludeCountries: An array of country codes that are excluded
  *   responsiveDropdown: A boolean that determines whether the dropdown is responsive
  */
-async function getCountryConfig(preferredCountries, excludeCountries) {
-  const country_code = window.itiInitialCountry || (await geoIpLookup());
+// async function getCountryConfig(preferredCountries, excludeCountries) {
+//   const country_code = window.itiInitialCountry || (await geoIpLookup());
 
-  return {
-    defaultCountry: country_code,
-    preferredCountries,
-    excludeCountries,
-    responsiveDropdown: false,
-  };
-}
+//   return {
+//     defaultCountry: country_code,
+//     preferredCountries,
+//     excludeCountries,
+//     responsiveDropdown: false,
+//   };
+// }
 
 /**
  * It takes a parameter name as a string, and returns the value of that parameter in the URL
@@ -150,16 +150,16 @@ function isNumeric(str) {
  * @param  - The form element that you want to get the data from.
  * @returns An object with the form data.
  */
-function getFormData($form) {
-  const unindexed_array = $form.serializeArray();
-  const indexed_array = {};
+// function getFormData($form) {
+//   const unindexed_array = $form.serializeArray();
+//   const indexed_array = {};
 
-  $.map(unindexed_array, function (n, i) {
-    indexed_array[n['name']] = n['value'];
-  });
+//   $.map(unindexed_array, function (n, i) {
+//     indexed_array[n['name']] = n['value'];
+//   });
 
-  return indexed_array;
-}
+//   return indexed_array;
+// }
 
 /**
  * Setting the validation options for the form.
@@ -253,97 +253,97 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'Email is invalid!',
       },
     ],
-    message: [
-      {
-        rule: 'minLength',
-        value: 3,
-        errorMessage: 'The field must contain a minimum of 3 characters',
-      },
-      {
-        rule: 'maxLength',
-        value: 1000,
-        errorMessage: 'The field must contain a maximum of 1000 characters',
-      },
-    ],
     checkbox: [
       {
         rule: 'required',
         errorMessage: 'The field is required',
       },
     ],
-    zip: [
-      {
-        rule: 'required',
-        errorMessage: 'Zip code is required',
-      },
-      {
-        rule: 'minLength',
-        value: 2,
-        errorMessage: 'The field must contain a minimum of 2 symbols',
-      },
-      {
-        rule: 'maxLength',
-        value: 20,
-        errorMessage: 'The field must contain a maximum of 20 symbols',
-      },
-    ],
-    text: [
-      {
-        rule: 'minLength',
-        value: 3,
-        errorMessage: 'The field must contain a minimum of 3 characters',
-      },
-      {
-        rule: 'maxLength',
-        value: 100,
-        errorMessage: 'The field must contain a maximum of 100 characters',
-      },
-    ],
-    textarea: [
-      {
-        rule: 'minLength',
-        value: 3,
-        errorMessage: 'The field must contain a minimum of 3 characters',
-      },
-      {
-        rule: 'maxLength',
-        value: 500,
-        errorMessage: 'The field must contain a maximum of 500 characters',
-      },
-    ],
-    select: [
-      {
-        rule: 'required',
-        errorMessage: 'The field is required',
-      },
-    ],
-    file: [
-      {
-        rule: 'required',
-        errorMessage: 'The field is required',
-      },
-    ],
+    // message: [
+    //   {
+    //     rule: 'minLength',
+    //     value: 3,
+    //     errorMessage: 'The field must contain a minimum of 3 characters',
+    //   },
+    //   {
+    //     rule: 'maxLength',
+    //     value: 1000,
+    //     errorMessage: 'The field must contain a maximum of 1000 characters',
+    //   },
+    // ],
+    // zip: [
+    //   {
+    //     rule: 'required',
+    //     errorMessage: 'Zip code is required',
+    //   },
+    //   {
+    //     rule: 'minLength',
+    //     value: 2,
+    //     errorMessage: 'The field must contain a minimum of 2 symbols',
+    //   },
+    //   {
+    //     rule: 'maxLength',
+    //     value: 20,
+    //     errorMessage: 'The field must contain a maximum of 20 symbols',
+    //   },
+    // ],
+    // text: [
+    //   {
+    //     rule: 'minLength',
+    //     value: 3,
+    //     errorMessage: 'The field must contain a minimum of 3 characters',
+    //   },
+    //   {
+    //     rule: 'maxLength',
+    //     value: 100,
+    //     errorMessage: 'The field must contain a maximum of 100 characters',
+    //   },
+    // ],
+    // textarea: [
+    //   {
+    //     rule: 'minLength',
+    //     value: 3,
+    //     errorMessage: 'The field must contain a minimum of 3 characters',
+    //   },
+    //   {
+    //     rule: 'maxLength',
+    //     value: 500,
+    //     errorMessage: 'The field must contain a maximum of 500 characters',
+    //   },
+    // ],
+    // select: [
+    //   {
+    //     rule: 'required',
+    //     errorMessage: 'The field is required',
+    //   },
+    // ],
+    // file: [
+    //   {
+    //     rule: 'required',
+    //     errorMessage: 'The field is required',
+    //   },
+    // ],
   };
 
-  const country = allInputs.find(input => input.name === 'country');
-  if (country) {
-    const zipRegex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
-    if (zipRegex) {
-      fields.zip.push({
-        validator: value => {
-          if (value.length > 1) {
-            const regex = new RegExp(
-              getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
-              'i'
-            );
-            return regex.test(value);
-          }
-          return true;
-        },
-        errorMessage: 'Zip code is invalid!',
-      });
-    }
-  }
+  // const country = allInputs.find(input => input.name === 'country');
+  // if (country) {
+  //   const zipRegex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
+  //   if (zipRegex) {
+  //     fields.zip.push({
+  //       validator: value => {
+  //         if (value.length > 1) {
+  //           const regex = new RegExp(
+  //             getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
+  //             'i'
+  //           );
+  //           return regex.test(value);
+  //         }
+  //         return true;
+  //       },
+  //       errorMessage: 'Zip code is invalid!',
+  //     });
+  //   }
+  // }
 
   return fields[field]
     .filter(({ rule }) => rule !== 'required')
@@ -459,11 +459,11 @@ function getEmailRegex() {
  * @param countryCode - The country code of the country you want to validate the postal code for.
  * @returns The postal code regex for the country code passed in.
  */
-function getZipRegex(countryCode) {
-  return (
-    postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode)?.postal || ''
-  );
-}
+// function getZipRegex(countryCode) {
+//   return (
+//     postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode)?.postal || ''
+//   );
+// }
 
 /**
  * It takes a formData object and adds the values to the URL as query parameters
@@ -837,9 +837,9 @@ export default {
   getIpInfo,
   geoIpLookup,
   isNumeric,
-  getFormData,
-  getCountryConfig,
-  getZipRegex,
+  // getFormData,
+  // getCountryConfig,
+  // getZipRegex,
   getUrlParameter,
   setUrlParameter,
   addDisabledAttributeToSubmitBtn,

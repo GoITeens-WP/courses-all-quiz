@@ -3,7 +3,7 @@
 /*! purgecss start ignore */
 @import 'vendors/modern-normalize';
 @import 'vendors/intTelInput';
-@import 'vendors/country-select';
+// @import 'vendors/country-select';
 /*! purgecss end ignore */
 
 @import 'utils/mixins';
@@ -13,4 +13,4 @@
 @import 'components/form';
 @import 'components/modal';
 
-@import 'sections/header';
+// @import 'sections/someSection';
