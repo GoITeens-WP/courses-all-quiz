@@ -16,6 +16,9 @@ class Params
       fwrite($file, "CAPI_LEAD_FORMAT={$_POST['CAPI_LEAD_FORMAT']}\n");
       fwrite($file, "GTM={$_POST['GTM']}\n");
       fwrite($file, "START_DATE={$_POST['START_DATE']}\n");
+      fwrite($file, "START_DAY={$_POST['START_DAY']}\n");
+      fwrite($file, "START_MONTH={$_POST['START_MONTH']}\n");
+      fwrite($file, "START_TIME={$_POST['START_TIME']}\n");
       fclose($file);
     } else {
       echo "<p>Wrong password</p>";

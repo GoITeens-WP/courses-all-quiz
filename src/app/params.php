@@ -106,6 +106,36 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label>
 
+      <!-- <label>
+        Start Day
+        <input
+          type="number"
+          name="START_DAY"
+          value="<?= $ini_array['START_DAY'] ?>"
+          placeholder="<?= $ini_array['START_DAY'] ?>"
+        />
+      </label> -->
+
+      <!-- <label>
+        Start Month
+        <input
+          type="month"
+          name="START_MONTH"
+          value="<?= $ini_array['START_MONTH'] ?>"
+          placeholder="<?= $ini_array['START_MONTH'] ?>"
+        />
+      </label> -->
+
+      <!-- <label>
+        Start Time
+        <input
+          type="time"
+          name="START_TIME"
+          value="<?= $ini_array['START_TIME'] ?>"
+          placeholder="<?= $ini_array['START_TIME'] ?>"
+        />
+      </label> -->
+
       <label>
         Password
         <input type="password" name="password" />
