@@ -56,7 +56,7 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label>
 
-      <label>
+      <!-- <label>
         Telegram Backend URL
         <input
           type="text"
@@ -64,9 +64,9 @@ $ini_array = parse_ini_file('params.ini');
           value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>"
           placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>"
         />
-      </label>
+      </label> -->
 
-      <label>
+      <!-- <label>
         Telegram Bot
         <input
           type="text"
@@ -74,9 +74,9 @@ $ini_array = parse_ini_file('params.ini');
           value="<?= $ini_array['TELEGRAM_BOT'] ?>"
           placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>"
         />
-      </label>
+      </label> -->
 
-      <label>
+      <!-- <label>
         CAPI Lead Format
         <input
           type="text"
@@ -84,7 +84,7 @@ $ini_array = parse_ini_file('params.ini');
           value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
           placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>"
         />
-      </label>
+      </label> -->
 
       <label>
         GTM
