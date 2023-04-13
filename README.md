@@ -45,3 +45,11 @@ yarn start
 ```
 {% set title = "Заголовок" %}
 ```
+
+## Test data for testing integrations
+
+```
+PRODUCT_NAME=TEST_PRODUCT_01122022
+PRODUCT_ID=1819773000550877476
+LEELOO_HASH=ygntk7
+```
