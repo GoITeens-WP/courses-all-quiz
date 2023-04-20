@@ -3,8 +3,8 @@
 node("go-web"){
     stage('Load credentials') {
         withCredentials([
-            string(credentialsId: 'goit_jenkins_build_bot_api_key', variable: 'telegramNotifyChannelBotApiToken'),
-            string(credentialsId: 'goit_jenkins_build_chat_id', variable: 'telegramNotifyChannelChatId'),
+            string(credentialsId: 'telegramApiTokenJenkinsSoftryzen', variable: 'telegramNotifyChannelBotApiToken'),
+            string(credentialsId: 'telegramChatIdJenkinsSoftryzen', variable: 'telegramNotifyChannelChatId'),
 
             //ADD FTP CREDENTIAL
             string(credentialsId: 'ftp_user_pass_host_for_your_goit_site_name', variable: 'ftpUserAndPass')
