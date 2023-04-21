@@ -72,9 +72,5 @@
     "tailwindcss": "^3.2.4",
     "webpack": "^5.75.0",
     "webpack-stream": "^7.0.0"
-  },
-  "engines": {
-    "node": ">=16.x.x",
-    "npm": ">=7.10.0"
   }
 }
