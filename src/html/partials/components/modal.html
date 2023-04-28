@@ -1,3 +1,4 @@
+{% set formId = form.id %}
 <div class="backdrop is-hidden smOnly:px-5" data-modal>
   <div class="modal bg-white text-black-light">
     <button
@@ -20,7 +21,7 @@
       {{ form.title }}
     </h2>
 
-    {% import './macro/step.html' as service %} {{service.stepDiv(form.steps, form.ID)}} {% include
+    {% import './macro/step.html' as service %} {{service.stepDiv(form.steps, formId)}} {% include
     './formFields.njk' %}
   </div>
 </div>

@@ -37,20 +37,26 @@ $(window).on('load', async function () {
 
     forms: [
       {
-        formId: 'leadForm',
-
-        /*
-        !Zoho CRM params, window vars by default
-        productName: 'dummy_product',
-        productId: 'dummy_product_id',
-        */
-
-        /* Required params if you need send email */
-        // needSendEmail: true,
-        // onlySendEmail: true,
-        // emailTitle: 'Email title',
-        // emailRecipient: 'hr@goit.global',
+        formId: 'modalForm',
       },
+      // {
+      //   formId: 'header',
+      //   productName: 'dummy_product',
+      //   productId: 'dummy_product_id',
+      // },
+      //
+      // {
+      // formId: 'yourFormId',
+      // productName: 'dummy_product',
+      // productId: 'dummy_product_id',
+      //
+      // Required params if you need send email
+      //
+      // needSendEmail: true,
+      // onlySendEmail: true,
+      // emailTitle: 'Email title',
+      // emailRecipient: 'hr@goit.global',
+      // },
     ],
   };
 
