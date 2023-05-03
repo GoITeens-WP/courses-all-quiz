@@ -1,7 +1,7 @@
 // import jQuery from 'jquery';
 
 // jQuery(function () {
-//   const links = document.querySelectorAll('.nav-link');
+//   const links = document.querySelectorAll('[data-smooth-scroll]');
 //   links.forEach(link => link.addEventListener('click', linkHandler));
 // });
 
