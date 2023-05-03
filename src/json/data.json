@@ -10,6 +10,22 @@
     "link_logo_aria": "Посилання на головну сторінку сайту",
     "logo_aria": "Логотип сайту"
   },
+  "navigation": {
+    "btnAria": "кнопка мобiльного меню",
+    "svgAria": "іконка мобiльного меню",
+    "btnCloseAria": "кнопка закриття мобiльного меню",
+    "svgCloseAria": "іконка закриття мобiльного меню",
+    "items": [
+      {
+        "link": "#",
+        "title": "homePage"
+      },
+      {
+        "link": "#",
+        "title": "somePage"
+      }
+    ]
+  },
   "header": {
     "id": "header"
   },
@@ -81,11 +97,9 @@
       "year": "2014 - "
     }
   },
-  "modal": {
-    "btn_close_aria": "кнопка закриття модального вікна"
-  },
   "form": {
     "id": "modalForm",
+    "btnCloseAria": "кнопка закриття модального вікна",
     "title": "Реєстрація",
     "steps": ["1", "2", "3"],
     "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",

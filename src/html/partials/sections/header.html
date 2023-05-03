@@ -1,7 +1,34 @@
 {% set section = header %}
-<header class="{{section.id}} section">
+<header class="{{section.id}}">
   <div class="container">
-    <button class="btn border border-black p-2" data-modal-open>Open modal</button>
-    {% set formId = section.id %} {% include 'components/formFields.njk' %}
+    <!-- HEADER -->
+    <div class="flex items-center justify-between bg-accent pt-2">
+      <!-- LOGO -->
+      <a href="{{page.canonical}}" aria-label="{{logo.link_logo_aria}}">
+        <svg width="100" height="30" aria-label="{{logo.logo_aria}}">
+          <title>{{logo.logo_aria}}</title>
+          <use href="./assets/images/sprite.svg#logo"></use>
+        </svg>
+      </a>
+      <!--  END LOGO -->
+      <!-- NAV -->
+      <div class="flex items-center justify-center xl:gap-2">
+        <!-- nav-menu -->
+        {% include 'components/nav-menu.html' %}
+        <!-- mobile-menu (including nav-menu inside) -->
+        {% include 'components/mobile-menu.html' %}
+        <!-- button (optional) -->
+        <button class="btn border border-black p-2 notXl:hidden" data-modal-open>Open modal</button>
+      </div>
+      <!--  END NAV -->
+    </div>
+    <!--  END HEADER -->
+
+    <!-- HERO -->
+    <div class="mx-auto max-w-xs">
+      <!-- form outside modal (optional) -->
+      {% set formId = section.id %} {% include 'components/formFields.njk' %}
+    </div>
+    <!--  END HERO -->
   </div>
 </header>
