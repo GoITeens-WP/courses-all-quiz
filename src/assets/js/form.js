@@ -40,15 +40,9 @@ $(window).on('load', async function () {
         formId: 'modalForm',
       },
       // {
-      //   formId: 'header',
-      //   productName: 'dummy_product',
-      //   productId: 'dummy_product_id',
-      // },
-      //
-      // {
       // formId: 'yourFormId',
-      // productName: 'dummy_product',
-      // productId: 'dummy_product_id',
+      // productName: 'yourProductName',
+      // productId: 'yourProductId',
       //
       // Required params if you need send email
       //
