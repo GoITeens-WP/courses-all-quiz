@@ -21,6 +21,9 @@ function send($token, $data, $input)
 // PH
 // https://goit-connectors.place/phillipines/zoho/loader.php
 //
+// Survey PH
+// https://goit-connectors.place/phillipines/survey/App.php
+//
 // CO/MX
 // https://goit-connectors.place/latam/connector/connector.php
 //
