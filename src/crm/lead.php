@@ -21,7 +21,7 @@ function send($token, $data, $input)
 // PH
 // https://goit-connectors.place/phillipines/zoho/loader.php
 //
-// Survey PH
+// PH Survey
 // https://goit-connectors.place/phillipines/survey/App.php
 //
 // CO/MX
@@ -30,17 +30,8 @@ function send($token, $data, $input)
 // RO
 // https://goit-connectors.place/romania/goit/connector.php
 //
-// US
-// https://integrations.goit.global/connector_usa_mex/connector.php
-//
-// KZ
-// https://goit-connectors.place/goit/
-//
-// GOITEENS UA
-// https://universalcrmconnector.goiteens.ua/connector.php
-//
-// GOITEENS PL
-// https://goit-connectors.place/pl/newcrm/goiteens/connectorPL.php
+// GOITEENS
+// https://goiteens.ua/universalcrmconnector/connector.php
 */
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
