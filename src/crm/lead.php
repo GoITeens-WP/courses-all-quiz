@@ -31,7 +31,7 @@ function send($token, $data, $input)
 // https://goit-connectors.place/romania/goit/connector.php
 //
 // GOITEENS
-// https://goiteens.ua/universalcrmconnector/connector.php
+// https://universalcrmconnector.goiteens.ua/connector.php
 */
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
