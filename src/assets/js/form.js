@@ -270,6 +270,9 @@ telegram backend. */
                   $(form).trigger('reset');
                   service.changeFormStep(form, 3);
                   service.showSuccess(service.translate('reply'), true, loading, true);
+
+                  /* That redirects the user to the some URL. */
+                  // window.location.href = 'someURL';
                 } else {
                   console.log('error ', resp.statusText);
                   $(form).css('display', 'block');
