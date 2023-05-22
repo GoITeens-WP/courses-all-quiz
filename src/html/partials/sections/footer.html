@@ -32,9 +32,9 @@
           href="{{section.mail.link}}"
           >{{section.mail.text}}</a
         >
-        <ul class="flex w-max gap-[6px] smOnly:mx-auto smOnly:mb-7">
+        <ul class="socials flex w-max gap-[6px] smOnly:mx-auto smOnly:mb-7">
           {% for social in section.socialLinks %}
-          <li>
+          <li class="socials__item h-10 w-10 duration-300 hover:scale-105">
             <a
               href="{{social.link}}"
               aria-label="{{social.link_alt}}"
@@ -43,8 +43,8 @@
             >
               <svg
                 class="duration-300 hover:scale-125"
-                height="24"
-                width="24"
+                height="40"
+                width="40"
                 aria-label="{{social.alt}}"
               >
                 <title>{{social.alt}}</title>

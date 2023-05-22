@@ -1,0 +1,18 @@
+.footer {
+  & .socials__item:nth-child(2) {
+    background: linear-gradient(
+      315deg,
+      #fbe18a 0.96%,
+      #fcbb45 21.96%,
+      #f75274 38.96%,
+      #d53692 52.96%,
+      #8f39ce 74.96%,
+      #5b4fe9 100.96%
+    );
+    border-radius: 16px;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+}
