@@ -86,7 +86,7 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label> -->
 
-      <label>
+      <!-- <label>
         GTM
         <input
           type="text"
@@ -94,7 +94,7 @@ $ini_array = parse_ini_file('params.ini');
           value="<?= $ini_array['GTM'] ?>"
           placeholder="<?= $ini_array['GTM'] ?>"
         />
-      </label>
+      </label> -->
 
       <label>
         Start Date
