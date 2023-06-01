@@ -4,16 +4,6 @@
   "css.lint.duplicateProperties": "warning",
   "scss.lint.unknownAtRules": "ignore",
   "css.lint.unknownAtRules": "ignore",
-  // prettier
-  "prettier.printWidth": 80,
-  "prettier.tabWidth": 2,
-  "prettier.useTabs": false,
-  "prettier.semi": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "prettier.bracketSpacing": true,
-  "prettier.arrowParens": "avoid",
-  "prettier.proseWrap": "always",
   // htmlhint
   "htmlhint.enable": true,
   "htmlhint.options": {
@@ -35,7 +25,7 @@
     "attr-sorted": false,
     "attr-whitespace": true,
     "alt-require": true,
-    "input-requires-label": true,
+    "input-requires-label": false,
     //
     "tags-check": false,
     "tag-pair": true,
@@ -59,7 +49,6 @@
   // editor
   "editor.wordSeparators": "`~!@#$%^&*()-_=+[{]}\\|;:'\",.<>/?",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.linkedEditing": true,
   "editor.wordWrap": "on",
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
