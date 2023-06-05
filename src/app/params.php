@@ -46,25 +46,27 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label>
 
-      <label>
-        Leeloo Hash
-        <input
-          type="text"
-          name="LEELOO_HASH"
-          value="<?= $ini_array['LEELOO_HASH'] ?>"
-          placeholder="<?= $ini_array['LEELOO_HASH'] ?>"
-        />
-      </label>
+      <div style="display: flex; flex-direction: row; gap: 20px">
+        <label style="width: 50%">
+          Leeloo Hash
+          <input
+            type="text"
+            name="LEELOO_HASH"
+            value="<?= $ini_array['LEELOO_HASH'] ?>"
+            placeholder="<?= $ini_array['LEELOO_HASH'] ?>"
+          />
+        </label>
 
-      <label>
-        Elza Token
-        <input
-          type="text"
-          name="ELZA_TOKEN"
-          value="<?= $ini_array['ELZA_TOKEN'] ?>"
-          placeholder="<?= $ini_array['ELZA_TOKEN'] ?>"
-        />
-      </label>
+        <label style="width: 50%">
+          Elza Token
+          <input
+            type="text"
+            name="ELZA_TOKEN"
+            value="<?= $ini_array['ELZA_TOKEN'] ?>"
+            placeholder="<?= $ini_array['ELZA_TOKEN'] ?>"
+          />
+        </label>
+      </div>
 
       <!-- <label>
         Telegram Backend URL
@@ -106,7 +108,7 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label> -->
 
-      <label>
+      <!-- <label>
         Start Date
         <input
           type="text"
@@ -114,7 +116,7 @@ $ini_array = parse_ini_file('params.ini');
           value="<?= $ini_array['START_DATE'] ?>"
           placeholder="<?= $ini_array['START_DATE'] ?>"
         />
-      </label>
+      </label> -->
 
       <!-- <label>
         Start Day
