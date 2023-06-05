@@ -1,7 +1,7 @@
 /**
  * Form.js - v1.2.0
  * Created @Suzuya_re1 at 2022-10-01
- * Updated @Dizardmk at 2022-12-06
+ * Updated @Dizardmk at 2022-12-06, 2023-05-06
  */
 
 import $ from 'jquery';
@@ -12,6 +12,46 @@ import service from './service.js';
 import crm from './submit.js';
 
 $(window).on('load', async function () {
+  /*  Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro) */
+  let defaultLang = null;
+
+  switch (window.locale) {
+    case 'pl':
+      defaultLang = 'pl';
+      break;
+    case 'es':
+      defaultLang = 'es';
+      break;
+    case 'en':
+      defaultLang = 'en';
+      break;
+    case 'ro':
+      defaultLang = 'ro';
+      break;
+    default:
+      defaultLang = 'uk';
+  }
+
+  /* Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), США(us), Филиппины(ph), Румыния(ro) */
+  let itiLocale = null;
+
+  switch (window.locale) {
+    case 'pl':
+      itiLocale = 'pl';
+      break;
+    case 'es':
+      itiLocale = 'co';
+      break;
+    case 'en':
+      itiLocale = 'ph';
+      break;
+    case 'ro':
+      itiLocale = 'ro';
+      break;
+    default:
+      itiLocale = 'ua';
+  }
+
   // Params
   const params = {
     needsRedirectToLeeloo: window.leelooHash ? true : false,
@@ -22,17 +62,9 @@ $(window).on('load', async function () {
 
     utmMarks: ['utm_source', 'utm_medium', 'utm_content', 'utm_term', 'utm_campaign'],
     referralMarks: ['SRC', 'from'],
-    /**
-     * defaultLocale:
-     * Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro)
-     */
-    defaultLocale: 'uk',
-    /**
-     * defaultPhoneCountry & preferredPhoneCountries:
-     * Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), США(us), Румыния(ro), Филиппины(ph)
-     */
-    defaultPhoneCountry: 'ua',
-    preferredPhoneCountries: ['ua'],
+    defaultLocale: defaultLang,
+    defaultPhoneCountry: itiLocale,
+    preferredPhoneCountries: [itiLocale],
     excludePhoneCountries: ['ru', 'by'],
 
     forms: [
