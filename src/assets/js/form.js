@@ -220,37 +220,41 @@ telegram backend. */
           async function showLeelooBlock() {
             service.setParamsForLeeloo(data);
 
-            response
-              .then(resp => {
-                if (resp.status === 200) {
-                  service.setUrlParameter('name2', name.value);
+            try {
+              const resp = await response;
 
-                  service.initializeLeeloo(form);
-                  $(form).css('display', 'none');
-                  $(form).trigger('reset');
-                  service.changeFormStep(form, 3);
+              if (resp.status === 200) {
+                service.setUrlParameter('name2', name.value);
 
-                  const checkLeeloo = setInterval(() => {
-                    const iframe = form.querySelector('.leeloo-lgt-form');
-                    if (iframe) {
-                      clearInterval(checkLeeloo);
-                      dataLayer.push({ event: 'появилось окно с кнопкой' });
-                    }
-                  }, 2000);
-                } else {
-                  console.log('error ', resp.statusText);
-                  $(form).css('display', 'block');
-                  service.showError();
+                if (window.elzaToken) {
+                  const elzaId = await service.sendDataToIntelza(phoneNumber);
+                  service.setUrlParameter('elza_id', elzaId);
                 }
-              })
-              .catch(err => {
-                console.log(err);
+
+                service.initializeLeeloo(form);
+                $(form).css('display', 'none');
+                $(form).trigger('reset');
+                service.changeFormStep(form, 3);
+
+                const checkLeeloo = setInterval(() => {
+                  const iframe = form.querySelector('.leeloo-lgt-form');
+                  if (iframe) {
+                    clearInterval(checkLeeloo);
+                    dataLayer.push({ event: 'появилось окно с кнопкой' });
+                  }
+                }, 2000);
+              } else {
+                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
-              })
-              .finally(() => {
-                loading.hide();
-              });
+              }
+            } catch (error) {
+              console.log(error);
+              $(form).css('display', 'block');
+              service.showError();
+            } finally {
+              loading.hide();
+            }
           }
 
           /* It's a function that redirects the user to the Telegram backend. */
