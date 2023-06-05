@@ -136,6 +136,23 @@ function setUrlParameter(key, value) {
 }
 
 /**
+ * It's a function that send contact to intelza
+ */
+async function sendDataToIntelza(phoneNumber) {
+  try {
+    const { data } = await axios.post('./crm/elza.php', {
+      phone: phoneNumber,
+      product_name: window.productName,
+      delay: 7,
+    });
+
+    return data.id ? data.id : null;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+/**
  * If the string is a number, return true, otherwise return false
  * @param str - The string to be tested.
  * @returns true or false
@@ -842,6 +859,7 @@ export default {
   // getZipRegex,
   getUrlParameter,
   setUrlParameter,
+  sendDataToIntelza,
   addDisabledAttributeToSubmitBtn,
   showError,
   showSuccess,

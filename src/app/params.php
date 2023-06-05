@@ -56,6 +56,16 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label>
 
+      <label>
+        Elza Token
+        <input
+          type="text"
+          name="ELZA_TOKEN"
+          value="<?= $ini_array['ELZA_TOKEN'] ?>"
+          placeholder="<?= $ini_array['ELZA_TOKEN'] ?>"
+        />
+      </label>
+
       <!-- <label>
         Telegram Backend URL
         <input
