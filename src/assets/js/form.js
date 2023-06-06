@@ -307,7 +307,7 @@ telegram backend. */
                   service.changeFormStep(form, 3);
                   service.showSuccess(service.translate('reply'), true, loading, true);
 
-                  /* That redirects the user to the some URL. */
+                  /* That redirects user to some URL after send form. */
                   // window.location.href = 'someURL';
                 } else {
                   console.log('error ', resp.statusText);
