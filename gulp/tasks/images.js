@@ -6,6 +6,7 @@ const paths = require('../paths');
 const size = require('gulp-size');
 
 const imageMinConfig = {
+  gifsicle: { interlaced: true },
   mozjpeg: { quality: 75, progressive: true },
   optipng: { optimizationLevel: 5 },
   svgo: {
@@ -20,11 +21,12 @@ const imageMinConfig = {
 
 const images = done => {
   return gulp
-    .src(paths.src.images)
+    .src([paths.src.images, '!src/assets/images/sprite/**'])
     .pipe(newer(paths.build.images))
     .pipe(
       mode.production(
         imagemin([
+          imagemin.gifsicle(imageMinConfig.gifsicle),
           imagemin.mozjpeg(imageMinConfig.mozjpeg),
           imagemin.optipng(imageMinConfig.optipng),
           imagemin.svgo(imageMinConfig.svgo),
