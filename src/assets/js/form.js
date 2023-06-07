@@ -12,7 +12,7 @@ import service from './service.js';
 import crm from './submit.js';
 
 $(window).on('load', async function () {
-  /*  Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro) */
+  /*  Украина(uk), Польша(pl), Мексика-Колумбия(es), Филиппины(en), Румыния(ro) */
   let defaultLang = null;
 
   switch (window.locale) {
@@ -32,7 +32,7 @@ $(window).on('load', async function () {
       defaultLang = 'uk';
   }
 
-  /* Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), США(us), Филиппины(ph), Румыния(ro) */
+  /* Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), Филиппины(ph), Румыния(ro) */
   let itiLocale = null;
 
   switch (window.locale) {

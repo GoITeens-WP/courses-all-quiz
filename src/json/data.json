@@ -1,6 +1,6 @@
 {
   "page": {
-    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Мексика-Колумбия(es), США-Филиппины(en), Румыния(ro)",
+    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Мексика-Колумбия(es), Филиппины(en), Румыния(ro)",
     "lang": "uk",
     "title": "title",
     "description": "description",
@@ -31,70 +31,283 @@
   },
   "footer": {
     "id": "footer",
-    "contacts": [
-      {
-        "text": "(050) 366 17 77",
-        "link": "tel:+380503661777"
+    "uk": {
+      "address": "Ю. Іллєнка, 12 <br/>Київ, Україна",
+      "contacts": [
+        {
+          "text": "(050) 366 17 77",
+          "link": "tel:+380503661777"
+        },
+        {
+          "text": "(067) 326 95 92",
+          "link": "tel:+380673269592"
+        }
+      ],
+      "mail": {
+        "text": "info@goit.global",
+        "link": "mailto:info@goit.global"
       },
-      {
-        "text": "(067) 326 95 92",
-        "link": "tel:+380673269592"
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goITclub/",
+          "svg": "facebook",
+          "alt": "Логотип фейсбук",
+          "link_alt": "Посилання на фейсбук"
+        },
+        {
+          "link": "https://www.instagram.com/goitclub/",
+          "svg": "instagram",
+          "alt": "Логотип iнстаграм",
+          "link_alt": "Посилання на iнстаграм"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goit-start-your-career-in-it/",
+          "svg": "linkedin",
+          "alt": "Логотип лiнкедин",
+          "link_alt": "Посилання на лiнкедин"
+        },
+        {
+          "link": "https://t.me/junior_developer_ua",
+          "svg": "telegram",
+          "alt": "Логотип телеграм",
+          "link_alt": "Посилання на телеграм"
+        },
+        {
+          "link": "https://www.youtube.com/@GoIT",
+          "svg": "youtube",
+          "alt": "Логотип ютуб",
+          "link_alt": "Посилання на ютуб"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Умови користування послугами",
+          "link": "https://goit.global/ua/terms-of-use/"
+        },
+        {
+          "text": "Політика конфіденційності",
+          "link": "https://goit.global/ua/privacy-policy/"
+        },
+        {
+          "text": "Відмова від відповідальності",
+          "link": "https://goit.global/ua/disclaimer/"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
       }
-    ],
-    "mail": {
-      "text": "info@goit.global",
-      "link": "mailto:info@goit.global"
     },
-    "socialLinks": [
-      {
-        "link": "https://www.facebook.com/goITclub/",
-        "svg": "facebook",
-        "alt": "Логотип фейсбук",
-        "link_alt": "Посилання на фейсбук"
+    "pl": {
+      "address": "ul. Aleje Jerozolimskie 85/21 <br/>Warszawa",
+      "contacts": [
+        {
+          "text": "+48 732 080 940",
+          "link": "tel:+48732080940"
+        }
+      ],
+      "mail": {
+        "text": "info@goit.global",
+        "link": "mailto:info@goit.globa"
       },
-      {
-        "link": "https://www.instagram.com/goitclub/",
-        "svg": "instagram",
-        "alt": "Логотип iнстаграм",
-        "link_alt": "Посилання на iнстаграм"
-      },
-      {
-        "link": "https://t.me/junior_developer_ua",
-        "svg": "telegram",
-        "alt": "Логотип телеграм",
-        "link_alt": "Посилання на телеграм"
-      },
-      {
-        "link": "https://www.youtube.com/channel/UCN7NQEBOUuIoXrJZzqVb58Q/videos",
-        "svg": "youtube",
-        "alt": "Логотип ютуб",
-        "link_alt": "Посилання на ютуб"
-      },
-      {
-        "link": "https://www.linkedin.com/company/goit-start-your-career-in-it/",
-        "svg": "linkedin",
-        "alt": "Логотип лiнкедин",
-        "link_alt": "Посилання на лiнкедин"
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goit.polska/",
+          "svg": "facebook",
+          "alt": "logo Facebooka",
+          "link_alt": "Link do Facebooka"
+        },
+        {
+          "link": "https://www.instagram.com/goitpolska/",
+          "svg": "instagram",
+          "alt": "Logo Instagrama",
+          "link_alt": "Link do Instagrama"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goit-polska/",
+          "svg": "linkedin",
+          "alt": "Logo LinkedIna",
+          "link_alt": "Link do LinkedIna"
+        },
+        {
+          "link": "https://www.youtube.com/@goitpolska483",
+          "svg": "youtube",
+          "alt": "Logo Youtube'a",
+          "link_alt": "Link do YouTube'a"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Regulamin świadczenia odpłatnych usług <br class=\"hidden smOnly:block\"> szkoleniowych goit polska",
+          "link": "https://goit.global/pl/terms-of-use/"
+        },
+        {
+          "text": "Polityka prywatności serwisu internetowego <br class=\"hidden smOnly:block\"> www.goit.global/pl",
+          "link": "https://goit.global/pl/privacy-policy/"
+        }
+      ],
+
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
       }
-    ],
-    "agreementList": [
-      {
-        "text": "Умови користування послугами",
-        "link": "https://goit.global/ua/terms-of-use/"
+    },
+    "es": {
+      "address": null,
+      "contacts": [
+        {
+          "text": "WhatsApp: 57 3208 0809 71",
+          "link": "https://wa.me/573208080971"
+        }
+      ],
+      "mail": {
+        "text": "support@goit.la",
+        "link": "mailto:support@goit.la"
       },
-      {
-        "text": "Політика конфіденційності",
-        "link": "https://goit.global/ua/privacy-policy/"
-      },
-      {
-        "text": "Відмова від відповідальності",
-        "link": "https://goit.global/ua/disclaimer/"
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goit.academia.ti",
+          "svg": "facebook",
+          "alt": "logo de Facebook",
+          "link_alt": "enlace de facebook"
+        },
+        {
+          "link": "https://www.instagram.com/Goitlatam/",
+          "svg": "instagram",
+          "alt": "logotipo de Instagram",
+          "link_alt": "enlace de instagram"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goit-latam/",
+          "svg": "linkedin",
+          "alt": "Enlace de logotipo",
+          "link_alt": "enlace de LinkedIn"
+        },
+        {
+          "link": "https://www.youtube.com/@goitlatinoamerica/",
+          "svg": "youtube",
+          "alt": "logotipo de youtube",
+          "link_alt": "enlace de youtube"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Términos y Condiciones",
+          "link": "https://goit.global/co/terms-of-use/"
+        },
+        {
+          "text": "Política de Privacidad",
+          "link": "https://goit.global/co/privacy-policy/"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
       }
-    ],
-    "address": "Ю. Іллєнка, 12 <br/>Київ, Україна",
-    "copyright": {
-      "text": "GoIT",
-      "year": "2014 - "
+    },
+    "en": {
+      "address": "Pacific Alliance Consulting. 2320 Taft Avenue Zone 79 Barangay 725. 1004 Malate NCR,. city of Manila, First District Philippines",
+      "contacts": [
+        {
+          "text": "+63 (905) 221-0131",
+          "link": "tel:+639052210131"
+        }
+      ],
+      "mail": {
+        "text": "admin.ph@goit.global",
+        "link": "mailto:admin.ph@goit.global"
+      },
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goit.philippines/",
+          "svg": "facebook",
+          "alt": "Facebook logo",
+          "link_alt": "Facebook link"
+        },
+        {
+          "link": "https://www.instagram.com/goit.philippines/",
+          "svg": "instagram",
+          "alt": "Instagram logo",
+          "link_alt": "Instagram link"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goitphilippines",
+          "svg": "linkedin",
+          "alt": "Linkedin logo",
+          "link_alt": "Linkedin link"
+        },
+        {
+          "link": "https://www.youtube.com/@GoIT_philippines",
+          "svg": "youtube",
+          "alt": "Youtube logo",
+          "link_alt": "Youtube link"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Terms of use",
+          "link": "https://goit.global/ph/terms-of-use/"
+        },
+        {
+          "text": "Privacy policy",
+          "link": "https://goit.global/ph/privacy-policy/"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
+      }
+    },
+    "ro": {
+      "address": "333, Ion Mihalache Blvd., Bloc 17, Staircase Ap., Ap. 33, Bucharest, 1st District, Romania",
+      "contacts": [
+        {
+          "text": "+40 31 229 4566",
+          "link": "tel:+40312294566"
+        }
+      ],
+      "mail": {
+        "text": "admin.ro@goit.global",
+        "link": "mailto:admin.ro@goit.global"
+      },
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goit.romania/",
+          "svg": "facebook",
+          "alt": "sigla Facebook",
+          "link_alt": "link pe Facebook"
+        },
+        {
+          "link": "https://www.instagram.com/goit.romania/",
+          "svg": "instagram",
+          "alt": "sigla Instagram",
+          "link_alt": "link pe Instagram"
+        },
+        {
+          "link": "https://www.youtube.com/@goit5615",
+          "svg": "youtube",
+          "alt": "sigla youtube",
+          "link_alt": "link pe youtube"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Termeni și condiții",
+          "link": "https://goit.global/ro/terms-of-use/"
+        },
+        {
+          "text": "Politica de confidențialitate",
+          "link": "https://goit.global/ro/privacy-policy/"
+        },
+        {
+          "text": "ANPC",
+          "link": "https://legislatie.just.ro/Public/DetaliiDocument/257649"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
+      }
     }
   },
   "form": {

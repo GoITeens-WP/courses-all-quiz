@@ -441,7 +441,7 @@ function translate(key, locale = window.locale) {
  */
 function getNameRegex(locale = window.locale) {
   switch (locale) {
-    // США-Филиппины(en)
+    // Филиппины(en)
     case 'en':
       return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
 
