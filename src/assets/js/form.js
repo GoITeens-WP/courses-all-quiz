@@ -231,7 +231,7 @@ telegram backend. */
           const response = crm.submit(...crmParams);
 
           /* It's a Google Tag Manager event. */
-          dataLayer.push({ event: 'lead' });
+          dataLayer.push({ event: 'lead', phone: phoneNumber, email: email.value });
 
           // https://www.youtube.com/watch?v=sqcLjcSloXs
 
