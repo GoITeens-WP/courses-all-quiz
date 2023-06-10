@@ -12,7 +12,7 @@ const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const tailwindcss = require('tailwindcss');
 
-const css = done => {
+const css = () => {
   return gulp
     .src(paths.src.css)
     .pipe(plumber())
@@ -51,13 +51,11 @@ const css = done => {
       )
     )
     .pipe(mode.production(gcmq()))
-    .pipe(mode.production(cleanCSS({ compatibility: 'ie8' })))
+    .pipe(mode.production(cleanCSS()))
     .pipe(concat({ path: 'style.css' }))
     .pipe(size({ showFiles: true }))
     .pipe(mode.development(sourcemaps.write('./')))
     .pipe(gulp.dest(paths.build.css));
-
-  done();
 };
 
 module.exports = css;

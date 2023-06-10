@@ -19,7 +19,7 @@ const imageMinConfig = {
   },
 };
 
-const images = done => {
+const images = () => {
   return gulp
     .src([paths.src.images, '!src/assets/images/sprite/**'])
     .pipe(newer(paths.build.images))
@@ -35,7 +35,6 @@ const images = done => {
     )
     .pipe(size({ showFiles: true }))
     .pipe(gulp.dest(paths.build.images));
-  done();
 };
 
 module.exports = images;

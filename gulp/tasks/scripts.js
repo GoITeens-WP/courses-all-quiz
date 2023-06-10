@@ -9,7 +9,7 @@ const uglify = require('gulp-uglify');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 
-const scripts = done => {
+const scripts = () => {
   return gulp
     .src(paths.src.js)
     .pipe(

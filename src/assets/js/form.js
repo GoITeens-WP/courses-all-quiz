@@ -7,7 +7,6 @@
 import $ from 'jquery';
 import intlTelInput from 'intl-tel-input';
 import JustValidate from 'just-validate';
-// import countrySelect from 'country-select-js';
 import service from './service.js';
 import crm from './submit.js';
 
@@ -149,10 +148,6 @@ telegram backend. */
       phone,
       await service.getItiConfig(params.preferredPhoneCountries, params.excludePhoneCountries)
     );
-
-    // $(country).countrySelect(
-    //   await service.getCountryConfig(params.preferredPhoneCountries, params.excludePhoneCountries)
-    // );
 
     /* It's a function that initializes the validation library. */
     const validationForm = new JustValidate(
