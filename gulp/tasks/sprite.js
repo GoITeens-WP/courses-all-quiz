@@ -4,7 +4,7 @@ const paths = require('../paths');
 const size = require('gulp-size');
 const svgSprite = require('gulp-svg-sprite');
 
-const sprite = done => {
+const sprite = () => {
   return gulp
     .src(paths.src.sprite)
     .pipe(newer(paths.build.sprite))
@@ -19,7 +19,6 @@ const sprite = done => {
     )
     .pipe(size({ showFiles: true }))
     .pipe(gulp.dest(paths.build.sprite));
-  done();
 };
 
 module.exports = sprite;

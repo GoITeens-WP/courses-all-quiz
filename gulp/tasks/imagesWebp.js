@@ -6,11 +6,10 @@ const rename = require('gulp-rename');
 const size = require('gulp-size');
 const imageminWebp = require('imagemin-webp');
 
-const imagesWebp = done => {
+const imagesWebp = () => {
   return gulp
     .src([
       `${paths.src.images}/*.{jpg,png}`,
-      '!src/assets/images/countrySelect/**',
       '!src/assets/images/favicon/**',
       '!src/assets/images/intTelInput/**',
       '!src/assets/images/ogp/**',
@@ -20,8 +19,6 @@ const imagesWebp = done => {
     .pipe(rename({ extname: '.webp' }))
     .pipe(size({ showFiles: true }))
     .pipe(gulp.dest(paths.build.images));
-
-  done();
 };
 
 module.exports = imagesWebp;

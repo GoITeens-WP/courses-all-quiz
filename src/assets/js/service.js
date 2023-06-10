@@ -2,9 +2,6 @@ import $ from 'jquery';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
-// import countrySelect from 'country-select-js';
-// import postalCodesRegex from './postalCodesRegex';
-
 import validateLocales from '../../json/validateLocales.json';
 import formMessageLocales from '../../json/formMessageLocales.json';
 
@@ -83,27 +80,6 @@ async function getItiConfig(preferredCountries, excludeCountries) {
 }
 
 /**
- * It returns a configuration object for the intl-tel-input library
- * @param preferredCountries - An array of country codes that you want to be at the top of the list.
- * @param excludeCountries - An array of country codes to exclude from the dropdown.
- * @returns An object with the following properties:
- *   defaultCountry: The country code of the user's country
- *   preferredCountries: An array of country codes that are preferred
- *   excludeCountries: An array of country codes that are excluded
- *   responsiveDropdown: A boolean that determines whether the dropdown is responsive
- */
-// async function getCountryConfig(preferredCountries, excludeCountries) {
-//   const country_code = window.itiInitialCountry || (await geoIpLookup());
-
-//   return {
-//     defaultCountry: country_code,
-//     preferredCountries,
-//     excludeCountries,
-//     responsiveDropdown: false,
-//   };
-// }
-
-/**
  * It takes a parameter name as a string, and returns the value of that parameter in the URL
  * @param sParam - The name of the parameter you want to get the value of.
  * @returns The value of the parameter in the URL.
@@ -161,22 +137,6 @@ function isNumeric(str) {
   if (typeof str != 'string') return false;
   return !isNaN(str) && !isNaN(parseFloat(str));
 }
-
-/**
- * It takes a form element and returns an object with the form's data
- * @param  - The form element that you want to get the data from.
- * @returns An object with the form data.
- */
-// function getFormData($form) {
-//   const unindexed_array = $form.serializeArray();
-//   const indexed_array = {};
-
-//   $.map(unindexed_array, function (n, i) {
-//     indexed_array[n['name']] = n['value'];
-//   });
-
-//   return indexed_array;
-// }
 
 /**
  * Setting the validation options for the form.
@@ -288,22 +248,6 @@ function getValidationFields(input, allInputs) {
     //     errorMessage: 'The field must contain a maximum of 1000 characters',
     //   },
     // ],
-    // zip: [
-    //   {
-    //     rule: 'required',
-    //     errorMessage: 'Zip code is required',
-    //   },
-    //   {
-    //     rule: 'minLength',
-    //     value: 2,
-    //     errorMessage: 'The field must contain a minimum of 2 symbols',
-    //   },
-    //   {
-    //     rule: 'maxLength',
-    //     value: 20,
-    //     errorMessage: 'The field must contain a maximum of 20 symbols',
-    //   },
-    // ],
     // text: [
     //   {
     //     rule: 'minLength',
@@ -341,26 +285,6 @@ function getValidationFields(input, allInputs) {
     //   },
     // ],
   };
-
-  // const country = allInputs.find(input => input.name === 'country');
-  // if (country) {
-  //   const zipRegex = getZipRegex($(country).countrySelect('getSelectedCountryData').iso2);
-  //   if (zipRegex) {
-  //     fields.zip.push({
-  //       validator: value => {
-  //         if (value.length > 1) {
-  //           const regex = new RegExp(
-  //             getZipRegex($(country).countrySelect('getSelectedCountryData').iso2),
-  //             'i'
-  //           );
-  //           return regex.test(value);
-  //         }
-  //         return true;
-  //       },
-  //       errorMessage: 'Zip code is invalid!',
-  //     });
-  //   }
-  // }
 
   return fields[field]
     .filter(({ rule }) => rule !== 'required')
@@ -469,18 +393,6 @@ function getNameRegex(locale = window.locale) {
 function getEmailRegex() {
   return /^(?=^.{3,63}$)(^[A-Za-z0-9_]+(([_\.\-](?=[A-Za-z0-9_]))[a-zA-Z0-9_]+([\-\.](?=[A-Za-z0-9_]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
 }
-
-/**
- * It takes a country code as a parameter and returns a regular expression that can be used to validate
- * a postal code for that country
- * @param countryCode - The country code of the country you want to validate the postal code for.
- * @returns The postal code regex for the country code passed in.
- */
-// function getZipRegex(countryCode) {
-//   return (
-//     postalCodesRegex.find(country => country.abbrev.toLowerCase() === countryCode)?.postal || ''
-//   );
-// }
 
 /**
  * It takes a formData object and adds the values to the URL as query parameters
@@ -845,29 +757,26 @@ function changeFormStep(form, nextStep) {
 }
 
 export default {
-  validationOptions,
-  getValidationLocale,
-  setFormValidation,
-  translate,
-  Loading,
-  getItiConfig,
-  getIpInfo,
-  geoIpLookup,
-  isNumeric,
-  // getFormData,
-  // getCountryConfig,
-  // getZipRegex,
-  getUrlParameter,
-  setUrlParameter,
-  sendDataToIntelza,
   addDisabledAttributeToSubmitBtn,
+  changeFormStep,
+  checkEmailDomain,
+  geoIpLookup,
+  getIpInfo,
+  getItiConfig,
+  getUrlParameter,
+  getValidationLocale,
+  initializeLeeloo,
+  isNumeric,
+  Loading,
+  redirectToTelegramBackend,
+  saveParamsToCookies,
+  sendDataToIntelza,
+  sendEmail,
+  setFormValidation,
+  setParamsForLeeloo,
+  setUrlParameter,
   showError,
   showSuccess,
-  setParamsForLeeloo,
-  initializeLeeloo,
-  redirectToTelegramBackend,
-  sendEmail,
-  saveParamsToCookies,
-  checkEmailDomain,
-  changeFormStep,
+  translate,
+  validationOptions,
 };

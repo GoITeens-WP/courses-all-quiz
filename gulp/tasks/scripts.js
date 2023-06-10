@@ -1,15 +1,10 @@
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
 const gulp = require('gulp');
-const mode = require('gulp-mode');
 const notify = require('gulp-notify');
 const paths = require('../paths');
 const plumber = require('gulp-plumber');
-const uglify = require('gulp-uglify');
-const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 
-const scripts = done => {
+const scripts = () => {
   return gulp
     .src(paths.src.js)
     .pipe(
