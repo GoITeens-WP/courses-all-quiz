@@ -141,7 +141,6 @@ telegram backend. */
     const name = form.querySelector('[name="name"]');
     const phone = form.querySelector('[type="tel"]');
     const email = form.querySelector('[name="email"]');
-    const country = form.querySelector('[name="country"]');
 
     // Vars
     const iti = intlTelInput(
