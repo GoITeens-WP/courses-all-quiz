@@ -132,28 +132,6 @@
     }
   },
   {
-    "key": "Zip code is required",
-    "dict": {
-      "ru": "Почтовый индекс обязателен",
-      "uk": "Поштовий індекс обов’язковий",
-      "pl": "Kod pocztowy jest wymagany",
-      "es": "El código postal es obligatorio",
-      "ro": "Codul postal este obligatoriu",
-      "en": "Zip code is required"
-    }
-  },
-  {
-    "key": "Zip code is invalid!",
-    "dict": {
-      "ru": "Почтовый индекс неверный!",
-      "uk": "Поштовий індекс невірний!",
-      "pl": "Kod pocztowy jest nieprawidłowy!",
-      "es": "El código postal es inválido!",
-      "ro": "Codul postal este invalid!",
-      "en": "Zip code is invalid!"
-    }
-  },
-  {
     "key": "The field is required",
     "dict": {
       "ru": "Обязательное поле",

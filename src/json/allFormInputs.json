@@ -25,21 +25,6 @@
       "required": true
     },
     {
-      "title": "CV *",
-      "type": "file",
-      "name": "file",
-      "dataField": "file",
-      "required": true,
-      "accept": ".doc, .docx, .pdf, .rtf"
-    },
-    {
-      "title": "Мотиваційний лист / Сообщение / Вопрос",
-      "type": "textarea",
-      "name": "message",
-      "placeholder": "",
-      "dataField": "message"
-    },
-    {
       "title": "Згоден з ",
       "type": "checkbox",
       "name": "agree",
@@ -53,20 +38,19 @@
       ]
     },
     {
-      "title": "Zipcode",
-      "type": "text",
-      "name": "zipCode",
-      "placeholder": "00000",
-      "dataField": "zip",
-      "class": "input-wrap-half"
+      "title": "CV *",
+      "type": "file",
+      "name": "file",
+      "dataField": "file",
+      "required": true,
+      "accept": ".doc, .docx, .pdf, .rtf"
     },
     {
-      "title": "Country",
-      "type": "text",
-      "name": "country",
+      "title": "Мотиваційний лист / Сообщение / Вопрос",
+      "type": "textarea",
+      "name": "message",
       "placeholder": "",
-      "dataField": "select",
-      "class": "input-wrap-half"
+      "dataField": "message"
     }
   ]
 }
