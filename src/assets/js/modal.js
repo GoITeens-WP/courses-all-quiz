@@ -5,11 +5,11 @@ jQuery(function () {
   const modal = document.querySelector('[data-modal]');
   const closeModalBtn = document.querySelector('[data-modal-close]');
   const body = document.querySelector('body');
-  const backdrop = document.querySelector('.backdrop');
 
   openModalBtn.forEach(function (btn) {
     btn.addEventListener('click', e => {
       e.preventDefault();
+
       setTimeout(() => {
         toggleModal();
       }, 500);
@@ -38,6 +38,6 @@ jQuery(function () {
   }
 
   document.addEventListener('keydown', handleKey);
-  backdrop.addEventListener('mousedown', handleClose);
+  modal.addEventListener('mousedown', handleClose);
   closeModalBtn.addEventListener('click', toggleModal);
 });
