@@ -1,7 +1,7 @@
 /**
  * Form.js - v1.2.0
  * Created @Suzuya_re1 at 2022-10-01
- * Updated @Dizardmk at 2022-12-06, 2023-05-06
+ * Updated @Dizardmk
  */
 
 import $ from 'jquery';
