@@ -9,37 +9,38 @@
 Встановлення залежностей проекту:
 
 ```
-yarn
+pnpm install / yarn / npm i
 ```
 
 Щоб запустити проект в режимі розробки:
 
 ```
-yarn start
+pnpm start / yarn start / npm start
 ```
 
 Щоб створити білд для продакшену:
 
 ```
-yarn build
+pnpm build / yarn build / npm run build
 ```
 
 ## 2) Інформація про збірку
 
-#### В збірці використовується шаблонизатор Nunjucks
+- В збірці використовується шаблонизатор
+  [Nunjucks](https://mozilla.github.io/nunjucks/templating.html)
 
-> https://mozilla.github.io/nunjucks/templating.html
+  > Сторінки проекту зберігаються у папці **«pages»**.
+  >
+  > Секційні фрагменти зберігаються у папці **«partials»**.
 
-- Сторінки проекту зберігаються у папці **«pages»**.
+- В збірці використовується CSS framework [Tailwind](https://tailwindcss.com/docs/installation) і
+  SASS (SCSS)
 
-- Секційні фрагменти зберігаються у папці **«partials»**.
+- В збірці є автоматична оптимізація усіх зображень.
 
-#### В збірці використовується CSS framework Tailwind і SASS (SCSS)
+- В збірці є автоматичне створення WEBP зображень: треба додати вихідне jpg або png зображення і
+  збірка автоматично створить webp, з назвою картинки як і в вихідного зображення.
 
-> https://tailwindcss.com/docs/installation
-
-#### В збірці є автоматична оптимізація усіх зображень.
-
-#### В збірці є автоматичне створення WEBP зображень: треба додати вихідне jpg або png зображення і збірка автоматично створить webp, з назвою картинки як і в вихідного зображення.
-
-#### В збірці є автоматичне створення SPRITE.SVG, треба закинути свою svg за шляхом "src\assets\images\sprite". Звернутися до спрайту: "./assets/images/sprite.svg#logo". Айдишником svg у спрайті буде назва самої svg у папці "sprite".
+- В збірці є автоматичне створення SPRITE.SVG, треба закинути свою svg за шляхом
+  "src\assets\images\sprite". Звернутися до спрайту: "./assets/images/sprite.svg#logo". Айдишником
+  svg у спрайті буде назва самої svg у папці "sprite".
