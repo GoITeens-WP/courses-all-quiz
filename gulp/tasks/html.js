@@ -8,8 +8,14 @@ const nunjucksRender = require('gulp-nunjucks-render');
 const paths = require('../paths');
 const rename = require('gulp-rename');
 
+// other htmlminConfig settings: https://github.com/kangax/html-minifier#options-quick-reference
 const htmlminConfig = {
+  collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
+  collapseInlineTagWhitespace: true, // Don't leave any spaces between display:inline; elements when collapsing.
+  minifyCSS: true, // Minify CSS in style elements and style attributes
+  minifyJS: true, // Minify JavaScript in script elements and event attributes
   removeComments: true, // Strip HTML comments
+  sortAttributes: true, // Sort attributes by frequency
 };
 
 const cachebustConfig = {
