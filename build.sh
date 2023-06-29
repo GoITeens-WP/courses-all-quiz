@@ -7,9 +7,9 @@ rm -rf ./build
 rm -rf node_modules
 
 # Build app
-yarn cache clean
-yarn
-yarn build
+npm cache clean --force
+npm i
+npm run build
 
 # Remove non-used params.ini file
 rm ./build/app/params.ini
