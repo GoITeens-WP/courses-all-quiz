@@ -1,5 +1,5 @@
-const data = require('gulp-data');
 const gulp = require('gulp');
+const data = require('gulp-data');
 const nunjucksRender = require('gulp-nunjucks-api');
 const paths = require('../paths');
 

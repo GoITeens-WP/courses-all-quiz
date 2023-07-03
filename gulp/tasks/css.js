@@ -1,9 +1,9 @@
+const gulp = require('gulp');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const gcmq = require('gulp-group-css-media-queries');
-const gulp = require('gulp');
 const mode = require('gulp-mode')();
-const paths = require('../paths');
+const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
 const purgecss = require('gulp-purgecss');
@@ -11,11 +11,19 @@ const sass = require('gulp-sass')(require('sass'));
 const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const tailwindcss = require('tailwindcss');
+const paths = require('../paths');
 
 const css = () => {
   return gulp
     .src(paths.src.css)
-    .pipe(plumber())
+    .pipe(
+      plumber(
+        notify.onError({
+          title: 'CSS',
+          message: 'Error: <%= error.message %>',
+        })
+      )
+    )
     .pipe(mode.development(sourcemaps.init()))
     .pipe(
       sass({

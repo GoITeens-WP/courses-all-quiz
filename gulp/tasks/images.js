@@ -2,8 +2,10 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const mode = require('gulp-mode')();
 const newer = require('gulp-newer');
-const paths = require('../paths');
 const size = require('gulp-size');
+const notify = require('gulp-notify');
+const plumber = require('gulp-plumber');
+const paths = require('../paths');
 
 const imageMinConfig = {
   gifsicle: { interlaced: true },
@@ -22,6 +24,14 @@ const imageMinConfig = {
 const images = () => {
   return gulp
     .src([paths.src.images, '!src/assets/images/sprite/**'])
+    .pipe(
+      plumber(
+        notify.onError({
+          title: 'IMAGES',
+          message: 'Error: <%= error.message %>',
+        })
+      )
+    )
     .pipe(newer(paths.build.images))
     .pipe(
       mode.production(
