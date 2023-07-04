@@ -9,3 +9,6 @@ src/app/**
 
 # Ignore crm folder:
 src/crm/**
+
+# Ignore utils.js
+src/assets/js/utils.js

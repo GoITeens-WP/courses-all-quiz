@@ -31,6 +31,7 @@ function generateData(
   };
   return ensureUtmData(data);
 }
+
 function ensureUtmData(data) {
   data.utm_source = getCookie('utm_source');
   data.utm_medium = getCookie('utm_medium');
@@ -40,6 +41,7 @@ function ensureUtmData(data) {
 
   return data;
 }
+
 function getCookie(name) {
   var nameEQ = name + '=';
   var ca = document.cookie.split(';');
@@ -50,6 +52,7 @@ function getCookie(name) {
   }
   return null;
 }
+
 function readCookie(name) {
   let nameEQ = name + '=';
   let ca = document.cookie.split(';');
@@ -64,6 +67,7 @@ function readCookie(name) {
   }
   return null;
 }
+
 async function send(data) {
   return await axios({
     method: 'post',
@@ -71,6 +75,7 @@ async function send(data) {
     data: data,
   });
 }
+
 async function submit(
   name,
   phone = null,
@@ -83,6 +88,7 @@ async function submit(
 
   return response;
 }
+
 export default {
   submit,
   generateData,
