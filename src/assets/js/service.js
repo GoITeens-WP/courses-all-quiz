@@ -404,7 +404,7 @@ function setParamsForLeeloo(formData) {
     utm_medium: 'utm_medium',
     utm_term: 'utm_term',
     utm_campaign: 'utm_campaign',
-    umt_content: 'umt_content',
+    utm_content: 'utm_content',
     phone: 'phone',
     email: 'email',
     name: 'first_name',

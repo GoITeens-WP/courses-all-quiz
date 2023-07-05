@@ -1,5 +1,6 @@
 @Library('jenkins-common')_
 
+// "all-biulds" for goiteens
 node("go-web"){
     stage('Load credentials') {
         withCredentials([
