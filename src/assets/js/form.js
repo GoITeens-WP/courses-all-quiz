@@ -59,7 +59,16 @@ $(window).on('load', async function () {
     /* It's a check that the domain has MX records on dns server */
     needsCheckEmailDomain: true,
 
-    utmMarks: ['utm_source', 'utm_medium', 'utm_content', 'utm_term', 'utm_campaign'],
+    utmMarks: [
+      'utm_source',
+      'utm_medium',
+      'utm_content',
+      'utm_term',
+      'utm_campaign',
+      'campaignId',
+      'adsetId',
+      'adId',
+    ],
     referralMarks: ['SRC', 'from'],
     defaultLocale: defaultLang,
     defaultPhoneCountry: itiLocale,

@@ -38,6 +38,9 @@ function ensureUtmData(data) {
   data.utm_term = getCookie('utm_term');
   data.utm_campaign = getCookie('utm_campaign');
   data.utm_content = getCookie('utm_content');
+  data.campaignId = getCookie('campaignId');
+  data.adsetId = getCookie('adsetId');
+  data.adId = getCookie('adId');
 
   return data;
 }
