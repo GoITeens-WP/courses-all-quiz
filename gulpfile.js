@@ -44,18 +44,18 @@ const watcher = done => {
 exports.start = series(
   tasks.clean,
   parallel(
-    tasks.php,
-    tasks.db,
-    tasks.images,
-    tasks.imagesWebp,
-    tasks.sprite,
-    tasks.css,
     tasks.fonts,
-    tasks.scripts,
     tasks.html.html,
-    tasks.crm,
-    tasks.app,
-    tasks.phpmailer
+    tasks.css,
+    tasks.scripts,
+    tasks.sprite,
+    tasks.images,
+    tasks.imagesWebp
+    // tasks.app
+    // tasks.crm,
+    // tasks.php
+    // tasks.db,
+    // tasks.phpmailer
   ),
   watcher,
   serve
@@ -64,17 +64,17 @@ exports.start = series(
 exports.build = series(
   tasks.clean,
   parallel(
-    tasks.db,
-    tasks.php,
+    tasks.fonts,
+    tasks.html.html,
+    tasks.css,
+    tasks.scripts,
+    tasks.sprite,
     tasks.images,
     tasks.imagesWebp,
-    tasks.sprite,
-    tasks.css,
-    tasks.fonts,
-    tasks.scripts,
-    tasks.html.html,
-    tasks.crm,
     tasks.app,
-    tasks.phpmailer
+    tasks.crm,
+    tasks.php
+    // tasks.db,
+    // tasks.phpmailer
   )
 );

@@ -458,7 +458,7 @@ function initializeLeeloo(form, leelooHash = window.leelooHash) {
  * @returns The result of the axios.post request.
  */
 async function sendEmail(data) {
-  const result = await axios.post('./mail.php', data);
+  const result = await axios.post('./phpmailer/mail.php', data);
   return result.data;
 }
 

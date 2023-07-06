@@ -5,7 +5,7 @@ const paths = require('../paths');
 
 const php = () => {
   return gulp
-    .src(paths.src.php)
+    .src([paths.src.php, '!src/app/**', '!src/crm/**', '!src/phpmailer/**'])
     .pipe(
       plumber(
         notify.onError({
