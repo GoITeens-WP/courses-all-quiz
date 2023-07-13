@@ -1,5 +1,5 @@
 /****************************************
- * Start Date Timer from DATE in params
+ * ➡️ Start Date Timer from DATE in params
  ****************************************/
 
 // document.addEventListener('DOMContentLoaded', () => {
@@ -54,7 +54,7 @@
 // }
 
 /****************************************
- * 7 minutes Timer
+ * ➡️ 7 minutes Timer
  ****************************************/
 
 // document.addEventListener('DOMContentLoaded', () => {
