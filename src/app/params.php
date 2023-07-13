@@ -108,13 +108,24 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label>
 
+      <!-- if you need timer to start date, set type="date" -->
       <!-- <label>
         Start Date
         <input
-          type="text"
+          type="date"
           name="START_DATE"
           value="<?= $ini_array['START_DATE'] ?>"
           placeholder="<?= $ini_array['START_DATE'] ?>"
+        />
+      </label> -->
+
+        <!-- <label>
+        Start Time
+        <input
+          type="time"
+          name="START_TIME"
+          value="<?= $ini_array['START_TIME'] ?>"
+          placeholder="<?= $ini_array['START_TIME'] ?>"
         />
       </label> -->
 
@@ -135,16 +146,6 @@ $ini_array = parse_ini_file('params.ini');
           name="START_MONTH"
           value="<?= $ini_array['START_MONTH'] ?>"
           placeholder="<?= $ini_array['START_MONTH'] ?>"
-        />
-      </label> -->
-
-      <!-- <label>
-        Start Time
-        <input
-          type="time"
-          name="START_TIME"
-          value="<?= $ini_array['START_TIME'] ?>"
-          placeholder="<?= $ini_array['START_TIME'] ?>"
         />
       </label> -->
 

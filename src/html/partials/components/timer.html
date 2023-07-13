@@ -1,0 +1,13 @@
+<div data-timer="{{timer.count}}">
+  <p>{{timer.text}}</p>
+  <ul class="flex gap-4">
+    {% for item in timer.items %}
+    <li class="grid">
+      <span class="max-w-max" {{item.attribute}}>00</span>
+      <span>{{item.text}}</span>
+    </li>
+    {% if not loop.last %}
+    <li>:</li>
+    {% endif %} {% endfor %}
+  </ul>
+</div>
