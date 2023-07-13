@@ -27,26 +27,51 @@
     ]
   },
   "timer": {
-    "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
-    "text": "Register webinar",
-    "items": [
-      {
-        "attribute": "data-day",
-        "text": "day"
-      },
-      {
-        "attribute": "data-hours",
-        "text": "hours"
-      },
-      {
-        "attribute": "data-min",
-        "text": "min"
-      },
-      {
-        "attribute": "data-sec",
-        "text": "sec"
-      }
-    ]
+    "startDate": {
+      "active": false,
+      "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
+      "text": "Register webinar",
+      "items": [
+        {
+          "attribute": "data-day",
+          "text": "day"
+        },
+        {
+          "attribute": "data-hours",
+          "text": "hours"
+        },
+        {
+          "attribute": "data-min",
+          "text": "min"
+        },
+        {
+          "attribute": "data-sec",
+          "text": "sec"
+        }
+      ]
+    },
+    "fixedTime": {
+      "active": false,
+      "text": "Register webinar",
+      "items": [
+        {
+          "attribute": "data-hours",
+          "text": "hours"
+        },
+        {
+          "attribute": "data-min",
+          "text": "min"
+        },
+        {
+          "attribute": "data-sec",
+          "text": "sec"
+        },
+        {
+          "attribute": "data-ms",
+          "text": "ms"
+        }
+      ]
+    }
   },
   "header": {
     "id": "header"

@@ -1,3 +1,6 @@
+{% if timer.startDate.active === true %} {% set timer = timer.startDate %} {% elif
+timer.fixedTime.active === true %} {% set timer = timer.fixedTime %} {% endif %}
+
 <div data-timer="{{timer.count}}">
   <p>{{timer.text}}</p>
   <ul class="flex gap-4">
