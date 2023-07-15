@@ -71,7 +71,7 @@ function logResponse($msg, $response, $input)
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
   ];
-file_put_contents("log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
+file_put_contents("lead-log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }
 
 function logRequest($request)
@@ -81,5 +81,5 @@ function logRequest($request)
     'date' => $date,
     'input' => $request,
   ];
-file_put_contents("log/".date("Y-m-d")."-Req.txt",json_encode($string).PHP_EOL,FILE_APPEND);
+file_put_contents("lead-log/".date("Y-m-d")."-Req.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }

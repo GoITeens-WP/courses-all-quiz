@@ -53,12 +53,11 @@ function send($data, $dataLog)
 
 function logResponse($msg, $response)
 {
-    $file = fopen('elza.log', 'a+');
-    $date = date(DATE_RFC822);
-    $string = [
-        'message' => str_replace('{date}', $date, $msg),
-        'data' => $response,
-    ];
-    fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ",");
-    fclose($file);
+  $date = date(DATE_RFC822);
+
+  $string = [
+    'message' => str_replace('{date}', $date, $msg),
+    'data' => $response,
+  ];
+file_put_contents("elza-log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }
