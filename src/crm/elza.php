@@ -59,5 +59,5 @@ function logResponse($msg, $response)
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
   ];
-file_put_contents("elza-log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
+file_put_contents("elza-log/".date("Y-m-d")."-elza.txt",json_encode($string).PHP_EOL,FILE_APPEND);
 }
