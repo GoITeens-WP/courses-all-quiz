@@ -27,19 +27,17 @@ function send($data, $dataLog)
     $headersArray = [];
     $headersArray[] = "Content-Type: application/json";
     $curl_options[CURLOPT_HTTPHEADER] = $headersArray;
-
     curl_setopt_array($ch, $curl_options);
-
     $response = curl_exec($ch);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     $header = substr($response, 0, $header_size);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $body = substr($response, $header_size);
-
     $log = [
         'input' => $dataLog,
         'response' => json_decode($body)
     ];
+
     if ($httpcode !== 200) {
         $msg = 'Error in progress at {date}';
     } else {
@@ -53,8 +51,7 @@ function send($data, $dataLog)
 
 function logResponse($msg, $response)
 {
-  $date = date(DATE_RFC822);
-
+  $date = date("Y-m-d H:i:s");
   $string = [
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,

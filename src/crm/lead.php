@@ -3,7 +3,9 @@
 $token = 'DNBC-3VgDWLIIrpyBab0l9bISr0C-0VO';
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
+
 logRequest($input);
+
 echo send($token, ['Lead' => $input], $input);
 
 function send($token, $data, $input)
@@ -42,31 +44,31 @@ function send($token, $data, $input)
   $headersArray[] = 'Authorization' . ':' . 'Bearer ' . $token;
   $headersArray[] = 'Content-Type: application/json';
   $curl_options[CURLOPT_HTTPHEADER] = $headersArray;
-
   curl_setopt_array($ch, $curl_options);
   $response = curl_exec($ch);
   $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
   $header = substr($response, 0, $header_size);
   $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   $body = substr($response, $header_size);
-
   $log = [
     'input' => $data,
     'response' => json_decode($body),
   ];
+
   if ($httpcode !== 200) {
     $msg = 'Error in progress at {date}';
   } else {
     $msg = 'Success send status';
   }
+
   logResponse($msg, $log, $input);
+
   return $body;
 }
 
 function logResponse($msg, $response, $input)
 {
-  $date = date(DATE_RFC822);
-
+  $date = date("Y-m-d H:i:s");
   $string = [
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
@@ -76,7 +78,7 @@ file_put_contents("lead-log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP
 
 function logRequest($request)
 {
-  $date = date(DATE_RFC822);
+  $date = date("Y-m-d H:i:s");
   $string = [
     'date' => $date,
     'input' => $request,
