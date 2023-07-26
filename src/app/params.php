@@ -119,7 +119,7 @@ $ini_array = parse_ini_file('params.ini');
         />
       </label> -->
 
-        <!-- <label>
+      <!-- <label>
         Start Time
         <input
           type="time"
@@ -142,7 +142,7 @@ $ini_array = parse_ini_file('params.ini');
       <!-- <label>
         Start Month
         <input
-          type="month"
+          type="text"
           name="START_MONTH"
           value="<?= $ini_array['START_MONTH'] ?>"
           placeholder="<?= $ini_array['START_MONTH'] ?>"
