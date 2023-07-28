@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env PORT=3000 gulp start --development ",
     "build": "gulp build --production",
-    "prettier": "prettier --write \".\"",
+    "prettier": "npx prettier . --write",
     "htmlhint": "npx htmlhint \"**/*.html\""
   },
   "homepage": "",
@@ -14,8 +14,8 @@
   "author": "https://github.com/GoWeb-Studio",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.22.8",
-    "@babel/preset-env": "^7.22.7",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.3",
     "browser-sync": "^2.29.3",
@@ -46,21 +46,21 @@
     "imagemin-webp": "6.1.0",
     "intl-tel-input": "^18.1.8",
     "js-cookie": "^3.0.5",
-    "postcss": "^8.4.25",
+    "postcss": "^8.4.27",
     "postcss-import": "^15.1.0",
     "postcss-scss": "^4.0.6",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "require-dir": "^1.2.0",
-    "sass": "^1.63.6",
-    "tailwindcss": "^3.3.2",
-    "webpack": "^5.88.1",
+    "sass": "^1.64.1",
+    "tailwindcss": "^3.3.3",
+    "webpack": "^5.88.2",
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
     "axios": "^1.4.0",
     "jquery": "^3.7.0",
     "just-validate": "^4.2.0",
-    "sweetalert2": "^11.7.12"
+    "sweetalert2": "^11.7.20"
   }
 }
