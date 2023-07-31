@@ -1,94 +1,10 @@
 {
   "page": {
     "LANG_EXAMPLE": "Украина(uk), Польша(pl), Мексика-Колумбия(es), Филиппины(en), Румыния(ro)",
-    "lang": "uk",
+    "lang": "en",
     "title": "title",
     "description": "description",
     "canonical": "./"
-  },
-  "logo": {
-    "link_logo_aria": "Посилання на головну сторінку сайту",
-    "logo_aria": "Логотип сайту"
-  },
-  "navigation": {
-    "btnAria": "кнопка мобiльного меню",
-    "svgAria": "іконка мобiльного меню",
-    "btnCloseAria": "кнопка закриття мобiльного меню",
-    "svgCloseAria": "іконка закриття мобiльного меню",
-    "items": [
-      {
-        "link": "#",
-        "title": "homePage"
-      },
-      {
-        "link": "#",
-        "title": "somePage"
-      }
-    ]
-  },
-  "timer": {
-    "startDate": {
-      "active": false,
-      "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
-      "text": "Register webinar",
-      "items": [
-        {
-          "attribute": "data-day",
-          "text": "day"
-        },
-        {
-          "attribute": "data-hours",
-          "text": "hours"
-        },
-        {
-          "attribute": "data-min",
-          "text": "min"
-        },
-        {
-          "attribute": "data-sec",
-          "text": "sec"
-        }
-      ]
-    },
-    "fixedTime": {
-      "active": false,
-      "text": "Register webinar",
-      "items": [
-        {
-          "attribute": "data-hours",
-          "text": "hours"
-        },
-        {
-          "attribute": "data-min",
-          "text": "min"
-        },
-        {
-          "attribute": "data-sec",
-          "text": "sec"
-        },
-        {
-          "attribute": "data-ms",
-          "text": "ms"
-        }
-      ]
-    }
-  },
-  "accordion": {
-    "svgAria": "іконка стрілки",
-    "items": [
-      {
-        "question": "question1",
-        "answer": "answer1"
-      },
-      {
-        "question": "question2",
-        "answer": "answer2"
-      },
-      {
-        "question": "question3",
-        "answer": "answer3"
-      }
-    ]
   },
   "header": {
     "id": "header"
@@ -269,7 +185,7 @@
       }
     },
     "en": {
-      "address": "GoIT Consultancy Inc. 2320 Taft Avenue Zone 79 Barangay 725. 1004 Malate NCR,. city of Manila, First District Philippines",
+      "address": "GoIT Consultancy Inc. 41ST FLOOR GT TOWER INTERNATIONAL 6813 AYALA AVE, COR. H.V. DELA COSTA ST. SALCEDO VILLAGE, BEL-AIR 1227 CITY OF MAKATI NCR, FOURTH DISTRICT PHILIPPINES",
       "contacts": [
         {
           "text": "+63 (905) 221-0131",
@@ -372,6 +288,90 @@
         "year": "2014 - "
       }
     }
+  },
+  "logo": {
+    "link_logo_aria": "Посилання на головну сторінку сайту",
+    "logo_aria": "Логотип сайту"
+  },
+  "navigation": {
+    "btnAria": "кнопка мобiльного меню",
+    "svgAria": "іконка мобiльного меню",
+    "btnCloseAria": "кнопка закриття мобiльного меню",
+    "svgCloseAria": "іконка закриття мобiльного меню",
+    "items": [
+      {
+        "link": "#",
+        "title": "homePage"
+      },
+      {
+        "link": "#",
+        "title": "somePage"
+      }
+    ]
+  },
+  "timer": {
+    "startDate": {
+      "active": false,
+      "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
+      "text": "Register webinar",
+      "items": [
+        {
+          "attribute": "data-day",
+          "text": "day"
+        },
+        {
+          "attribute": "data-hours",
+          "text": "hours"
+        },
+        {
+          "attribute": "data-min",
+          "text": "min"
+        },
+        {
+          "attribute": "data-sec",
+          "text": "sec"
+        }
+      ]
+    },
+    "fixedTime": {
+      "active": false,
+      "text": "Register webinar",
+      "items": [
+        {
+          "attribute": "data-hours",
+          "text": "hours"
+        },
+        {
+          "attribute": "data-min",
+          "text": "min"
+        },
+        {
+          "attribute": "data-sec",
+          "text": "sec"
+        },
+        {
+          "attribute": "data-ms",
+          "text": "ms"
+        }
+      ]
+    }
+  },
+  "accordion": {
+    "svgAria": "іконка стрілки",
+    "items": [
+      {
+        "question": "question1",
+        "answer": "answer1"
+      },
+      {
+        "question": "question2",
+        "answer": "answer2"
+      },
+      {
+        "question": "question3",
+        "answer": "answer3"
+      }
+    ]
   },
   "form": {
     "id": "modalForm",
