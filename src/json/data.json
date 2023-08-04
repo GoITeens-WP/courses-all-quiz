@@ -34,31 +34,31 @@
         {
           "link": "https://www.facebook.com/goITclub/",
           "svg": "facebook",
-          "alt": "Логотип фейсбук",
+          "alt": "Логотип фейсбуку",
           "link_alt": "Посилання на фейсбук"
         },
         {
           "link": "https://www.instagram.com/goitclub/",
           "svg": "instagram",
-          "alt": "Логотип iнстаграм",
-          "link_alt": "Посилання на iнстаграм"
+          "alt": "Логотип інстаграму",
+          "link_alt": "Посилання на інстаграм"
         },
         {
           "link": "https://www.linkedin.com/company/goit-start-your-career-in-it/",
           "svg": "linkedin",
-          "alt": "Логотип лiнкедин",
-          "link_alt": "Посилання на лiнкедин"
+          "alt": "Логотип лінкедин",
+          "link_alt": "Посилання на лінкедин"
         },
         {
           "link": "https://t.me/junior_developer_ua",
           "svg": "telegram",
-          "alt": "Логотип телеграм",
+          "alt": "Логотип телеграму",
           "link_alt": "Посилання на телеграм"
         },
         {
           "link": "https://www.youtube.com/@GoIT",
           "svg": "youtube",
-          "alt": "Логотип ютуб",
+          "alt": "Логотип ютубу",
           "link_alt": "Посилання на ютуб"
         }
       ],
@@ -298,10 +298,10 @@
     "logo_aria": "Логотип сайту"
   },
   "navigation": {
-    "btnAria": "кнопка мобiльного меню",
-    "svgAria": "іконка мобiльного меню",
-    "btnCloseAria": "кнопка закриття мобiльного меню",
-    "svgCloseAria": "іконка закриття мобiльного меню",
+    "btnAria": "кнопка мобільного меню",
+    "svgAria": "іконка мобільного меню",
+    "btnCloseAria": "кнопка закриття мобільного меню",
+    "svgCloseAria": "іконка закриття мобільного меню",
     "items": [
       {
         "link": "#",
@@ -317,7 +317,7 @@
     "startDate": {
       "active": false,
       "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
-      "text": "Register webinar",
+      "text": "Some title",
       "items": [
         {
           "attribute": "data-day",
@@ -339,7 +339,7 @@
     },
     "fixedTime": {
       "active": false,
-      "text": "Register webinar",
+      "text": "Some title",
       "items": [
         {
           "attribute": "data-hours",
