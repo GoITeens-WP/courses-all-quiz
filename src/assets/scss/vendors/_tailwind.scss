@@ -5,14 +5,14 @@
 /* If you need to download some fonts - use this site: https://www.cufonfonts.com/ */
 @layer base {
   // @include font-face('Montserrat', '../fonts/Montserrat-Thin', 100);
-  // @include font-face('Montserrat', '../fonts/Montserrat-ExtraLight', 200);
-  // @include font-face('Montserrat', '../fonts/Montserrat-Light', 300);
-  // @include font-face('Montserrat', '../fonts/Montserrat-Regular', 400);
-  // @include font-face('Montserrat', '../fonts/Montserrat-Medium', 500);
-  // @include font-face('Montserrat', '../fonts/Montserrat-SemiBold', 600);
-  // @include font-face('Montserrat', '../fonts/Montserrat-Bold', 700);
-  // @include font-face('Montserrat', '../fonts/Montserrat-ExtraBold', 800);
-  // @include font-face('Montserrat', '../fonts/Montserrat-Black', 900);
+  @include font-face('Montserrat', '../fonts/Montserrat-ExtraLight', 200);
+  @include font-face('Montserrat', '../fonts/Montserrat-Light', 300);
+  @include font-face('Montserrat', '../fonts/Montserrat-Regular', 400);
+  @include font-face('Montserrat', '../fonts/Montserrat-Medium', 500);
+  @include font-face('Montserrat', '../fonts/Montserrat-SemiBold', 600);
+  @include font-face('Montserrat', '../fonts/Montserrat-Bold', 700);
+  @include font-face('Montserrat', '../fonts/Montserrat-ExtraBold', 800);
+  @include font-face('Montserrat', '../fonts/Montserrat-Black', 900);
 }
 
 body {
@@ -23,9 +23,12 @@ body {
   @apply py-10 md:py-[60px] xl:py-20;
 }
 
-.btn {
-  @apply duration-300;
+.btn-accent {
+  @apply block w-full max-w-[286px] rounded-2xl bg-accent px-5 py-[18px] font-bold text-white duration-300 hover:bg-second focus:bg-second;
 }
+// .btn-second {
+//   @apply focus:text-second block w-full max-w-[286px] rounded-2xl border border-accent px-5 py-[18px] font-bold text-accent duration-300 hover:border-second hover:text-second focus:border-second;
+// }
 
 .visually-hidden {
   position: absolute !important;

@@ -1,44 +1,36 @@
 {% set section = header %}
-<header class="{{section.id}}">
+<header class="{{section.id}} mb-10">
   <div class="container">
-    <!-- HEADER -->
-    <div class="flex items-center justify-between bg-accent pt-2">
+    <div class="mb-4 flex items-center justify-between pt-5 relative">
       <!-- LOGO -->
       <a href="{{page.canonical}}" aria-label="{{logo.link_logo_aria}}">
-        <svg width="100" height="30" aria-label="{{logo.logo_aria}}">
+        <svg width="80" height="24" aria-label="{{logo.logo_aria}}">
           <title>{{logo.logo_aria}}</title>
           <use href="./assets/images/sprite.svg#logo"></use>
         </svg>
       </a>
-      <!--  END LOGO -->
-      <!-- NAV -->
-      <div class="flex items-center justify-center xl:gap-2">
-        <!-- nav-menu -->
-        {% include 'components/nav-menu.html' %}
-        <!-- mobile-menu (including nav-menu inside) -->
-        {% include 'components/mobile-menu.html' %}
-        <!-- button (optional) -->
-        <button class="btn border border-black p-2 notXl:hidden" type="button" data-modal-open>
-          Open modal
-        </button>
+    </div>
+    <p class="banner h-[89px] w-[89px] text-center text-[8px] font-bold leading-[12px] text-white pt-[30px] absolute top-[100px] right-[20px]">
+      {{section.only}}
+    </p>
+    <p class="mb-5 text-sm font-semibold">{{section.text}}</p>
+    <h1 class="mb-[64px] text-[32px] font-bold leading-[1]">{{section.title}}</h1>
+    <div class="gift relative mb-6 overflow-hidden rounded-[16px] px-3 py-6 shadow-blue">
+      <p class="mb-4 text-xl font-bold">{{section.how}}</p>
+      <p class="img-people relative mb-[146px] text-base font-medium">{{section.help}}</p>
+
+      <div class="mb-3 flex">
+        <p class="mr-[70px]">{{section.cost.title}}</p>
+        <p class="font-bold line-through">{{section.cost.value}}</p>
       </div>
-      <!--  END NAV -->
+      <div class="flex">
+        <p class="mr-[65px]">{{section.for.title}}</p>
+        <p class="font-bold">{{section.for.value}}</p>
+      </div>
     </div>
-    <!--  END HEADER -->
-
-    <!-- HERO -->
-    <div class="mx-auto max-w-xs">
-      <!-- form outside modal (optional) -->
-      {% set formId = section.id %} {% include 'components/formFields.njk' %}
-    </div>
-    <!--  END HERO -->
-
     <!-- TIMER -->
-    <!-- {% include 'components/timer.html' %} -->
+    <div class="mb-4">{% include 'components/timer.html' %}</div>
     <!-- END TIMER -->
-
-    <!-- ACCORDION -->
-    <!-- {% include 'components/accordion.html' %} -->
-    <!-- END ACCORDION -->
+    <button class="btn-accent" data-modal-open>{{btnMain}}</button>
   </div>
 </header>
