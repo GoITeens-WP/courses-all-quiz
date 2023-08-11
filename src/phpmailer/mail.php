@@ -25,29 +25,29 @@ $mail = new PHPMailer\PHPMailer\PHPMailer();
 $mail->CharSet = 'UTF-8';
 
 try {
-	$mail->From = $email;
-	$mail->FromName = $name;
+  $mail->From = $email;
+  $mail->FromName = $name;
 
-	// Получатель письма
-	$mail->addAddress($recipient);
+  // Получатель письма
+  $mail->addAddress($recipient);
 
-	// Прикрипление файла к письму
+  // Прикрипление файла к письму
   $mail->AddAttachment($file_tmp, $file_name);
 
-	// Отправка сообщения
-	$mail->isHTML(false);
-	$mail->Subject = $title;
-	$mail->Body = $body;
+  // Отправка сообщения
+  $mail->isHTML(false);
+  $mail->Subject = $title;
+  $mail->Body = $body;
 
-	// Проверяем отравленность сообщения
-	if ($mail->send()) {
-		$result = 'success';
-	} else {
-		$result = 'error';
-	}
+  // Проверяем отравленность сообщения
+  if ($mail->send()) {
+    $result = 'success';
+  } else {
+    $result = 'error';
+  }
 } catch (Exception $e) {
-	$result = 'error';
-	$status = "The message was not sent. The reason for the error: {$mail->ErrorInfo}";
+  $result = 'error';
+  $status = "The message was not sent. The reason for the error: {$mail->ErrorInfo}";
 }
 
 $mail->ClearAddresses();
@@ -58,13 +58,13 @@ echo json_encode(['result' => $result, 'resultfile' => $rfile, 'status' => $stat
 
 function logRequest($request)
 {
-	$file = fopen('mail.log', 'a+');
-	$date = date(DATE_RFC822);
+  $file = fopen('mail.log', 'a+');
+  $date = date(DATE_RFC822);
 
-	$string = [
-		'date' => $date,
-		'input' => $request,
-	];
-	fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',');
-	fclose($file);
+  $string = [
+    'date' => $date,
+    'input' => $request,
+  ];
+  fwrite($file, json_encode($string, JSON_UNESCAPED_UNICODE) . ',');
+  fclose($file);
 }
