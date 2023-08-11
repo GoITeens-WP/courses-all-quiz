@@ -1,16 +1,16 @@
 {% if timer.startDate.active === true %} {% set timer = timer.startDate %} {% elif
 timer.fixedTime.active === true %} {% set timer = timer.fixedTime %} {% endif %}
 
-<div data-timer="{{timer.count}}" class="timer flex items-center bg-second text-white rounded-[16px] px-3 py-[14px] justify-between max-w-[282px]">
-  <p class="text-[12px] mr-2">{{timer.text}}</p>
-  <ul class="flex gap-1 justify-end">
+<div data-timer="{{timer.count}}">
+  <p>{{timer.text}}</p>
+  <ul class="flex gap-4">
     {% for item in timer.items %}
-    <li class="grid last:text-accent">
-      <span class="font-bold w-[32px] text-center" {{item.attribute}}>00</span>
-      <span class="text-[8px] leading-[1.2] font-semibold text-center">{{item.text}}</span>
+    <li class="grid">
+      <span class="max-w-max" {{item.attribute}}>00</span>
+      <span>{{item.text}}</span>
     </li>
     {% if not loop.last %}
-    <li class="font-bold text-[#ffffff4d]">:</li>
+    <li>:</li>
     {% endif %} {% endfor %}
   </ul>
 </div>

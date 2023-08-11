@@ -57,84 +57,82 @@
  * ➡️ 7 minutes Timer
  ****************************************/
 
-document.addEventListener('DOMContentLoaded', () => {
-  setlocalStorageLifeTime();
-  timerHandler();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   setlocalStorageLifeTime();
+//   timerHandler();
+// });
 
-function setlocalStorageLifeTime() {
-  const localStorageNowDate = localStorage.getItem('localStorageNowDate');
-  const localStorageLifeTime = 1 * 24 * 3600 * 1000; // localstorage lifetime (1 day)
-  // EXAMPLE
-  // if you have 36 or more hours timer
-  // const localStorageLifeTime = 3 * 24 * 3600 * 1000; // localstorage lifetime (3 days)
+// function setlocalStorageLifeTime() {
+//   const localStorageNowDate = localStorage.getItem('localStorageNowDate');
+//   const localStorageLifeTime = 1 * 24 * 3600 * 1000; // localstorage lifetime (1 day)
+//   // EXAMPLE
+//   // if you have 36 or more hours timer
+//   // const localStorageLifeTime = 3 * 24 * 3600 * 1000; // localstorage lifetime (3 days)
 
-  if (!localStorageNowDate) {
-    localStorage.setItem('localStorageNowDate', +new Date());
-  }
+//   if (!localStorageNowDate) {
+//     localStorage.setItem('localStorageNowDate', +new Date());
+//   }
 
-  if (+new Date() - localStorageNowDate > localStorageLifeTime) {
-    localStorage.removeItem('localStorageTimerValue');
-    localStorage.setItem('localStorageNowDate', +new Date());
-  }
-}
+//   if (+new Date() - localStorageNowDate > localStorageLifeTime) {
+//     localStorage.removeItem('localStorageTimerValue');
+//     localStorage.setItem('localStorageNowDate', +new Date());
+//   }
+// }
 
-function timerHandler() {
-  const ref = {
-    daysVal: document.querySelectorAll('[data-day]'),
-    hoursVal: document.querySelectorAll('[data-hours]'),
-    minutesVal: document.querySelectorAll('[data-min]'),
-    secondsVal: document.querySelectorAll('[data-sec]'),
-    // msVal: document.querySelectorAll('[data-ms]'),
-  };
+// function timerHandler() {
+//   const ref = {
+//     hoursVal: document.querySelectorAll('[data-hours]'),
+//     minutesVal: document.querySelectorAll('[data-min]'),
+//     secondsVal: document.querySelectorAll('[data-sec]'),
+//     msVal: document.querySelectorAll('[data-ms]'),
+//   };
 
-  const localStorageTimerValue = localStorage.getItem('localStorageTimerValue');
-  // EXAMPLE
-  // if you need 24 or more hours timer
-  // const timerValue = 24 * 60 * 60 * 1000; // Timer (24 hours)
-  const timerValue = 48 * 60 * 60 * 1000; // Timer (36 hours)
-  // const timerValue = 7 * 60 * 1000; // Timer (7 minutes)
-  const timer = localStorageTimerValue ? JSON.parse(localStorageTimerValue) : timerValue;
-  const endTime = new Date(Date.parse(new Date()) + timer);
+//   const localStorageTimerValue = localStorage.getItem('localStorageTimerValue');
+//   // EXAMPLE
+//   // if you need 24 or more hours timer
+//   // const timerValue = 24 * 60 * 60 * 1000; // Timer (24 hours)
+//   // const timerValue = 36 * 60 * 60 * 1000; // Timer (36 hours)
+//   const timerValue = 7 * 60 * 1000; // Timer (7 minutes)
+//   const timer = localStorageTimerValue ? JSON.parse(localStorageTimerValue) : timerValue;
+//   const endTime = new Date(Date.parse(new Date()) + timer);
 
-  const timeCount = () => {
-    let nowDate = new Date();
-    let leftUntil = endTime - nowDate;
+//   const timeCount = () => {
+//     let nowDate = new Date();
+//     let leftUntil = endTime - nowDate;
 
-    window.onbeforeunload = () =>
-      localStorage.setItem('localStorageTimerValue', JSON.stringify(leftUntil));
-    let days = Math.floor(leftUntil / 1000 / 60 / 60 / 24);
-    let hours = Math.floor(leftUntil / 1000 / 60 / 60) % 24;
-    let minutes = Math.floor(leftUntil / 1000 / 60) % 60;
-    let seconds = Math.floor(leftUntil / 1000) % 60;
-    // let milliseconds = Math.floor(leftUntil / 10) % 100;
-    ref.daysVal.forEach(item => (item.textContent = addZero(days)));
-    ref.hoursVal.forEach(item => (item.textContent = addZero(hours)));
-    ref.minutesVal.forEach(item => (item.textContent = addZero(minutes)));
-    ref.secondsVal.forEach(item => (item.textContent = addZero(seconds)));
-    // ref.msVal.forEach(item => (item.textContent = addZero(milliseconds)));
+//     window.onbeforeunload = () =>
+//       localStorage.setItem('localStorageTimerValue', JSON.stringify(leftUntil));
 
-    if (leftUntil <= 0) {
-      ref.daysVal.forEach(item => (item.textContent = '00'));
-      ref.hoursVal.forEach(item => (item.textContent = '00'));
-      ref.minutesVal.forEach(item => (item.textContent = '00'));
-      ref.secondsVal.forEach(item => (item.textContent = '00'));
-      // ref.msVal.forEach(item => (item.textContent = '00'));
+//     let hours = Math.floor(leftUntil / 1000 / 60 / 60) % 24;
+//     let minutes = Math.floor(leftUntil / 1000 / 60) % 60;
+//     let seconds = Math.floor(leftUntil / 1000) % 60;
+//     let milliseconds = Math.floor(leftUntil / 10) % 100;
 
-      localStorage.setItem('localStorageTimerValue', 0);
+//     ref.hoursVal.forEach(item => (item.textContent = addZero(hours)));
+//     ref.minutesVal.forEach(item => (item.textContent = addZero(minutes)));
+//     ref.secondsVal.forEach(item => (item.textContent = addZero(seconds)));
+//     ref.msVal.forEach(item => (item.textContent = addZero(milliseconds)));
 
-      timeInterval && clearInterval(timeInterval);
-    }
-  };
+//     if (leftUntil <= 0) {
+//       ref.hoursVal.forEach(item => (item.textContent = '00'));
+//       ref.minutesVal.forEach(item => (item.textContent = '00'));
+//       ref.secondsVal.forEach(item => (item.textContent = '00'));
+//       ref.msVal.forEach(item => (item.textContent = '00'));
 
-  const addZero = num => {
-    if (num <= 9) {
-      return '0' + num;
-    } else {
-      return num;
-    }
-  };
+//       localStorage.setItem('localStorageTimerValue', 0);
 
-  let timeInterval = setInterval(timeCount, 10);
-  timeCount();
-}
+//       timeInterval && clearInterval(timeInterval);
+//     }
+//   };
+
+//   const addZero = num => {
+//     if (num <= 9) {
+//       return '0' + num;
+//     } else {
+//       return num;
+//     }
+//   };
+
+//   let timeInterval = setInterval(timeCount, 10);
+//   timeCount();
+// }

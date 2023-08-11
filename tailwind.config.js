@@ -19,8 +19,7 @@ module.exports = {
     },
     // SHADOW
     boxShadow: {
-      orange: '0px 2px 12px rgba(50, 190, 203, 0.25)',
-      blue: '0px 2px 12px rgba(50, 190, 203, 0.25)', // class="shadow-orange"
+      orange: '2px 8px 29px rgba(240, 127, 46, 0.2)', // class="shadow-orange"
     },
     // THEME
     extend: {
@@ -32,7 +31,7 @@ module.exports = {
       },
       // ALL COLORS
       colors: {
-        body: '#F5F7FF', // class="bg-body"
+        body: '#ffffff', // class="bg-body"
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           light: '#202020', // class="bg-black-light text-black-light border-black-light"
@@ -41,19 +40,17 @@ module.exports = {
         white: {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
           dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
-          FF: '#F5F7FF', // class="bg-white-dark text-white-dark border-white-dark"
-          // class="bg-white-dark text-white-dark border-white-dark"
         },
-        accent: '#FF6B0A', // class="bg-accent text-accent border-accent"
+        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
         primary: '#f1f1f1',
-        second: '#32BECB',
+        second: '#f2f2f2',
       },
       // CONTAINER
       container: {
         center: true,
         padding: {
-          DEFAULT: '1.25rem',
-          sm: '1.25rem',
+          DEFAULT: '1.5rem',
+          sm: '1.5rem',
           md: '2rem',
           xl: '2rem',
         },

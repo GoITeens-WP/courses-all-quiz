@@ -6,23 +6,8 @@
     "description": "description",
     "canonical": "./"
   },
-  "btnMain": "Зафіксувати знижку",
-  "btnSecond": "Дізнатися більше",
   "header": {
-    "id": "header",
-    "text": "<span class=\"text-accent\">Спеціальна пропозиція</span><br>для учасників марафону",
-    "title": "Опануй <br> бажану<br>IT&#8209;професію<br><span class=\"text-accent\">зі&nbsp;знижкою 20%</span>",
-    "how": "«Як працювати<br>з&nbsp;Scrum&Agile»",
-    "help": "Допоможе освоїти підходи до реалізації проєктів, що високо цінуються <span class=\"text-accent\">в ІТ-сфері.</span>",
-    "cost": {
-      "title": "Вартість:",
-      "value": "3 700 грн"
-    },
-    "for": {
-      "title": "Для тебе:",
-      "value": "в подарунок"
-    },
-    "only":"<span class=\"text-black\">Тільки 48 годин.</span><br>Поспішайте<br>скористатися"
+    "id": "header"
   },
   "footer": {
     "uk": {
@@ -332,7 +317,7 @@
     "startDate": {
       "active": false,
       "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
-      "text": "",
+      "text": "Some title",
       "items": [
         {
           "attribute": "data-day",
@@ -353,24 +338,24 @@
       ]
     },
     "fixedTime": {
-      "active": true,
-      "text": "пропозиція доступна ще",
+      "active": false,
+      "text": "Some title",
       "items": [
         {
-          "attribute": "data-day",
-          "text": "днів"
-        },
-        {
           "attribute": "data-hours",
-          "text": "годин"
+          "text": "hours"
         },
         {
           "attribute": "data-min",
-          "text": "хвилин"
+          "text": "min"
         },
         {
           "attribute": "data-sec",
-          "text": "секунд"
+          "text": "sec"
+        },
+        {
+          "attribute": "data-ms",
+          "text": "ms"
         }
       ]
     }
