@@ -1,5 +1,6 @@
-// const accordionItem = document.querySelectorAll('#accordion-item');
-// accordionItem.forEach(item => item.addEventListener('click', toggleAccordion));
+// document
+//   .querySelectorAll('#accordion-item')
+//   .forEach(item => item.addEventListener('click', toggleAccordion));
 
 // function toggleAccordion(e) {
 //   const currentTarget = e.currentTarget;

@@ -1,44 +1,26 @@
 {% set section = header %}
 <header class="{{section.id}}">
   <div class="container">
-    <!-- HEADER -->
-    <div class="flex items-center justify-between bg-accent pt-2">
-      <!-- LOGO -->
-      <a href="{{page.canonical}}" aria-label="{{logo.link_logo_aria}}">
-        <svg width="100" height="30" aria-label="{{logo.logo_aria}}">
-          <title>{{logo.logo_aria}}</title>
-          <use href="./assets/images/sprite.svg#logo"></use>
-        </svg>
-      </a>
-      <!--  END LOGO -->
-      <!-- NAV -->
-      <div class="flex items-center justify-center xl:gap-2">
-        <!-- nav-menu -->
-        {% include 'components/nav-menu.html' %}
-        <!-- mobile-menu (including nav-menu inside) -->
-        {% include 'components/mobile-menu.html' %}
-        <!-- button (optional) -->
-        <button class="btn border border-black p-2 notXl:hidden" type="button" data-modal-open>
-          Open modal
-        </button>
-      </div>
-      <!--  END NAV -->
-    </div>
-    <!--  END HEADER -->
+    {% include 'components/logo.html' %}
 
-    <!-- HERO -->
-    <div class="mx-auto max-w-xs">
-      <!-- form outside modal (optional) -->
-      {% set formId = section.id %} {% include 'components/formFields.njk' %}
+    <div class="flex items-center justify-center xl:gap-2">
+      <!-- NAV-MENU -->
+      {% include 'components/nav-menu.html' %}
+      <!-- MOBILE-MENU (uncomment style and js) including "logo" and "nav-menu" inside-->
+      {% include 'components/mobile-menu.html' %}
     </div>
-    <!--  END HERO -->
+  </div>
+
+  <div class="container max-w-[500px]">
+    <button class="btn" type="button" data-modal-open>Open modal</button>
+
+    <!-- FORM in section (add formId to form.js) -->
+    {% set formId = section.id %} {% include 'components/formFields.njk' %}
 
     <!-- TIMER -->
     <!-- {% include 'components/timer.html' %} -->
-    <!-- END TIMER -->
 
-    <!-- ACCORDION -->
+    <!-- ACCORDION (uncomment style and js) -->
     <!-- {% include 'components/accordion.html' %} -->
-    <!-- END ACCORDION -->
   </div>
 </header>
