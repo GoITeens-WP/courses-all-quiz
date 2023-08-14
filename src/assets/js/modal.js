@@ -1,43 +1,37 @@
-import jQuery from 'jquery';
+const refs = {
+  body: document.querySelector('body'),
+  modal: document.querySelector('[data-modal]'),
+  openModalBtn: document.querySelectorAll('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+};
 
-jQuery(function () {
-  const openModalBtn = document.querySelectorAll('[data-modal-open]');
-  const modal = document.querySelector('[data-modal]');
-  const closeModalBtn = document.querySelector('[data-modal-close]');
-  const body = document.querySelector('body');
-
-  openModalBtn.forEach(function (btn) {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-
-      setTimeout(() => {
-        toggleModal();
-      }, 500);
-    });
+document.addEventListener('keydown', handleKey);
+refs.modal.addEventListener('mousedown', handleClose);
+refs.closeModalBtn.addEventListener('click', toggleModal);
+refs.openModalBtn.forEach(function (btn) {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    toggleModal();
   });
+});
 
-  function toggleModal() {
-    modal.classList.toggle('is-hidden');
-    body.classList.toggle('scroll-hidden');
-  }
-
-  function handleKey(e) {
-    if (!modal.classList.contains('is-hidden')) {
-      if (e.key === 'Escape') {
-        toggleModal();
-      }
-    }
-    return;
-  }
-
-  function handleClose(e) {
-    if (e.target === e.currentTarget) {
+function handleKey(e) {
+  if (!refs.modal.classList.contains('is-hidden')) {
+    if (e.key === 'Escape') {
       toggleModal();
     }
-    return;
   }
+  return;
+}
 
-  document.addEventListener('keydown', handleKey);
-  modal.addEventListener('mousedown', handleClose);
-  closeModalBtn.addEventListener('click', toggleModal);
-});
+function handleClose(e) {
+  if (e.target === e.currentTarget) {
+    toggleModal();
+  }
+  return;
+}
+
+function toggleModal() {
+  refs.body.classList.toggle('scroll-hidden');
+  refs.modal.classList.toggle('is-hidden');
+}

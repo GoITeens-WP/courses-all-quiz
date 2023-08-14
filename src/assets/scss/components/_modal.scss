@@ -1,5 +1,5 @@
 .backdrop {
-  @apply visible fixed inset-0 z-[100] flex overflow-auto opacity-100 duration-100 ease-linear;
+  @apply visible fixed inset-0 z-[100] flex overflow-auto opacity-100 duration-300 ease-linear;
   background-color: rgba(0, 0, 0, 0.55);
 
   &.is-hidden {
@@ -12,9 +12,9 @@
 }
 
 .modal {
-  @apply m-auto flex w-full max-w-[336px] translate-x-0 translate-y-0 scale-100 flex-col justify-evenly rounded-xl px-3 py-8 duration-300 ease-linear md:max-w-[456px] md:p-10;
+  @apply m-auto flex w-full max-w-[336px] translate-x-0 translate-y-0 flex-col justify-evenly rounded-xl px-3 py-8 opacity-100 duration-300 ease-linear md:max-w-[456px] md:p-10;
 
   .is-hidden & {
-    @apply translate-y-full scale-0;
+    @apply opacity-0 duration-300 ease-linear;
   }
 }
