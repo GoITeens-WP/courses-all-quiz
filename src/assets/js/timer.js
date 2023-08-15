@@ -64,10 +64,8 @@
 
 // function setlocalStorageLifeTime() {
 //   const localStorageNowDate = localStorage.getItem('localStorageNowDate');
-//   const localStorageLifeTime = 1 * 24 * 3600 * 1000; // localstorage lifetime (1 day)
-//   // EXAMPLE
-//   // if you have 36 or more hours timer
-//   // const localStorageLifeTime = 3 * 24 * 3600 * 1000; // localstorage lifetime (3 days)
+//   const localStorageLifeTime = 1 * 24 * 3600 * 1000; // 1 DAY lifetime for 7m or 24h timer
+//   // const localStorageLifeTime = 3 * 24 * 3600 * 1000; // 3 DAYS lifetime for 36h timer (or more)
 
 //   if (!localStorageNowDate) {
 //     localStorage.setItem('localStorageNowDate', +new Date());
@@ -88,11 +86,10 @@
 //   };
 
 //   const localStorageTimerValue = localStorage.getItem('localStorageTimerValue');
-//   // EXAMPLE
-//   // if you need 24 or more hours timer
+//   const timerValue = 7 * 60 * 1000; // Timer (7 minutes)
 //   // const timerValue = 24 * 60 * 60 * 1000; // Timer (24 hours)
 //   // const timerValue = 36 * 60 * 60 * 1000; // Timer (36 hours)
-//   const timerValue = 7 * 60 * 1000; // Timer (7 minutes)
+//   // const timerValue = 48 * 60 * 60 * 1000; // Timer (48 hours)
 //   const timer = localStorageTimerValue ? JSON.parse(localStorageTimerValue) : timerValue;
 //   const endTime = new Date(Date.parse(new Date()) + timer);
 
