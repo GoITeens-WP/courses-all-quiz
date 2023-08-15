@@ -1,15 +1,25 @@
 {% set section = header %}
-<header class="{{section.id}}">
+<header class="{{section.id}} pt-5">
   <div class="container">
-    {% include 'components/logo.html' %}
-
-    <div class="flex items-center justify-center xl:gap-2">
+    <div class="flex justify-between xl:gap-2">
+      {% include 'components/logo.html' %}
       <!-- NAV-MENU -->
-      {% include 'components/nav-menu.html' %}
-      <!-- MOBILE-MENU (uncomment style and js) including "logo" and "nav-menu" inside-->
-      {% include 'components/mobile-menu.html' %}
+      <div class="hidden xl:block">{% include 'components/nav-menu.html' %}</div>
+      <!-- burger btn -->
+      <button
+        class="burger md:ml-[98px] xl:hidden"
+        aria-label="{{section.btnAria}}"
+        type="button"
+        data-open-menu-btn
+      >
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
     </div>
   </div>
+  <!-- MOBILE-MENU (uncomment style and js) including "logo" and "nav-menu" inside-->
+  {% include 'components/mobile-menu.html' %}
 
   <div class="container max-w-[500px]">
     <button class="btn" type="button" data-modal-open>Open modal</button>

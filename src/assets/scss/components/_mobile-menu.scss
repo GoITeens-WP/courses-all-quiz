@@ -1,7 +1,7 @@
 @include mq(notDesktop) {
-  .nav {
+  /*   .nav {
     @apply hidden;
-  }
+  } */
 
   .mobile-menu-btn {
     @apply h-6 w-6 bg-inherit p-0;
@@ -12,18 +12,30 @@
   }
 
   .mobile-menu {
-    @apply pointer-events-none invisible fixed inset-x-0 top-0 z-50 h-screen overflow-y-scroll bg-white px-6 pt-2 text-center opacity-0 duration-300;
+    // @apply pointer-events-none invisible fixed inset-x-0 top-0 z-50 h-screen overflow-y-scroll bg-white px-6 pt-2 text-center opacity-0 duration-300;
+
+    // &.is-open {
+    //   @apply pointer-events-auto visible opacity-100;
+    // }
+
+    // &.is-open .nav {
+    //   @apply block;
+    // }
+
+    // &-close {
+    //   @apply absolute right-6 top-2 flex h-6 w-6 items-center justify-center bg-inherit stroke-black p-0 duration-300 hover:stroke-accent focus:stroke-accent;
+    // }
+    @apply pointer-events-none fixed z-50 px-6 pt-2;
+    transform: translateX(100%);
+    transition: transform 250ms;
 
     &.is-open {
-      @apply pointer-events-auto visible opacity-100;
+      @apply pointer-events-auto;
+      transform: translateX(0);
     }
 
-    &.is-open .nav {
-      @apply block;
-    }
-
-    &-close {
-      @apply absolute right-6 top-2 flex h-6 w-6 items-center justify-center bg-inherit stroke-black p-0 duration-300 hover:stroke-accent focus:stroke-accent;
+    @include mq(desktop) {
+      @apply hidden;
     }
   }
 }
@@ -32,5 +44,94 @@
   .mobile-menu-btn,
   .mobile-menu {
     @apply hidden;
+  }
+}
+
+.burger {
+  position: relative;
+  width: 34px;
+  height: 19px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  z-index: 21;
+
+  &:hover .burger-bar,
+  &:focus .burger-bar {
+    @apply bg-accent;
+  }
+
+  @include mq(desktop) {
+    display: none;
+  }
+
+  .burger-bar:not(:last-child) {
+    display: inline-block;
+  }
+}
+
+.burger-bar {
+  background-color: #474747;
+  height: 3px;
+  width: 32px;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-child(1) {
+  top: 0px;
+}
+
+.burger span:nth-child(2) {
+  top: 8px;
+}
+
+.burger span:nth-child(3) {
+  top: 16px;
+}
+
+.burger-opened {
+  .burger-bar:nth-child(1) {
+    width: 30px;
+    top: 10px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+
+  .burger-bar:nth-child(2) {
+    width: 30px;
+    opacity: 0;
+    left: -20px;
+  }
+
+  .burger-bar:nth-child(3) {
+    width: 30px;
+    top: 10px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
   }
 }

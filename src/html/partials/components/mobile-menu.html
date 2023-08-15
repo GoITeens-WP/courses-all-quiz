@@ -1,28 +1,9 @@
 {% set section = navigation %}
 
-<!-- burger btn -->
-<button class="mobile-menu-btn" type="button" aria-label="{{section.btnAria}}" data-open-menu-btn>
-  <svg class="mobile-menu-btn-icon" width="24" height="24" aria-label="{{section.svgAria}}">
-    <use href="./assets/images/sprite.svg#burger"></use>
-  </svg>
-</button>
-
 <!-- mobile menu content -->
-<div class="mobile-menu" data-menu>
-  <!-- close btn -->
-  <button
-    class="mobile-menu-close"
-    type="button"
-    aria-label="{{section.btnCloseAria}}"
-    data-close-menu-btn
-  >
-    <svg width="24" height="24" aria-label="{{svgCloseAria}}">
-      <use href="./assets/images/sprite.svg#icon-close-menu"></use>
-    </svg>
-  </button>
-
-  <!-- logo and nav-menu -->
-  {% include 'components/logo.html' %} {% include 'components/nav-menu.html' %}
+<div class="mobile-menu h-[100vh] w-[100vw] bg-white" data-menu>
+  <!-- nav-menu -->
+  {% include 'components/nav-menu.html' %}
 
   <button class="btn" type="button" data-modal-open>Open modal</button>
 </div>

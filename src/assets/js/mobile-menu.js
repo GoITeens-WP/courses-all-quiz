@@ -1,32 +1,32 @@
-// const refs = {
-//   body: document.querySelector('body'),
-//   openMenuBtn: document.querySelector('[data-open-menu-btn]'),
-//   closeMenuBtn: document.querySelector('[data-close-menu-btn]'),
-//   menu: document.querySelector('[data-menu]'),
-//   menuLink: document.querySelectorAll('[data-menu-link]'),
-// };
+const refs = {
+  body: document.querySelector('body'),
+  openMenuBtn: document.querySelector('[data-open-menu-btn]'),
+  // closeMenuBtn: document.querySelector('[data-close-menu-btn]'),
+  menu: document.querySelector('[data-menu]'),
+  menuLink: document.querySelectorAll('[data-menu-link]'),
+};
 
-// refs.openMenuBtn.addEventListener('click', () => {
-//   toggleMenu();
-//   refs.closeMenuBtn.addEventListener('click', toggleMenu);
-// });
+refs.openMenuBtn.addEventListener('click', () => {
+  toggleMenu();
+  // refs.closeMenuBtn.addEventListener('click', toggleMenu);
+});
 
-// refs.menuLink.forEach(function (link) {
-//   link.addEventListener('click', () => {
-//     toggleMenu();
-//   });
-// });
+refs.menuLink.forEach(function (link) {
+  link.addEventListener('click', () => {
+    toggleMenu();
+  });
+});
 
-// function toggleMenu() {
-//   if (window.innerWidth < 1280) {
-//     const expanded = refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+function toggleMenu() {
+  if (window.innerWidth < 1280) {
+    const expanded = refs.openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
 
-//     refs.openMenuBtn.classList.toggle('is-active');
-//     refs.openMenuBtn.setAttribute('aria-expanded', !expanded);
+    refs.openMenuBtn.classList.toggle('is-active');
+    refs.openMenuBtn.setAttribute('aria-expanded', !expanded);
+    refs.openMenuBtn.classList.toggle('burger-opened');
+    refs.body.classList.toggle('scroll-hidden');
+    refs.menu.classList.toggle('is-open');
+  }
 
-//     refs.body.classList.toggle('scroll-hidden');
-//     refs.menu.classList.toggle('is-open');
-//   }
-
-//   refs.closeMenuBtn.removeEventListener('click', toggleMenu);
-// }
+  // refs.closeMenuBtn.removeEventListener('click', toggleMenu);
+}
