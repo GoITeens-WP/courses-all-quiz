@@ -3,33 +3,93 @@
     @apply hidden;
   }
 
-  .mobile-menu-btn {
-    @apply h-6 w-6 bg-inherit p-0;
+  .burger {
+    @apply xl:hidden;
+    cursor: pointer;
+    position: relative;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 20px;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
 
-    &-icon {
-      @apply stroke-black duration-300 hover:stroke-accent focus:stroke-accent;
+    &:hover .burger-bar,
+    &:focus .burger-bar {
+      @apply bg-accent;
+    }
+
+    & .burger-bar {
+      position: absolute;
+      left: 0;
+      display: block;
+      height: 3px;
+      width: 32px;
+      @apply bg-black-light;
+      border-radius: 5px;
+      opacity: 1;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2) {
+        top: 8px;
+      }
+
+      &:nth-child(3) {
+        top: 16px;
+      }
+
+      &:not(:last-child) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .is-active {
+    & .burger-bar:nth-child(1) {
+      top: 10px;
+      width: 30px;
+      transform: rotate(135deg);
+    }
+
+    & .burger-bar:nth-child(2) {
+      left: -20px;
+      width: 30px;
+      opacity: 0;
+    }
+
+    & .burger-bar:nth-child(3) {
+      top: 10px;
+      width: 30px;
+      transform: rotate(-135deg);
     }
   }
 
   .mobile-menu {
-    @apply pointer-events-none invisible fixed inset-x-0 top-0 z-50 h-screen overflow-y-scroll bg-white px-6 pt-2 text-center opacity-0 duration-300;
+    @apply pointer-events-none fixed z-50 grid h-[100vh] w-[100vw] items-center justify-center bg-white;
+    transform: translateX(100%);
+    transition: transform 250ms;
 
     &.is-open {
-      @apply pointer-events-auto visible opacity-100;
+      @apply pointer-events-auto;
+      transform: translateX(0);
     }
 
-    &.is-open .nav {
+    & .nav {
       @apply block;
-    }
-
-    &-close {
-      @apply absolute right-6 top-2 flex h-6 w-6 items-center justify-center bg-inherit stroke-black p-0 duration-300 hover:stroke-accent focus:stroke-accent;
     }
   }
 }
 
 @include mq(desktop) {
-  .mobile-menu-btn,
+  .burger,
   .mobile-menu {
     @apply hidden;
   }

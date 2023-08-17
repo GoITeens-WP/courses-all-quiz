@@ -1,28 +1,20 @@
-{% set section = navigation %}
+<div class="flex items-center justify-between">
+  <!-- LOGO -->
+  {% include 'components/logo.html' %}
 
-<!-- burger btn -->
-<button class="mobile-menu-btn" type="button" aria-label="{{section.btnAria}}" data-open-menu-btn>
-  <svg class="mobile-menu-btn-icon" width="24" height="24" aria-label="{{section.svgAria}}">
-    <use href="./assets/images/sprite.svg#burger"></use>
-  </svg>
-</button>
+  <!-- NAV-MENU (desktop visible) -->
+  {% include 'components/nav-menu.html' %}
 
-<!-- mobile menu content -->
-<div class="mobile-menu" data-menu>
-  <!-- close btn -->
-  <button
-    class="mobile-menu-close"
-    type="button"
-    aria-label="{{section.btnCloseAria}}"
-    data-close-menu-btn
-  >
-    <svg width="24" height="24" aria-label="{{svgCloseAria}}">
-      <use href="./assets/images/sprite.svg#icon-close-menu"></use>
-    </svg>
+  <!-- MOBILE-MENU BUTTON (notDesktop visible) -->
+  <button class="burger" type="button" aria-label="{{navigation.btnAria}}" data-open-menu-btn>
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
   </button>
+</div>
 
-  <!-- logo and nav-menu -->
-  {% include 'components/logo.html' %} {% include 'components/nav-menu.html' %}
-
+<!-- MOBILE-MENU CONTENT -->
+<div class="mobile-menu" data-menu>
+  {% include 'components/nav-menu.html' %}
   <button class="btn" type="button" data-modal-open>Open modal</button>
 </div>

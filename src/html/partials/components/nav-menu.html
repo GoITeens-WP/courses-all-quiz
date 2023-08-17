@@ -1,9 +1,13 @@
-{% set section = navigation %}
 <nav class="nav">
-  <ul class="xl:flex xl:gap-2">
-    {% for item in section.items %}
-    <li>
-      <a href="{{ item.link }}" data-menu-link>{{ item.title }}</a>
+  <ul class="flex gap-2 notXl:flex-col notXl:items-center notXl:justify-center">
+    {% for item in navigation.items %}
+    <li class="w-max">
+      <a
+        class="duration-300 hover:text-accent focus:text-accent"
+        href="{{ item.link }}"
+        data-menu-link
+        >{{ item.title }}</a
+      >
     </li>
     {% endfor %}
   </ul>

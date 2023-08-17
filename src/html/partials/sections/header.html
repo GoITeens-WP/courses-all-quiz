@@ -1,26 +1,20 @@
 {% set section = header %}
 <header class="{{section.id}}">
-  <div class="container">
-    {% include 'components/logo.html' %}
-
-    <div class="flex items-center justify-center xl:gap-2">
-      <!-- NAV-MENU -->
-      {% include 'components/nav-menu.html' %}
-      <!-- MOBILE-MENU (uncomment style and js) including "logo" and "nav-menu" inside-->
-      {% include 'components/mobile-menu.html' %}
-    </div>
-  </div>
-
   <div class="container max-w-[500px]">
-    <button class="btn" type="button" data-modal-open>Open modal</button>
+    <!-- LOGO -->
+    {% include 'components/logo.html' %}
+    <!-- <button class="btn" type="button" data-modal-open>Open modal</button> -->
+
+    <!-- MOBILE-MENU (includes logo, nav-menu and mobile-menu, uncomment style and js) -->
+    {% include 'components/mobile-menu.html' %}
 
     <!-- FORM in section (add formId to form.js) -->
     {% set formId = section.id %} {% include 'components/formFields.njk' %}
 
     <!-- TIMER -->
-    <!-- {% include 'components/timer.html' %} -->
+    {% include 'components/timer.html' %}
 
     <!-- ACCORDION (uncomment style and js) -->
-    <!-- {% include 'components/accordion.html' %} -->
+    {% include 'components/accordion.html' %}
   </div>
 </header>
