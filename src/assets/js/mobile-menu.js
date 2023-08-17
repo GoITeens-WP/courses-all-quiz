@@ -1,14 +1,12 @@
 const refs = {
   body: document.querySelector('body'),
   openMenuBtn: document.querySelector('[data-open-menu-btn]'),
-  // closeMenuBtn: document.querySelector('[data-close-menu-btn]'),
   menu: document.querySelector('[data-menu]'),
   menuLink: document.querySelectorAll('[data-menu-link]'),
 };
 
 refs.openMenuBtn.addEventListener('click', () => {
   toggleMenu();
-  // refs.closeMenuBtn.addEventListener('click', toggleMenu);
 });
 
 refs.menuLink.forEach(function (link) {
@@ -27,6 +25,4 @@ function toggleMenu() {
     refs.body.classList.toggle('scroll-hidden');
     refs.menu.classList.toggle('is-open');
   }
-
-  // refs.closeMenuBtn.removeEventListener('click', toggleMenu);
 }
