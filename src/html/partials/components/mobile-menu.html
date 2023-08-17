@@ -1,9 +1,20 @@
-{% set section = navigation %}
+<div class="flex items-center justify-between">
+  <!-- LOGO -->
+  {% include 'components/logo.html' %}
 
-<!-- mobile menu content -->
-<div class="mobile-menu h-[100vh] w-[100vw] bg-white" data-menu>
-  <!-- nav-menu -->
+  <!-- NAV-MENU (desktop visible) -->
   {% include 'components/nav-menu.html' %}
 
+  <!-- MOBILE-MENU BUTTON (notDesktop visible) -->
+  <button class="burger" type="button" aria-label="{{navigation.btnAria}}" data-open-menu-btn>
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
+  </button>
+</div>
+
+<!-- MOBILE-MENU CONTENT -->
+<div class="mobile-menu" data-menu>
+  {% include 'components/nav-menu.html' %}
   <button class="btn" type="button" data-modal-open>Open modal</button>
 </div>

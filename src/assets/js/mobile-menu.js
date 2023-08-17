@@ -21,7 +21,6 @@
 
 //     refs.openMenuBtn.classList.toggle('is-active');
 //     refs.openMenuBtn.setAttribute('aria-expanded', !expanded);
-//     refs.openMenuBtn.classList.toggle('burger-opened');
 //     refs.body.classList.toggle('scroll-hidden');
 //     refs.menu.classList.toggle('is-open');
 //   }
