@@ -314,6 +314,28 @@
     ]
   },
   "timer": {
+    "fixedTime": {
+      "active": false,
+      "text": "Some title",
+      "items": [
+        {
+          "attribute": "data-hours",
+          "text": "hours"
+        },
+        {
+          "attribute": "data-min",
+          "text": "min"
+        },
+        {
+          "attribute": "data-sec",
+          "text": "sec"
+        },
+        {
+          "attribute": "data-ms",
+          "text": "ms"
+        }
+      ]
+    },
     "startDate": {
       "active": false,
       "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
@@ -334,28 +356,6 @@
         {
           "attribute": "data-sec",
           "text": "sec"
-        }
-      ]
-    },
-    "fixedTime": {
-      "active": false,
-      "text": "Some title",
-      "items": [
-        {
-          "attribute": "data-hours",
-          "text": "hours"
-        },
-        {
-          "attribute": "data-min",
-          "text": "min"
-        },
-        {
-          "attribute": "data-sec",
-          "text": "sec"
-        },
-        {
-          "attribute": "data-ms",
-          "text": "ms"
         }
       ]
     }
