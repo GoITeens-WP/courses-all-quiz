@@ -391,7 +391,7 @@ function getNameRegex(locale = window.locale) {
  * It returns the Email regular expression
  */
 function getEmailRegex() {
-  return /^(?=^.{3,63}$)(^[A-Za-z0-9_]+(([_\.\-](?=[A-Za-z0-9_]))[a-zA-Z0-9_]+([\-\.](?=[A-Za-z0-9_]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
+  return /^(?=^.{3,63}$)(^[A-Za-z0-9_+]+(([_\.\-\+](?=[A-Za-z0-9_+]))[a-zA-Z0-9_+]+([\-\.\+](?=[A-Za-z0-9_+]))*?)*@(\w+([\.\-](?=(\w|\d))))+[a-zA-Z]{2,6})$/;
 }
 
 /**
