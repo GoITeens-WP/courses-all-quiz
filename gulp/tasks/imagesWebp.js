@@ -13,7 +13,6 @@ const imagesWebp = () => {
     .src([
       `${paths.src.images}/*.{jpg,png}`,
       '!src/assets/images/favicon/**',
-      '!src/assets/images/intTelInput/**',
       '!src/assets/images/ogp/**',
     ])
     .pipe(
