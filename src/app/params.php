@@ -28,16 +28,18 @@ $ini_array = parse_ini_file('params.ini');
 </head>
 
 <body>
-  <form action="" method="post">
-    <label>
-      Zoho Product Name
-      <input type="text" name="PRODUCT_NAME" value="<?= $ini_array['PRODUCT_NAME'] ?>" placeholder="<?= $ini_array['PRODUCT_NAME'] ?>" />
-    </label>
+  <form method="post">
+    <div style="display: flex; flex-direction: row; gap: 20px">
+      <label style="width: 50%">
+        Zoho Product Name
+        <input type="text" name="PRODUCT_NAME" value="<?= $ini_array['PRODUCT_NAME'] ?>" placeholder="<?= $ini_array['PRODUCT_NAME'] ?>" />
+      </label>
 
-    <label>
-      Zoho Product ID
-      <input type="text" name="PRODUCT_ID" value="<?= $ini_array['PRODUCT_ID'] ?>" placeholder="<?= $ini_array['PRODUCT_ID'] ?>" />
-    </label>
+      <label style="width: 50%">
+        Zoho Product ID
+        <input type="text" name="PRODUCT_ID" value="<?= $ini_array['PRODUCT_ID'] ?>" placeholder="<?= $ini_array['PRODUCT_ID'] ?>" />
+      </label>
+    </div>
 
     <div style="display: flex; flex-direction: row; gap: 20px">
       <label style="width: 50%">
@@ -56,6 +58,35 @@ $ini_array = parse_ini_file('params.ini');
       <input type="text" name="GTM" value="<?= $ini_array['GTM'] ?>" placeholder="<?= $ini_array['GTM'] ?>" />
     </label>
 
+    <!-- ⌚ Start Date Timer -->
+    <!-- <div style="display: flex; flex-direction: row; gap: 20px">
+      <label style="width: 50%">
+        Date for timer
+        <input type="date" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>" placeholder="<?= $ini_array['START_DATE'] ?>" />
+      </label>
+
+      <label style="width: 50%">
+        Time for timer
+        <input type="time" name="START_TIME" value="<?= $ini_array['START_TIME'] ?>" placeholder="<?= $ini_array['START_TIME'] ?>" />
+      </label>
+    </div> -->
+    <!-- END Start Date Timer -->
+
+    <!-- <label>
+      Start Date
+      <input type="text" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>" placeholder="<?= $ini_array['START_DATE'] ?>" />
+    </label> -->
+
+    <!-- <label>
+      Start Day
+      <input type="number" name="START_DAY" value="<?= $ini_array['START_DAY'] ?>" placeholder="<?= $ini_array['START_DAY'] ?>" />
+    </label> -->
+
+    <!-- <label>
+      Start Month
+      <input type="text" name="START_MONTH" value="<?= $ini_array['START_MONTH'] ?>" placeholder="<?= $ini_array['START_MONTH'] ?>" />
+    </label> -->
+
     <!-- <label>
       Telegram Backend URL
       <input type="text" name="TELEGRAM_BACKEND_URL" value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" />
@@ -69,27 +100,6 @@ $ini_array = parse_ini_file('params.ini');
     <!-- <label>
       CAPI Lead Format
       <input type="text" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" />
-    </label> -->
-
-    <!-- if you need timer to start date, set type="date" -->
-    <!-- <label>
-      Start Date
-      <input type="text" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>" placeholder="<?= $ini_array['START_DATE'] ?>" />
-    </label> -->
-
-    <!-- <label>
-      Start Time
-      <input type="time" name="START_TIME" value="<?= $ini_array['START_TIME'] ?>" placeholder="<?= $ini_array['START_TIME'] ?>" />
-    </label> -->
-
-    <!-- <label>
-      Start Day
-      <input type="number" name="START_DAY" value="<?= $ini_array['START_DAY'] ?>" placeholder="<?= $ini_array['START_DAY'] ?>" />
-    </label> -->
-
-    <!-- <label>
-      Start Month
-      <input type="text" name="START_MONTH" value="<?= $ini_array['START_MONTH'] ?>" placeholder="<?= $ini_array['START_MONTH'] ?>" />
     </label> -->
 
     <label>
