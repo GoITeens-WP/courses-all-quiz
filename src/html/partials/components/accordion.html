@@ -1,17 +1,16 @@
 <ul>
   {% for item in accordion.items %}
   <li
-    class="cursor-pointer overflow-hidden border border-black"
-    id="accordion-item"
+    class="accordion-item cursor-pointer overflow-hidden border border-black"
     aria-expanded="false"
   >
-    <button class="pointer-events-none relative block w-full" id="accordion-btn" type="button">
+    <button class="accordion-btn pointer-events-none relative block w-full" type="button">
       <span class="block">{{item.question}}</span>
-      <svg id="accordion-svg" aria-label="{{accordion.svgAria}}" width="18" height="8">
+      <svg class="accordion-svg" aria-label="{{accordion.svgAria}}" width="18" height="8">
         <use href="./assets/images/sprite.svg#accordion-arrow"></use>
       </svg>
     </button>
-    <p class="cursor-auto" id="accordion-answer">{{item.answer}}</p>
+    <p class="accordion-answer cursor-auto">{{item.answer}}</p>
   </li>
   {% endfor %}
 </ul>

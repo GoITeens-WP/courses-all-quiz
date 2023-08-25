@@ -1,5 +1,5 @@
 // document
-//   .querySelectorAll('#accordion-item')
+//   .querySelectorAll('.accordion-item')
 //   .forEach(item => item.addEventListener('click', toggleAccordion));
 
 // function toggleAccordion(e) {
@@ -11,7 +11,7 @@
 //   }
 
 //   const ariaExpanded = target.getAttribute('aria-expanded');
-//   const accordionAnswer = currentTarget.querySelector('#accordion-answer');
+//   const accordionAnswer = currentTarget.querySelector('.accordion-answer');
 
 //   if (ariaExpanded === 'false') {
 //     target.setAttribute('aria-expanded', 'true');
