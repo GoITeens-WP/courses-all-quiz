@@ -1,9 +1,9 @@
-#accordion-item {
-  &[aria-expanded='true'] #accordion-btn {
+.accordion-item {
+  &[aria-expanded='true'] .accordion-btn {
     color: #ff6b0a;
   }
 
-  & #accordion-svg {
+  & .accordion-svg {
     position: absolute;
     top: 50%;
     right: 16px;
@@ -13,13 +13,13 @@
     stroke: black;
   }
 
-  &[aria-expanded='true'] #accordion-svg {
+  &[aria-expanded='true'] .accordion-svg {
     transform: translateY(-50%) rotate(180deg);
     transform-origin: center;
     stroke: #ff6b0a;
   }
 
-  & #accordion-answer {
+  & .accordion-answer {
     box-sizing: content-box;
     overflow: hidden;
     max-height: 0;
