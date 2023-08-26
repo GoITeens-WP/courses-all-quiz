@@ -13,28 +13,28 @@ function send($token, $data, $input)
   $ch = curl_init();
   $curl_options = [];
   $url = 'Put your connector from the list below';
-/*
-// UA
-// https://goit-connectors.place/goit/
-//
-// PL
-// https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
-//
-// PH
-// https://goit-connectors.place/phillipines/zoho/loader.php
-//
-// PH Survey
-// https://goit-connectors.place/phillipines/survey/App.php
-//
-// CO/MX
-// https://goit-connectors.place/latam/connector/connector.php
-//
-// RO
-// https://goit-connectors.place/romania/goit/connector.php
-//
-// GOITEENS
-// https://universalcrmconnector.goiteens.ua/connector.php
-*/
+
+  // UA
+  // https://goit-connectors.place/goit/
+
+  // PL
+  // https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
+
+  // PH
+  // https://goit-connectors.place/phillipines/zoho/loader.php
+
+  // PH Survey
+  // https://goit-connectors.place/phillipines/survey/App.php
+
+  // CO/MX
+  // https://goit-connectors.place/latam/connector/connector.php
+
+  // RO
+  // https://goit-connectors.place/romania/goit/connector.php
+
+  // GOITEENS
+  // https://universalcrmconnector.goiteens.ua/connector.php
+
   $curl_options[CURLOPT_URL] = $url;
   $curl_options[CURLOPT_RETURNTRANSFER] = true;
   $curl_options[CURLOPT_HEADER] = 1;
@@ -73,7 +73,7 @@ function logResponse($msg, $response, $input)
     'message' => str_replace('{date}', $date, $msg),
     'data' => $response,
   ];
-file_put_contents("lead-log/".date("Y-m-d")."-Resp.txt",json_encode($string).PHP_EOL,FILE_APPEND);
+  file_put_contents("lead-log/" . date("Y-m-d") . "-Resp.txt", json_encode($string) . PHP_EOL, FILE_APPEND);
 }
 
 function logRequest($request)
@@ -83,5 +83,5 @@ function logRequest($request)
     'date' => $date,
     'input' => $request,
   ];
-file_put_contents("lead-log/".date("Y-m-d")."-Req.txt",json_encode($string).PHP_EOL,FILE_APPEND);
+  file_put_contents("lead-log/" . date("Y-m-d") . "-Req.txt", json_encode($string) . PHP_EOL, FILE_APPEND);
 }
