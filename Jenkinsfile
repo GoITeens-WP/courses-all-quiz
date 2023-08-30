@@ -8,9 +8,9 @@ node("go-web"){
             string(credentialsId: 'telegramChatIdJenkinsSoftryzen', variable: 'telegramNotifyChannelChatId'),
 
             //ADD FTP CREDENTIAL
-            string(credentialsId: 'ftp_user_pass_host_for_your_goit_site_name', variable: 'ftpUserAndPass')
+            string(credentialsId: 'ftp_user_pass_host_for_example', variable: 'ftpUserAndPass')
         ]) {
-                env.gitRepository = 'git@github.com:GoWeb-Studio/your-repo-name.git';
+                env.gitRepository = 'git@github.com:GoWeb-Studio/example-repo.git';
                 env.gitBranch = 'main';
                 env.folderPath = './ua/';
                 //
