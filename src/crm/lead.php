@@ -20,17 +20,20 @@ function send($token, $data, $input)
   // PL
   // https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
 
+  // PL Survey
+  // https://goit-connectors.place/pl/newcrm/surveyG/App.php
+
   // PH
   // https://goit-connectors.place/phillipines/zoho/loader.php
 
   // PH Survey
   // https://goit-connectors.place/phillipines/survey/App.php
 
-  // CO/MX
-  // https://goit-connectors.place/latam/connector/connector.php
-
   // RO
   // https://goit-connectors.place/romania/goit/connector.php
+
+  // ES/CO/MX
+  // https://goit-connectors.place/latam/connector/connector.php
 
   // GOITEENS
   // https://universalcrmconnector.goiteens.ua/connector.php
