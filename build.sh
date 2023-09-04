@@ -7,7 +7,7 @@ rm -rf ./build
 rm -rf node_modules
 
 # Build app
-npm cache clean --force
+npm cache clean
 npm i
 npm run build
 
