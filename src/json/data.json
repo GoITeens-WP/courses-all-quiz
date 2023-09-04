@@ -14,16 +14,16 @@
       "address": "Ю. Іллєнка, 12 <br/>Київ, Україна",
       "contacts": [
         {
-          "text": "(073) 073 97 41",
-          "link": "tel:+380730739741"
+          "text": "(093) 832 75 13",
+          "link": "tel:+380938327513"
         },
         {
-          "text": "(067) 271 43 68",
-          "link": "tel:+380672714368"
+          "text": "(050) 366 17 77",
+          "link": "tel:+380503661777"
         },
         {
-          "text": "(050) 080 45 78",
-          "link": "tel:+380500804578"
+          "text": "(067) 914 67 50",
+          "link": "tel:+380679146750"
         }
       ],
       "mail": {
@@ -129,7 +129,6 @@
           "link": "https://goit.global/pl/privacy-policy/"
         }
       ],
-
       "copyright": {
         "text": "GoIT",
         "year": "2014 - "
@@ -242,7 +241,7 @@
       }
     },
     "ro": {
-      "address": "333, Ion Mihalache Blvd., Bloc 17, Staircase Ap., Ap. 33, Bucharest, 1st District, Romania",
+      "address": "Blvd. Ion Mihalache, nr. 333, București, România",
       "contacts": [
         {
           "text": "+40 31 229 4566",
@@ -378,7 +377,11 @@
     "id": "modalForm",
     "btnCloseAria": "кнопка закриття модального вікна",
     "title": "Реєстрація",
-    "steps": ["1", "2", "3"],
+    "steps": [
+      "1",
+      "2",
+      "3"
+    ],
     "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
