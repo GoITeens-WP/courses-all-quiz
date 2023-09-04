@@ -17,6 +17,9 @@ function send($token, $data, $input)
   // UA
   // https://goit-connectors.place/goit/
 
+  // UA Survey
+  // https://goit-connectors.place/goit/survey/App.php
+
   // PL
   // https://goit-connectors.place/pl/newcrm/goit/connectorPL.php
 
