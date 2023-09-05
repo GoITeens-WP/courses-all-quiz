@@ -11,7 +11,7 @@ import service from './service.js';
 import crm from './submit.js';
 
 $(window).on('load', async function () {
-  /*  Украина(uk), Польша(pl), Мексика-Колумбия(es), Филиппины(en), Румыния(ro) */
+  /*  Украина(uk), Польша(pl), Филиппины(en), Румыния(ro), Испания(es) */
   let defaultLang = null;
 
   switch (window.locale) {

@@ -35,7 +35,10 @@ function send($token, $data, $input)
   // RO
   // https://goit-connectors.place/romania/goit/connector.php
 
-  // ES/CO/MX
+  // RO Survey
+  // https://goit-connectors.place/romania/survey/App.php
+
+  // ES
   // https://goit-connectors.place/latam/connector/connector.php
 
   // GOITEENS

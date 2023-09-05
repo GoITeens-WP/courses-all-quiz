@@ -365,21 +365,21 @@ function translate(key, locale = window.locale) {
  */
 function getNameRegex(locale = window.locale) {
   switch (locale) {
-    // Филиппины(en)
-    case 'en':
-      return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
-
     // Польша(pl)
     case 'pl':
       return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,}$/i;
 
-    // Мексика-Колумбия(es)
-    case 'es':
-      return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,}$/gm;
+    // Филиппины(en)
+    case 'en':
+      return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
 
     // Румыния(ro)
     case 'ro':
       return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,}$/gm;
+
+    // Испания(es)
+    case 'es':
+      return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,}$/gm;
 
     // Украина(uk)
     default:
