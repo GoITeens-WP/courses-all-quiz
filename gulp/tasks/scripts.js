@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const paths = require('../paths');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const webpackStream = require('webpack-stream');
+const paths = require('../paths');
 
 const scripts = () => {
   return gulp

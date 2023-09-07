@@ -1,6 +1,8 @@
 {
   "page": {
     "LANG_EXAMPLE": "Украина(uk), Польша(pl), Филиппины(en), Румыния(ro), Испания(es)",
+    "TYPE_EXAMPLE": "goit, goiteens",
+    "type": "goit",
     "lang": "uk",
     "title": "title",
     "description": "description",

@@ -35,7 +35,7 @@ const css = () => {
     .pipe(
       mode.production(
         purgecss({
-          content: ['src/**/*.{html,js,njk,json}'],
+          content: ['src/**/*.{html,njk,js,json}'],
           skippedContentGlobs: ['node_modules/**'],
           defaultExtractor: content => {
             const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];

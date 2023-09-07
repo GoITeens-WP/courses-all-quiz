@@ -1,7 +1,7 @@
 const { colors } = require(`tailwindcss/defaultTheme`);
 
 module.exports = {
-  content: ['./src/**/*.{html,js,json}'],
+  content: ['./src/**/*.{html,njk,js,json}'],
   theme: {
     // MEDIA QUERIES
     screens: {

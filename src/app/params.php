@@ -53,11 +53,6 @@ $ini_array = parse_ini_file('params.ini');
       </label>
     </div>
 
-    <label>
-      GTM
-      <input type="text" name="GTM" value="<?= $ini_array['GTM'] ?>" placeholder="<?= $ini_array['GTM'] ?>" />
-    </label>
-
     <!-- ⌚ Start Date Timer -->
     <!-- <div style="display: flex; flex-direction: row; gap: 20px">
       <label style="width: 50%">
