@@ -8,6 +8,7 @@ module.exports = {
       sm: '480px',
       md: '768px',
       xl: '1280px',
+      // xxl: '1600px', // (goiteens)
       smOnly: { max: '767.98px' },
       mdOnly: { min: '768px', max: '1279.98px' },
       notXl: { max: '1279.98px' },
@@ -15,6 +16,7 @@ module.exports = {
     // BASE FONT
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
+      // gotham: ['Gotham', 'sans-serif'], // class="font-gotham" (goiteens)
       // exo: ['"Exo 2"', 'sans-serif'],
     },
     // SHADOW
@@ -35,7 +37,7 @@ module.exports = {
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           light: '#202020', // class="bg-black-light text-black-light border-black-light"
-          dark: '#010101',
+          dark: '#010101', // class="bg-black-dark text-black-dark border-black-dark"
         },
         white: {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
@@ -49,10 +51,11 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1.5rem',
-          sm: '1.5rem',
-          md: '2rem',
-          xl: '2rem',
+          DEFAULT: '1.5rem', // 1.25rem (goiteens)
+          sm: '1.5rem', // 1.25rem (goiteens)
+          md: '2rem', // 2rem (goiteens)
+          xl: '2rem', // 2.5rem (goiteens)
+          // xxl: '3.5rem', // (goiteens)
         },
       },
       // KEYFRAMES

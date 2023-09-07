@@ -292,6 +292,54 @@
         "text": "GoIT",
         "year": "2014 - "
       }
+    },
+    "goiteens": {
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/GoITeens/",
+          "svg": "facebook-goiteens",
+          "alt": "Логотип фейсбуку",
+          "link_alt": "Посилання на фейсбук"
+        },
+        {
+          "link": "https://www.instagram.com/go_iteens/",
+          "svg": "instagram-goiteens",
+          "alt": "Логотип інстаграму",
+          "link_alt": "Посилання на інстаграм"
+        },
+        {
+          "link": "https://www.youtube.com/channel/UCePQwxtFDx2ypM-oTh7gqMQ",
+          "svg": "youtube-goiteens",
+          "alt": "Логотип ютуб",
+          "link_alt": "Посилання на ютуб"
+        },
+        {
+          "link": "https://t.me/devofteens",
+          "svg": "telegram-goiteens",
+          "alt": "Логотип телеграму",
+          "link_alt": "Посилання на телеграм"
+        }
+      ],
+      "paymentList": [
+        {
+          "svg": "visa",
+          "svgAlt": "логотип віза"
+        },
+        {
+          "svg": "mastercard",
+          "svgAlt": "логотип мастеркард"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Публічний договір",
+          "link": "https://goiteens.com/contract/"
+        },
+        {
+          "text": "Політика конфіденційності",
+          "link": "https://goiteens.com/privacy-policy/"
+        }
+      ]
     }
   },
   "logo": {
