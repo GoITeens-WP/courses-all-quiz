@@ -230,12 +230,6 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'Email is invalid!',
       },
     ],
-    checkbox: [
-      {
-        rule: 'required',
-        errorMessage: 'The field is required',
-      },
-    ],
     promocode: [
       {
         rule: 'minLength',
@@ -246,6 +240,18 @@ function getValidationFields(input, allInputs) {
         rule: 'maxLength',
         value: 30,
         errorMessage: 'The field must contain a maximum of 30 characters',
+      },
+    ],
+    checkbox: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
+      },
+    ],
+    radio: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
       },
     ],
     // message: [

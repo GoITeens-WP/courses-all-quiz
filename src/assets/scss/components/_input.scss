@@ -41,6 +41,7 @@ input[type='tel'].input-field {
 .checkbox {
   @apply absolute left-0 top-0 inline-block h-6 w-6 rounded-full border border-gray-400 bg-contain bg-center bg-no-repeat;
 
+  [type='radio']:checked + &,
   [type='checkbox']:checked + & {
     @apply border-accent bg-check;
   }

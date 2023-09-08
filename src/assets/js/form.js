@@ -151,6 +151,7 @@ telegram backend. */
     const phone = form.querySelector('[type="tel"]');
     const email = form.querySelector('[name="email"]');
     const promocode = form.querySelector('[name="promocode"]');
+    const radio = form.querySelectorAll('[name="user"]');
 
     // Vars
     const iti = intlTelInput(
