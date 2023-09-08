@@ -236,6 +236,18 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'The field is required',
       },
     ],
+    promocode: [
+      {
+        rule: 'minLength',
+        value: 2,
+        errorMessage: 'The field must contain a minimum of 2 characters',
+      },
+      {
+        rule: 'maxLength',
+        value: 30,
+        errorMessage: 'The field must contain a maximum of 30 characters',
+      },
+    ],
     // message: [
     //   {
     //     rule: 'minLength',

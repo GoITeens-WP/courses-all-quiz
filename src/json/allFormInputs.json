@@ -38,6 +38,14 @@
       ]
     },
     {
+      "title": "Ваш промокод",
+      "type": "text",
+      "name": "promocode",
+      "placeholder": "промокод",
+      "dataField": "promocode",
+      "required": false
+    },
+    {
       "title": "CV *",
       "type": "file",
       "name": "file",

@@ -150,6 +150,7 @@ telegram backend. */
     const name = form.querySelector('[name="name"]');
     const phone = form.querySelector('[type="tel"]');
     const email = form.querySelector('[name="email"]');
+    const promocode = form.querySelector('[name="promocode"]');
 
     // Vars
     const iti = intlTelInput(
@@ -226,7 +227,14 @@ telegram backend. */
         }
 
         if (!onlySendEmail) {
-          const crmParams = [name.value, phoneNumber, email.value, productName, productId];
+          const crmParams = [
+            name.value,
+            phoneNumber,
+            email.value,
+            promocode.value,
+            productName,
+            productId,
+          ];
 
           /* It's a function that generates data for the CRM. */
           const data = crm.generateData(...crmParams);

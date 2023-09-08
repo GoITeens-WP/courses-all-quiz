@@ -455,6 +455,14 @@
         "required": true
       },
       {
+        "title": "Ваш промокод",
+        "type": "text",
+        "name": "promocode",
+        "placeholder": "промокод",
+        "dataField": "promocode",
+        "required": false
+      },
+      {
         "title": "Згоден з ",
         "type": "checkbox",
         "name": "agree",
