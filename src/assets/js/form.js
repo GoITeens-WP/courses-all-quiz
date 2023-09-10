@@ -255,14 +255,24 @@ telegram backend. */
           service.changeFormStep(form, 2);
 
           switch (true) {
-            case params.needsRedirectToLeeloo:
-              return showLeelooBlock();
-
             case params.needsRedirectToTelegramBackend:
               return showTelegramBackendBlock();
 
+            case params.needsRedirectToLeeloo:
+              return showLeelooBlock();
+
             default:
               return showDefaultBlock();
+          }
+
+          /* It's a function that redirects the user to the Telegram backend. */
+          async function showTelegramBackendBlock() {
+            response.finally(async () => {
+              await service.redirectToTelegramBackend(form, data).finally(() => {
+                service.changeFormStep(form, 3);
+                loading.hide();
+              });
+            });
           }
 
           /* It's a function that redirects the user to the Leeloo CRM. */
@@ -306,38 +316,28 @@ telegram backend. */
             }
           }
 
-          /* It's a function that redirects the user to the Telegram backend. */
-          async function showTelegramBackendBlock() {
-            response.finally(async () => {
-              await service.redirectToTelegramBackend(form, data).finally(() => {
-                service.changeFormStep(form, 3);
-                loading.hide();
-              });
-            });
-          }
-
           async function showDefaultBlock() {
-            response
-              .then(resp => {
-                if (resp.status === 200) {
-                  $(form).trigger('reset');
-                  service.changeFormStep(form, 3);
-                  service.showSuccess(service.translate('reply'), true, loading, true);
+            try {
+              const resp = await response;
 
-                  /* That redirects user to some URL after send form. */
-                  // window.location.href = 'someURL';
-                } else {
-                  console.log('error ', resp.statusText);
-                  $(form).css('display', 'block');
-                  service.showError();
-                }
-              })
-              .catch(err => {
-                console.log(err);
+              if (resp.status === 200) {
+                $(form).trigger('reset');
+                service.changeFormStep(form, 3);
+                service.showSuccess(service.translate('reply'), true, loading, true);
+
+                /* That redirects user to some URL after send form. */
+                // window.location.href = 'someURL';
+              } else {
+                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
-                loading.hide();
-              });
+              }
+            } catch (error) {
+              console.log(error);
+              $(form).css('display', 'block');
+              service.showError();
+              loading.hide();
+            }
           }
         }
       });
