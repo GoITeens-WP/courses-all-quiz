@@ -5,6 +5,7 @@ function generateData(
   phone = null,
   email = null,
   promocode = null,
+  radioValue,
   productName = window.productName,
   productId = window.productId
 ) {
@@ -17,6 +18,7 @@ function generateData(
     phone: phone,
     email: email,
     promocode: promocode,
+    psWhoIs1: radioValue,
     product_name: productName,
     product_id: productId,
     Potential_Category: 'Course',
@@ -86,10 +88,11 @@ async function submit(
   phone = null,
   email = null,
   promocode = null,
+  radioValue,
   productName = window.productName,
   productId = window.productId
 ) {
-  let data = generateData(name, phone, email, promocode, productName, productId);
+  let data = generateData(name, phone, email, promocode, radioValue, productName, productId);
   const response = await send(data);
 
   return response;

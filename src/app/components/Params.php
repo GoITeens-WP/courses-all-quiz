@@ -11,6 +11,8 @@ class Params
       fwrite($file, "PRODUCT_NAME={$_POST['PRODUCT_NAME']}\n");
       fwrite($file, "PRODUCT_ID={$_POST['PRODUCT_ID']}\n");
       fwrite($file, "LEELOO_HASH={$_POST['LEELOO_HASH']}\n");
+      fwrite($file, "LEELOO_HASH_TEEN={$_POST['LEELOO_HASH_TEEN']}\n");
+      fwrite($file, "LEELOO_HASH_PARENT={$_POST['LEELOO_HASH_PARENT']}\n");
       fwrite($file, "ELZA_TOKEN={$_POST['ELZA_TOKEN']}\n");
       fwrite($file, "TELEGRAM_BACKEND_URL='{$_POST['TELEGRAM_BACKEND_URL']}'\n");
       fwrite($file, "TELEGRAM_BOT='{$_POST['TELEGRAM_BOT']}'\n");

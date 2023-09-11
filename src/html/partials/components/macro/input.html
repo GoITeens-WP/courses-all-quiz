@@ -1,6 +1,6 @@
 {% macro inputField(arg,id) %}
 
-<div class="input-wrap {{ arg.class }}">
+<div class="input-wrap {{ arg.class }}{% if arg.radio %}input-wrap-radio{% endif %}">
   <!-- ➡️ IF select -->
   {% if arg.type == "select" %}
   <label class="input-label" for="{{ id }}_select_{{ arg.name }}">{{ arg.title }}</label>
@@ -63,7 +63,8 @@
   </label>
 
   <!-- ➡️ ELIF radio -->
-  {% elif arg.type == "radio" %}
+  {% elif arg.radio %}
+  {% for arg in arg.radio %}
   <label class="input-label-checkbox">
     <input
       class="visually-hidden"
@@ -77,6 +78,7 @@
     <span class="checkbox"></span>
     {{ arg.title }}
   </label>
+  {% endfor %}
 
   <!-- ➡️ ELSE other inputs -->
   {% else %}

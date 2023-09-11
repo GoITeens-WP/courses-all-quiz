@@ -55,22 +55,26 @@
       ]
     },
     {
-      "title": "Я, підліток",
-      "type": "radio",
-      "name": "user",
-      "dataField": "radio",
-      "required": true,
-      "class": "input-wrap-checkbox",
-      "value": "teen"
-    },
-    {
-      "title": "Батько / мати",
-      "type": "radio",
-      "name": "user",
-      "dataField": "radio",
-      "required": true,
-      "class": "input-wrap-checkbox",
-      "value": "parents"
+      "radio": [
+        {
+          "title": "Я, підліток",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "teen"
+        },
+        {
+          "title": "Батько / мати",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "parents"
+        }
+      ]
     },
     {
       "title": "CV *",

@@ -458,14 +458,6 @@
         "autocomplete": "email"
       },
       {
-        "title": "Ваш промокод",
-        "type": "text",
-        "name": "promocode",
-        "placeholder": "промокод",
-        "dataField": "promocode",
-        "required": false
-      },
-      {
         "title": "Згоден з ",
         "type": "checkbox",
         "name": "agree",
@@ -483,24 +475,6 @@
             "href": "https://goit.global/ua/terms-of-use/"
           }
         ]
-      },
-      {
-        "title": "Я, підліток",
-        "type": "radio",
-        "name": "user",
-        "dataField": "radio",
-        "required": true,
-        "class": "input-wrap-checkbox",
-        "value": "teen"
-      },
-      {
-        "title": "Батько / мати",
-        "type": "radio",
-        "name": "user",
-        "dataField": "radio",
-        "required": true,
-        "class": "input-wrap-checkbox",
-        "value": "parents"
       }
     ],
     "btnSubmit": "Зареєструватися"

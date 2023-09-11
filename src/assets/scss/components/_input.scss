@@ -2,6 +2,10 @@
   @apply relative w-full font-medium;
 }
 
+.input-wrap-radio {
+  @apply pb-2;
+}
+
 .input-wrap-half {
   @apply w-[calc((100%_-_1.5rem)/2)];
 

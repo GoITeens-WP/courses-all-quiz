@@ -53,7 +53,21 @@ $ini_array = parse_ini_file('params.ini');
       </label>
     </div>
 
-    <!-- ⌚ Start Date Timer -->
+    <!-- ➡️ START Leeloo Teen/Parent -->
+    <!-- <div style="display: flex; flex-direction: row; gap: 20px">
+      <label style="width: 50%">
+        Leeloo Hash Teen
+        <input type="text" name="LEELOO_HASH_TEEN" value="<?= $ini_array['LEELOO_HASH_TEEN'] ?>" placeholder="<?= $ini_array['LEELOO_HASH_TEEN'] ?>" />
+      </label>
+
+      <label style="width: 50%">
+        Leeloo Hash Parent
+        <input type="text" name="LEELOO_HASH_PARENT" value="<?= $ini_array['LEELOO_HASH_PARENT'] ?>" placeholder="<?= $ini_array['LEELOO_HASH_PARENT'] ?>" />
+      </label>
+    </div> -->
+    <!-- ➡️ END Leeloo Teen/Parent -->
+
+    <!-- ⌚ START Date Timer -->
     <!-- <div style="display: flex; flex-direction: row; gap: 20px">
       <label style="width: 50%">
         Date for timer
@@ -65,7 +79,7 @@ $ini_array = parse_ini_file('params.ini');
         <input type="time" name="START_TIME" value="<?= $ini_array['START_TIME'] ?>" placeholder="<?= $ini_array['START_TIME'] ?>" />
       </label>
     </div> -->
-    <!-- END Start Date Timer -->
+    <!-- ⌚ END Start Date Timer -->
 
     <!-- <label>
       Start Date

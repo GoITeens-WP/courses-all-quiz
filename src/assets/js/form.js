@@ -53,8 +53,10 @@ $(window).on('load', async function () {
 
   // Params
   const params = {
-    needsRedirectToLeeloo: window.leelooHash ? true : false,
     needsRedirectToTelegramBackend: window.telegramBackendUrl ? true : false,
+    needsRedirectToLeeloo: window.leelooHash ? true : false,
+    leelooHashTeen: window.leelooHashTeen,
+    leelooHashParent: window.leelooHashParent,
 
     /* It's a check that the domain has MX records on dns server */
     needsCheckEmailDomain: true,
@@ -150,8 +152,20 @@ telegram backend. */
     const name = form.querySelector('[name="name"]');
     const phone = form.querySelector('[type="tel"]');
     const email = form.querySelector('[name="email"]');
+
+    // goiteens promocode
     const promocode = form.querySelector('[name="promocode"]');
+
+    // START goiteens radio checkboxes
     const radio = form.querySelectorAll('[name="user"]');
+    let radioValue = null;
+
+    radio.forEach(item => {
+      item.addEventListener('change', () => {
+        radioValue = item.value;
+      });
+    });
+    // END goiteens radio checkboxes
 
     // Vars
     const iti = intlTelInput(
@@ -165,7 +179,7 @@ telegram backend. */
       service.validationOptions,
       service.getValidationLocale()
     );
-
+    validationForm.addRequiredGroup('.input-wrap-radio', 'The field is required');
     validationForm.setCurrentLocale(window.locale);
 
     // apply rules to form fields
@@ -233,6 +247,7 @@ telegram backend. */
             phoneNumber,
             email.value,
             promocode.value,
+            radioValue,
             productName,
             productId,
           ];
@@ -258,6 +273,12 @@ telegram backend. */
             case params.needsRedirectToTelegramBackend:
               return showTelegramBackendBlock();
 
+            case params.leelooHashTeen && radioValue === 'teen':
+              return showLeelooBlock(params.leelooHashTeen);
+
+            case params.leelooHashParent && radioValue === 'parents':
+              return showLeelooBlock(params.leelooHashParent);
+
             case params.needsRedirectToLeeloo:
               return showLeelooBlock();
 
@@ -276,7 +297,7 @@ telegram backend. */
           }
 
           /* It's a function that redirects the user to the Leeloo CRM. */
-          async function showLeelooBlock() {
+          async function showLeelooBlock(leelooHash) {
             service.setParamsForLeeloo(data);
 
             try {
@@ -290,7 +311,7 @@ telegram backend. */
                   service.setUrlParameter('elza_id', elzaId);
                 }
 
-                service.initializeLeeloo(form);
+                service.initializeLeeloo(form, leelooHash);
                 $(form).css('display', 'none');
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
