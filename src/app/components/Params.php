@@ -21,6 +21,7 @@ class Params
       fwrite($file, "START_DAY={$_POST['START_DAY']}\n");
       fwrite($file, "START_MONTH={$_POST['START_MONTH']}\n");
       fwrite($file, "START_TIME={$_POST['START_TIME']}\n");
+      fwrite($file, "VIDEO_LINK='{$_POST['VIDEO_LINK']}'\n");
       fclose($file);
     } else {
       echo "<p>Wrong password</p>";

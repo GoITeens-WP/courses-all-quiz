@@ -68,12 +68,12 @@ $ini_array = parse_ini_file('params.ini');
     <!-- ⌚ START Date Timer -->
     <!-- <div style="display: flex; flex-direction: row; gap: 20px">
       <label style="width: 50%">
-        Date for timer
+        Date for Timer
         <input type="date" name="START_DATE" value="<?= $ini_array['START_DATE'] ?>" placeholder="<?= $ini_array['START_DATE'] ?>" />
       </label>
 
       <label style="width: 50%">
-        Time for timer
+        Time for Timer
         <input type="time" name="START_TIME" value="<?= $ini_array['START_TIME'] ?>" placeholder="<?= $ini_array['START_TIME'] ?>" />
       </label>
     </div> -->
@@ -95,18 +95,8 @@ $ini_array = parse_ini_file('params.ini');
     </label> -->
 
     <!-- <label>
-      Telegram Backend URL
-      <input type="text" name="TELEGRAM_BACKEND_URL" value="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" placeholder="<?= $ini_array['TELEGRAM_BACKEND_URL'] ?>" />
-    </label> -->
-
-    <!-- <label>
-      Telegram Bot
-      <input type="text" name="TELEGRAM_BOT" value="<?= $ini_array['TELEGRAM_BOT'] ?>" placeholder="<?= $ini_array['TELEGRAM_BOT'] ?>" />
-    </label> -->
-
-    <!-- <label>
-      CAPI Lead Format
-      <input type="text" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" />
+      Embed Video Link
+      <input type="text" name="VIDEO_LINK" value="<?= $ini_array['VIDEO_LINK'] ?>" placeholder="<?= $ini_array['VIDEO_LINK'] ?>" />
     </label> -->
 
     <label>
