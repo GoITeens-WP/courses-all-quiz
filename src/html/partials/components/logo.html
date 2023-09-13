@@ -28,6 +28,8 @@
 
 <!-- ➡️ ELSE PAGE TYPE GOITEENS -->
 {% else %}
+<!-- IF HEADER -->
+{% if section.id === 'header' %}
 <a
   class="block w-max duration-300 hover:scale-105 focus:scale-105 smOnly:mx-auto"
   href="{{page.canonical}}"
@@ -38,4 +40,16 @@
     <use href="./assets/images/sprite.svg#logo-goiteens"></use>
   </svg>
 </a>
-{% endif %}
+<!-- ELSE FOOTER -->
+{% else %}
+<a
+  class="block w-max duration-300 hover:scale-105 focus:scale-105 smOnly:mx-auto"
+  href="{{page.canonical}}"
+  aria-label="{{logo.link_logo_aria}}"
+>
+  <svg class="md:h-[36px] md:w-[142px]" width="118" height="30" aria-label="{{logo.logo_aria}}">
+    <title>{{logo.logo_aria}}</title>
+    <use href="./assets/images/sprite.svg#logo-goiteens"></use>
+  </svg>
+</a>
+{% endif %} {% endif %}
