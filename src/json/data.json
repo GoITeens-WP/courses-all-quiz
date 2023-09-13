@@ -436,7 +436,8 @@
         "name": "name",
         "placeholder": "Ім’я",
         "dataField": "name",
-        "required": true
+        "required": true,
+        "autocomplete": "name"
       },
       {
         "title": "Телефон *",
@@ -444,7 +445,8 @@
         "name": "phone",
         "placeholder": "",
         "dataField": "phone",
-        "required": true
+        "required": true,
+        "autocomplete": "tel"
       },
       {
         "title": "Пошта *",
@@ -452,15 +454,8 @@
         "name": "email",
         "placeholder": "email@gmail.com",
         "dataField": "email",
-        "required": true
-      },
-      {
-        "title": "Ваш промокод",
-        "type": "text",
-        "name": "promocode",
-        "placeholder": "промокод",
-        "dataField": "promocode",
-        "required": false
+        "required": true,
+        "autocomplete": "email"
       },
       {
         "title": "Згоден з ",

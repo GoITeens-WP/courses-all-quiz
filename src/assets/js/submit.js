@@ -1,37 +1,46 @@
 import axios from 'axios';
 
-function generateData(
-  name,
-  phone = null,
-  email = null,
-  promocode = null,
-  productName = window.productName,
-  productId = window.productId
-) {
+function generateData(crmParams) {
   const { origin, pathname } = window.location;
   const action_source = `${origin}${pathname}`;
 
   let data = {
-    google_id: readCookie('_ga'),
-    name: name,
-    phone: phone,
-    email: email,
-    promocode: promocode,
-    product_name: productName,
-    product_id: productId,
-    Potential_Category: 'Course',
-    Projects: 'GoIT',
-    Course: productId,
-    website: 'website',
+    name: crmParams.userName,
+    phone: crmParams.userPhone,
+    email: crmParams.userEmail,
+    promocode: crmParams.userPromocode,
+    psWhoIs1: crmParams.userType,
+    product_name: crmParams.productName,
+    product_id: crmParams.productId,
     SiteURL: action_source,
-    leadFormat: window.leadFormat || 'marathon',
-    leadActionSource: action_source,
-    leadUserAgent: window.navigator.userAgent,
-    leadFBP: getCookie('_fbp'),
+    website: 'website',
+    Projects: 'GoIT',
+    Potential_Category: 'Course',
+    Course: crmParams.productId,
     leadFBC: getCookie('_fbc'),
+    leadFBP: getCookie('_fbp'),
+    leadActionSource: action_source,
+    leadFormat: window.leadFormat || 'marathon',
     leadIP: window.ipData.ip || '',
+    leadUserAgent: window.navigator.userAgent,
+    google_id: readCookie('_ga'),
   };
   return ensureUtmData(data);
+}
+
+async function submit(crmParams) {
+  let data = generateData(crmParams);
+  const response = await send(data);
+
+  return response;
+}
+
+async function send(data) {
+  return await axios({
+    method: 'post',
+    url: './crm/lead.php',
+    data: data,
+  });
 }
 
 function ensureUtmData(data) {
@@ -73,29 +82,7 @@ function readCookie(name) {
   return null;
 }
 
-async function send(data) {
-  return await axios({
-    method: 'post',
-    url: './crm/lead.php',
-    data: data,
-  });
-}
-
-async function submit(
-  name,
-  phone = null,
-  email = null,
-  promocode = null,
-  productName = window.productName,
-  productId = window.productId
-) {
-  let data = generateData(name, phone, email, promocode, productName, productId);
-  const response = await send(data);
-
-  return response;
-}
-
 export default {
-  submit,
   generateData,
+  submit,
 };

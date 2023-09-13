@@ -18,28 +18,25 @@ $(window).on('load', async function () {
     case 'pl':
       defaultLang = 'pl';
       break;
-    case 'es':
-      defaultLang = 'es';
-      break;
     case 'en':
       defaultLang = 'en';
       break;
     case 'ro':
       defaultLang = 'ro';
       break;
+    case 'es':
+      defaultLang = 'es';
+      break;
     default:
       defaultLang = 'uk';
   }
 
-  /* Украина(ua), Польша(pl), Мексика(mx), Колумбия(co), Филиппины(ph), Румыния(ro) */
+  /* Украина(ua), Польша(pl), Филиппины(ph), Румыния(ro), Испания(es) */
   let itiLocale = null;
 
   switch (window.locale) {
     case 'pl':
       itiLocale = 'pl';
-      break;
-    case 'es':
-      itiLocale = 'co';
       break;
     case 'en':
       itiLocale = 'ph';
@@ -47,18 +44,29 @@ $(window).on('load', async function () {
     case 'ro':
       itiLocale = 'ro';
       break;
+    case 'es':
+      itiLocale = 'es';
+      break;
     default:
       itiLocale = 'ua';
   }
 
   // Params
   const params = {
-    needsRedirectToLeeloo: window.leelooHash ? true : false,
+    defaultLocale: defaultLang,
+    defaultPhoneCountry: itiLocale,
+    preferredPhoneCountries: [itiLocale],
+    excludePhoneCountries: ['ru', 'by'],
+
     needsRedirectToTelegramBackend: window.telegramBackendUrl ? true : false,
+    needsRedirectToLeeloo: window.leelooHash ? true : false,
+    leelooHashTeen: window.leelooHashTeen,
+    leelooHashParent: window.leelooHashParent,
 
     /* It's a check that the domain has MX records on dns server */
     needsCheckEmailDomain: true,
 
+    referralMarks: ['SRC', 'from'],
     utmMarks: [
       'utm_source',
       'utm_medium',
@@ -69,12 +77,9 @@ $(window).on('load', async function () {
       'adsetId',
       'adId',
     ],
-    referralMarks: ['SRC', 'from'],
-    defaultLocale: defaultLang,
-    defaultPhoneCountry: itiLocale,
-    preferredPhoneCountries: [itiLocale],
-    excludePhoneCountries: ['ru', 'by'],
 
+    promocode: false,
+    radio: false,
     forms: [
       {
         formId: 'modalForm',
@@ -148,9 +153,22 @@ telegram backend. */
     }
 
     const name = form.querySelector('[name="name"]');
-    const phone = form.querySelector('[type="tel"]');
+    const phone = form.querySelector('[name="phone"]');
     const email = form.querySelector('[name="email"]');
-    const promocode = form.querySelector('[name="promocode"]');
+
+    if (params.promocode) {
+      const promocode = form.querySelector('[name="promocode"]');
+    }
+    if (params.radio) {
+      const radio = form.querySelectorAll('[name="user"]');
+      let userType = null;
+
+      radio.forEach(item => {
+        item.addEventListener('change', () => {
+          userType = item.value;
+        });
+      });
+    }
 
     // Vars
     const iti = intlTelInput(
@@ -164,7 +182,9 @@ telegram backend. */
       service.validationOptions,
       service.getValidationLocale()
     );
-
+    if (params.radio) {
+      validationForm.addRequiredGroup('.input-wrap-radio', 'The field is required');
+    }
     validationForm.setCurrentLocale(window.locale);
 
     // apply rules to form fields
@@ -227,19 +247,20 @@ telegram backend. */
         }
 
         if (!onlySendEmail) {
-          const crmParams = [
-            name.value,
-            phoneNumber,
-            email.value,
-            promocode.value,
-            productName,
-            productId,
-          ];
+          const crmParams = {
+            userName: name.value,
+            userPhone: phoneNumber,
+            userEmail: email.value,
+            userPromocode: params.promocode ? promocode.value : null,
+            userType: params.radio ? userType : null,
+            productName: productName,
+            productId: productId,
+          };
 
           /* It's a function that generates data for the CRM. */
-          const data = crm.generateData(...crmParams);
+          const data = crm.generateData(crmParams);
           /* It's a function that sends data to the CRM. */
-          const response = crm.submit(...crmParams);
+          const response = crm.submit(crmParams);
 
           /* It's a Google Tag Manager event. */
           dataLayer.push({
@@ -254,18 +275,34 @@ telegram backend. */
           service.changeFormStep(form, 2);
 
           switch (true) {
-            case params.needsRedirectToLeeloo:
-              return showLeelooBlock();
-
             case params.needsRedirectToTelegramBackend:
               return showTelegramBackendBlock();
+
+            case params.leelooHashTeen && userType === 'teen':
+              return showLeelooBlock(params.leelooHashTeen);
+
+            case params.leelooHashParent && userType === 'parents':
+              return showLeelooBlock(params.leelooHashParent);
+
+            case params.needsRedirectToLeeloo:
+              return showLeelooBlock();
 
             default:
               return showDefaultBlock();
           }
 
+          /* It's a function that redirects the user to the Telegram backend. */
+          async function showTelegramBackendBlock() {
+            response.finally(async () => {
+              await service.redirectToTelegramBackend(form, data).finally(() => {
+                service.changeFormStep(form, 3);
+                loading.hide();
+              });
+            });
+          }
+
           /* It's a function that redirects the user to the Leeloo CRM. */
-          async function showLeelooBlock() {
+          async function showLeelooBlock(leelooHash) {
             service.setParamsForLeeloo(data);
 
             try {
@@ -279,7 +316,7 @@ telegram backend. */
                   service.setUrlParameter('elza_id', elzaId);
                 }
 
-                service.initializeLeeloo(form);
+                service.initializeLeeloo(form, leelooHash);
                 $(form).css('display', 'none');
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
@@ -305,38 +342,28 @@ telegram backend. */
             }
           }
 
-          /* It's a function that redirects the user to the Telegram backend. */
-          async function showTelegramBackendBlock() {
-            response.finally(async () => {
-              await service.redirectToTelegramBackend(form, data).finally(() => {
-                service.changeFormStep(form, 3);
-                loading.hide();
-              });
-            });
-          }
-
           async function showDefaultBlock() {
-            response
-              .then(resp => {
-                if (resp.status === 200) {
-                  $(form).trigger('reset');
-                  service.changeFormStep(form, 3);
-                  service.showSuccess(service.translate('reply'), true, loading, true);
+            try {
+              const resp = await response;
 
-                  /* That redirects user to some URL after send form. */
-                  // window.location.href = 'someURL';
-                } else {
-                  console.log('error ', resp.statusText);
-                  $(form).css('display', 'block');
-                  service.showError();
-                }
-              })
-              .catch(err => {
-                console.log(err);
+              if (resp.status === 200) {
+                $(form).trigger('reset');
+                service.changeFormStep(form, 3);
+                service.showSuccess(service.translate('reply'), true, loading, true);
+
+                /* That redirects user to some URL after send form. */
+                // window.location.href = 'someURL';
+              } else {
+                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
-                loading.hide();
-              });
+              }
+            } catch (error) {
+              console.log(error);
+              $(form).css('display', 'block');
+              service.showError();
+              loading.hide();
+            }
           }
         }
       });

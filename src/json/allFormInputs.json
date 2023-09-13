@@ -4,9 +4,10 @@
       "title": "Імʼя *",
       "type": "text",
       "name": "name",
-      "placeholder": "",
+      "placeholder": "Ім’я",
       "dataField": "name",
-      "required": true
+      "required": true,
+      "autocomplete": "name"
     },
     {
       "title": "Телефон *",
@@ -14,7 +15,8 @@
       "name": "phone",
       "placeholder": "",
       "dataField": "phone",
-      "required": true
+      "required": true,
+      "autocomplete": "tel"
     },
     {
       "title": "Пошта *",
@@ -22,7 +24,16 @@
       "name": "email",
       "placeholder": "email@gmail.com",
       "dataField": "email",
-      "required": true
+      "required": true,
+      "autocomplete": "email"
+    },
+    {
+      "title": "Ваш промокод",
+      "type": "text",
+      "name": "promocode",
+      "placeholder": "промокод",
+      "dataField": "promocode",
+      "required": false
     },
     {
       "title": "Згоден з ",
@@ -33,17 +44,37 @@
       "class": "input-wrap-checkbox",
       "linkSeparator": "та",
       "links": [
-        { "text": "Політика конфіденційності", "href": "https://goit.global/ua/privacy-policy/" },
-        { "text": "Умови користування послугами", "href": "https://goit.global/ua/terms-of-use/" }
+        {
+          "text": "Політика конфіденційності",
+          "href": "https://goit.global/ua/privacy-policy/"
+        },
+        {
+          "text": "Умови користування послугами",
+          "href": "https://goit.global/ua/terms-of-use/"
+        }
       ]
     },
     {
-      "title": "Ваш промокод",
-      "type": "text",
-      "name": "promocode",
-      "placeholder": "промокод",
-      "dataField": "promocode",
-      "required": false
+      "radio": [
+        {
+          "title": "Я, підліток",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "teen"
+        },
+        {
+          "title": "Батько / мати",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "parents"
+        }
+      ]
     },
     {
       "title": "CV *",

@@ -12,7 +12,11 @@ function send($token, $data, $input)
 {
   $ch = curl_init();
   $curl_options = [];
-  $url = 'Put your connector from the list below';
+  $url = 'undefined'; // Put your connector here from the list below
+
+  if ($url === 'undefined') {
+    echo "Error: zoho connector not installed (lead.php)";
+  };
 
   // UA
   // https://goit-connectors.place/goit/
