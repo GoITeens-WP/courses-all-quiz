@@ -1268,16 +1268,14 @@
 .iti__flag {
   height: 15px;
   box-shadow: 0px 0px 1px 0px #888;
-  background-image: url('../images/intTelInput/flags.png');
-  background-image: -webkit-image-set(url('../images/intTelInput/flags.webp') 1x);
+  background-image: url('../images/components/intTelInput/flags.webp');
   background-repeat: no-repeat;
   background-color: #dbdbdb;
   background-position: 20px 0;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .iti__flag {
-    background-image: url('../images/intTelInput/flags@2x.png');
-    background-image: -webkit-image-set(url('../images/intTelInput/flags@2x.webp') 2x);
+    background-image: url('../images/components/intTelInput/flags@2x.webp');
   }
 }
 

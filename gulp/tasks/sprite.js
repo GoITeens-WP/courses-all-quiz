@@ -17,7 +17,7 @@ const sprite = () => {
         })
       )
     )
-    .pipe(newer(paths.build.sprite))
+    .pipe(newer(paths.build.images))
     .pipe(
       svgSprite({
         mode: {
@@ -28,7 +28,7 @@ const sprite = () => {
       })
     )
     .pipe(size({ showFiles: true }))
-    .pipe(gulp.dest(paths.build.sprite));
+    .pipe(gulp.dest(paths.build.images));
 };
 
 module.exports = sprite;

@@ -29,7 +29,7 @@ module.exports = {
         ...theme('colors'),
       }),
       backgroundImage: {
-        check: "url('../images/agree-checkbox.svg')",
+        check: "url('../images/components/agree-checkbox.svg')",
       },
       // ALL COLORS
       colors: {

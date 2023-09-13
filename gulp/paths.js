@@ -31,7 +31,6 @@ module.exports = {
     js: 'build/assets/js/',
     fonts: 'build/assets/fonts/',
     images: 'build/assets/images/',
-    sprite: 'build/assets/images/',
     db: 'build/assets/json/',
     php: 'build/',
     app: 'build/app/',
