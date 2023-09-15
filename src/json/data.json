@@ -342,87 +342,90 @@
       ]
     }
   },
-  "logo": {
-    "link_logo_aria": "Посилання на головну сторінку сайту",
-    "logo_aria": "Логотип сайту"
-  },
-  "navigation": {
-    "btnAria": "кнопка мобільного меню",
-    "items": [
-      {
-        "link": "#",
-        "title": "homePage"
-      },
-      {
-        "link": "#",
-        "title": "somePage"
-      }
-    ]
-  },
-  "timer": {
-    "fixedTime": {
-      "active": false,
-      "text": "Some title",
+  "components": {
+    "logo": {
+      "link_logo_aria": "Посилання на головну сторінку сайту",
+      "logo_aria": "Логотип сайту"
+    },
+    "navigation": {
+      "btnAria": "кнопка мобільного меню",
       "items": [
         {
-          "attribute": "data-hours",
-          "text": "hours"
+          "link": "#",
+          "title": "homePage"
         },
         {
-          "attribute": "data-min",
-          "text": "min"
-        },
-        {
-          "attribute": "data-sec",
-          "text": "sec"
-        },
-        {
-          "attribute": "data-ms",
-          "text": "ms"
+          "link": "#",
+          "title": "somePage"
         }
       ]
     },
-    "startDate": {
-      "active": false,
-      "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
-      "text": "Some title",
+    "timer": {
+      "fixedTime": {
+        "active": false,
+        "text": "Some title",
+        "items": [
+          {
+            "attribute": "data-hours",
+            "text": "hours"
+          },
+          {
+            "attribute": "data-min",
+            "text": "min"
+          },
+          {
+            "attribute": "data-sec",
+            "text": "sec"
+          },
+          {
+            "attribute": "data-ms",
+            "text": "ms"
+          }
+        ]
+      },
+      "startDate": {
+        "active": false,
+        "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
+        "text": "Some title",
+        "items": [
+          {
+            "attribute": "data-day",
+            "text": "day"
+          },
+          {
+            "attribute": "data-hours",
+            "text": "hours"
+          },
+          {
+            "attribute": "data-min",
+            "text": "min"
+          },
+          {
+            "attribute": "data-sec",
+            "text": "sec"
+          }
+        ]
+      }
+    },
+    "accordion": {
+      "svgAria": "іконка стрілки",
       "items": [
         {
-          "attribute": "data-day",
-          "text": "day"
+          "question": "question1",
+          "answer": "answer1"
         },
         {
-          "attribute": "data-hours",
-          "text": "hours"
+          "question": "question2",
+          "answer": "answer2"
         },
         {
-          "attribute": "data-min",
-          "text": "min"
-        },
-        {
-          "attribute": "data-sec",
-          "text": "sec"
+          "question": "question3",
+          "answer": "answer3"
         }
       ]
     }
   },
-  "accordion": {
-    "svgAria": "іконка стрілки",
-    "items": [
-      {
-        "question": "question1",
-        "answer": "answer1"
-      },
-      {
-        "question": "question2",
-        "answer": "answer2"
-      },
-      {
-        "question": "question3",
-        "answer": "answer3"
-      }
-    ]
-  },
+  "FORM_EXPAMPLE": "Переведенные формы лежат в allTranslatedForm.json",
   "form": {
     "id": "modalForm",
     "btnCloseAria": "кнопка закриття модального вікна",
@@ -431,10 +434,10 @@
     "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
-        "title": "Імʼя *",
+        "title": "Ім'я *",
         "type": "text",
         "name": "name",
-        "placeholder": "Ім’я",
+        "placeholder": "Ім'я",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"

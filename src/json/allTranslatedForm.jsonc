@@ -1,0 +1,238 @@
+{
+  // Украина(uk)
+  "form_UK": {
+    "id": "modalForm",
+    "btnCloseAria": "кнопка закриття модального вікна",
+    "title": "Реєстрація",
+    "steps": ["1", "2", "3"],
+    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
+    "inputs": [
+      {
+        "title": "Ім'я *",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Ім'я",
+        "dataField": "name",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "title": "Телефон *",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true,
+        "autocomplete": "tel"
+      },
+      {
+        "title": "Пошта *",
+        "type": "email",
+        "name": "email",
+        "placeholder": "email@gmail.com",
+        "dataField": "email",
+        "required": true,
+        "autocomplete": "email"
+      },
+      {
+        "title": "Згоден з ",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
+        "linkSeparator": "та",
+        "links": [
+          {
+            "text": "Політика конфіденційності",
+            "href": "https://goit.global/ua/privacy-policy/"
+          },
+          {
+            "text": "Умови користування послугами",
+            "href": "https://goit.global/ua/terms-of-use/"
+          }
+        ]
+      }
+    ],
+    "btnSubmit": "Зареєструватися"
+  },
+  // Польша(pl)
+  "form_PL": {
+    "id": "modalForm",
+    "btnCloseAria": "przycisk zamykania okna modalnego",
+    "title": "Rejestracja",
+    "steps": ["1", "2", "3"],
+    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
+    "inputs": [
+      {
+        "title": "Imię *",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Imię",
+        "dataField": "name",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "title": "Telefon *",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true,
+        "autocomplete": "tel"
+      },
+      {
+        "title": "Email *",
+        "type": "email",
+        "name": "email",
+        "placeholder": "email@gmail.com",
+        "dataField": "email",
+        "required": true,
+        "autocomplete": "email"
+      },
+      {
+        "title": "Wyrażam zgodę na przetwarzanie moich danych osobowych przez GOIT SP. z o.o., z siedzibą w Warszawie, ul. ALEJE JEROZOLIMSKIE 85/21, 02-001 Warszawa, NIP: 7011007541, REGON: 387686724 w celach marketingowych i handlowych.",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox"
+      }
+    ],
+    "btnSubmit": "Rejestracja"
+  },
+  // Филиппины(en)
+  "form_EN": {
+    "id": "modalForm",
+    "btnCloseAria": "modal window close button",
+    "title": "Registration",
+    "steps": ["1", "2", "3"],
+    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
+    "inputs": [
+      {
+        "title": "",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Full name",
+        "dataField": "name",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "title": "",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true,
+        "autocomplete": "tel"
+      },
+      {
+        "title": "",
+        "type": "email",
+        "name": "email",
+        "placeholder": "Email address",
+        "dataField": "email",
+        "required": true,
+        "autocomplete": "email"
+      }
+    ],
+    "btnSubmit": "Sign up"
+  },
+  // Румыния(ro)
+  "form_RO": {
+    "id": "modalForm",
+    "btnCloseAria": "butonul modal de închidere a ferestrei",
+    "title": "Înregistrare",
+    "steps": ["1", "2", "3"],
+    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
+    "inputs": [
+      {
+        "title": "Nume *",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Nume",
+        "dataField": "name",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "title": "Telefon *",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true,
+        "autocomplete": "tel"
+      },
+      {
+        "title": "E-mail *",
+        "type": "email",
+        "name": "email",
+        "placeholder": "email@gmail.com",
+        "dataField": "email",
+        "required": true,
+        "autocomplete": "email"
+      }
+    ],
+    "btnSubmit": "Înscrie-te"
+  },
+  // Испания(es)
+  "form_ES": {
+    "id": "modalForm",
+    "btnCloseAria": "botón de cierre de ventana modal",
+    "title": "Inscripción",
+    "steps": ["1", "2", "3"],
+    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
+    "inputs": [
+      {
+        "title": "Nombre *",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Nombre",
+        "dataField": "name",
+        "required": true,
+        "autocomplete": "name"
+      },
+      {
+        "title": "Teléfono *",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true,
+        "autocomplete": "tel"
+      },
+      {
+        "title": "Correo electrónico *",
+        "type": "email",
+        "name": "email",
+        "placeholder": "email@gmail.com",
+        "dataField": "email",
+        "required": true,
+        "autocomplete": "email"
+      },
+      {
+        "title": "Acepto los  ",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
+        "linkSeparator": "y la",
+        "links": [
+          {
+            "text": "Términos de uso",
+            "href": "https://goit.global/co/privacy-policy/"
+          },
+          {
+            "text": "Política de privacidad",
+            "href": "https://goit.global/co/terms-of-use/"
+          }
+        ]
+      }
+    ],
+    "btnSubmit": "QUIERO PARTICIPAR"
+  }
+}

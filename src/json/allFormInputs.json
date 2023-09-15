@@ -1,10 +1,10 @@
 {
   "inputs": [
     {
-      "title": "Імʼя *",
+      "title": "Ім'я *",
       "type": "text",
       "name": "name",
-      "placeholder": "Ім’я",
+      "placeholder": "Ім'я",
       "dataField": "name",
       "required": true,
       "autocomplete": "name"

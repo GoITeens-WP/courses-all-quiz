@@ -1,3 +1,5 @@
+{% set component = components.logo %}
+
 <!-- ➡️ IF PAGE TYPE GOIT -->
 {% if page.type === 'goit' %}
 <!-- IF HEADER -->
@@ -5,10 +7,10 @@
 <a
   class="block w-max duration-300 hover:scale-105 focus:scale-105"
   href="{{page.canonical}}"
-  aria-label="{{logo.link_logo_aria}}"
+  aria-label="{{component.link_logo_aria}}"
 >
-  <svg class="fill-black" width="120" height="36" aria-label="{{logo.logo_aria}}">
-    <title>{{logo.logo_aria}}</title>
+  <svg class="fill-black" width="120" height="36" aria-label="{{component.logo_aria}}">
+    <title>{{component.logo_aria}}</title>
     <use href="./assets/images/sprite.svg#logo"></use>
   </svg>
 </a>
@@ -17,10 +19,10 @@
 <a
   class="flex justify-center opacity-30 duration-300 hover:scale-105 hover:opacity-100 focus:scale-105 focus:opacity-100 smOnly:mb-8"
   href="{{page.canonical}}"
-  aria-label="{{logo.link_logo_aria}}"
+  aria-label="{{component.link_logo_aria}}"
 >
-  <svg class="fill-white" width="100" height="30" aria-label="{{logo.logo_aria}}">
-    <title>{{logo.logo_aria}}</title>
+  <svg class="fill-white" width="100" height="30" aria-label="{{component.logo_aria}}">
+    <title>{{component.logo_aria}}</title>
     <use href="./assets/images/sprite.svg#logo"></use>
   </svg>
 </a>
@@ -33,10 +35,15 @@
 <a
   class="block w-max duration-300 hover:scale-105 focus:scale-105 smOnly:mx-auto"
   href="{{page.canonical}}"
-  aria-label="{{logo.link_logo_aria}}"
+  aria-label="{{component.link_logo_aria}}"
 >
-  <svg class="md:h-[36px] md:w-[142px]" width="118" height="30" aria-label="{{logo.logo_aria}}">
-    <title>{{logo.logo_aria}}</title>
+  <svg
+    class="md:h-[36px] md:w-[142px]"
+    width="118"
+    height="30"
+    aria-label="{{component.logo_aria}}"
+  >
+    <title>{{component.logo_aria}}</title>
     <use href="./assets/images/sprite.svg#logo-goiteens"></use>
   </svg>
 </a>
@@ -45,10 +52,15 @@
 <a
   class="block w-max duration-300 hover:scale-105 focus:scale-105 smOnly:mx-auto"
   href="{{page.canonical}}"
-  aria-label="{{logo.link_logo_aria}}"
+  aria-label="{{component.link_logo_aria}}"
 >
-  <svg class="md:h-[36px] md:w-[142px]" width="118" height="30" aria-label="{{logo.logo_aria}}">
-    <title>{{logo.logo_aria}}</title>
+  <svg
+    class="md:h-[36px] md:w-[142px]"
+    width="118"
+    height="30"
+    aria-label="{{component.logo_aria}}"
+  >
+    <title>{{component.logo_aria}}</title>
     <use href="./assets/images/sprite.svg#logo-goiteens"></use>
   </svg>
 </a>
