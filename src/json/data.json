@@ -272,6 +272,18 @@
           "svg": "youtube",
           "alt": "sigla youtube",
           "link_alt": "link pe youtube"
+        },
+        {
+          "link": "https://www.tiktok.com/@goitromania",
+          "svg": "tiktok",
+          "alt": "sigla tiktok",
+          "link_alt": "link pe tiktok"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goit-romania/",
+          "svg": "linkedin",
+          "alt": "sigla linkedin",
+          "link_alt": "link pe linkedin"
         }
       ],
       "agreementList": [
