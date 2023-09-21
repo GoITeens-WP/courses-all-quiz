@@ -666,79 +666,6 @@ function showSuccess(
 }
 
 /**
- * It sends the data to the backend, and if the backend responds with success, it adds a button to the
- * form that redirects the user to the Telegram bot
- * @param form - The form element
- * @param data - The data object that is sent to the backend.
- */
-async function redirectToTelegramBackend(form, data) {
-  //Send data async to inner telegram admin bot
-  const apiUrl = `${window.telegramBackendUrl}/api/v2/telegram/user/uid/variables/set`;
-
-  const telegramUid = uid();
-
-  const urlParams = [
-    'utm_source',
-    'utm_medium',
-    'utm_campaign',
-    'utm_term',
-    'utm_content',
-    'fromID',
-  ];
-
-  const utmMarks = urlParams.reduce((acc, curr) => {
-    if (Cookies.get(curr)) {
-      acc[curr] = Cookies.get(curr);
-    }
-
-    return acc;
-  }, {});
-
-  let userVariables = { ...data, ...utmMarks };
-
-  const setTelegramVariablesRequest = {
-    uid: telegramUid,
-    variables: userVariables,
-  };
-
-  if (!window.telegramBot) {
-    throw new Error('Telegram bot is not initialized');
-  }
-
-  //Craft telegram redirect link
-  let redirectLink = `https://t.me/${window.telegramBot}?start=UID-${telegramUid}`;
-
-  const fromID = Cookies.get('fromID');
-  if (fromID) {
-    redirectLink += '__FROM-' + fromID;
-  }
-
-  const telegramDiv = `<div data-${form.id}-telegram><p class="text-center">${translate(
-    'telegramBackendMessage'
-  )}</p><button type="button" class="form-btn">Telegram</button></div>`;
-
-  //Send data to telegram backend
-  try {
-    const { data } = await axios.post(apiUrl, setTelegramVariablesRequest);
-
-    if (data.success) {
-      $(form).parent().append(telegramDiv);
-
-      $(`[data-${form.id}-telegram] button`).on('click', function (e) {
-        window.open(redirectLink, '_blank');
-        $(`[data-${form.id}-telegram]`).remove();
-        showSuccess();
-      });
-    } else {
-      showError();
-    }
-  } catch (error) {
-    console.log(error);
-    showError();
-  }
-}
-
-/**
  * Generate a random string of length 32, where each character is a hexadecimal digit.
  * @returns A string of random characters.
  */
@@ -789,7 +716,6 @@ export default {
   initializeLeeloo,
   isNumeric,
   Loading,
-  redirectToTelegramBackend,
   saveParamsToCookies,
   sendDataToIntelza,
   sendEmail,

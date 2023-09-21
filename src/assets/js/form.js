@@ -58,15 +58,12 @@ $(window).on('load', async function () {
     preferredPhoneCountries: [itiLocale],
     excludePhoneCountries: ['ru', 'by'],
 
-    needsRedirectToTelegramBackend: window.telegramBackendUrl ? true : false,
     needsRedirectToLeeloo: window.leelooHash ? true : false,
     leelooHashTeen: window.leelooHashTeen,
     leelooHashParent: window.leelooHashParent,
 
     /* It's a check that the domain has MX records on dns server */
     needsCheckEmailDomain: true,
-
-    referralMarks: ['SRC', 'from'],
     utmMarks: [
       'utm_source',
       'utm_medium',
@@ -105,14 +102,6 @@ $(window).on('load', async function () {
     window.locale = params.defaultLocale;
   }
 
-  /* It's a check that you can use only one of the following methods: redirect to leeloo or redirect to
-telegram backend. */
-  if (params.needsRedirectToLeeloo && params.needsRedirectToTelegramBackend) {
-    throw new Error(
-      'You can use only one of the following methods: redirect to leeloo or redirect to telegram backend'
-    );
-  }
-
   /* It's a function that gets the user's IP address. */
   await service.getIpInfo().then(data => (window.ipData = data));
 
@@ -123,9 +112,6 @@ telegram backend. */
 
   /* It's a function that saves the UTM marks to cookies. */
   service.saveParamsToCookies(params.utmMarks);
-
-  /* It's a function that saves the referral marks to cookies. */
-  params.telegramBackendUrl && service.saveParamsToCookies(params.referralMarks);
 
   /* It's a function that takes an array of forms and validates them. */
   Promise.all(params.forms.map(async form => await formHandler(form)));
@@ -275,9 +261,6 @@ telegram backend. */
           service.changeFormStep(form, 2);
 
           switch (true) {
-            case params.needsRedirectToTelegramBackend:
-              return showTelegramBackendBlock();
-
             case params.leelooHashTeen && userType === 'teen':
               return showLeelooBlock(params.leelooHashTeen);
 
@@ -289,16 +272,6 @@ telegram backend. */
 
             default:
               return showDefaultBlock();
-          }
-
-          /* It's a function that redirects the user to the Telegram backend. */
-          async function showTelegramBackendBlock() {
-            response.finally(async () => {
-              await service.redirectToTelegramBackend(form, data).finally(() => {
-                service.changeFormStep(form, 3);
-                loading.hide();
-              });
-            });
           }
 
           /* It's a function that redirects the user to the Leeloo CRM. */

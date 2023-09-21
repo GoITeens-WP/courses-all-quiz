@@ -14,8 +14,6 @@ class Params
       fwrite($file, "LEELOO_HASH_TEEN={$_POST['LEELOO_HASH_TEEN']}\n");
       fwrite($file, "LEELOO_HASH_PARENT={$_POST['LEELOO_HASH_PARENT']}\n");
       fwrite($file, "ELZA_TOKEN={$_POST['ELZA_TOKEN']}\n");
-      fwrite($file, "TELEGRAM_BACKEND_URL='{$_POST['TELEGRAM_BACKEND_URL']}'\n");
-      fwrite($file, "TELEGRAM_BOT='{$_POST['TELEGRAM_BOT']}'\n");
       fwrite($file, "CAPI_LEAD_FORMAT={$_POST['CAPI_LEAD_FORMAT']}\n");
       fwrite($file, "START_DATE={$_POST['START_DATE']}\n");
       fwrite($file, "START_DAY={$_POST['START_DAY']}\n");
