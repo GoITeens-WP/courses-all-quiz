@@ -21,10 +21,7 @@ const serve = () => {
 };
 
 const watcher = done => {
-  watch(paths.watch.data).on(
-    'change',
-    series(tasks.db, tasks.html.html, tasks.css, browserSync.reload)
-  );
+  watch(paths.watch.data).on('change', series(tasks.html.html, tasks.css, browserSync.reload));
   watch(paths.watch.html).on('change', series(tasks.html.html, tasks.css, browserSync.reload));
   watch([paths.watch.tailwindcss, paths.watch.css]).on(
     'change',
@@ -54,7 +51,6 @@ exports.start = series(
     // tasks.app
     // tasks.crm,
     // tasks.php
-    // tasks.db,
     // tasks.phpmailer
   ),
   watcher,
@@ -74,7 +70,6 @@ exports.build = series(
     tasks.app,
     tasks.crm,
     tasks.php
-    // tasks.db,
     // tasks.phpmailer
   )
 );
