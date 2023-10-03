@@ -92,7 +92,7 @@
         "autocomplete": "email"
       },
       {
-        "title": "Wyrażam zgodę na przetwarzanie moich danych osobowych przez GOIT SP. z o.o., z siedzibą w Warszawie, ul. ALEJE JEROZOLIMSKIE 85/21, 02-001 Warszawa, NIP: 7011007541, REGON: 387686724 w celach marketingowych i handlowych.",
+        "title": "Zgadzam się na przetwarzanie moich danych osobowych w celach marketingowych i handlowych zgodnie z <a class=\"underline text-accent\" href=\"https://goit.global/pl/privacy-policy/\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Polityką Prywatności</a> oraz <a class=\"underline text-accent\" href=\"https://goit.global/pl/terms-of-use//\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Regulaminem Korzystania</a>",
         "type": "checkbox",
         "name": "agree",
         "dataField": "checkbox",
@@ -136,6 +136,15 @@
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
+      },
+      {
+        "title": "I agree with the processing of my personal data for marketing and commercial purposes according to the <a href=\"https://goit.global/ph/privacy-policy/\" target=\"_blank\" class=\"text-[#9797F2]\" rel=\"noopener noreferrer nofollow\">Privacy Policy</a> and the <a href=\"https://goit.global/ph/terms-of-use//\" target=\"_blank\" class=\"text-[#9797F2]\" rel=\"noopener noreferrer nofollow\">Terms and Conditions of Use</a>",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
+        "links": null
       }
     ],
     "btnSubmit": "Sign up"
@@ -174,6 +183,14 @@
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
+      },
+      {
+        "title": "Sunt de acord cu prelucrarea datelor mele personale de către in compania ta, în scopuri de marketing și comerciale conform <a class=\"checkbox-link text-[#273DA4] hover:text-accent focus:text-accent duration-300 underline\" href=\"https://goit.global/ro/privacy-policy/\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Politicii de confidențialitate</a> și <a class=\"checkbox-link text-[#273DA4] hover:text-accent focus:text-accent duration-300 underline\" href=\"https://goit.global/ro/terms-of-use/\" target=\"_blank\" rel=\"noopener noreferrer nofollow\">Termenilor și condițiilor de utilizare</a>",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox"
       }
     ],
     "btnSubmit": "Înscrie-te"
