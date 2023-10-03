@@ -5,24 +5,24 @@ if (document.documentElement.lang !== 'uk') {
 }
 
 function showCookieBanner() {
-  const modal = document.querySelector('[data-modal-cookieBanner]');
-  const closeModalBtn = document.querySelector('.cookieAcceptBtn');
+  const cookieBanner = document.querySelector('[data-cookieBanner]');
+  const acceptCookieBtn = document.querySelector('[data-acceptCookieBtn]');
 
   let isCookieBannerOpen = false;
 
   $(function () {
     setTimeout(() => {
       if (!isCookieBannerOpen) {
-        modal.classList.remove('cookieBanner-is-hidden');
+        cookieBanner.classList.remove('cookieBanner-is-hidden');
 
         isCookieBannerOpen = true;
       }
 
-      function closeModal() {
-        modal.classList.add('cookieBanner-is-hidden');
+      function closeCookieBanner() {
+        cookieBanner.classList.add('cookieBanner-is-hidden');
       }
 
-      closeModalBtn.addEventListener('click', closeModal);
+      acceptCookieBtn.addEventListener('click', closeCookieBanner);
     }, 1500);
   });
 }
