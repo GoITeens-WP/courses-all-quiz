@@ -493,5 +493,30 @@
       }
     ],
     "btnSubmit": "Зареєструватися"
+  },
+  "bannerCookies": {
+    "id": "bannerCookies",
+    "title": "We use \"cookies\" to improve the experience on the site. Learn more in the",
+    "titlePl": "Korzystamy z plików \"cookies\" aby poprawić jakość korzystania z witryny. Dowiedz się więcej w",
+    "titleRo": "Folosim \"cookie-uri\" pentru a îmbunătăți experiența pe site. Află mai multe în",
+    "policy": {
+      "link": "https://goit.global/ph/privacy-policy/",
+      "linkPl": "https://goit.global/pl/privacy-policy/",
+      "linkRo": "https://goit.global/ro/privacy-policy/",
+      "text": "Privacy Policy",
+      "textPl": "Polityką Prywatności",
+      "textRo": "Politica de Confidențialitate"
+    },
+    "terms": {
+      "link": "https://goit.global/ph/terms-of-use/",
+      "linkPl": "https://goit.global/pl/terms-of-use/",
+      "linkRo": "https://goit.global/ro/terms-of-use/",
+      "text": "Terms & Conditions",
+      "textPl": "Regulaminem Korzystania",
+      "textRo": "Termeni și Condiții"
+    },
+    "btnText": "Accept",
+    "btnTextPl": "Akceptuje",
+    "btnTextRo": "Accept"
   }
 }

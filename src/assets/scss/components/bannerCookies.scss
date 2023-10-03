@@ -1,0 +1,47 @@
+.backdrop-bannerCookies {
+  @apply visible fixed inset-0 z-[100] flex overflow-auto pb-2 opacity-100 duration-100 ease-linear;
+  background-color: rgba(0, 0, 0, 0.55);
+
+  &.bannerCookies-is-hidden {
+    @apply pointer-events-none invisible opacity-0;
+  }
+}
+
+.bannerCookies {
+  @apply mx-auto mt-auto flex w-[97%] max-w-[380px] translate-x-0 translate-y-0 scale-100 rounded-lg px-5 duration-300 ease-linear md:max-w-[760px];
+
+  .bannerCookies-is-hidden & {
+    @apply translate-y-full scale-0;
+  }
+}
+.btn-form-banner {
+  width: 100%;
+  background: linear-gradient(90.02deg, #131423 25.19%, #0097a2 65.84%, #ff5632 102.17%);
+  background-size: contain;
+}
+
+.backdrop-banner .modalBanner {
+  .modal-close-btn {
+    top: 5px;
+    right: 5px;
+  }
+}
+.modal .wrapper-for-form {
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+  height: auto;
+}
+.modalBanner .wrapper-for-form {
+  padding: 0;
+  box-shadow: none;
+  overflow: visible;
+  height: auto;
+}
+
+.acceptBtn {
+  padding: 16px 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
