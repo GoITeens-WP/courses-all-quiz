@@ -1,0 +1,62 @@
+{% set component = components.cookieBanner %}
+
+<div class="backdrop-{{component.id}} {{component.id}}-is-hidden" data-modal-{{component.id}}>
+  <div
+    class="{{component.id}} relative max-h-[288px] bg-white px-5 py-9 text-black md:max-h-[128px] md:px-6 xl:max-h-[96px] xl:max-w-[1280px] xl:px-6 xl:py-9"
+  >
+    <div class="md:flex md:w-full md:items-center md:justify-between">
+      <h2 class="mb-10 text-base md:mb-0 md:block md:max-w-[512px] xl:max-w-none">
+        {% if page.lang === 'pl' %}{{component.title.pl}}
+        <!--  -->
+        {% elif page.lang === 'en' %}{{component.title.en}}
+        <!--  -->
+        {% elif page.lang === 'ro' %}{{component.title.ro}}
+        <!--  -->
+        {% endif %}
+        <a
+          class="inline underline"
+          href="{% if page.lang === 'pl' %}{{component.policy.link.pl}}{% elif page.lang === 'en' %}{{component.policy.link.en}}{% elif page.lang === 'ro' %}{{component.policy.link.ro}}{% endif %}"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          >{% if page.lang === 'pl' %}{{component.policy.text.pl}}
+          <!--  -->
+          {% elif page.lang === 'en' %}{{component.policy.text.en}}
+          <!--  -->
+          {% elif page.lang === 'ro' %}{{component.policy.text.ro}}
+          <!--  -->
+          {% endif %}</a
+        >
+        {% if page.lang === 'en' or page.lang === 'ro' %} &
+        <!--  -->
+        {% elif page.lang === 'pl' %} oraz
+        <!--  -->
+        {% endif %}
+        <a
+          href="{% if page.lang === 'pl' %}{{component.terms.link.pl}}{% elif page.lang === 'en' %}{{component.terms.link.en}}{% elif page.lang === 'ro' %}{{component.terms.link.ro}}{% endif %}"
+          class="inline underline"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          >{% if page.lang === 'pl' %}{{component.terms.text.pl}}
+          <!--  -->
+          {% elif page.lang === 'en' %}{{component.terms.text.en}}
+          <!--  -->
+          {% elif page.lang === 'ro' %}{{component.terms.text.ro}}
+          <!--  -->
+          {% endif %}</a
+        >
+      </h2>
+      <button
+        class="btn cookieAcceptBtn mx-auto block w-[270px] rounded-2xl border-2 border-transparent bg-accent text-center text-xl text-white outline-none duration-300 ease-linear hover:border-[#F36300] hover:bg-transparent hover:text-[#F36300] focus:border-[#F36300] focus:bg-transparent focus:text-[#F36300] md:mx-0 md:w-[205px]"
+        type="button"
+      >
+        {% if page.lang === 'pl' %}{{component.btn.pl}}
+        <!--  -->
+        {% elif page.lang === 'en' %}{{component.btn.en}}
+        <!--  -->
+        {% elif page.lang === 'ro' %}{{component.btn.ro}}
+        <!--  -->
+        {% endif %}
+      </button>
+    </div>
+  </div>
+</div>

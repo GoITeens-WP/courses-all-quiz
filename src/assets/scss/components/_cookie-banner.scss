@@ -1,0 +1,23 @@
+.backdrop-cookieBanner {
+  background-color: rgba(0, 0, 0, 0.55);
+  @apply visible fixed inset-0 z-[100] flex overflow-auto pb-2 opacity-100 duration-100 ease-linear;
+
+  &.cookieBanner-is-hidden {
+    @apply pointer-events-none invisible opacity-0;
+  }
+}
+
+.cookieBanner {
+  @apply mx-auto mt-auto flex w-[97%] max-w-[380px] translate-x-0 translate-y-0 scale-100 rounded-lg px-5 duration-300 ease-linear md:max-w-[760px];
+
+  .cookieBanner-is-hidden & {
+    @apply translate-y-full scale-0;
+  }
+}
+
+.cookieAcceptBtn {
+  padding: 16px 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
