@@ -435,6 +435,43 @@
           "answer": "answer3"
         }
       ]
+    },
+    "cookieBanner": {
+      "id": "cookieBanner",
+      "title": {
+        "pl": "Korzystamy z plików \"cookies\" aby poprawić jakość korzystania z witryny. Dowiedz się więcej w",
+        "en": "We use \"cookies\" to improve the experience on the site. Learn more in the",
+        "ro": "Folosim \"cookie-uri\" pentru a îmbunătăți experiența pe site. Află mai multe în"
+      },
+      "policy": {
+        "link": {
+          "pl": "https://goit.global/pl/privacy-policy/",
+          "en": "https://goit.global/ph/privacy-policy/",
+          "ro": "https://goit.global/ro/privacy-policy/"
+        },
+        "text": {
+          "pl": "Polityką Prywatności",
+          "en": "Privacy Policy",
+          "ro": "Politica de Confidențialitate"
+        }
+      },
+      "terms": {
+        "link": {
+          "pl": "https://goit.global/pl/terms-of-use/",
+          "en": "https://goit.global/ph/terms-of-use/",
+          "ro": "https://goit.global/ro/terms-of-use/"
+        },
+        "text": {
+          "pl": "Regulaminem Korzystania",
+          "en": "Terms & Conditions",
+          "ro": "Termeni și Condiții"
+        }
+      },
+      "btn": {
+        "pl": "Akceptuje",
+        "en": "Accept",
+        "ro": "Accept"
+      }
     }
   },
   "FORM_EXPAMPLE": "Переведенные формы лежат в allTranslatedForm.json",

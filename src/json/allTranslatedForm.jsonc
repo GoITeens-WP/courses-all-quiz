@@ -5,7 +5,6 @@
     "btnCloseAria": "кнопка закриття модального вікна",
     "title": "Реєстрація",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "Ім'я *",
@@ -62,7 +61,6 @@
     "btnCloseAria": "przycisk zamykania okna modalnego",
     "title": "Rejestracja",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "Imię *",
@@ -92,12 +90,23 @@
         "autocomplete": "email"
       },
       {
-        "title": "Wyrażam zgodę na przetwarzanie moich danych osobowych przez GOIT SP. z o.o., z siedzibą w Warszawie, ul. ALEJE JEROZOLIMSKIE 85/21, 02-001 Warszawa, NIP: 7011007541, REGON: 387686724 w celach marketingowych i handlowych.",
+        "title": "Zgadzam się na przetwarzanie moich danych osobowych w celach marketingowych i handlowych zgodnie z ",
         "type": "checkbox",
         "name": "agree",
         "dataField": "checkbox",
         "required": true,
-        "class": "input-wrap-checkbox"
+        "class": "input-wrap-checkbox",
+        "linkSeparator": "oraz",
+        "links": [
+          {
+            "text": "Polityką Prywatności",
+            "href": "https://goit.global/pl/privacy-policy/"
+          },
+          {
+            "text": "Regulaminem Korzystania",
+            "href": "https://goit.global/pl/terms-of-use/"
+          }
+        ]
       }
     ],
     "btnSubmit": "Rejestracja"
@@ -108,7 +117,6 @@
     "btnCloseAria": "modal window close button",
     "title": "Registration",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "",
@@ -136,6 +144,25 @@
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
+      },
+      {
+        "title": "I agree with the processing of my personal data for marketing and commercial purposes according to the ",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
+        "linkSeparator": "and the",
+        "links": [
+          {
+            "text": "Privacy Policy",
+            "href": "https://goit.global/ph/privacy-policy/"
+          },
+          {
+            "text": "Terms and Conditions of Use",
+            "href": "https://goit.global/ph/terms-of-use/"
+          }
+        ]
       }
     ],
     "btnSubmit": "Sign up"
@@ -146,7 +173,6 @@
     "btnCloseAria": "butonul modal de închidere a ferestrei",
     "title": "Înregistrare",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "Nume *",
@@ -174,6 +200,25 @@
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
+      },
+      {
+        "title": "Sunt de acord cu prelucrarea datelor mele personale de către in compania ta, în scopuri de marketing și comerciale conform ",
+        "type": "checkbox",
+        "name": "agree",
+        "dataField": "checkbox",
+        "required": true,
+        "class": "input-wrap-checkbox",
+        "linkSeparator": "și",
+        "links": [
+          {
+            "text": "Politicii de confidențialitate",
+            "href": "https://goit.global/ro/privacy-policy/"
+          },
+          {
+            "text": "Termenilor și condițiilor de utilizare",
+            "href": "https://goit.global/ro/terms-of-use/"
+          }
+        ]
       }
     ],
     "btnSubmit": "Înscrie-te"
@@ -184,7 +229,6 @@
     "btnCloseAria": "botón de cierre de ventana modal",
     "title": "Inscripción",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "Nombre *",
