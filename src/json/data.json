@@ -437,40 +437,61 @@
       ]
     },
     "cookieBanner": {
-      "id": "cookieBanner",
-      "title": {
-        "pl": "Korzystamy z plików \"cookies\" aby poprawić jakość korzystania z witryny. Dowiedz się więcej w",
-        "en": "We use \"cookies\" to improve the experience on the site. Learn more in the",
-        "ro": "Folosim \"cookie-uri\" pentru a îmbunătăți experiența pe site. Află mai multe în"
-      },
-      "policy": {
-        "link": {
-          "pl": "https://goit.global/pl/privacy-policy/",
-          "en": "https://goit.global/ph/privacy-policy/",
-          "ro": "https://goit.global/ro/privacy-policy/"
+      "uk": {
+        "id": "cookie-banner",
+        "title": "Ми використовуємо файли cookie, щоб покращити роботу сайту. Дізнайтеся більше в",
+        "separator": "та",
+        "policy": {
+          "link": "https://goit.global/ua/privacy-policy/",
+          "text": "Політиці конфіденційності"
         },
-        "text": {
-          "pl": "Polityką Prywatności",
-          "en": "Privacy Policy",
-          "ro": "Politica de Confidențialitate"
-        }
-      },
-      "terms": {
-        "link": {
-          "pl": "https://goit.global/pl/terms-of-use/",
-          "en": "https://goit.global/ph/terms-of-use/",
-          "ro": "https://goit.global/ro/terms-of-use/"
+        "terms": {
+          "link": "https://goit.global/ua/terms-of-use/",
+          "text": "Умовах використання"
         },
-        "text": {
-          "pl": "Regulaminem Korzystania",
-          "en": "Terms & Conditions",
-          "ro": "Termeni și Condiții"
-        }
+        "btn": "Приймаю"
       },
-      "btn": {
-        "pl": "Akceptuje",
-        "en": "Accept",
-        "ro": "Accept"
+      "pl": {
+        "id": "cookie-banner",
+        "title": "Korzystamy z plików \"cookies\" aby poprawić jakość korzystania z witryny. Dowiedz się więcej w",
+        "separator": "oraz",
+        "policy": {
+          "link": "https://goit.global/pl/privacy-policy/",
+          "text": "Polityką Prywatności"
+        },
+        "terms": {
+          "link": "https://goit.global/pl/terms-of-use/",
+          "text": "Regulaminem Korzystania"
+        },
+        "btn": "Akceptuje"
+      },
+      "en": {
+        "id": "cookie-banner",
+        "title": "We use \"cookies\" to improve the experience on the site. Learn more in the",
+        "separator": "&",
+        "policy": {
+          "link": "https://goit.global/ph/privacy-policy/",
+          "text": "Privacy Policy"
+        },
+        "terms": {
+          "link": "https://goit.global/ph/terms-of-use/",
+          "text": "Terms & Conditions"
+        },
+        "btn": "Accept"
+      },
+      "ro": {
+        "id": "cookie-banner",
+        "title": "Folosim \"cookie-uri\" pentru a îmbunătăți experiența pe site. Află mai multe în",
+        "separator": "&",
+        "policy": {
+          "link": "https://goit.global/ro/privacy-policy/",
+          "text": "Politica de Confidențialitate"
+        },
+        "terms": {
+          "link": "https://goit.global/ro/terms-of-use/",
+          "text": "Termeni și Condiții"
+        },
+        "btn": "Accept"
       }
     }
   },
@@ -480,7 +501,6 @@
     "btnCloseAria": "кнопка закриття модального вікна",
     "title": "Реєстрація",
     "steps": ["1", "2", "3"],
-    "INPUTS_EXPAMPLE": "Все доступные поля для формы лежат в файле 'allFormInputs.json' - скопируйте нужный обьект, и вставьте его ниже в массив inputs",
     "inputs": [
       {
         "title": "Ім'я *",
@@ -510,7 +530,7 @@
         "autocomplete": "email"
       },
       {
-        "title": "Згоден з ",
+        "title": "Я погоджуюся на обробку моїх персональних даних у маркетингових і комерційних цілях відповідно до ",
         "type": "checkbox",
         "name": "agree",
         "dataField": "checkbox",
@@ -519,11 +539,11 @@
         "linkSeparator": "та",
         "links": [
           {
-            "text": "Політика конфіденційності",
+            "text": "Політики конфіденційності",
             "href": "https://goit.global/ua/privacy-policy/"
           },
           {
-            "text": "Умови користування послугами",
+            "text": "Умов користування",
             "href": "https://goit.global/ua/terms-of-use/"
           }
         ]
