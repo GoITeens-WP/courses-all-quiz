@@ -29,6 +29,7 @@ const watcher = done => {
   );
   watch(paths.watch.js).on('change', series(tasks.scripts, browserSync.reload));
   watch(paths.watch.images, tasks.images);
+  watch(paths.watch.images, tasks.imagesWebp);
   watch(paths.watch.sprite, tasks.sprite);
   watch(paths.watch.fonts, tasks.fonts);
   watch(paths.watch.crm, tasks.crm);
