@@ -1,28 +1,23 @@
-import $ from 'jquery';
+import service from './service.js';
 
-if (document.documentElement.lang !== 'uk') {
+const userIP = await service.geoIpLookup();
+const isUkrainian = userIP === 'ua' && document.documentElement.lang === 'uk';
+
+if (!isUkrainian) {
   showCookieBanner();
 }
 
 function showCookieBanner() {
-  const cookieBanner = document.querySelector('[data-cookieBanner]');
-  const acceptCookieBtn = document.querySelector('[data-acceptCookieBtn]');
+  const refs = {
+    cookieBanner: document.querySelector('[data-cookie-banner]'),
+    acceptCookieBtn: document.querySelector('[data-accept-cookie-btn]'),
+  };
 
-  let isCookieBannerOpen = false;
+  refs.acceptCookieBtn.addEventListener('click', () =>
+    refs.cookieBanner.classList.add('cookie-banner-is-hidden')
+  );
 
-  $(function () {
-    setTimeout(() => {
-      if (!isCookieBannerOpen) {
-        cookieBanner.classList.remove('cookieBanner-is-hidden');
-
-        isCookieBannerOpen = true;
-      }
-
-      function closeCookieBanner() {
-        cookieBanner.classList.add('cookieBanner-is-hidden');
-      }
-
-      acceptCookieBtn.addEventListener('click', closeCookieBanner);
-    }, 1500);
-  });
+  setTimeout(() => {
+    refs.cookieBanner.classList.remove('cookie-banner-is-hidden');
+  }, 1500);
 }

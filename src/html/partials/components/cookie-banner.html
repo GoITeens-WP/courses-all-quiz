@@ -1,4 +1,16 @@
-{% set component = components.cookieBanner %}
+{% if page.lang === 'uk' and page.type === 'goit' %} {% set component = components.cookieBanner.uk
+%}
+<!--  -->
+{% elif page.lang === 'pl' and page.type === 'goit' %} {% set component = components.cookieBanner.pl
+%}
+<!--  -->
+{% elif page.lang === 'en' and page.type === 'goit' %} {% set component = components.cookieBanner.en
+%}
+<!--  -->
+{% elif page.lang === 'ro' and page.type === 'goit' %} {% set component = components.cookieBanner.ro
+%}
+<!--  -->
+{% endif %}
 
 <div class="backdrop-{{component.id}} {{component.id}}-is-hidden" data-{{component.id}}>
   <div
@@ -6,33 +18,24 @@
   >
     <div class="md:flex md:w-full md:items-center md:justify-between">
       <h2 class="mb-10 text-base md:mb-0 md:block md:max-w-[512px] xl:max-w-none">
-        {% if page.lang === 'pl' %}{{component.title.pl}} {% elif page.lang === 'en'
-        %}{{component.title.en}} {% elif page.lang === 'ro' %}{{component.title.ro}} {% endif %}
+        {{component.title}}
         <a
           class="inline text-accent underline"
-          href="{% if page.lang === 'pl' %}{{component.policy.link.pl}}{% elif page.lang === 'en' %}{{component.policy.link.en}}{% elif page.lang === 'ro' %}{{component.policy.link.ro}}{% endif %}"
+          href="{{component.policy.link}}"
           target="_blank"
           rel="noopener noreferrer nofollow"
-          >{% if page.lang === 'pl' %}{{component.policy.text.pl}}{% elif page.lang === 'en'
-          %}{{component.policy.text.en}}{% elif page.lang === 'ro' %}{{component.policy.text.ro}}{%
-          endif %}</a
+          >{{component.policy.text}}</a
         >
-        {% if page.lang === 'en' or page.lang === 'ro' %} & {% elif page.lang === 'pl' %} oraz {%
-        endif %}
+        {{component.separator}}
         <a
           class="inline text-accent underline"
-          href="{% if page.lang === 'pl' %}{{component.terms.link.pl}}{% elif page.lang === 'en' %}{{component.terms.link.en}}{% elif page.lang === 'ro' %}{{component.terms.link.ro}}{% endif %}"
+          href="{{component.terms.link}}"
           target="_blank"
           rel="noopener noreferrer nofollow"
-          >{% if page.lang === 'pl' %}{{component.terms.text.pl}} {% elif page.lang === 'en'
-          %}{{component.terms.text.en}} {% elif page.lang === 'ro' %}{{component.terms.text.ro}} {%
-          endif %}</a
+          >{{component.terms.text}}</a
         >
       </h2>
-      <button class="form-btn" type="button" data-acceptCookieBtn>
-        {% if page.lang === 'pl' %}{{component.btn.pl}} {% elif page.lang === 'en'
-        %}{{component.btn.en}} {% elif page.lang === 'ro' %}{{component.btn.ro}} {% endif %}
-      </button>
+      <button class="form-btn" type="button" data-accept-cookie-btn>{{component.btn}}</button>
     </div>
   </div>
 </div>

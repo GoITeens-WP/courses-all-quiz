@@ -34,7 +34,7 @@
         "autocomplete": "email"
       },
       {
-        "title": "Згоден з ",
+        "title": "Я погоджуюся на обробку моїх персональних даних у маркетингових і комерційних цілях відповідно до ",
         "type": "checkbox",
         "name": "agree",
         "dataField": "checkbox",
@@ -43,11 +43,11 @@
         "linkSeparator": "та",
         "links": [
           {
-            "text": "Політика конфіденційності",
+            "text": "Політики конфіденційності",
             "href": "https://goit.global/ua/privacy-policy/"
           },
           {
-            "text": "Умови користування послугами",
+            "text": "Умов користування",
             "href": "https://goit.global/ua/terms-of-use/"
           }
         ]
