@@ -323,6 +323,7 @@ $(window).on('load', async function () {
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
                 service.showSuccess(service.translate('reply'), true, loading, true);
+                $(form).css('display', 'block');
 
                 /* That redirects user to some URL after send form. */
                 // window.location.href = 'someURL';
