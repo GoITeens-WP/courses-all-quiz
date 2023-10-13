@@ -1,20 +1,11 @@
-.backdrop-cookie-banner {
-  background-color: rgba(0, 0, 0, 0.55);
-  @apply visible fixed inset-0 z-[100] flex overflow-auto opacity-100 duration-300 ease-linear;
+.backdrop-cookie-banner.cookie-banner-is-hidden {
+  @apply pointer-events-none invisible opacity-0;
 
-  &.cookie-banner-is-hidden {
-    @apply pointer-events-none invisible opacity-0;
-  }
-}
-
-.cookie-banner {
-  @apply mx-auto mt-auto flex w-[97%] max-w-[380px] translate-x-0 translate-y-0  rounded-t-xl px-5 opacity-100 duration-300 ease-linear md:max-w-[760px];
-
-  .cookie-banner-is-hidden & {
+  & .cookie-banner {
     @apply opacity-0 duration-300 ease-linear;
   }
 }
 
 [data-accept-cookie-btn] {
-  @apply mt-0 w-[270px] md:w-[205px];
+  @apply mt-0;
 }
