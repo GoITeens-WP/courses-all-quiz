@@ -48,6 +48,9 @@ function send($token, $data, $input)
   // GOITEENS UA
   // https://universalcrmconnector.goiteens.ua/connector.php
 
+  // GOITEENS ES
+  // https://es.goiteens.com/crm/connector.php
+
   // GOITEENS TR
   // https://tr.goiteens.com/crm/connector.php
 
