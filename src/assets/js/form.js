@@ -11,7 +11,6 @@ import service from './service.js';
 import crm from './submit.js';
 
 $(window).on('load', async function () {
-  /*  Украина(uk), Польша(pl), Филиппины(en), Румыния(ro), Испания(es) */
   let defaultLang = null;
 
   switch (window.locale) {
@@ -27,11 +26,13 @@ $(window).on('load', async function () {
     case 'es':
       defaultLang = 'es';
       break;
+    case 'tr':
+      defaultLang = 'tr';
+      break;
     default:
       defaultLang = 'uk';
   }
 
-  /* Украина(ua), Польша(pl), Филиппины(ph), Румыния(ro), Испания(es) */
   let itiLocale = null;
 
   switch (window.locale) {
@@ -46,6 +47,9 @@ $(window).on('load', async function () {
       break;
     case 'es':
       itiLocale = 'es';
+      break;
+    case 'tr':
+      itiLocale = 'tr';
       break;
     default:
       itiLocale = 'ua';
@@ -103,18 +107,18 @@ $(window).on('load', async function () {
   }
 
   /* It's a function that gets the user's IP address. */
-  await service.getIpInfo().then(data => (window.ipData = data));
+  await service.getIpInfo().then((data) => (window.ipData = data));
 
   /* It's a function that gets the country code from the user's IP address. */
   await service
     .geoIpLookup(params.defaultPhoneCountry)
-    .then(country_code => (window.itiInitialCountry = country_code));
+    .then((country_code) => (window.itiInitialCountry = country_code));
 
   /* It's a function that saves the UTM marks to cookies. */
   service.saveParamsToCookies(params.utmMarks);
 
   /* It's a function that takes an array of forms and validates them. */
-  Promise.all(params.forms.map(async form => await formHandler(form)));
+  Promise.all(params.forms.map(async (form) => await formHandler(form)));
 
   /**
    * It's a function that initializes the form
@@ -149,7 +153,7 @@ $(window).on('load', async function () {
       const radio = form.querySelectorAll('[name="user"]');
       let userType = null;
 
-      radio.forEach(item => {
+      radio.forEach((item) => {
         item.addEventListener('change', () => {
           userType = item.value;
         });
@@ -178,7 +182,7 @@ $(window).on('load', async function () {
       .setFormValidation(validationForm)
       .addField(`#${phone.id}`, [
         {
-          validator: value =>
+          validator: (value) =>
             iti.isValidNumber() && service.isNumeric(value) && !value.includes('.'),
           errorMessage: 'Phone number is invalid!',
         },
@@ -213,14 +217,14 @@ $(window).on('load', async function () {
         if (needSendEmail) {
           await service
             .sendEmail(formData)
-            .then(res => {
+            .then((res) => {
               /* It's a check that the form is only for sending an email.
               If so, it hides the loading block and shows the success block. */
               if (onlySendEmail) {
                 service.showSuccess();
               }
             })
-            .catch(error => {
+            .catch((error) => {
               console.log(error);
               service.showError();
             })

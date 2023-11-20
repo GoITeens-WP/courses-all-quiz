@@ -278,5 +278,39 @@
       }
     ],
     "btnSubmit": "QUIERO PARTICIPAR"
+  },
+  // Турция(tr)
+  "form_TR": {
+    "id": "modalForm",
+    "btnCloseAria": "kalıcı pencere kapatma düğmesi",
+    "title": "ücretsiz <br class=\"md:hidden\">derse kaydolun",
+    "steps": ["1", "2", "3"],
+    "inputs": [
+      {
+        "title": "",
+        "type": "text",
+        "name": "name",
+        "placeholder": "Adınız",
+        "dataField": "name",
+        "required": true
+      },
+      {
+        "title": "",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "",
+        "dataField": "phone",
+        "required": true
+      },
+      {
+        "title": "",
+        "type": "email",
+        "name": "email",
+        "placeholder": "E-posta adresiniz",
+        "dataField": "email",
+        "required": true
+      }
+    ],
+    "btnSubmit": "Ücretsiz bir ders için kaydolun"
   }
 }

@@ -1,0 +1,44 @@
+{% if page.lang === 'uk' %} {% set component = components.acceptBanner.uk %}
+<!--  -->
+{% elif page.lang === 'pl' %} {% set component = components.acceptBanner.pl %}
+<!--  -->
+{% elif page.lang === 'ro' %} {% set component = components.acceptBanner.ro %}
+<!--  -->
+{% endif %}
+
+<div
+  class="backdrop-accept-banner accept-banner-is-hidden visible fixed inset-0 bottom-0 left-0 right-0 top-0 z-[100] flex items-end justify-items-end overflow-auto bg-black/[.80] pb-2 opacity-100 duration-300 ease-linear"
+  data-{{component.id}}
+>
+  <div
+    class="accept-banner mx-auto max-h-[288px] w-[97%] max-w-[380px] rounded-xl bg-white px-5 py-9 text-black opacity-100 duration-300 ease-linear md:max-h-[128px] md:max-w-[760px] xl:max-h-[96px] xl:max-w-[1280px] xl:px-8 xl:py-4"
+  >
+    <div class="grid items-center justify-center md:flex md:justify-between">
+      <h2 class="mb-10 text-base md:mb-0 md:block md:max-w-[512px] xl:max-w-none">
+        {{component.title}}
+        <a
+          class="inline text-accent underline"
+          href="{{component.policy.link}}"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          >{{component.policy.text}}</a
+        >
+        {{component.separator}}
+        <a
+          class="inline text-accent underline"
+          href="{{component.terms.link}}"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          >{{component.terms.text}}</a
+        >
+      </h2>
+      <button
+        class="w-full rounded-2xl border-2 border-transparent bg-accent p-4 text-center font-bold text-white outline-none duration-300 ease-linear hover:border-accent hover:bg-transparent hover:text-accent focus:border-accent focus:bg-transparent focus:text-accent md:w-[205px]"
+        type="button"
+        data-accept-banner-btn
+      >
+        {{component.btn}}
+      </button>
+    </div>
+  </div>
+</div>

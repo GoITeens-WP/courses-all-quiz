@@ -1,8 +1,8 @@
 {
   "page": {
-    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Филиппины(en), Румыния(ro), Испания(es)",
+    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Румыния(ro), Испания(es), Турция(tr)",
     "TYPE_EXAMPLE": "goit, goiteens",
-    "type": "goit",
+    "type": "goiteens",
     "lang": "uk",
     "title": "title",
     "description": "description",
@@ -355,6 +355,10 @@
     }
   },
   "components": {
+    "startDate": "<?= $params['START_DATE'] ?>",
+    "startDay": "<?= $params['START_DAY'] ?>>",
+    "startMonth": "<?= $params['START_MONTH'] ?>",
+    "startTime": "<?= $params['START_TIME'] ?>",
     "logo": {
       "link_logo_aria": "Посилання на головну сторінку сайту",
       "logo_aria": "Логотип сайту"
@@ -397,7 +401,7 @@
       },
       "startDate": {
         "active": false,
-        "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+03:00",
+        "count": "<?= $params['START_DATE'] ?>T<?= $params['START_TIME'] ?>:00+02:00",
         "text": "Some title",
         "items": [
           {
@@ -436,9 +440,9 @@
         }
       ]
     },
-    "cookieBanner": {
+    "acceptBanner": {
       "uk": {
-        "id": "cookie-banner",
+        "id": "accept-banner",
         "title": "Ми використовуємо файли cookie, щоб покращити роботу сайту. Дізнайтеся більше в",
         "separator": "та",
         "policy": {
@@ -452,7 +456,7 @@
         "btn": "Приймаю"
       },
       "pl": {
-        "id": "cookie-banner",
+        "id": "accept-banner",
         "title": "Korzystamy z plików \"cookies\" aby poprawić jakość korzystania z witryny. Dowiedz się więcej w",
         "separator": "oraz",
         "policy": {
@@ -465,22 +469,8 @@
         },
         "btn": "Akceptuje"
       },
-      "en": {
-        "id": "cookie-banner",
-        "title": "We use \"cookies\" to improve the experience on the site. Learn more in the",
-        "separator": "&",
-        "policy": {
-          "link": "https://goit.global/ph/privacy-policy/",
-          "text": "Privacy Policy"
-        },
-        "terms": {
-          "link": "https://goit.global/ph/terms-of-use/",
-          "text": "Terms & Conditions"
-        },
-        "btn": "Accept"
-      },
       "ro": {
-        "id": "cookie-banner",
+        "id": "accept-banner",
         "title": "Folosim \"cookie-uri\" pentru a îmbunătăți experiența pe site. Află mai multe în",
         "separator": "&",
         "policy": {

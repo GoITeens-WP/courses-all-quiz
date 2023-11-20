@@ -1,0 +1,7 @@
+.backdrop-accept-banner.accept-banner-is-hidden {
+  @apply pointer-events-none invisible opacity-0;
+
+  & .accept-banner {
+    @apply opacity-0 duration-300 ease-linear;
+  }
+}

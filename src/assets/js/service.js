@@ -325,7 +325,7 @@ function setFormValidation(validationForm) {
       }
       return acc;
     }, [])
-    .filter(input => input.dataset.field)
+    .filter((input) => input.dataset.field)
     .map((input, index, arr) => {
       const { id } = input;
       const validationOptionField = getValidationFields(input, arr);
@@ -383,23 +383,21 @@ function translate(key, locale = window.locale) {
  */
 function getNameRegex(locale = window.locale) {
   switch (locale) {
-    // Польша(pl)
     case 'pl':
       return /^.[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż 'ʼ`-]{1,}$/i;
 
-    // Филиппины(en)
     case 'en':
       return /^.[a-zA-Z 'ʼ`-]{1,}$/gm;
 
-    // Румыния(ro)
     case 'ro':
       return /^.[a-zA-ZĂăÂâÎîȘșȚț 'ʼ`-]{1,}$/gm;
 
-    // Испания(es)
     case 'es':
       return /^.[a-zA-ZáéíÑñóúü 'ʼ`-]{1,}$/gm;
 
-    // Украина(uk)
+    case 'tr':
+      return /^.[a-zA-ZÇçĞğÖöŞşÜü 'ʼ`-]{1,}$/gm;
+
     default:
       return /^.[a-zA-Zа-яА-ЯёЁЇїІіЄєҐґ 'ʼ`-]{1,}$/gm;
   }
@@ -489,7 +487,7 @@ async function sendEmail(data) {
  * @param array - an array of utm marks to save to cookies
  */
 function saveParamsToCookies(array) {
-  array.forEach(utmMark => {
+  array.forEach((utmMark) => {
     const utm = getUrlParameter(utmMark);
     if (utm) {
       Cookies.set(utmMark, utm);
@@ -658,7 +656,7 @@ function showSuccess(
 
   removeDisabledAttributeFromSubmitBtn();
 
-  Swal.fire(options).then(result => {
+  Swal.fire(options).then((result) => {
     if (result.isConfirmed && btnLink) {
       window.open(btnLink, '_blank');
     }
