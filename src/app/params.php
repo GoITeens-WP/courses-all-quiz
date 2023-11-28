@@ -100,6 +100,11 @@ $ini_array = parse_ini_file('params.ini');
     </label> -->
 
     <label>
+      CAPI Lead Format
+      <input type="text" name="CAPI_LEAD_FORMAT" value="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" placeholder="<?= $ini_array['CAPI_LEAD_FORMAT'] ?>" />
+    </label>
+
+    <label>
       Password
       <input type="password" name="password" />
     </label>
