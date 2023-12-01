@@ -42,7 +42,7 @@ $ini_array = parse_ini_file('params.ini');
     </div>
 
     <div style="display: flex; flex-direction: row; gap: 20px">
-      <label style="width: 50%">
+      <!-- <label style="width: 50%">
         Leeloo Hash
         <input type="text" name="LEELOO_HASH" value="<?= $ini_array['LEELOO_HASH'] ?>" placeholder="<?= $ini_array['LEELOO_HASH'] ?>" />
       </label>
@@ -50,19 +50,17 @@ $ini_array = parse_ini_file('params.ini');
       <label style="width: 50%">
         Elza Token
         <input type="text" name="ELZA_TOKEN" value="<?= $ini_array['ELZA_TOKEN'] ?>" placeholder="<?= $ini_array['ELZA_TOKEN'] ?>" />
+      </label> -->
 
-        <!-- ➡️ START Leeloo Teen/Parent -->
-        <!-- <label>
+        <!-- <label style="width: 50%">
           Leeloo Hash Teen
           <input type="text" name="LEELOO_HASH_TEEN" value="<?= $ini_array['LEELOO_HASH_TEEN'] ?>" placeholder="<?= $ini_array['LEELOO_HASH_TEEN'] ?>" />
         </label>
 
-        <label>
+        <label style="width: 50%">
           Leeloo Hash Parent
           <input type="text" name="LEELOO_HASH_PARENT" value="<?= $ini_array['LEELOO_HASH_PARENT'] ?>" placeholder="<?= $ini_array['LEELOO_HASH_PARENT'] ?>" />
         </label> -->
-        <!-- ➡️ END Leeloo Teen/Parent -->
-      </label>
     </div>
 
     <!-- ⌚ START Date Timer -->
