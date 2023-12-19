@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     // MEDIA QUERIES
     screens: {
+      // xs: '375px', // (goiteens)
       sm: '480px',
       md: '768px',
       xl: '1280px',
@@ -15,8 +16,10 @@ module.exports = {
     },
     // BASE FONT
     fontFamily: {
-      montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
-      // gotham: ['Gotham', 'sans-serif'], // class="font-gotham" (goiteens)
+      // montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
+      gotham: ['Gotham', 'sans-serif'], // class="font-gotham" (goiteens)
+      IBMPlexMono: ['IBMPlexMono', 'sans-serif'], // class="font-IBMPlexMono"
+      IBMPlexSans: ['IBMPlexSans', 'sans-serif'], // class="font-IBMPlexSans"
       // exo: ['"Exo 2"', 'sans-serif'],
     },
     // SHADOW
@@ -38,10 +41,19 @@ module.exports = {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           light: '#202020', // class="bg-black-light text-black-light border-black-light"
           dark: '#010101', // class="bg-black-dark text-black-dark border-black-dark"
+          extralight: '#6E6E6E',
+          primary: '#1A1A1A',
+          secondary: '#474747'
         },
         white: {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
           dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
+        },
+        purple: {
+          DEFAULT: '#5331B2', // hero bg, button main color
+          light: '#C2B0F5', // carousel btn
+          dark: '#452994', // button hover-focus
+          active: '#8160E0', // button active
         },
         accent: '#FF6C00', // class="bg-accent text-accent border-accent"
         primary: '#f1f1f1',

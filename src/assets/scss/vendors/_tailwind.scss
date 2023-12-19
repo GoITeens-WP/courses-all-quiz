@@ -4,6 +4,18 @@
 
 /* If you need to download some fonts - use this site: https://www.cufonfonts.com/ */
 @layer base {
+  // @include font-face('Gotham', '../fonts/GothamBook', 400);
+
+  // @include font-face('IBMPlexMono', '../fonts/IBMPlexMono-Regular', 400);
+  // @include font-face('IBMPlexMono', '../fonts/IBMPlexMono-Medium', 500);
+  // @include font-face('IBMPlexMono', '../fonts/IBMPlexMono-SemiBold', 600);
+  // @include font-face('IBMPlexMono', '../fonts/IBMPlexMono-Bold', 700);
+
+  // @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-Regular', 400);
+  // @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-Medium', 500);
+  // @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-SemiBold', 600);
+  // @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-Bold', 700);
+
   // @include font-face('Montserrat', '../fonts/Montserrat-Thin', 100);
   // @include font-face('Montserrat', '../fonts/Montserrat-ExtraLight', 200);
   // @include font-face('Montserrat', '../fonts/Montserrat-Light', 300);
@@ -16,11 +28,15 @@
 }
 
 body {
-  @apply bg-body font-montserrat text-black-light;
+  @apply bg-body font-IBMPlexSans text-black-secondary;
 }
 
 .section {
   @apply py-10 md:py-[60px] xl:py-20;
+}
+
+.section-title {
+  @apply font-IBMPlexMono text-[20px] font-semibold uppercase leading-[1.3] text-black-dark md:text-[32px] md:leading-[1.4];
 }
 
 .btn {
