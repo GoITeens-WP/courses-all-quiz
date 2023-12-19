@@ -1,20 +1,24 @@
 @use 'sass:math';
 
-/*! purgecss start ignore */
-@import 'vendors/modern-normalize';
+// UTILS
+@import 'utils/mixins';
+
+// VENDORS
+@import 'vendors/tailwind';
 @import 'vendors/intTelInput';
+
+/*! purgecss start ignore */
 // @import 'vendors/slick-theme';
 // @import 'vendors/slick';
 /*! purgecss end ignore */
 
-@import 'utils/mixins';
-@import 'vendors/tailwind';
-
-@import 'components/input';
-@import 'components/form';
+// COMPONENTS
 @import 'components/modal';
+@import 'components/form';
+@import 'components/input';
 // @import 'components/accept-banner';
 // @import 'components/accordion';
 // @import 'components/mobile-menu';
 
+// SECTIONS
 @import 'sections/header';
