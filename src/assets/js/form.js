@@ -107,18 +107,18 @@ $(window).on('load', async function () {
   }
 
   /* It's a function that gets the user's IP address. */
-  await service.getIpInfo().then((data) => (window.ipData = data));
+  await service.getIpInfo().then(data => (window.ipData = data));
 
   /* It's a function that gets the country code from the user's IP address. */
   await service
     .geoIpLookup(params.defaultPhoneCountry)
-    .then((country_code) => (window.itiInitialCountry = country_code));
+    .then(country_code => (window.itiInitialCountry = country_code));
 
   /* It's a function that saves the UTM marks to cookies. */
   service.saveParamsToCookies(params.utmMarks);
 
   /* It's a function that takes an array of forms and validates them. */
-  Promise.all(params.forms.map(async (form) => await formHandler(form)));
+  Promise.all(params.forms.map(async form => await formHandler(form)));
 
   /**
    * It's a function that initializes the form
@@ -153,7 +153,7 @@ $(window).on('load', async function () {
       const radio = form.querySelectorAll('[name="user"]');
       let userType = null;
 
-      radio.forEach((item) => {
+      radio.forEach(item => {
         item.addEventListener('change', () => {
           userType = item.value;
         });
@@ -177,13 +177,17 @@ $(window).on('load', async function () {
     }
     validationForm.setCurrentLocale(window.locale);
 
+    phone.addEventListener('input', function (e) {
+      // Replace all characters except digits and spaces globally in the input value
+      e.target.value = e.target.value.replace(/[^\d\s]/g, '');
+    });
+
     // apply rules to form fields
     service
       .setFormValidation(validationForm)
       .addField(`#${phone.id}`, [
         {
-          validator: (value) =>
-            iti.isValidNumber() && service.isNumeric(value) && !value.includes('.'),
+          validator: value => iti.isValidNumber(),
           errorMessage: 'Phone number is invalid!',
         },
       ])
@@ -217,14 +221,14 @@ $(window).on('load', async function () {
         if (needSendEmail) {
           await service
             .sendEmail(formData)
-            .then((res) => {
+            .then(res => {
               /* It's a check that the form is only for sending an email.
               If so, it hides the loading block and shows the success block. */
               if (onlySendEmail) {
                 service.showSuccess();
               }
             })
-            .catch((error) => {
+            .catch(error => {
               console.log(error);
               service.showError();
             })
