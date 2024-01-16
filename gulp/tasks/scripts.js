@@ -8,12 +8,21 @@ const scripts = () => {
   return gulp
     .src(paths.src.js)
     .pipe(
-      plumber(
-        notify.onError({
-          title: 'JS',
-          message: 'Error: <%= error.message %>',
-        })
-      )
+      plumber({
+        errorHandler: function (error) {
+          // if error in dev mode
+          notify.onError({
+            title: 'JS',
+            message: 'Error: <%= error.message %>',
+          })(error);
+
+          // if error in production mode
+          if (mode.production()) {
+            console.error(`❌ Error: [JS] ${error.message}`);
+            process.exit(1);
+          }
+        },
+      })
     )
     .pipe(
       webpackStream({

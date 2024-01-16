@@ -7,12 +7,21 @@ const php = () => {
   return gulp
     .src([paths.src.php, '!src/app/**', '!src/crm/**', '!src/phpmailer/**'])
     .pipe(
-      plumber(
-        notify.onError({
-          title: 'PHP',
-          message: 'Error: <%= error.message %>',
-        })
-      )
+      plumber({
+        errorHandler: function (error) {
+          // if error in dev mode
+          notify.onError({
+            title: 'PHP',
+            message: 'Error: <%= error.message %>',
+          })(error);
+
+          // if error in production mode
+          if (mode.production()) {
+            console.error(`❌ Error: [PHP] ${error.message}`);
+            process.exit(1);
+          }
+        },
+      })
     )
     .pipe(gulp.dest(paths.build.php));
 };

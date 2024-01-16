@@ -12,12 +12,21 @@ const imagesWebp = () => {
   return gulp
     .src(['src/assets/images/sections/**/*'])
     .pipe(
-      plumber(
-        notify.onError({
-          title: 'IMAGESWEBP',
-          message: 'Error: <%= error.message %>',
-        })
-      )
+      plumber({
+        errorHandler: function (error) {
+          // if error in dev mode
+          notify.onError({
+            title: 'IMAGESWEBP',
+            message: 'Error: <%= error.message %>',
+          })(error);
+
+          // if error in production mode
+          if (mode.production()) {
+            console.error(`❌ Error: [IMAGESWEBP] ${error.message}`);
+            process.exit(1);
+          }
+        },
+      })
     )
     .pipe(newer(paths.build.images))
     .pipe(

@@ -17,12 +17,21 @@ const css = () => {
   return gulp
     .src(paths.src.css)
     .pipe(
-      plumber(
-        notify.onError({
-          title: 'CSS',
-          message: 'Error: <%= error.message %>',
-        })
-      )
+      plumber({
+        errorHandler: function (error) {
+          // if error in dev mode
+          notify.onError({
+            title: 'CSS',
+            message: 'Error: <%= error.message %>',
+          })(error);
+
+          // if error in production mode
+          if (mode.production()) {
+            console.error(`❌ Error: [CSS] ${error.message}`);
+            process.exit(1);
+          }
+        },
+      })
     )
     .pipe(mode.development(sourcemaps.init()))
     .pipe(

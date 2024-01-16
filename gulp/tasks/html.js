@@ -12,9 +12,6 @@ const paths = require('../paths');
 
 // other htmlminConfig settings: https://github.com/kangax/html-minifier#options-quick-reference
 const htmlminConfig = {
-  collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
-  collapseInlineTagWhitespace: true, // Don't leave any spaces between display:inline; elements when collapsing
-  conservativeCollapse: true, // Always collapse to 1 space (never remove it entirely)
   minifyCSS: true, // Minify CSS in style elements and style attributes
   minifyJS: true, // Minify JavaScript in script elements and event attributes
   removeComments: true, // Strip HTML comments
@@ -41,12 +38,21 @@ const html = () => {
   return gulp
     .src(paths.src.html)
     .pipe(
-      plumber(
-        notify.onError({
-          title: 'HTML',
-          message: 'Error: <%= error.message %>',
-        })
-      )
+      plumber({
+        errorHandler: function (error) {
+          // if error in dev mode
+          notify.onError({
+            title: 'HTML',
+            message: 'Error: <%= error.message %>',
+          })(error);
+
+          // if error in production mode
+          if (mode.production()) {
+            console.error(`❌ Error: [HTML] ${error.message}`);
+            process.exit(1);
+          }
+        },
+      })
     )
     .pipe(data(getDataForFile))
     .pipe(
