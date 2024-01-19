@@ -486,13 +486,25 @@ async function sendEmail(data) {
  * cookies
  * @param array - an array of utm marks to save to cookies
  */
-function saveParamsToCookies(array) {
-  array.forEach((utmMark) => {
-    const utm = getUrlParameter(utmMark);
-    if (utm) {
-      Cookies.set(utmMark, utm);
-    }
-  });
+
+function saveParamsToCookies(utmMarks) {
+  let shouldUpdateCookies = utmMarks.some(utmMark => getUrlParameter(utmMark));
+
+  // Если есть хотя бы один маркер, обновляем cookies
+  if (shouldUpdateCookies) {
+    // Удаляем все существующие UTM-маркеры из cookies
+    utmMarks.forEach(utmMark => {
+      Cookies.remove(utmMark);
+    });
+
+    // Записываем новые значения UTM-маркеров из URL в cookies
+    utmMarks.forEach(utmMark => {
+      const utm = getUrlParameter(utmMark);
+      if (utm) {
+        Cookies.set(utmMark, utm);
+      }
+    });
+  }
 }
 
 /**
