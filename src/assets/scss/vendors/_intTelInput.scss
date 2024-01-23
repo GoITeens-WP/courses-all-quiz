@@ -44,6 +44,7 @@ $mobilePopupMargin: 30px !default;
   position: relative;
   // keep the input's default inline properties
   display: block;
+  color: #000000;
 
   // paul irish says this is ok
   // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
@@ -60,9 +61,9 @@ $mobilePopupMargin: 30px !default;
   }
 
   // specify types to increase specificity e.g. to override bootstrap v2.3
-  input,
-  input[type='text'],
-  input[type='tel'] {
+  input.iti__tel-input,
+  input.iti__tel-input[type='text'],
+  input.iti__tel-input[type='tel'] {
     position: relative;
     // input is bottom level, below selected flag and dropdown
     z-index: 0;
@@ -129,13 +130,10 @@ $mobilePopupMargin: 30px !default;
   }
 
   // the dropdown
-  &__country-list {
+  &__dropdown-content {
     position: absolute;
     // popup so render above everything else
     z-index: 2;
-
-    // override default list styles
-    list-style: none;
 
     // place menu above the input element
     &--dropup {
@@ -143,20 +141,12 @@ $mobilePopupMargin: 30px !default;
       margin-bottom: (-$borderWidth);
     }
 
-    padding: 0;
     // margin-left to compensate for the padding on the parent
-    margin: 0 0 0 (-$borderWidth);
+    margin-left: (-$borderWidth);
 
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     background-color: white;
     border: $borderWidth solid $greyBorder;
-
-    // don't let the contents wrap AKA the container will be as wide as the contents
-    white-space: nowrap;
-    // except on small screens, where we force the dropdown width to match the input
-    @media (max-width: 500px) {
-      white-space: normal;
-    }
 
     max-height: 200px;
     overflow-y: scroll;
@@ -166,6 +156,25 @@ $mobilePopupMargin: 30px !default;
     // If this is not set, then the country list scroll stops moving after rasing a finger, and users report that scroll is slow
     // Stackoverflow question about it: https://stackoverflow.com/questions/33601165/scrolling-slow-on-mobile-ios-when-using-overflowscroll
     -webkit-overflow-scrolling: touch;
+  }
+  &__search-input {
+    width: 100%;
+    border-width: 0;
+  }
+  &__country-list {
+    // override default list styles
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &--flexible-dropdown-width &__country-list {
+    // don't let the contents wrap AKA the container will be as wide as the contents
+    white-space: nowrap;
+
+    // except on small screens, where we force the dropdown width to match the input
+    @media (max-width: 500px) {
+      white-space: normal;
+    }
   }
 
   // dropdown flags need consistent width, so wrap in a container
@@ -212,9 +221,9 @@ $mobilePopupMargin: 30px !default;
   // these settings are independent of each other, but both move selected flag to left of input
   &--allow-dropdown,
   &--separate-dial-code {
-    input,
-    input[type='text'],
-    input[type='tel'] {
+    input.iti__tel-input,
+    input.iti__tel-input[type='text'],
+    input.iti__tel-input[type='tel'] {
       padding-right: $inputPadding;
       padding-left: $selectedFlagArrowWidth + $inputPadding;
       margin-left: 0;
@@ -245,8 +254,8 @@ $mobilePopupMargin: 30px !default;
       }
     }
     // disable hover state when input is disabled
-    input[disabled] + .iti__flag-container:hover,
-    input[readonly] + .iti__flag-container:hover {
+    .iti__flag-container:has(+ input[disabled]):hover,
+    .iti__flag-container:has(+ input[readonly]):hover {
       cursor: default;
       .iti__selected-flag {
         background-color: transparent;
@@ -284,43 +293,35 @@ $mobilePopupMargin: 30px !default;
   }
 }
 
-// overrides for mobile popup (note: .iti-fullscreen-popup class is applied on body)
-.iti-fullscreen-popup .iti {
-  &--container {
-    top: $mobilePopupMargin;
-    bottom: $mobilePopupMargin;
-    left: $mobilePopupMargin;
-    right: $mobilePopupMargin;
+// overrides for mobile popup
+.iti--fullscreen-popup {
+  &.iti--container {
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     position: fixed;
+    padding: $mobilePopupMargin;
+    // short country lists should be vertically centered
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // when country search enabled, the search input auto-focuses, so mobile keyboard appears, so stick to top
+    // (also because when filter countries down, the height changes and the vertical centering would make it jump around)
+    &.iti--country-search {
+      justify-content: flex-start;
+    }
   }
-  &__country-list {
+  .iti__dropdown-content {
     max-height: 100%;
-    width: 100%;
+    position: relative; // override needed in order to get full-width working properly
   }
-  &__country {
+  .iti__country {
     padding: 10px 10px;
     // increase line height because dropdown copy is v likely to overflow on mobile and when it does it needs to be well spaced
     line-height: 1.5em;
   }
-}
-
-.iti__flag {
-  height: $flagHeight;
-  box-shadow: 0px 0px 1px 0px #888;
-  background-image: url('#{$flagsImagePath}#{$flagsImageName}.#{$flagsImageExtension}#{$flagsImageQuery}');
-  background-repeat: no-repeat;
-  // empty state
-  background-color: #dbdbdb;
-  background-position: $flagWidth 0;
-
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url('#{$flagsImagePath}#{$flagsImageName}@2x.#{$flagsImageExtension}#{$flagsImageQuery}');
-  }
-}
-
-// hack for Nepal which is the only flag that is not square/rectangle, so it has transparency, so you can see the default grey behind it
-.iti__flag.iti__np {
-  background-color: transparent;
 }
 
 @function retina-size($value) {
@@ -608,7 +609,7 @@ $mobilePopupMargin: 30px !default;
     }
   }
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  @media (min-resolution: 2x) {
     background-size: 5762px 15px;
   }
 
@@ -1666,4 +1667,22 @@ $mobilePopupMargin: 30px !default;
   }
 }
 
+.iti__flag {
+  height: $flagHeight;
+  box-shadow: 0px 0px 1px 0px #888;
+  background-image: url('#{$flagsImagePath}#{$flagsImageName}.#{$flagsImageExtension}#{$flagsImageQuery}');
+  background-repeat: no-repeat;
+  // empty state
+  background-color: #dbdbdb;
+  background-position: $flagWidth 0;
+
+  @media (min-resolution: 2x) {
+    background-image: url('#{$flagsImagePath}#{$flagsImageName}@2x.#{$flagsImageExtension}#{$flagsImageQuery}');
+  }
+}
+
+// hack for Nepal which is the only flag that is not square/rectangle, so it has transparency, so you can see the default grey behind it
+.iti__flag.iti__np {
+  background-color: transparent;
+}
 /*! purgecss end ignore */
