@@ -306,8 +306,7 @@
       }
     },
     "goiteens": {
-      "phone": true,
-
+      "phone": false,
       "socialLinks": [
         {
           "link": "https://www.facebook.com/GoITeens/",
@@ -367,7 +366,8 @@
     },
     "phone": {
       "number": "+38 073 565 45 96",
-      "phoneLink": "tel:+380735654596"
+      "phoneLink": "tel:+380735654596",
+      "svgAria": "іконка смартфону"
     },
     "navigation": {
       "btnAria": "кнопка мобільного меню",
