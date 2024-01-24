@@ -95,10 +95,95 @@
 </footer>
 
 <!-- ➡️ ELSE PAGE TYPE GOITEENS -->
+  <!-- 📱 version with a phone number -->
+{% elif page.type === 'goiteens' and section.phone %}
+<footer class="bg-black-light pb-[52px] pt-8 text-white md:pt-10 md:pb-[56px] xl:pb-10">
+  <div class="container xl:flex xl:justify-between">
+    <!-- LOGO & SOCIALS BOX -->
+    <div class="flex flex-col gap-20 pb-[56px] border-b border-b-[#2E2F30] md:flex-row md:gap-0 md:justify-between md:pb-[64px] xl:p-0 xl:flex-col xl:border-none">
+      <!-- LOGO -->
+      <div class="mr-auto">
+        {% include 'components/logo.html' %}
+      </div>
+      <!-- SOCIALS -->
+      <ul class="mx-auto flex gap-10 md:mx-0 md:gap-4">
+        {% for social in section.socialLinks %}
+        <li class="mx-auto">
+          <a
+            class="fill-white hover:fill-accent focus:fill-accent"
+            href="{{social.link}}"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            aria-label="{{social.link_alt}}"
+          >
+            <svg
+              class="fill-inherit duration-300 hover:scale-125"
+              width="40"
+              height="40"
+              aria-label="{{social.alt}}"
+            >
+              <title>{{social.alt}}</title>
+              <use href="./assets/images/sprite.svg#{{social.svg}}"></use>
+            </svg>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <!-- PAYMENTS, TEL & LINKS BOX -->
+    <div class="pt-6 text-center md:pt-8 md:flex md:justify-between md:items-center xl:flex-col xl:justify-start xl:items-end xl:gap-5 xl:p-0">
+      <!-- PHONE NUMBER -->
+      <div class="flex justify-center gap-3 mb-7 md:m-0 xl:mb-[10px] text-white hover:text-accent focus:text-accent duration-200 ease-in">
+        <svg
+          width="24"
+          height="24"
+          aria-label="{{components.phone.svgAria}}"
+          class="fill-current"
+        >
+          <use href="./assets/images/sprite.svg#smartphone"></use>
+        </svg>
+        <a
+          href="{{components.phone.phoneLink}}"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="footer-phone font-IBMPlexSans text-xl font-normal leading-[24px]">
+          {{components.phone.number}}
+        </a>
+      </div>
+
+      <!-- PAYMENTS -->
+      <ul class="mb-7 flex justify-center gap-4 md:mb-0">
+        {% for payment in section.paymentList %}
+        <li>
+          <svg width="38" height="26" aria-label="{{payment.svgAlt}}">
+            <title>{{payment.svgAlt}}</title>
+            <use href="./assets/images/sprite.svg#{{payment.svg}}"></use>
+          </svg>
+        </li>
+        {% endfor %}
+      </ul>
+      <!-- LINKS -->
+      <div class="md:flex md:flex-col md:gap-1 md:text-end smOnly:text-center xl:gap-[10px]">
+        {% for agreement in section.agreementList %}
+        <a
+          class="block text-[16px] text-[#ABABAB] underline duration-300 hover:text-accent focus:text-accent"
+          href="{{agreement.link}}"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          {{agreement.text}}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- standard version without a phone number -->
 {% else %}
 <footer class="bg-black-light pb-[64px] pt-8 text-white md:py-10">
   <div class="container justify-between md:flex">
-    <div class="grid items-center justify-center gap-[30px] smOnly:mb-[55px]">
+    <div class="grid items-center justify-center gap-[30px] smOnly:pb-[55px] smOnly:border-b smOnly:border-b-[#2E2F30]">
       {% include 'components/logo.html' %}
       <ul class="grid grid-cols-4 gap-[30px]">
         {% for social in section.socialLinks %}
@@ -124,8 +209,8 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="grid items-end justify-end text-center md:text-right">
-      <ul class="mb-7 flex justify-center gap-4 md:justify-end">
+    <div class="smOnly:pt-7">
+      <ul class="mb-4 flex justify-center gap-4 md:justify-end">
         {% for payment in section.paymentList %}
         <li>
           <svg width="34" height="34" aria-label="{{payment.svgAlt}}">
@@ -135,7 +220,7 @@
         </li>
         {% endfor %}
       </ul>
-      <div class="md:flex md:gap-[14px] md:text-end xl:flex xl:gap-4 smOnly:text-center">
+      <div class="md:flex md:flex-col md:gap-[10px] md:text-end xl:flex xl:gap-[14px] smOnly:text-center">
         {% for agreement in section.agreementList %}
         <a
           class="block text-[16px] text-[#ABABAB] underline duration-300 hover:text-accent focus:text-accent"
