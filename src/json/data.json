@@ -11,6 +11,47 @@
   "header": {
     "id": "header"
   },
+  "about": {
+    "id": "about",
+    "title": "Про GoITeens",
+    "text": "<span class=\"font-semibold\">GoITeens</span> — це IT-академія, що надає IT-освіту дітям від 7 до 17 років за напрямами Scratch, Frontend, Digital Design, GameDev, Minecraft, Roblox та Математика. Наша місія — надати якісну освіту дітям та допомогти створити власну історію успіху.",
+    "items": [
+      {
+        "number": "8+",
+        "text": "Років навчаємо дітей",
+        "class": "item-1"
+      },
+      {
+        "number": "50000+",
+        "text": "Дітей навчалося в <br class=\"hidden mdOnly:block\">академії GoITeens",
+        "class": "item-2"
+      },
+      {
+        "number": "3600+",
+        "text": "Проєктів створено",
+        "class": "item-3"
+      },
+      {
+        "number": "56000+",
+        "text": "Занять проведено <br>протягом року",
+        "class": "item-4"
+      },
+      {
+        "number": "500+",
+        "text": "Викладачів",
+        "class": "item-5"
+      },
+      {
+        "img": "award-1",
+        "width": "118",
+        "height": "130",
+        "alt": "нагорода X-RAY AWARD",
+        "title": "X-RAY award",
+        "text": "Переможці премії X-RAY в номінації <br>«Метавсесвіт та штучний інтелект»",
+        "class": "item-6"
+      }
+    ]
+  },
   "footer": {
     "uk": {
       "address": "Ю. Іллєнка, 12 <br/>Київ, Україна",
