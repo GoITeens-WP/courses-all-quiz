@@ -18,8 +18,8 @@ module.exports = {
     fontFamily: {
       // montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
       gotham: ['Gotham', 'sans-serif'], // class="font-gotham" (goiteens)
-      IBMPlexMono: ['IBMPlexMono', 'sans-serif'], // class="font-IBMPlexMono"
-      IBMPlexSans: ['IBMPlexSans', 'sans-serif'], // class="font-IBMPlexSans"
+      IBMPlexMono: ['IBMPlexMono', 'sans-serif'], // class="font-IBMPlexMono" (goiteens)
+      IBMPlexSans: ['IBMPlexSans', 'sans-serif'], // class="font-IBMPlexSans" (goiteens)
       // exo: ['"Exo 2"', 'sans-serif'],
     },
     // THEME
