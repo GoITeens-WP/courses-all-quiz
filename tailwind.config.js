@@ -56,7 +56,9 @@ module.exports = {
           DEFAULT: '#ffffff', // class="bg-white text-white border-white"
           // fa: '#fafafa', // bg-white-fa text-white-fa border-white-fa
         },
-        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
+        accent: {
+          DEFAULT: '#FF6C00', // class="bg-accent text-accent border-accent"
+        }
       },
     },
   },
