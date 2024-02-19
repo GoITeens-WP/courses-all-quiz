@@ -14,7 +14,7 @@ module.exports = {
       mdOnly: { min: '768px', max: '1279.98px' },
       notXl: { max: '1279.98px' },
     },
-    // BASE FONT
+    // FONTS
     fontFamily: {
       // montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
       gotham: ['Gotham', 'sans-serif'], // class="font-gotham" (goiteens)
@@ -22,43 +22,8 @@ module.exports = {
       IBMPlexSans: ['IBMPlexSans', 'sans-serif'], // class="font-IBMPlexSans"
       // exo: ['"Exo 2"', 'sans-serif'],
     },
-    // SHADOW
-    boxShadow: {
-      orange: '2px 8px 29px rgba(240, 127, 46, 0.2)', // class="shadow-orange"
-    },
     // THEME
     extend: {
-      backgroundColor: theme => ({
-        ...theme('colors'),
-      }),
-      backgroundImage: {
-        check: "url('../images/components/agree-checkbox.svg')",
-      },
-      // ALL COLORS
-      colors: {
-        body: '#ffffff', // class="bg-body"
-        black: {
-          DEFAULT: '#000000', // class="bg-black text-black border-black"
-          light: '#202020', // class="bg-black-light text-black-light border-black-light"
-          dark: '#010101', // class="bg-black-dark text-black-dark border-black-dark"
-          extralight: '#6E6E6E',
-          primary: '#1A1A1A',
-          secondary: '#474747'
-        },
-        white: {
-          DEFAULT: '#ffffff', // class="bg-white text-white border-white"
-          dark: '#fafafa', // class="bg-white-dark text-white-dark border-white-dark"
-        },
-        purple: {
-          DEFAULT: '#5331B2', // hero bg, button main color
-          light: '#C2B0F5', // carousel btn
-          dark: '#452994', // button hover-focus
-          active: '#8160E0', // button active
-        },
-        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
-        primary: '#f1f1f1',
-        second: '#f2f2f2',
-      },
       // CONTAINER
       container: {
         center: true,
@@ -70,16 +35,28 @@ module.exports = {
           // xxl: '3.5rem', // (goiteens)
         },
       },
-      // KEYFRAMES
-      keyframes: {
-        side: {
-          '0%, 100%': { transform: 'translateX(25%)' },
-          '50%': { transform: ' translateY(0)' },
-        },
+      backgroundColor: theme => ({
+        ...theme('colors'),
+      }),
+      backgroundImage: {
+        check: "url('../images/components/agree-checkbox.svg')", // class="bg-check"
       },
-      // ANIMATION
-      animation: {
-        side: 'side 1s ease-in-out infinite',
+      // ALL COLORS
+      colors: {
+        body: '#ffffff', // class="bg-body"
+        black: {
+          DEFAULT: '#000000', // class="bg-black text-black border-black"
+          // '01': '#010101', // bg-black-01 text-black-01 border-black-01
+          // '20': '#202020', // bg-black-20 text-black-20 border-black-20
+          // '1A': '#1A1A1A', // bg-black-1A text-black-1A border-black-1A
+          // '47': '#474747', // bg-black-47 text-black-47 border-black-47
+          // '6E': '#6E6E6E', // bg-black-6E text-black-6E border-black-6E
+        },
+        white: {
+          DEFAULT: '#ffffff', // class="bg-white text-white border-white"
+          // fa: '#fafafa', // bg-white-fa text-white-fa border-white-fa
+        },
+        accent: '#FF6C00', // class="bg-accent text-accent border-accent"
       },
     },
   },
