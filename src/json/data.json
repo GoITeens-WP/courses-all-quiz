@@ -14,7 +14,7 @@
   "about": {
     "id": "about",
     "title": "Про GoITeens",
-    "text": "<span class=\"font-semibold\">GoITeens</span> — це IT-академія, що надає IT-освіту дітям від 7 до 17 років за напрямами Scratch, Frontend, Digital Design, GameDev, Minecraft, Roblox та Математика. Наша місія — надати якісну освіту дітям та допомогти створити власну історію успіху.",
+    "text": "<span class=\"font-semibold\">GoITeens</span> — це IT-академія, що надає IT-освіту <span class=\"font-semibold\">дітям від 7 до 17 років</span> за напрямами Scratch, Frontend, Digital Design, GameDev, Minecraft, Roblox, Малювання та Математика. Наша місія — надати якісну освіту дітям та допомогти створити власну історію успіху.",
     "items": [
       {
         "number": "8+",
@@ -23,23 +23,26 @@
       },
       {
         "number": "50000+",
-        "text": "Дітей навчалося в <br class=\"hidden mdOnly:block\">академії GoITeens",
+        "text": "Дітей навчалося <br>в академії GoITeens",
         "class": "item-2"
       },
       {
-        "number": "3600+",
+        "number": "5000+",
         "text": "Проєктів створено",
         "class": "item-3"
       },
       {
-        "number": "56000+",
+        "number": "93000+",
         "text": "Занять проведено <br>протягом року",
         "class": "item-4"
       },
       {
-        "number": "500+",
-        "text": "Викладачів",
-        "class": "item-5"
+        "img": "award-2",
+        "width": "118",
+        "height": "130",
+        "alt": "Ukrainian Business Award 2023",
+        "title": "Ukrainian Business <br>Award 2023",
+        "class": "item-7"
       },
       {
         "img": "award-1",
