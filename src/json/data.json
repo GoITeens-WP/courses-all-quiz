@@ -296,13 +296,13 @@
       "address": "ACIBADEM MAH. ÇEÇEN SK. AKASYA AVM NO: 25 İÇ KAPI NO: 426 ÜSKÜDAR/ İSTANBUL",
       "socialLinks": [
         {
-          "link": "https://instagram.com/goit.turkiye/",
+          "link": "https://instagram.com/goit.turkiye",
           "svg": "instagram",
           "alt": "Instagram logosu",
           "link_alt": "Instagram'a bağlantı"
         },
         {
-          "link": "https://www.facebook.com/profile.php?id=61558036560161/",
+          "link": "https://www.facebook.com/profile.php?id=61558036560161",
           "svg": "facebook",
           "alt": "Facebook logosu",
           "link_alt": "Facebook'a bağlantı"
