@@ -1,6 +1,6 @@
 {
   "page": {
-    "LANG_EXAMPLE": "Украина(uk), Польша(pl), Румыния(ro), Испания(es), Турция(tr)",
+    "LANG_EXAMPLE": "Украина(uk), Румыния(ro), Турция(tr), Польша(pl), Испания(es)",
     "TYPE_EXAMPLE": "goit, goiteens",
     "type": "goiteens",
     "lang": "uk",
@@ -18,7 +18,7 @@
     "items": [
       {
         "number": "8+",
-        "text": "Років навчаємо дітей",
+        "text": "Років навчаємо дітей",
         "class": "item-1"
       },
       {
@@ -120,6 +120,106 @@
         {
           "text": "Відмова від відповідальності",
           "link": "https://goit.global/ua/disclaimer/"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
+      }
+    },
+    "ro": {
+      "address": "GoIT Consultancy<br> Av. Popişteanu 54A<br> București, România",
+      "contacts": [
+        {
+          "text": "+40 31 229 4566",
+          "link": "tel:+40312294566"
+        }
+      ],
+      "mail": {
+        "text": "admin.ro@goit.global",
+        "link": "mailto:admin.ro@goit.global"
+      },
+      "socialLinks": [
+        {
+          "link": "https://www.facebook.com/goit.romania/",
+          "svg": "facebook",
+          "alt": "sigla Facebook",
+          "link_alt": "link pe Facebook"
+        },
+        {
+          "link": "https://www.instagram.com/goit.romania/",
+          "svg": "instagram",
+          "alt": "sigla Instagram",
+          "link_alt": "link pe Instagram"
+        },
+        {
+          "link": "https://www.youtube.com/@goit5615",
+          "svg": "youtube",
+          "alt": "sigla youtube",
+          "link_alt": "link pe youtube"
+        },
+        {
+          "link": "https://www.tiktok.com/@goitromania",
+          "svg": "tiktok",
+          "alt": "sigla tiktok",
+          "link_alt": "link pe tiktok"
+        },
+        {
+          "link": "https://www.linkedin.com/company/goit-romania/",
+          "svg": "linkedin",
+          "alt": "sigla linkedin",
+          "link_alt": "link pe linkedin"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Termeni și condiții",
+          "link": "https://goit.global/ro/terms-of-use/"
+        },
+        {
+          "text": "Politica de confidențialitate",
+          "link": "https://goit.global/ro/privacy-policy/"
+        },
+        {
+          "text": "ANPC",
+          "link": "https://legislatie.just.ro/Public/DetaliiDocument/257649"
+        }
+      ],
+      "copyright": {
+        "text": "GoIT",
+        "year": "2014 - "
+      }
+    },
+    "tr": {
+      "contacts": [
+        {
+          "text": "+90 541 234 02 92",
+          "link": "tel:+905412340292"
+        }
+      ],
+      "address": "ACIBADEM MAH. ÇEÇEN SK. AKASYA AVM NO: 25 İÇ KAPI NO: 426 ÜSKÜDAR/ İSTANBUL",
+      "socialLinks": [
+        {
+          "link": "https://instagram.com/goit.turkiye",
+          "svg": "instagram",
+          "alt": "Instagram logosu",
+          "link_alt": "Instagram'a bağlantı"
+        },
+        {
+          "link": "https://www.facebook.com/profile.php?id=61558036560161",
+          "svg": "facebook",
+          "alt": "Facebook logosu",
+          "link_alt": "Facebook'a bağlantı"
+        }
+      ],
+      "agreementList": [
+        {
+          "text": "Gizlilik Politikası",
+          "link": "https://goiteens.com/tr/privacy-policy/"
+        },
+        {
+          "text": "Kullanım Şartları ve Koşullarına",
+          "link": "https://goiteens.com/tr/contract/"
         }
       ],
       "copyright": {
@@ -279,43 +379,6 @@
         {
           "text": "Privacy policy",
           "link": "https://goit.global/ph/privacy-policy/"
-        }
-      ],
-      "copyright": {
-        "text": "GoIT",
-        "year": "2014 - "
-      }
-    },
-    "tr": {
-      "contacts": [
-        {
-          "text": "+90 541 234 02 92",
-          "link": "tel:+905412340292"
-        }
-      ],
-      "address": "ACIBADEM MAH. ÇEÇEN SK. AKASYA AVM NO: 25 İÇ KAPI NO: 426 ÜSKÜDAR/ İSTANBUL",
-      "socialLinks": [
-        {
-          "link": "https://instagram.com/goit.turkiye",
-          "svg": "instagram",
-          "alt": "Instagram logosu",
-          "link_alt": "Instagram'a bağlantı"
-        },
-        {
-          "link": "https://www.facebook.com/profile.php?id=61558036560161",
-          "svg": "facebook",
-          "alt": "Facebook logosu",
-          "link_alt": "Facebook'a bağlantı"
-        }
-      ],
-      "agreementList": [
-        {
-          "text": "Gizlilik Politikası",
-          "link": "https://goiteens.com/tr/privacy-policy/"
-        },
-        {
-          "text": "Kullanım Şartları ve Koşullarına",
-          "link": "https://goiteens.com/tr/contract/"
         }
       ],
       "copyright": {
