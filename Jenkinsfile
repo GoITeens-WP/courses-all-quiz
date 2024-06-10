@@ -1,7 +1,10 @@
 @Library('jenkins-common')_
 
-// "go-web" for goit
-node("all-biulds"){
+// *
+// "node("go-web"){" for goit
+// "node("goiteens"){" for goiteens
+// *
+node("goiteens"){
     stage('Load credentials') {
         withCredentials([
             string(credentialsId: 'telegramApiTokenJenkinsSoftryzen', variable: 'telegramNotifyChannelBotApiToken'),
