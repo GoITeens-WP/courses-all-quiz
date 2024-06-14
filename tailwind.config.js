@@ -9,7 +9,7 @@ module.exports = {
       sm: '480px',
       md: '768px',
       xl: '1280px',
-      // xxl: '1600px', // (goiteens)
+      xxl: '1600px', // (goiteens)
       smOnly: { max: '767.98px' },
       mdOnly: { min: '768px', max: '1279.98px' },
       notXl: { max: '1279.98px' },
