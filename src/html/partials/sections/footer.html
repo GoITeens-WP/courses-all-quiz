@@ -99,11 +99,11 @@
 <!-- ➡️ ELSE PAGE TYPE GOITEENS -->
 <!-- 📱 version with a phone number -->
 {% elif page.type === 'goiteens' and section.phone %}
-<footer class="bg-black-20 pb-[52px] pt-8 text-white md:pt-10 md:pb-[56px] xl:pb-10">
+<footer class="bg-black-20 pb-[52px] pt-8 text-white md:pb-[56px] md:pt-10 xl:pb-10">
   <div class="container xl:flex xl:justify-between">
     <!-- LOGO & SOCIALS BOX -->
     <div
-      class="flex flex-col gap-20 pb-[56px] border-b border-b-[#2E2F30] md:flex-row md:gap-0 md:justify-between md:pb-[64px] xl:p-0 xl:flex-col xl:border-none"
+      class="flex flex-col gap-20 border-b border-b-[#2E2F30] pb-[56px] md:flex-row md:justify-between md:gap-0 md:pb-[64px] xl:flex-col xl:border-none xl:p-0"
     >
       <!-- LOGO -->
       <div class="mr-auto">{% include 'components/logo.html' %}</div>
@@ -134,11 +134,11 @@
     </div>
     <!-- PAYMENTS, TEL & LINKS BOX -->
     <div
-      class="pt-6 text-center md:pt-8 md:flex md:justify-between md:items-center xl:flex-col xl:justify-start xl:items-end xl:gap-5 xl:p-0"
+      class="pt-6 text-center md:flex md:items-center md:justify-between md:pt-8 xl:flex-col xl:items-end xl:justify-start xl:gap-5 xl:p-0"
     >
       <!-- PHONE NUMBER -->
       <div
-        class="flex justify-center gap-3 mb-7 md:m-0 xl:mb-[10px] text-white hover:text-accent focus:text-accent duration-200 ease-in"
+        class="mb-7 flex justify-center gap-3 text-white duration-200 ease-in hover:text-accent focus:text-accent md:m-0 xl:mb-[10px]"
       >
         <svg width="24" height="24" aria-label="{{components.phone.svgAria}}" class="fill-current">
           <use href="./assets/images/sprite.svg#smartphone"></use>
@@ -165,7 +165,7 @@
         {% endfor %}
       </ul>
       <!-- LINKS -->
-      <div class="md:flex md:flex-col md:gap-1 md:text-end smOnly:text-center xl:gap-[10px]">
+      <div class="md:flex md:flex-col md:gap-1 md:text-end xl:gap-[10px] smOnly:text-center">
         {% for agreement in section.agreementList %}
         <a
           class="block text-[16px] text-[#ABABAB] underline duration-300 hover:text-accent focus:text-accent"
@@ -186,7 +186,7 @@
 <footer class="bg-black-20 pb-[64px] pt-8 text-white md:py-10">
   <div class="container justify-between md:flex">
     <div
-      class="grid items-center justify-center gap-[30px] smOnly:pb-[55px] smOnly:border-b smOnly:border-b-[#2E2F30]"
+      class="grid items-center justify-center gap-[30px] smOnly:border-b smOnly:border-b-[#2E2F30] smOnly:pb-[55px]"
     >
       {% include 'components/logo.html' %}
       <ul class="grid grid-cols-4 gap-[30px]">

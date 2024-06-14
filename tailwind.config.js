@@ -47,8 +47,8 @@ module.exports = {
         black: {
           DEFAULT: '#000000', // class="bg-black text-black border-black"
           // '01': '#010101', // bg-black-01 text-black-01 border-black-01
-          // '20': '#202020', // bg-black-20 text-black-20 border-black-20
-          // '1A': '#1A1A1A', // bg-black-1A text-black-1A border-black-1A
+          20: '#202020', // bg-black-20 text-black-20 border-black-20
+          '1A': '#1A1A1A', // bg-black-1A text-black-1A border-black-1A
           // '47': '#474747', // bg-black-47 text-black-47 border-black-47
           // '6E': '#6E6E6E', // bg-black-6E text-black-6E border-black-6E
         },
@@ -58,7 +58,7 @@ module.exports = {
         },
         accent: {
           DEFAULT: '#FF6C00', // class="bg-accent text-accent border-accent"
-        }
+        },
       },
     },
   },
