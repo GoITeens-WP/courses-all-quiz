@@ -127,3 +127,4 @@ bun.lockb
 
 # EXE
 *.exe
+!create-starter.exe

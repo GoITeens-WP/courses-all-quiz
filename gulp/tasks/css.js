@@ -1,16 +1,14 @@
 const gulp = require('gulp');
-const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
-const gcmq = require('gulp-group-css-media-queries');
 const mode = require('gulp-mode')();
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
-const purgecss = require('gulp-purgecss');
 const sass = require('gulp-sass')(require('sass'));
 const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const tailwindcss = require('tailwindcss');
+const cssnano = require('gulp-cssnano'); // Добавлен импорт cssnano
 const paths = require('../paths');
 
 const css = () => {
@@ -42,19 +40,6 @@ const css = () => {
       }).on('error', sass.logError)
     )
     .pipe(
-      mode.production(
-        purgecss({
-          content: ['src/**/*.{html,njk,js,json}'],
-          skippedContentGlobs: ['node_modules/**'],
-          defaultExtractor: content => {
-            const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
-            const innerMatches = content.match(/[^<>"'`\s.()]*[^<>"'`\s.():]/g) || [];
-            return broadMatches.concat(innerMatches);
-          },
-        })
-      )
-    )
-    .pipe(
       postcss(
         [
           require('postcss-import')(),
@@ -67,9 +52,8 @@ const css = () => {
         }
       )
     )
-    .pipe(mode.production(gcmq()))
-    .pipe(mode.production(cleanCSS()))
     .pipe(concat({ path: 'style.css' }))
+    .pipe(mode.development(cssnano()))
     .pipe(size({ showFiles: true }))
     .pipe(mode.development(sourcemaps.write('./')))
     .pipe(gulp.dest(paths.build.css));
