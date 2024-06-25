@@ -4,27 +4,53 @@
 
 # 🥤 Starter kit for SoftRyzen
 
-## 1) Запуск збірки
+## 1) Скрипт створення секцій
+
+У збірці додано скрипт, який автоматично створює файли HTML та SCSS для нових секцій, а також додає
+імпорти цих файлів до основних файлів.
+
+Для створення секцій, в файлі `create-starter.json` необхідно вказати назви секцій, які потрібно
+створити, наприклад:
+
+```json
+["about", "contact", "blog", "register"]
+```
+
+Після цього запустіть скрипт за допомогою однієї з команд:
+
+```sh
+npm run create-starter / yarn create-starter / pnpm create-starter
+```
+
+Примітка: Скрипт не створює файли стилів чи розмітки, якщо вони вже існують.
+
+## 2) Запуск збірки
 
 Встановлення залежностей проекту:
 
 ```
+
 pnpm install / yarn / npm i
+
 ```
 
 Щоб запустити проект в режимі розробки:
 
 ```
+
 pnpm start / yarn start / npm start
+
 ```
 
 Щоб створити білд для продакшену:
 
 ```
+
 pnpm build / yarn build / npm run build
+
 ```
 
-## 2) Інформація про збірку
+## 3) Інформація про збірку
 
 - В збірці використовується шаблонизатор
   [Nunjucks](https://mozilla.github.io/nunjucks/templating.html)
@@ -44,3 +70,7 @@ pnpm build / yarn build / npm run build
 - В збірці є автоматичне створення SPRITE.SVG, треба закинути свою svg за шляхом
   "src\assets\images\sprite". Звернутися до спрайту: "./assets/images/sprite.svg#logo". Айдишником
   svg у спрайті буде назва самої svg у папці "sprite".
+
+```
+
+```

@@ -8,7 +8,7 @@ const sass = require('gulp-sass')(require('sass'));
 const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const tailwindcss = require('tailwindcss');
-const cssnano = require('gulp-cssnano'); // Добавлен импорт cssnano
+const cleanCSS = require('gulp-clean-css');
 const paths = require('../paths');
 
 const css = () => {
@@ -53,7 +53,7 @@ const css = () => {
       )
     )
     .pipe(concat({ path: 'style.css' }))
-    .pipe(mode.development(cssnano()))
+    .pipe(mode.production(cleanCSS()))
     .pipe(size({ showFiles: true }))
     .pipe(mode.development(sourcemaps.write('./')))
     .pipe(gulp.dest(paths.build.css));

@@ -1,6 +1,38 @@
 {% set section = header %}
 
-<header class="{{section.id}}">
-  <div class="container">
+<header
+  class="{{section.id}} py-[24px] notXl:shadow-gray border-b border-b-[#F5F5F5] shadow-gray md:py-8 xl:py-3 xl:shadow-transparent xxl:py-3"
+>
+  <div class="container flex flex-wrap items-center justify-between gap-3">
+    <div class="flex">
+      <a
+        href="{{page.canonical}}"
+        aria-label="{{components.logo.link_logo_aria}}"
+        class="header-logo"
+      >
+        <svg
+          aria-label="{{components.logo.logo_aria}}"
+          width="142"
+          height="36"
+          class="header-logo__svg h-auto w-[93px] md:w-[142px] xl:w-[93px] xxl:w-[142px]"
+        >
+          <title>{{components.logo.logo_aria}}</title>
+          <use href="./assets/images/sprite.svg#logo"></use>
+        </svg>
+        <span
+          class="header-logo__text hidden font-IBMPlexSans leading-relaxed text-black-1A xl:mt-2 xl:block xl:min-w-[100px] xl:text-[10px] xxl:min-w-[125px] xxl:text-[#474747]"
+          >{{components.logo.text}}</span
+        >
+      </a>
+    </div>
+
+    <a
+      href="{{section.phoneLink}}"
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      class="hover:text-purple focus:text-purple block font-IBMPlexMono text-sm font-bold leading-[18px] text-[#653CD9] duration-300 ease-in md:text-xl md:leading-[18px] md:tracking-[0.2px]"
+    >
+      {{section.phone}}
+    </a>
   </div>
 </header>

@@ -23,7 +23,7 @@
 
     @include mq(desktop) {
       background-size: contain;
-      background-position: top left 40px;
+      background-position: top 0 left 40px;
     }
   }
 
@@ -103,7 +103,7 @@
 
   .item-5 {
     .image {
-      @apply xxl:w-[124px] w-[88px] md:w-[65px] xl:w-[120px];
+      @apply w-[88px] md:w-[65px] xl:w-[120px] xxl:w-[124px];
     }
 
     .title {
@@ -133,7 +133,7 @@
   .item-6 {
     padding-bottom: 0;
     .image {
-      @apply xxl:h-[124px] xxl:w-[112px] h-[70px] w-[64px] md:h-[65px] md:w-[54px] xl:h-[120px] xl:w-[110px];
+      @apply h-[70px] w-[64px] md:h-[65px] md:w-[54px] xl:h-[120px] xl:w-[110px] xxl:h-[124px] xxl:w-[112px];
     }
 
     .title {
