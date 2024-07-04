@@ -46,6 +46,8 @@ $mobilePopupMargin: 30px !default;
   display: block;
   color: #000000;
 
+  width: 100% !important;
+
   // paul irish says this is ok
   // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
   * {
