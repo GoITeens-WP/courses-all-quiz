@@ -55,6 +55,7 @@
 
 .scroll-hidden {
   @apply overflow-hidden;
+  overflow: hidden !important;
 }
 
 .steps-bar {
@@ -79,4 +80,8 @@
       @apply right-0;
     }
   }
+}
+
+.custom-select-wrapper select {
+  @apply hidden;
 }

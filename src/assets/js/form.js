@@ -81,6 +81,7 @@ $(window).on('load', async function () {
 
     promocode: false,
     radio: false,
+    select: true,
     forms: [
       {
         formId: 'modalForm',
@@ -149,6 +150,7 @@ $(window).on('load', async function () {
     if (params.promocode) {
       const promocode = form.querySelector('[name="promocode"]');
     }
+
     if (params.radio) {
       const radio = form.querySelectorAll('[name="user"]');
       let userType = null;
@@ -158,6 +160,10 @@ $(window).on('load', async function () {
           userType = item.value;
         });
       });
+    }
+
+    if (params.select) {
+      service.initCustomSelect(form);
     }
 
     // Vars

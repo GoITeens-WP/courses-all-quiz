@@ -254,6 +254,12 @@ function getValidationFields(input, allInputs) {
         errorMessage: 'The field is required',
       },
     ],
+    select: [
+      {
+        rule: 'required',
+        errorMessage: 'The field is required',
+      },
+    ],
     // message: [
     //   {
     //     rule: 'minLength',
@@ -325,7 +331,7 @@ function setFormValidation(validationForm) {
       }
       return acc;
     }, [])
-    .filter((input) => input.dataset.field)
+    .filter(input => input.dataset.field)
     .map((input, index, arr) => {
       const { id } = input;
       const validationOptionField = getValidationFields(input, arr);
@@ -668,7 +674,7 @@ function showSuccess(
 
   removeDisabledAttributeFromSubmitBtn();
 
-  Swal.fire(options).then((result) => {
+  Swal.fire(options).then(result => {
     if (result.isConfirmed && btnLink) {
       window.open(btnLink, '_blank');
     }
@@ -714,6 +720,66 @@ function changeFormStep(form, nextStep) {
   $(`[data-${form.id}-steps] li:nth-child(${nextStep})`).toggleClass('active');
 }
 
+function initCustomSelect(form) {
+  const originalSelects = form.querySelectorAll('.select-field');
+
+  if (!originalSelects.length) {
+    return;
+  }
+
+  originalSelects.forEach(originSelect => {
+    const selectParent = originSelect.parentElement;
+    const customSelectTrigger = selectParent.querySelector('.custom-select-trigger');
+    const customOptions = selectParent.querySelectorAll('.custom-option');
+
+    originSelect.style.display = 'none';
+
+    if (originSelect.selectedIndex > 0) {
+      const selectedValue = originSelect.value;
+      customOptions.forEach(option => {
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        if (checkbox.value === selectedValue) {
+          customSelectTrigger.textContent = option.querySelector('.option-label').textContent;
+          selectParent.classList.add('selected');
+        }
+      });
+    }
+
+    customSelectTrigger.addEventListener('click', event => {
+      selectParent.classList.toggle('open');
+      event.stopPropagation();
+    });
+
+    customOptions.forEach(option => {
+      option.addEventListener('change', () => {
+        customOptions.forEach(option => {
+          option.querySelector('input[type="checkbox"]').checked = false;
+        });
+
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        checkbox.checked = true;
+        originSelect.value = checkbox.value;
+        selectParent.classList.remove('open');
+        customSelectTrigger.textContent = option.querySelector('.option-label').textContent;
+
+        if (originSelect.value && !selectParent.classList.contains('selected')) {
+          selectParent.classList.add('selected');
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', event => {
+    originalSelects.forEach(originSelect => {
+      const selectParent = originSelect.parentElement;
+
+      if (!selectParent.contains(event.target)) {
+        selectParent.classList.remove('open');
+      }
+    });
+  });
+}
+
 export default {
   addDisabledAttributeToSubmitBtn,
   changeFormStep,
@@ -737,4 +803,5 @@ export default {
   translate,
   uid,
   validationOptions,
+  initCustomSelect,
 };

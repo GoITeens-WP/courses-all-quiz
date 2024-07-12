@@ -77,6 +77,19 @@
       ]
     },
     {
+      "title": "Select *",
+      "type": "select",
+      "name": "lesson",
+      "placeholder": "Select placeholder",
+      "dataField": "select",
+      "required": true,
+      "options": [
+        { "value": "value-1", "label": "label 1", "selected": false },
+        { "value": "value-2", "label": "label 2", "selected": false },
+        { "value": "value-3", "label": "label 3", "selected": false }
+      ]
+    },
+    {
       "title": "CV *",
       "type": "file",
       "name": "file",
