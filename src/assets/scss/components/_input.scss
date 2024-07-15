@@ -43,7 +43,7 @@ input[type='tel'].input-field {
 }
 
 .checkbox {
-  @apply absolute left-0 top-0 inline-block h-6 w-6 rounded-full border border-gray-400 bg-contain bg-center bg-no-repeat;
+  @apply block h-6 w-6 min-w-6 rounded border border-[#D6D6D6] bg-contain bg-center bg-no-repeat md:h-8 md:w-8 md:min-w-8 md:rounded-lg;
 
   [type='radio']:checked + &,
   [type='checkbox']:checked + & {
@@ -52,7 +52,7 @@ input[type='tel'].input-field {
 }
 
 .input-label-checkbox {
-  @apply relative inline-block cursor-pointer pl-10 text-[10px] font-medium leading-[1.4] md:text-[12px];
+  @apply relative flex cursor-pointer gap-2 font-IBMPlexSans text-[12px] font-normal leading-tight text-[#474747] md:text-[14px] xl:text-[16px];
 
   & > .is-invalid + .checkbox {
     @apply border border-[#CA381F];
@@ -64,6 +64,8 @@ input[type='tel'].input-field {
   @apply absolute bottom-0 left-0 mt-1 translate-y-[calc(100%_+_4px)] text-[10px] font-light leading-[1.1];
 }
 /*! purgecss end ignore */
+
+/*! select */
 
 .custom-select-wrapper {
   @apply relative;
@@ -129,3 +131,28 @@ input[type='tel'].input-field {
     @apply rounded-b-none rounded-t-[24px] md:rounded-t-[28px];
   }
 }
+
+/*! end select */
+
+/*! radio */
+
+.input-wrap-radio {
+  @apply flex items-center gap-6 py-2 pl-2 md:gap-16 xxl:py-3;
+}
+
+.input-label-radio {
+  @apply relative flex cursor-pointer items-center gap-2 text-lg font-normal text-black-1A;
+
+  & > .is-invalid + .radio {
+    @apply border border-[#CA381F];
+  }
+}
+
+.radio {
+  @apply block h-6 w-6 min-w-6 rounded border border-[#D6D6D6] bg-white md:h-8 md:w-8 md:min-w-8 md:rounded-lg;
+
+  [type='radio']:checked + & {
+    @apply border-accent bg-check bg-cover stroke-white;
+  }
+}
+/*! end radio */

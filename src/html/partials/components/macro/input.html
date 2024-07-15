@@ -71,24 +71,26 @@
       {% if arg.required %} required="" {% endif %}
     />
     <span class="checkbox"></span>
-    {{ arg.title }}
-    {% for link in arg.links %}
-    <a
-      class="text-accent"
-      href="{{ link.href }}"
-      target="_blank"
-      rel="noopener noreferrer nofollow"
-    >
-      {{ link.text }}
-    </a>
-    {% if not loop.last %}{{ arg.linkSeparator }}{% endif %}
-    {% endfor %}
+    <span>
+      {{ arg.title }}
+      {% for link in arg.links %}
+      <a
+        class="text-accent"
+        href="{{ link.href }}"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        {{ link.text }}
+      </a>
+      {% if not loop.last %}{{ arg.linkSeparator }}{% endif %}
+      {% endfor %}
+    </span>
   </label>
 
   <!-- ➡️ ELIF radio -->
   {% elif arg.radio %}
   {% for arg in arg.radio %}
-  <label class="input-label-checkbox">
+  <label class="input-label-radio">
     <input
       class="visually-hidden"
       type="{{ arg.type }}"
@@ -98,7 +100,9 @@
       data-field="{{ arg.dataField }}"
       {% if arg.required %} required="" {% endif %}
     />
-    <span class="checkbox"></span>
+    <span class="radio"></span>
+
+    <span class="radio-text">{{ arg.text }}</span>
     {{ arg.title }}
   </label>
   {% endfor %}

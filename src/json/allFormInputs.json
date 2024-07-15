@@ -77,6 +77,28 @@
       ]
     },
     {
+      "radio": [
+        {
+          "title": "підліток",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "Teen"
+        },
+        {
+          "title": "батько/мати",
+          "type": "radio",
+          "name": "user",
+          "dataField": "radio",
+          "required": true,
+          "class": "input-wrap-radio",
+          "value": "Parents"
+        }
+      ]
+    },
+    {
       "title": "Select *",
       "type": "select",
       "name": "lesson",

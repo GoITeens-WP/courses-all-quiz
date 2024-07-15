@@ -81,7 +81,6 @@ $(window).on('load', async function () {
 
     promocode: false,
     radio: false,
-    select: true,
     forms: [
       {
         formId: 'modalForm',
@@ -162,7 +161,8 @@ $(window).on('load', async function () {
       });
     }
 
-    if (params.select) {
+    const select = form.querySelector('select');
+    if (select) {
       service.initCustomSelect(form);
     }
 
