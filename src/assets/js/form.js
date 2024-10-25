@@ -85,6 +85,9 @@ $(window).on('load', async function () {
       {
         formId: 'modalForm',
       },
+      {
+        formId: 'hero',
+      },
       // {
       // formId: 'yourFormId',
       // productName: 'yourProductName',

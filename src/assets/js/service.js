@@ -75,7 +75,7 @@ async function getItiConfig(preferredCountries, excludeCountries) {
     initialCountry: country_code,
     preferredCountries,
     excludeCountries,
-    utilsScript: './assets/js/utils.js',
+    loadUtilsOnInit: () => import("./utils.js")
   };
 }
 
