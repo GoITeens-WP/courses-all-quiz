@@ -73,9 +73,11 @@ async function getItiConfig(preferredCountries, excludeCountries) {
 
   return {
     initialCountry: country_code,
-    preferredCountries,
     excludeCountries,
-    loadUtilsOnInit: () => import("./utils.js")
+    countryOrder: preferredCountries,
+    loadUtilsOnInit: () => import('./utils.js'),
+    separateDialCode: false,
+    useFullscreenPopup: false,
   };
 }
 
