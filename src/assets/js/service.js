@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import validateLocales from '../../json/validateLocales.json';
@@ -24,14 +23,16 @@ import formMessageLocales from '../../json/formMessageLocales.json';
  */
 async function getIpInfo() {
   try {
-    const { data } = await axios.get('https://www.cloudflare.com/cdn-cgi/trace');
+    const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace');
+    const text = await response.text();
 
-    return data
+    return text
       .trim()
       .split('\n')
-      .reduce(function (obj, pair) {
-        pair = pair.split('=');
-        return (obj[pair[0]] = pair[1]), obj;
+      .reduce((obj, pair) => {
+        const [key, value] = pair.split('=');
+        obj[key] = value;
+        return obj;
       }, {});
   } catch (error) {
     console.error(error);
@@ -45,10 +46,11 @@ async function getIpInfo() {
  */
 async function geoIpLookup(defaultCountry = 'ua') {
   if (window.ipData?.loc) {
-    return window.ipData?.loc?.toLowerCase() || defaultCountry;
+    return window.ipData.loc.toLowerCase() || defaultCountry;
   } else {
     try {
-      const { data } = await axios.get('https://ip.nf/me.json');
+      const response = await fetch('https://ip.nf/me.json');
+      const data = await response.json();
 
       return data?.ip?.country_code?.toLowerCase() || defaultCountry;
     } catch (error) {
@@ -87,18 +89,8 @@ async function getItiConfig(preferredCountries, excludeCountries) {
  * @returns The value of the parameter in the URL.
  */
 function getUrlParameter(sParam) {
-  let sPageURL = decodeURIComponent(window.location.search.substring(1)),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
-
-  for (i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split('=');
-
-    if (sParameterName[0] === sParam) {
-      return sParameterName[1] === 'undefined' ? true : sParameterName[1];
-    }
-  }
+  const sPageURL = new URLSearchParams(window.location.search);
+  return sPageURL.get(sParam);
 }
 
 /**
@@ -118,12 +110,19 @@ function setUrlParameter(key, value) {
  */
 async function sendDataToIntelza(phoneNumber) {
   try {
-    const { data } = await axios.post('./crm/elza.php', {
-      phone: phoneNumber,
-      product_name: window.productName,
-      delay: 7,
+    const response = await fetch('./crm/elza.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phone: phoneNumber,
+        product_name: window.productName,
+        delay: 7,
+      }),
     });
 
+    const data = await response.json();
     return data.id ? data.id : null;
   } catch (error) {
     console.log(error.message);
@@ -136,8 +135,7 @@ async function sendDataToIntelza(phoneNumber) {
  * @returns true or false
  */
 function isNumeric(str) {
-  if (typeof str != 'string') return false;
-  return !isNaN(str) && !isNaN(parseFloat(str));
+  return typeof str === 'string' && !isNaN(str) && !isNaN(parseFloat(str));
 }
 
 /**
@@ -165,16 +163,12 @@ const validationOptions = {
  */
 function getValidationLocale(locale = window.locale) {
   return validateLocales.map(({ key, dict }) => {
-    const localeDict = {};
-    localeDict[locale] = dict[locale];
-
     if (!dict[locale]) {
       throw new Error(
         `No locale found for ${locale}. Please add it to the validateLocales.json file.`
       );
     }
-
-    return { key, dict: localeDict };
+    return { key, dict: { [locale]: dict[locale] } };
   });
 }
 
@@ -423,7 +417,7 @@ function getEmailRegex() {
  * @param formData - the form data object
  */
 function setParamsForLeeloo(formData) {
-  let fields = {
+  const fields = {
     utm_source: 'utm_source',
     utm_medium: 'utm_medium',
     utm_term: 'utm_term',
@@ -438,18 +432,13 @@ function setParamsForLeeloo(formData) {
     google_id: 'ga',
   };
 
-  let keys = Object.keys(formData);
-  let url = new URL(window.location);
+  const url = new URL(window.location);
 
-  for (let i = 0; i < keys.length; i++) {
-    if (formData[keys[i]] !== undefined && formData[keys[i]] !== null) {
-      if (fields.hasOwnProperty(keys[i])) {
-        if (formData[keys[i]].length > 0) {
-          url.searchParams.set(fields[keys[i]], formData[keys[i]]);
-        }
-      }
+  Object.keys(formData).forEach(key => {
+    if (formData[key] && fields[key]) {
+      url.searchParams.set(fields[key], formData[key]);
     }
-  }
+  });
 
   window.history.pushState({}, document.title, url);
 }
@@ -485,8 +474,21 @@ function initializeLeeloo(form, leelooHash = window.leelooHash) {
  * @returns The result of the axios.post request.
  */
 async function sendEmail(data) {
-  const result = await axios.post('./mail.php', data);
-  return result.data;
+  try {
+    const response = await fetch('./mail.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
 }
 
 /**
@@ -496,16 +498,13 @@ async function sendEmail(data) {
  */
 
 function saveParamsToCookies(utmMarks) {
-  let shouldUpdateCookies = utmMarks.some(utmMark => getUrlParameter(utmMark));
+  const shouldUpdateCookies = utmMarks.some(utmMark => getUrlParameter(utmMark));
 
-  // Если есть хотя бы один маркер, обновляем cookies
   if (shouldUpdateCookies) {
-    // Удаляем все существующие UTM-маркеры из cookies
     utmMarks.forEach(utmMark => {
       Cookies.remove(utmMark);
     });
 
-    // Записываем новые значения UTM-маркеров из URL в cookies
     utmMarks.forEach(utmMark => {
       const utm = getUrlParameter(utmMark);
       if (utm) {
@@ -689,8 +688,8 @@ function showSuccess(
  */
 function uid() {
   return 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0,
-      v = c == 'x' ? r : (r & 0x3) | 0x8;
+    const r = (Math.random() * 16) | 0;
+    const v = c == 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
@@ -703,7 +702,15 @@ function uid() {
  */
 async function checkEmailDomain(email) {
   try {
-    const { data } = await axios.post('./check-email.php', { email });
+    const response = await fetch('./check-email.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
     return data?.status === 'ok' ? true : false;
   } catch (error) {
     console.log(error);
@@ -783,7 +790,7 @@ function initCustomSelect(form) {
 }
 
 function convertFormDataToQueryString(formData) {
-  let fields = {
+  const fields = {
     utm_source: 'utm_source',
     utm_medium: 'utm_medium',
     utm_term: 'utm_term',
@@ -794,24 +801,19 @@ function convertFormDataToQueryString(formData) {
     adId: 'adid',
     phone: 'phone',
     email: 'email',
-    name: 'name2',
+    name: 'first_name',
     google_id: 'ga',
   };
 
-  let params = {};
+  const params = {};
 
-  for (let key in formData) {
-    if (formData[key] !== undefined && formData[key] !== null) {
-      if (fields.hasOwnProperty(key)) {
-        if (formData[key].length > 0) {
-          params[fields[key]] = formData[key];
-        }
-      }
+  Object.keys(formData).forEach(key => {
+    if (formData[key] && fields[key]) {
+      params[fields[key]] = formData[key];
     }
-  }
+  });
 
-  let queryString = new URLSearchParams(params).toString();
-  return queryString;
+  return new URLSearchParams(params).toString();
 }
 
 export default {

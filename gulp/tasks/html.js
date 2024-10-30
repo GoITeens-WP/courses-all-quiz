@@ -14,6 +14,7 @@ const paths = require('../paths');
 const htmlminConfig = {
   minifyCSS: true, // Minify CSS in style elements and style attributes
   minifyJS: true, // Minify JavaScript in script elements and event attributes
+  collapseWhitespace: true, // Collapse white space that contributes to text nodes in a document tree
   removeComments: true, // Strip HTML comments
   removeScriptTypeAttributes: true, // Remove type="text/javascript" from script tags. Other type attribute values are left intact
   removeStyleLinkTypeAttributes: true, // Remove type="text/css" from style and link tags. Other type attribute values are left intact

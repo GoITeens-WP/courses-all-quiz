@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 function generateData(crmParams) {
   const { origin, pathname } = window.location;
   const action_source = `${origin}${pathname}`;
@@ -36,11 +34,14 @@ async function submit(crmParams) {
 }
 
 async function send(data) {
-  return await axios({
-    method: 'post',
-    url: './crm/lead.php',
-    data: data,
+  const response = await fetch('./crm/lead.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   });
+  return response.json();
 }
 
 function ensureUtmData(data) {
