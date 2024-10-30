@@ -36,5 +36,5 @@ module.exports = {
     crm: 'build/crm/',
     phpmailer: 'build/phpmailer/',
   },
-  clean: 'build/',
+  clean: ['build/'],
 };

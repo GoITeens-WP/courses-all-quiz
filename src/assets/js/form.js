@@ -78,12 +78,13 @@ $(window).on('load', async function () {
       'adsetId',
       'adId',
     ],
-
-    promocode: false,
     radio: false,
     forms: [
       {
         formId: 'modalForm',
+      },
+      {
+        formId: 'hero',
       },
       // {
       // formId: 'yourFormId',
@@ -145,14 +146,11 @@ $(window).on('load', async function () {
     const name = form.querySelector('[name="name"]');
     const phone = form.querySelector('[name="phone"]');
     const email = form.querySelector('[name="email"]');
+    const promocode = form.querySelector('[name="promocode"]');
 
-    if (params.promocode) {
-      const promocode = form.querySelector('[name="promocode"]');
-    }
-
+    let userType = null;
     if (params.radio) {
       const radio = form.querySelectorAll('[name="user"]');
-      let userType = null;
 
       radio.forEach(item => {
         item.addEventListener('change', () => {
@@ -251,7 +249,7 @@ $(window).on('load', async function () {
             userName: name.value,
             userPhone: phoneNumber,
             userEmail: email.value,
-            userPromocode: params.promocode ? promocode.value : null,
+            userPromocode: promocode?.value ? promocode.value : null,
             userType: params.radio ? userType : null,
             productName: productName,
             productId: productId,
