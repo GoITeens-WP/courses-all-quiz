@@ -782,8 +782,42 @@ function initCustomSelect(form) {
   });
 }
 
+function convertFormDataToQueryString(formData) {
+  let fields = {
+    utm_source: 'utm_source',
+    utm_medium: 'utm_medium',
+    utm_term: 'utm_term',
+    utm_campaign: 'utm_campaign',
+    utm_content: 'utm_content',
+    campaignId: 'campaignid',
+    adsetId: 'adsetid',
+    adId: 'adid',
+    phone: 'phone',
+    email: 'email',
+    name: 'name2',
+    google_id: 'ga',
+  };
+
+  let params = {};
+
+  for (let key in formData) {
+    if (formData[key] !== undefined && formData[key] !== null) {
+      if (fields.hasOwnProperty(key)) {
+        if (formData[key].length > 0) {
+          params[fields[key]] = formData[key];
+        }
+      }
+    }
+  }
+
+  let queryString = new URLSearchParams(params).toString();
+  return queryString;
+}
+
 export default {
   addDisabledAttributeToSubmitBtn,
+  removeDisabledAttributeFromSubmitBtn,
+  convertFormDataToQueryString,
   changeFormStep,
   checkEmailDomain,
   geoIpLookup,
