@@ -1,3 +1,6 @@
+import Cookies from 'js-cookie';
+import service from './service.js';
+
 function generateData(crmParams) {
   const { origin, pathname } = window.location;
   const action_source = `${origin}${pathname}`;
@@ -15,8 +18,8 @@ function generateData(crmParams) {
     Projects: 'GoIT',
     Potential_Category: 'Course',
     Course: crmParams.productId,
-    leadFBC: getCookie('_fbc'),
-    leadFBP: getCookie('_fbp'),
+    leadFBC: getUrlParamsOrCookie('_fbc'),
+    leadFBP: getUrlParamsOrCookie('_fbp'),
     leadActionSource: action_source,
     leadFormat: window.leadFormat || 'marathon',
     leadIP: window.ipData.ip || '',
@@ -45,27 +48,21 @@ async function send(data) {
 }
 
 function ensureUtmData(data) {
-  data.utm_source = getCookie('utm_source');
-  data.utm_medium = getCookie('utm_medium');
-  data.utm_term = getCookie('utm_term');
-  data.utm_campaign = getCookie('utm_campaign');
-  data.utm_content = getCookie('utm_content');
-  data.campaignId = getCookie('campaignId');
-  data.adsetId = getCookie('adsetId');
-  data.adId = getCookie('adId');
+  data.utm_source = getUrlParamsOrCookie('utm_source');
+  data.utm_medium = getUrlParamsOrCookie('utm_medium');
+  data.utm_term = getUrlParamsOrCookie('utm_term');
+  data.utm_campaign = getUrlParamsOrCookie('utm_campaign');
+  data.utm_content = getUrlParamsOrCookie('utm_content');
+  data.campaignId = getUrlParamsOrCookie('campaignId');
+  data.adsetId = getUrlParamsOrCookie('adsetId');
+  data.adId = getUrlParamsOrCookie('adId');
 
   return data;
 }
 
-function getCookie(name) {
-  var nameEQ = name + '=';
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
+function getUrlParamsOrCookie(name) {
+  const value = service.getUrlParameter(name) || Cookies.get(name);
+  return value !== undefined ? value : null;
 }
 
 function readCookie(name) {
