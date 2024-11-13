@@ -340,7 +340,7 @@ $(window).on('load', async function () {
                 /* That redirects user to some URL after send form. */
                 // window.location.href = 'someURL';
               } else {
-                console.log('error ', resp.statusText);
+                console.log('error ', resp?.statusText);
                 $(form).css('display', 'block');
                 service.showError();
               }

@@ -44,7 +44,7 @@ async function send(data) {
     },
     body: JSON.stringify(data),
   });
-  return response.json();
+  return response;
 }
 
 function ensureUtmData(data) {
