@@ -28,19 +28,19 @@
 }
 
 body {
-  @apply bg-body font-IBMPlexSans text-black;
+  @apply bg-body font-IBMPlexSans text-gray-900;
 }
 
 .section {
-  @apply py-10 md:py-[60px] xl:py-20;
+  @apply py-10 md:py-20;
 }
 
 .section-title {
-  @apply font-IBMPlexMono text-[20px] font-semibold uppercase leading-[1.3] text-black-1A md:text-[32px] md:leading-[1.4];
+  @apply font-IBMPlexMono text-lg font-semibold uppercase text-gray-900 md:text-[28px] md:font-bold md:leading-snug xxl:text-[32px] xxl:tracking-[0.01em];
 }
 
-.btn {
-  @apply border border-black p-2 duration-300;
+.btn-submit {
+  @apply block w-full rounded-[104px] border border-lilac-300 bg-lilac-300 p-2 text-center text-[16px] leading-[1.875] text-white transition-colors duration-200 hover:border-lilac-400 hover:bg-lilac-400 focus-visible:border-lilac-400 focus-visible:bg-lilac-400 md:py-3 md:text-[20px] md:leading-[1.5];
 }
 
 .visually-hidden {

@@ -1,0 +1,57 @@
+{% set section = awards %}
+
+<section class="{{section.id}} py-10 md:py-20">
+  <div class="container">
+    <h2
+      class="font-IBMPlexMono text-lg font-semibold uppercase text-[#1A1A1A] md:text-[28px] md:font-bold md:leading-snug xxl:text-[32px] xxl:tracking-[0.01em]"
+    >
+      {{section.title}}
+    </h2>
+    <p
+      class="mt-6 font-IBMPlexSans text-sm text-[#474747] md:mt-8 md:text-base xl:max-w-[850px] xl:text-lg xxl:max-w-[985px]"
+    >
+      {{section.text}}
+    </p>
+
+    <ul class="list">
+      {% for item in section.list %} {% if item.type === "type-text" %}
+      <li class="item {{item.type}} {{item.icon}}">
+        <h3 class="numbers">{{item.title}}</h3>
+        <h4 class="title">{{item.subtitle}}</h4>
+      </li>
+      {% elif item.type === "type-text-image" %}
+      <li class="item {{item.type}} {{item.icon}}">
+        <img
+          class="image"
+          src="./assets/images/sections/awards/{{item.image}}.webp"
+          alt="{{item.alt}}"
+          width="{{item.width}}"
+          height="{{item.height}}"
+          loading="lazy"
+          srcset="
+            ./assets/images/sections/awards/{{item.image}}.webp    1x,
+            ./assets/images/sections/awards/{{item.image}}@2x.webp 2x
+          "
+        />
+        <h3 class="title">{{item.title}}</h3>
+        <p class="text">{{item.text}}</p>
+      </li>
+      {% elif item.type === "type-only-image" %}
+      <li class="item {{item.type}} {{item.icon}}">
+        <img
+          class="image"
+          src="./assets/images/sections/awards/{{item.image}}.webp"
+          alt="{{item.alt}}"
+          width="{{item.width}}"
+          height="{{item.height}}"
+          loading="lazy"
+          srcset="
+            ./assets/images/sections/awards/{{item.image}}.webp    1x,
+            ./assets/images/sections/awards/{{item.image}}@2x.webp 2x
+          "
+        />
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+</section>

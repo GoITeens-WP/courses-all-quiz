@@ -62,7 +62,7 @@
   @apply relative mx-[18px] flex justify-between border-b border-accent py-0 md:mx-10;
 
   & > .item.active {
-    @apply border-none bg-[#FFB584] text-[#010101];
+    @apply border-none bg-[#FFB584] text-gray-900;
   }
 
   & > .item {

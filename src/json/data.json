@@ -13,48 +13,71 @@
     "phone": "+38 073 565 45 96",
     "phoneLink": "tel:+380735654596"
   },
-  "about": {
-    "id": "about",
-    "title": "Про goiteens",
-    "text": "<span class=\"font-semibold\">GoITeens</span> – це онлайн ІТ-академія, що надає освіту <span class=\"font-semibold\"> дітям від 5 до 17 років</span> за напрямами Scratch, Frontend, Digital Design, GameDev, Python, Minecraft, Roblox, Малювання, Математика та Логіка. Наша місія — надати якісну освіту дітям та допомогти створити власну історію успіху.",
-    "items": [
+  "awards": {
+    "id": "awards",
+    "title": "Про GoITeens",
+    "text": "<span class=\"font-semibold\">GoITeens</span> — це онлайн ІТ-академія, що надає освіту <span class=\"font-semibold\">дітям від 5 до 17 років</span> за напрямами Scratch, Frontend, Digital Design, GameDev, Python, Minecraft, Roblox, Малювання, Математика та Логіка.  <br /><br />Доступна тепер і шкільна освіта з <span class=\"font-semibold\">GoITeens School</span> — школа для диджитал-поколінь. <br class=\"hidden xl:block xxl:hidden\" />Наша місія — надати якісну освіту дітям та допомогти створити власну історію успіху.",
+    "list": [
+      { "type": "type-text", "icon": "icon-1", "title": "9+", "subtitle": "Років навчаємо дітей" },
       {
-        "number": "9+",
-        "text": "Років навчаємо дітей",
-        "class": "item-1"
+        "type": "type-text",
+        "icon": "icon-2",
+        "title": "150000+",
+        "subtitle": "Дітей навчалося <br />в академії GoITeens"
       },
       {
-        "number": "150000+",
-        "text": "Дітей навчалося <br />в академії GoITeens",
-        "class": "item-2"
+        "type": "type-text",
+        "icon": "icon-3",
+        "title": "250000+",
+        "subtitle": "Занять проведено <br />протягом року"
       },
       {
-        "number": "10000+",
-        "text": "Проєктів створено",
-        "class": "item-3"
+        "type": "type-only-image",
+        "icon": "icon-4",
+        "image": "forbes",
+        "alt": "Forbes lists next 250 2024",
+        "width": "134",
+        "height": "188"
       },
       {
-        "number": "143000+",
-        "text": "Занять проведено <br />протягом року",
-        "class": "item-4"
-      },
-      {
-        "img": "award-1",
-        "width": "124",
-        "height": "124",
-        "alt": "Ukrainian Business Award 2023",
-        "title": "Ukrainian Business Award 2023",
+        "type": "type-text-image",
+        "title": "Ukrainian Business <br />Award 2023,2024",
         "text": "Найкращий освітній бізнес у сфері навчання для дітей та підлітків",
-        "class": "item-5"
+        "icon": "icon-5",
+        "image": "business",
+        "alt": "нагорода Ukrainian Business Award 2023,2024",
+        "width": "216",
+        "height": "124"
       },
       {
-        "img": "award-2",
-        "width": "112",
-        "height": "124",
-        "alt": "нагорода X-RAY AWARD",
+        "type": "type-text-image",
+        "title": "MMR PR MARAPHONE",
+        "text": "Найкращий PR-проєкт у співпраці  <br />з державою за версією MMR.ua",
+        "icon": "icon-6",
+        "image": "mmr",
+        "alt": "нагорода MMR PR MARAPHONE",
+        "width": "176",
+        "height": "124"
+      },
+      {
+        "type": "type-text-image",
+        "title": "TOP Company Award",
+        "text": "Відзнака за високі стандарти освітніх послуг та лояльність клієнтів",
+        "icon": "icon-7",
+        "image": "top",
+        "alt": "нагорода TOP Company Award",
+        "width": "124",
+        "height": "124"
+      },
+      {
+        "type": "type-text-image",
         "title": "X-RAY award",
         "text": "Переможці премії X-RAY в номінації «Метавсесвіт та штучний інтелект»",
-        "class": "item-6"
+        "icon": "icon-8",
+        "image": "x-ray",
+        "alt": "нагорода X-RAY award",
+        "width": "112",
+        "height": "124"
       }
     ]
   },
