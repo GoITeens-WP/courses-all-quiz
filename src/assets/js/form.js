@@ -291,9 +291,9 @@ $(window).on('load', async function () {
             service.setParamsForLeeloo(data);
 
             try {
-              const resp = await response;
+              const crmResponse = await response;
 
-              if (resp.status === 200) {
+              if (crmResponse && crmResponse.status === 200) {
                 service.setUrlParameter('name2', name.value);
 
                 if (window.elzaToken) {
@@ -304,7 +304,6 @@ $(window).on('load', async function () {
                 service.initializeLeeloo(form, leelooHash);
                 $(form).css('display', 'none');
                 $(form).trigger('reset');
-                service.changeFormStep(form, 3);
 
                 const checkLeeloo = setInterval(() => {
                   const iframe = form.querySelector('.leeloo-lgt-form');
@@ -314,41 +313,51 @@ $(window).on('load', async function () {
                   }
                 }, 2000);
               } else {
-                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
+                loading.hide();
+                const parsedResponse = await crmResponse?.json();
+                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
+                await service.reportError(errorMessage, data);
+                console.error(errorMessage);
               }
             } catch (error) {
-              console.log(error);
               $(form).css('display', 'block');
               service.showError();
-            } finally {
               loading.hide();
+              console.error('error', error);
+              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
 
           async function showDefaultBlock() {
             try {
-              const resp = await response;
+              const crmResponse = await response;
 
-              if (resp.status === 200) {
+              if (crmResponse.status === 200) {
                 $(form).trigger('reset');
-                service.changeFormStep(form, 3);
-                service.showSuccess(service.translate('reply'), true, loading, true);
+                loading.hide();
                 $(form).css('display', 'block');
+                service.removeDisabledAttributeFromSubmitBtn();
 
                 /* That redirects user to some URL after send form. */
-                // window.location.href = 'someURL';
+                // const queryString = service.convertFormDataToQueryString(data);
+                // window.location.href = 'someURL?' + queryString;
               } else {
-                console.log('error ', resp?.statusText);
                 $(form).css('display', 'block');
                 service.showError();
+                loading.hide();
+                const parsedResponse = await crmResponse?.json();
+                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
+                await service.reportError(errorMessage, data);
+                console.error(errorMessage);
               }
             } catch (error) {
-              console.log(error);
               $(form).css('display', 'block');
               service.showError();
               loading.hide();
+              console.error('error', error);
+              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
         }

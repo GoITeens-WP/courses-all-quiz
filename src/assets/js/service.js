@@ -816,7 +816,45 @@ function convertFormDataToQueryString(formData) {
   return new URLSearchParams(params).toString();
 }
 
+/**
+ * Reports an error to the server.
+ * @param {Message} string - The error string.
+ * @param {Object} formData - The form data containing user information.
+ * @param {string} formData.name - The name of the user.
+ * @param {string} formData.email - The email of the user.
+ * @param {string} formData.phone - The phone number of the user.
+ */
+async function reportError(message, formData) {
+  const errorData = {
+    landingUrl: window.location.href,
+    errorMessage: message || 'Unknown error',
+    userData: formData || {},
+    timestamp: new Date().toLocaleString('uk-UA', {
+      timeZone: 'Europe/Kiev',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }),
+  };
+
+  try {
+    await fetch('https://errors.goiteens.com/tg/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(errorData),
+    });
+  } catch (reportingError) {
+    console.error('Failed to report error:', reportingError);
+  }
+}
+
 export default {
+  reportError,
   addDisabledAttributeToSubmitBtn,
   removeDisabledAttributeFromSubmitBtn,
   convertFormDataToQueryString,
