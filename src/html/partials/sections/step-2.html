@@ -1,0 +1,24 @@
+{% set section = step2 %}
+
+<section class="{{section.id}} ">
+  <div class="container">
+    <div class="wrapper">
+      <h2 class="title">{{section.title}}</h2>
+      <div class="progress">
+        <div class="progress__bar"></div>
+        <div class="progress__bar"></div>
+        <div class="progress__bar"></div>
+      </div>
+      <h3 class="question">{{section.question}}</h3>
+
+      <ul class="answers">
+        {% for item in section.answers %}
+        <li class="answer">
+          <input type="radio" name="answer" id="answer-{{loop.index}}" >
+          <p class="answer__text">{{item}}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
