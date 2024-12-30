@@ -4,14 +4,22 @@
     "TYPE_EXAMPLE": "goit, goiteens",
     "type": "goiteens",
     "lang": "uk",
-    "title": "title",
-    "description": "description",
-    "canonical": "./"
+    "title": "Відкрийте двері у світ техномагії з онлайн IT-академією GoITeens!",
+    "description": "Допоможемо вашій дитині 13-17 років знайти себе в IT! Три запитання - і ви зрозумієте, що їй підходить найбільше",
+    "canonical": "https://courses-all.goiteens.com/quiz/"
   },
   "header": {
     "id": "header",
     "phone": "+38 073 565 45 96",
     "phoneLink": "tel:+380735654596"
+  },
+
+  "step1": {
+    "id": "step-1",
+    "title": "Відкрийте двері у світ техномагії з онлайн &nbsp; <br class='md:hidden' /> IT-академією GoITeens!",
+    "description": "Допоможемо вашій дитині 13-17 років знайти себе в IT!",
+    "subtitle": [" запитання ", "і ви зрозумієте, &nbsp; <br> що їй підходить найбільше"],
+    "btn": "Пройти тест"
   },
   "awards": {
     "id": "awards",

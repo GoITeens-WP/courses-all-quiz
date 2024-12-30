@@ -1,0 +1,14 @@
+{% set section = step1 %}
+
+<section class="{{section.id}} ">
+  <div class="container">
+    <h1 class="title">{{section.title}}</h1>
+    <p class="description">{{section.description}}</p>
+    <div class="wrapper">
+      <h3 class="wrapper__title">3<span>{{section.subtitle[0]}}</span></h3>
+      <p class="wrapper__text">{{section.subtitle[1]}}</p>
+    </div>
+
+    <button class="btn">{{section.btn}}</button>
+  </div>
+</section>

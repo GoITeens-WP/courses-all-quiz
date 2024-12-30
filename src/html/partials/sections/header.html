@@ -1,7 +1,7 @@
 {% set section = header %}
 
 <header
-  class="{{section.id}} py-[24px] notXl:shadow-gray border-b border-b-[#F5F5F5] shadow-gray md:py-8 xl:py-3 xl:shadow-transparent xxl:py-3"
+  class="{{section.id}} py-[24px] md:py-8 xl:py-3  xxl:py-3 shadow-header"
 >
   <div class="container flex flex-wrap items-center justify-between gap-3">
     <div class="flex">
@@ -26,15 +26,8 @@
       </a>
     </div>
 
-    <a
-      href="{{section.phoneLink}}"
-      target="_blank"
-      rel="noopener noreferrer nofollow"
-      class="hover:text-purple focus:text-purple block font-IBMPlexMono text-sm font-bold leading-[18px] text-[#653CD9] duration-300 ease-in md:text-xl md:leading-[18px] md:tracking-[0.2px]"
-    >
-      {{section.phone}}
-    </a>
+
   </div>
 </header>
 
-<div class="container">{% set formId = "hero" %} {% include 'components/formFields.njk' %}</div>
+{# <div class="container">{% set formId = "hero" %} {% include 'components/formFields.njk' %}</div> #}

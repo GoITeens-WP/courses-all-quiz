@@ -16,6 +16,15 @@
   @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-SemiBold', 600);
   @include font-face('IBMPlexSans', '../fonts/IBMPlexSans-Bold', 700);
 
+
+  @include font-face('Inter', '../fonts/Inter-Regular', 400);
+  @include font-face('Inter', '../fonts/Inter-Medium', 500);
+  @include font-face('Inter', '../fonts/Inter-SemiBold', 600);
+  @include font-face('Inter', '../fonts/Inter-Bold', 700);
+  @include font-face('Inter', '../fonts/Inter-ExtraBold', 800);
+  @include font-face('Inter', '../fonts/Inter-Black', 900);
+
+
   // @include font-face('Montserrat', '../fonts/Montserrat-Thin', 100);
   // @include font-face('Montserrat', '../fonts/Montserrat-ExtraLight', 200);
   // @include font-face('Montserrat', '../fonts/Montserrat-Light', 300);

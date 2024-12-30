@@ -1,0 +1,72 @@
+.step-1 {
+  background-image: url(../images/sections/step-1/bg-mob.webp);
+  background-repeat: no-repeat;
+  background-size: 2400px auto;
+  background-position: top -240px left calc(50% + 205px);
+
+  @include mq(tablet) {
+    background-image: url(../images/sections/step-1/bg-tab.webp);
+    background-size: 2470px auto;
+    background-position: top 40px left calc(50% + 0px);
+
+  }
+
+  @include mq(desktop) {
+    background-image: url(../images/sections/step-1/bg-lap.webp);
+    background-size: 2400px auto;
+    background-position: top -535px left calc(50% + 600px);
+
+  }
+
+  @include mq(big-desktop) {
+    background-image: url(../images/sections/step-1/bg-desk.webp);
+    background-position: top -555px left calc(50% + 400px);
+
+
+  }
+
+  @apply py-10 font-Inter h-[888px] md:py-20 md:h-[1344px] xl:py-[172px] xl:h-[80vh];
+
+  .title {
+    @apply text-black-1A text-[26px] font-bold leading-[130%] md:text-[40px] md:w-[690px]
+  }
+
+  .description {
+    @apply text-xl font-bold text-[#695EFF] my-6 md:text-2xl md:my-8
+  }
+
+  .wrapper {
+    @apply flex gap-4 md:gap-8 items-center relative;
+
+    &__title {
+      @apply w-20 h-20 md:w-24 md:h-24 flex-shrink-0 bg-[#695EFF] text-[48px] font-bold rounded-[24px] text-white text-center font-IBMPlexSans leading-[52px] md:text-[64px] md:leading-[68px];
+
+      /* 20.8px */
+      span {
+        @apply rotate-[-3deg] font-Inter inline-block font-bold text-base absolute bottom-[10px] md:text-xl left-0 md:left-[-5px] md:bottom-[5px];
+
+        // -webkit-text-stroke-width: medium;
+        // -webkit-text-stroke-color: #695EFF;
+        // // -webkit-text-stroke: 3px #695EFF;
+        // -webkit-text-fill-color: white;
+
+      }
+
+      &::before {
+        content: 'запитання';
+        @apply text-[#695EFF] rotate-[-3deg] bottom-[-4px] absolute left-[-1px] text-[16.4px] md:text-[20.4px] md:left-[-5px] md:bottom-[-16px];
+        -webkit-text-stroke-width: medium;
+        -webkit-text-stroke-color: #695EFF;
+      }
+
+    }
+
+    &__text {
+      @apply text-base text-black-1A tracking-[0.16px] font-bold md:text-2xl;
+    }
+  }
+
+  .btn {
+    @apply px-6 py-3 bg-[#C8F428] rounded-[40px] block text-sm text-black-1A w-full font-bold mt-10 xl:max-w-[320px] xxl:text-base
+  }
+}

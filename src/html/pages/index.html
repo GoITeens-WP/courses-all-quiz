@@ -1,7 +1,7 @@
-{% extends 'layout.html' %} {% block content %} {% include 'sections/header.html' %}
-
+{% extends 'layout.html' %} {% block content %}
+{% include 'sections/header.html' %}
 <main class="flex-1">
-  <!-- import html partials -->
+  {% include 'sections/step-1.html' %}
 </main>
 
 {% include 'sections/footer.html' %} {% endblock %}

@@ -21,6 +21,8 @@ module.exports = {
       IBMPlexMono: ['IBMPlexMono', 'monospace'], // class="font-IBMPlexMono" (goiteens)
       IBMPlexSans: ['IBMPlexSans', 'sans-serif'], // class="font-IBMPlexSans" (goiteens)
       // exo: ['"Exo 2"', 'sans-serif'],
+
+      Inter: ['Inter', 'sans-serif'],
     },
     // THEME
     extend: {
@@ -40,6 +42,11 @@ module.exports = {
       }),
       backgroundImage: {
         check: "url('../images/components/agree-checkbox.svg')", // class="bg-check"
+      },
+      boxShadow: {
+
+        header: "0px 1px 3px 0px rgba(0, 0, 0, 0.20)"
+
       },
       // ALL COLORS
       colors: {
