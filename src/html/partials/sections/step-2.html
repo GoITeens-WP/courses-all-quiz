@@ -1,24 +1,74 @@
 {% set section = step2 %}
 
-<section class="{{section.id}} ">
-  <div class="container">
-    <div class="wrapper">
-      <h2 class="title">{{section.title}}</h2>
-      <div class="progress">
-        <div class="progress__bar"></div>
-        <div class="progress__bar"></div>
-        <div class="progress__bar"></div>
-      </div>
-      <h3 class="question">{{section.question}}</h3>
+<section class="{{section.id}} duration-500 absolute top-[72px] translate-x-[100%] h-[888px] font-Inter py-10">
+  <div class="container  relative  ">
+    <div class="wrapper xl:max-w-[704px] xxl:max-w-[780px]">
 
-      <ul class="answers">
-        {% for item in section.answers %}
-        <li class="answer">
-          <input type="radio" name="answer" id="answer-{{loop.index}}" >
-          <p class="answer__text">{{item}}</p>
-        </li>
-        {% endfor %}
-      </ul>
+      <div
+        class="wrapper-quiz-form   bg-[#FAFAFA] flex min-h-[428px] flex-col rounded-[40px]  p-5 md:min-h-[446px] md:p-10 xxl:min-h-[563px]"
+      >
+        <div class="quiz-wrapper">
+          <h2
+            class="text-center  text-sm   text-gray-500"
+          >
+            {{ section.quiz.title }} <span class="count-question-span">1</span>/{{
+            section.quiz.list.length }}
+          </h2>
+
+          <ul class="quiz-progress-bar mt-6 flex items-center gap-4 xxl:mt-8">
+            {% for item in section.quiz.list %}
+            <li
+              class="progress-item {% if loop.first %}active{% endif %} h-1 flex-1 overflow-hidden rounded-full  xxl:h-2"
+            >
+              <div class="box bg-lilac-300 transition-all duration-200"></div>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <ul class="quiz mt-6 xxl:mt-8">
+            {% for item in section.quiz.list %}
+            <li  class="quiz-item {% if loop.first %}active{% endif %} transition-all duration-1000">
+              <form>
+                <p
+                  class="quiz-question  text-sm font-semibold text-gray-900 md:text-[25px] md:font-bold md:leading-snug xxl:text-[28px]"
+                >
+                  {{item.question}}
+                </p>
+
+                <div class="radio-group mt-6 xxl:mt-8">
+                  {% for answer in item.answers %}
+                  <label data-id="{{answer.id}}"
+                    class="group mb-6 flex cursor-pointer items-center gap-[6px] last:mb-0 md:gap-2 xxl:mb-8 xxl:gap-3"
+                  >
+                    <input
+                      class="peer hidden"
+                      type="radio"
+                      name="question-{{loop.parent.index}}"
+                      value="{{answer.value}}"
+                    />
+                    <span
+                      class="radio-item block size-4 min-w-4 rounded-full border border-gray-400 bg-white transition-all duration-100 group-hover:border-2 group-hover:border-lilac-300 group-hover:bg-lilac-10 peer-checked:border-4 peer-checked:border-lilac-300 md:size-6 md:min-w-6 md:peer-checked:border-[6px]"
+                    ></span>
+                    <span class=" text-sm text-gray-800 md:text-base"
+                      >{{answer.text}}</span
+                    >
+                  </label>
+                  {% endfor %}
+                </div>
+              </form>
+
+              {% if loop.index > 1 %}
+              <button class="back-btn text-black-1A text-sm font-bold mt-[50px] ml-[65px]">Назад</button>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+
+
+      </div>
     </div>
+
   </div>
 </section>

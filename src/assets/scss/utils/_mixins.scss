@@ -9,8 +9,8 @@
     src: url($path + '.eot');
     src:
       url($path + '.eot?#iefix') format('embedded-opentype'),
-      /* Safari, Android, iOS */ url($path + '.woff') format('woff'),
-      /* Modern Browsers */ url($path + '.woff2') format('woff2'),
+      // /* Safari, Android, iOS */ url($path + '.woff') format('woff'),
+      // /* Modern Browsers */ url($path + '.woff2') format('woff2'),
       /* Legacy iOS */ url($path + '.ttf') format('truetype');
     font-weight: $weight;
     font-style: $style;

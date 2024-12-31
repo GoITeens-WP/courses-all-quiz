@@ -81,11 +81,8 @@ $(window).on('load', async function () {
     radio: false,
     forms: [
       {
-        formId: 'modalForm',
-      },
-      {
-        formId: 'hero',
-      },
+        formId: 'coursesAll',
+      }
       // {
       // formId: 'yourFormId',
       // productName: 'yourProductName',

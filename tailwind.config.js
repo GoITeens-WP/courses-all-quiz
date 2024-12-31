@@ -14,6 +14,9 @@ module.exports = {
       mdOnly: { min: '768px', max: '1279.98px' },
       notXl: { max: '1279.98px' },
     },
+    safelist: [
+      "translate-x-[-100%]", "hidden", "translate-x-[0%]"
+    ],
     // FONTS
     fontFamily: {
       // montserrat: ['Montserrat', 'sans-serif'], // class="font-montserrat"
