@@ -1,13 +1,16 @@
-
 {% set section = step3 %} {% set formId = "coursesAll" %}
 
-<section class="{{section.id}} translate-x-[100%] duration-500 absolute top-[72px] ">
-  <div class="form-wrapper ">
+<section class="{{section.id}} font-Inter right-[-100%] top-0 duration-500 absolute py-10 w-full">
+  <div class="container">
     <h2
-      class="mx-auto text-center font-IBMPlexMono text-sm font-semibold text-gray-900 md:text-[25px] md:font-bold md:leading-snug xxl:text-[28px]"
+      class="title text-[28px] font-bold text-[#695EFF] "
     >
       {{form.title}}
     </h2>
-    <div class="mt-6 xxl:mt-8">{% include 'components/formFields.njk' %}</div>
+    <ul class="list my-10"></ul>
+    <div class="bg-[#FAFAFA] rounded-[40px] p-8">
+      <h3 class="subtitle"></h3>
+      {% include 'components/formFields.njk' %}
+    </div>
   </div>
 </section>

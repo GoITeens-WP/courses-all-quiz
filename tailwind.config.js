@@ -15,7 +15,7 @@ module.exports = {
       notXl: { max: '1279.98px' },
     },
     safelist: [
-      "translate-x-[-100%]", "hidden", "translate-x-[0%]"
+      "hidden", "right-[-100%]", "min-h-[1140px]"
     ],
     // FONTS
     fontFamily: {

@@ -1,0 +1,12 @@
+.step-3 {
+  @apply min-h-[1140px];
+  .item {
+    @apply text-sm text-black-1A flex gap-4;
+    p {
+      @apply w-[295px] sm:w-full
+    }
+  }
+  .subtitle {
+    @apply text-black-1A text-center text-lg font-bold mb-6
+  }
+}

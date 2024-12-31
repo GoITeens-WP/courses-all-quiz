@@ -16,7 +16,7 @@
 
   "step1": {
     "id": "step-1",
-    "title": "Відкрийте двері у світ техномагії з онлайн &nbsp; <br class='md:hidden' /> IT-академією GoITeens!",
+    "title": "Відкрийте двері у світ техномагії з онлайн &nbsp; <br class='sm:hidden' /> IT-академією GoITeens!",
     "description": "Допоможемо вашій дитині 13-17 років знайти себе в IT!",
     "subtitle": [" запитання ", "і ви зрозумієте, &nbsp; <br> що їй підходить найбільше"],
     "btn": "Пройти тест"
@@ -431,16 +431,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "Ім'я *",
+
         "type": "text",
         "name": "name",
-        "placeholder": "Ім'я",
+        "placeholder": "Ваше імʼя",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "Телефон *",
+
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -449,34 +449,15 @@
         "autocomplete": "tel"
       },
       {
-        "title": "Пошта *",
+
         "type": "email",
         "name": "email",
-        "placeholder": "email@gmail.com",
+        "placeholder": "Ваш email",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
-      },
-      {
-        "title": "Я погоджуюся на обробку моїх персональних даних у маркетингових і комерційних цілях відповідно до ",
-        "type": "checkbox",
-        "name": "agree",
-        "dataField": "checkbox",
-        "required": true,
-        "class": "input-wrap-checkbox",
-        "linkSeparator": "та",
-        "links": [
-          {
-            "text": "Політики конфіденційності",
-            "href": "https://goit.global/ua/privacy-policy/"
-          },
-          {
-            "text": "Умов користування",
-            "href": "https://goit.global/ua/terms-of-use/"
-          }
-        ]
       }
     ],
-    "btnSubmit": "Зареєструватися"
+    "btnSubmit": "Записатися"
   }
 }
