@@ -378,7 +378,25 @@ $(window).on('load', async function () {
                 // $(form).css('display', 'block');
 
                 /* That redirects user to some URL after send form. */
-                window.location.href = 'https://nmt.goiteens.com/nmt-2025-quiz/success/';
+                switch (category) {
+                  case "Python":
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/';
+                    break;
+                  case "Frontend":
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/';
+                    break;
+                  case "GameDev":
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/';
+                    break;
+                  case "Design":
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/';
+                    break;
+                  default:
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/';
+                    break;
+                }
+
+
               } else {
                 console.log('error ', resp?.statusText);
                 $(form).css('display', 'block');
