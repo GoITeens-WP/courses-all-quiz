@@ -9,6 +9,7 @@ import intlTelInput from 'intl-tel-input';
 import JustValidate from 'just-validate';
 import service from './service.js';
 import crm from './submit.js';
+import { es } from 'intl-tel-input/i18n';
 
 $(window).on('load', async function () {
   let defaultLang = null;
@@ -82,7 +83,10 @@ $(window).on('load', async function () {
     forms: [
       {
         formId: 'coursesAll',
-      }
+      },
+      // {
+      //   formId: 'hero',
+      // },
       // {
       // formId: 'yourFormId',
       // productName: 'yourProductName',
@@ -145,6 +149,7 @@ $(window).on('load', async function () {
     const email = form.querySelector('[name="email"]');
     const promocode = form.querySelector('[name="promocode"]');
 
+
     let userType = null;
     if (params.radio) {
       const radio = form.querySelectorAll('[name="user"]');
@@ -195,6 +200,39 @@ $(window).on('load', async function () {
       // submit form
       .onSuccess(async function (event) {
         event.preventDefault();
+        const category = form.dataset.id;
+        console.log('form', form);
+        console.log('category', category);
+
+        if (category === 'Python') {
+          window.productName = 'GoITeens_Python_Courses_All_Quiz'
+          window.productId = '550375000515161314';
+          window.esputnik_formType = 'segment_13_17';
+          window.esputnik_groups_name = 'GoITeens_Python';
+
+
+        }
+        if (category === 'Frontend') {
+          window.productName = 'GoITeens_Frontend_Courses_All_Quiz'
+          window.productId = '550375000515161286';
+          window.esputnik_formType = 'segment_13_17';
+          window.esputnik_groups_name = 'GoITeens_FrontEnd';
+
+        }
+        if (category === "Design") {
+          window.productName = 'GoITeens_Design_Courses_All_Quiz'
+          window.productId = '550375000515161272';
+          window.esputnik_formType = 'segment_13_17';
+          window.esputnik_groups_name = 'GoITeens_Design';
+
+        }
+        if (category === "GameDev") {
+          window.productName = 'GoITeens_Game_Dev_Courses_All_Quiz'
+          window.productId = '550375000515161300';
+          window.esputnik_formType = 'segment_13_17';
+          window.esputnik_groups_name = 'GoITeens_GameDev';
+
+        }
 
         /* Adds "disabled" attribute to button with type submit. */
         service.addDisabledAttributeToSubmitBtn();
@@ -248,8 +286,11 @@ $(window).on('load', async function () {
             userEmail: email.value,
             userPromocode: promocode?.value ? promocode.value : null,
             userType: params.radio ? userType : null,
-            productName: productName,
-            productId: productId,
+            productName: window.productName,
+            productId: window.productId,
+            esputnik_formType: window.esputnik_formType,
+            esputnik_groups_name: window.esputnik_groups_name,
+
           };
 
           /* It's a function that generates data for the CRM. */
@@ -282,15 +323,17 @@ $(window).on('load', async function () {
             default:
               return showDefaultBlock();
           }
+          // return showLeelooBlock(window.leelooHash);
+
 
           /* It's a function that redirects the user to the Leeloo CRM. */
           async function showLeelooBlock(leelooHash) {
             service.setParamsForLeeloo(data);
 
             try {
-              const crmResponse = await response;
+              const resp = await response;
 
-              if (crmResponse && crmResponse.status === 200) {
+              if (resp.status === 200) {
                 service.setUrlParameter('name2', name.value);
 
                 if (window.elzaToken) {
@@ -301,6 +344,7 @@ $(window).on('load', async function () {
                 service.initializeLeeloo(form, leelooHash);
                 $(form).css('display', 'none');
                 $(form).trigger('reset');
+                service.changeFormStep(form, 3);
 
                 const checkLeeloo = setInterval(() => {
                   const iframe = form.querySelector('.leeloo-lgt-form');
@@ -310,51 +354,41 @@ $(window).on('load', async function () {
                   }
                 }, 2000);
               } else {
+                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
-                loading.hide();
-                const parsedResponse = await crmResponse?.json();
-                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
-                await service.reportError(errorMessage, data);
-                console.error(errorMessage);
               }
             } catch (error) {
+              console.log(error);
               $(form).css('display', 'block');
               service.showError();
+            } finally {
               loading.hide();
-              console.error('error', error);
-              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
 
           async function showDefaultBlock() {
             try {
-              const crmResponse = await response;
+              const resp = await response;
 
-              if (crmResponse.status === 200) {
+              if (resp.status === 200) {
                 $(form).trigger('reset');
-                loading.hide();
-                $(form).css('display', 'block');
-                service.removeDisabledAttributeFromSubmitBtn();
+                service.changeFormStep(form, 3);
+                // service.showSuccess(service.translate('reply'), true, loading, true);
+                // $(form).css('display', 'block');
 
                 /* That redirects user to some URL after send form. */
-                // const queryString = service.convertFormDataToQueryString(data);
-                // window.location.href = 'someURL?' + queryString;
+                window.location.href = 'https://nmt.goiteens.com/nmt-2025-quiz/success/';
               } else {
+                console.log('error ', resp?.statusText);
                 $(form).css('display', 'block');
                 service.showError();
-                loading.hide();
-                const parsedResponse = await crmResponse?.json();
-                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
-                await service.reportError(errorMessage, data);
-                console.error(errorMessage);
               }
             } catch (error) {
+              console.log(error);
               $(form).css('display', 'block');
               service.showError();
               loading.hide();
-              console.error('error', error);
-              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
         }

@@ -1,21 +1,21 @@
 {% set section = step2 %}
 
-<section class="{{section.id}} duration-500 absolute top-0 right-[-100%]  font-Inter py-10 w-full h-[888px]">
+<section class="{{section.id}} duration-500 absolute top-0 right-[-100%] xl:h-[80vh] font-Inter py-10 w-full h-[888px]">
   <div class="container  relative  ">
-    <div class="wrapper xl:max-w-[704px] xxl:max-w-[780px]">
+    <div class="wrapper xl:max-w-[704px] xxl:max-w-[780px] md:mx-auto">
 
       <div
         class="wrapper-quiz-form   bg-[#FAFAFA] flex min-h-[428px] flex-col rounded-[40px]  p-5 md:min-h-[446px] md:p-10 xxl:min-h-[563px]"
       >
         <div class="quiz-wrapper">
           <h2
-            class="text-center  text-sm   text-gray-500"
+            class="text-center text-sm md:text-xl text-gray-500"
           >
             {{ section.quiz.title }} <span class="count-question-span">1</span>/{{
             section.quiz.list.length }}
           </h2>
 
-          <ul class="quiz-progress-bar mt-6 flex items-center gap-4 xxl:mt-8">
+          <ul class="quiz-progress-bar mt-6 md:mt-10 flex items-center gap-4 xxl:mt-8">
             {% for item in section.quiz.list %}
             <li
               class="progress-item {% if loop.first %}active{% endif %} h-1 flex-1 overflow-hidden rounded-full  xxl:h-2"
@@ -58,7 +58,7 @@
               </form>
 
               {% if loop.index > 1 %}
-              <button class="back-btn text-black-1A text-sm font-bold mt-[50px] ml-[65px]">Назад</button>
+              <button class="back-btn text-black-1A hover:text-[#5331B2] active:text-[#452994] duration-200  text-sm font-bold mt-[50px] ml-[65px]">Назад</button>
               {% endif %}
             </li>
             {% endfor %}

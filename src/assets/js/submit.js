@@ -25,7 +25,13 @@ function generateData(crmParams) {
     leadIP: window.ipData.ip || '',
     leadUserAgent: window.navigator.userAgent,
     google_id: readCookie('_ga'),
+    esputnik: true,
+    esputnik_formType: crmParams.esputnik_formType,
+    esputnik_groups_name: crmParams.esputnik_groups_name,
+    quizResult: window.quizAnswers,
+
   };
+  console.log(data);
   return ensureUtmData(data);
 }
 

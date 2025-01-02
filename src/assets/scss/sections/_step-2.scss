@@ -4,6 +4,16 @@
   background-size: 804px auto;
   background-position: top 0px left calc(50% + 25px);
 
+  @include mq(tablet) {
+    background-image: url(../images/sections/step-2/bg-tab.webp);
+    background-size: auto 100%;
+    // background-position: top 0px left calc(50% + 0px);
+  }
+
+  @include mq(desktop) {
+    background-size: cover;
+  }
+
   @apply font-Inter;
 
   .quiz-wrapper {

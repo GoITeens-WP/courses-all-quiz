@@ -14,6 +14,7 @@ export const refs = {
   progressItems: quizWrapper?.querySelectorAll('.quiz-progress-bar .progress-item'),
   quizQuestion: quizWrapper?.querySelectorAll('.quiz-question'),
   countQuestionSpan: quizWrapper?.querySelector('.count-question-span'),
+  form: document.querySelector('#coursesAll'),
 };
 
 const categoryConfig = {
@@ -159,6 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
     refs.sectionStepThree.style.backgroundImage = `url(${updateBackground(config.backgrounds)})`;
     refs.formTitle.innerHTML = config.title;
     refs.formSubtitle.textContent = config.subtitle;
+    console.log(refs.form);
+    refs.form.dataset.id = categoryKey;
     refs.formList.innerHTML = config.benefits
       .map(benefit => `<li class='item'><svg class='flex-shrink-0' width="24" height="24" aria-label="іконка відмітки"><use href="./assets/images/sprite.svg#done-icon"></use></svg> <p>${benefit}</p></li>`)
       .join('');
@@ -171,8 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
       radio.addEventListener('change', () => {
         console.log(radio.parentElement.dataset.id);
         const category = radio.parentElement.dataset.id;
-        refs.sectionStepOne.classList.add('min-h-[1140px]', "md:min-h-[960px]", "xl:min-h-[80vh]");
-        refs.sectionStepOne.classList.remove('min-h-[888px]', "md:h-[1344px]", "xl:h-[80vh]");
+
+        if(currentStep === 2) {
+          refs.sectionStepOne.classList.add('min-h-[1140px]', "md:min-h-[960px]", "xl:min-h-[80vh]");
+          refs.sectionStepOne.classList.remove('min-h-[888px]', "md:h-[1344px]", "xl:h-[80vh]");
+        }
 
         counts[categoryConfig[category].countsKey]++;
         const maxCategory = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
