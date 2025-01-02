@@ -1,11 +1,35 @@
 .step-3 {
-  @apply min-h-[1140px];
+  @apply min-h-[1140px] md:min-h-[960px] xl:min-h-[80vh];
+  background-repeat: no-repeat;
+  background-size: 820px auto;
+  background-position: bottom center;
+  // background-image: url(../images/sections/quiz/python-bg.webp);
+
+  @include mq(tablet) {
+    background-size: 1365px auto;
+    background-position: top -60px center;
+
+  }
+
+  @include mq(desktop) {
+    background-size: auto 100%;
+    background-position: top center;
+
+  }
+
+  @include mq(big-desktop) {
+    // background-size: 2000px auto;
+    background-position: top right calc(50% - 110px);
+  }
+
   .item {
     @apply text-sm text-black-1A flex gap-4;
+
     p {
-      @apply w-[295px] sm:w-full
+      @apply w-[295px] sm:w-full md:text-base xl:text-lg
     }
   }
+
   .subtitle {
     @apply text-black-1A text-center text-lg font-bold mb-6
   }
