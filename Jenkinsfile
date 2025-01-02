@@ -11,11 +11,11 @@ node("goiteens"){
             string(credentialsId: 'telegramChatIdJenkinsSoftryzen', variable: 'telegramNotifyChannelChatId'),
 
             //ADD FTP CREDENTIAL
-            string(credentialsId: 'ftp_user_pass_host_for_example', variable: 'ftpUserAndPass')
+            string(credentialsId: 'ftp_user_pass_host_for_quiz_courses_all_goiteens_com', variable: 'ftpUserAndPass')
         ]) {
-                env.gitRepository = 'git@github.com:GoWeb-Studio/example-repo.git';
-                env.gitBranch = 'main';
-                env.folderPath = './ua/';
+                env.gitRepository = 'git@github.com:GoITeens-WP/quiz.git';
+                env.gitBranch = 'courses-all';
+                env.folderPath = './';
                 //
                 env.telegramNotifyChannelBotApiToken = telegramNotifyChannelBotApiToken;
                 env.telegramNotifyChannelChatId = telegramNotifyChannelChatId;
