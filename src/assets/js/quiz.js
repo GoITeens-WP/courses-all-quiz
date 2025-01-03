@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === currentStep) {
         setTimeout(() => {
           item.classList.add('active');
-        }, 300);
+        }, 400);
       } else {
         item.classList.remove('active');
       }
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     refs.countQuestionSpan.textContent = currentStep + 1;
 
     if (currentStep >= refs.quizItems.length) {
-      refs.sectionStepTwo.classList.add('left-[-100%]');
+      refs.sectionStepTwo.classList.add('translate-x-[-100%]');
       // refs.sectionStepTwo.classList.remove('right-0');
 
       refs.sectionStepThree.classList.remove('right-[-100%]');
@@ -172,11 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const radios = item.querySelectorAll('input[type="radio"]');
     radios.forEach(radio => {
       radio.addEventListener('change', () => {
-        console.log(radio.parentElement.dataset.id);
+
         const category = radio.parentElement.dataset.id;
 
-        if(currentStep === 2) {
+        if (currentStep === 2) {
           refs.sectionStepOne.classList.add('min-h-[1140px]', "md:min-h-[960px]", "xl:min-h-[80vh]");
+
           refs.sectionStepOne.classList.remove('min-h-[888px]', "md:h-[1344px]", "xl:h-[80vh]");
         }
 

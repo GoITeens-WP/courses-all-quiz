@@ -11,7 +11,11 @@
   }
 
   @include mq(desktop) {
-    background-size: cover;
+    background-image: url(../images/sections/step-2/bg-desk.webp);
+    // background-size: cover;
+    background-size: auto 1077px;
+    background-position: top 0px left calc(50% + 530px);
+
   }
 
   @apply font-Inter;
