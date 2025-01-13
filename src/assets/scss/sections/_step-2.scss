@@ -1,5 +1,5 @@
 .step-2 {
-  @apply xl:h-[720px];
+  @apply xl:min-h-[80vh] xl:h-full;
   background-image: url(../images/sections/step-2/bg-mob.webp);
   background-repeat: no-repeat;
   background-size: 804px auto;
@@ -14,8 +14,15 @@
   @include mq(desktop) {
     background-image: url(../images/sections/step-2/bg-desk.webp);
     // background-size: cover;
-    background-size: auto 720px;
-    background-position: top 0px left calc(50% + 25px);
+    background-size: auto 1130px;
+    background-position: top 0px left calc(50% + 30px);
+
+  }
+
+  @include mq(big-desktop) {
+    background-image: url(../images/sections/step-2/bg-big-desk.webp);
+    background-size: auto 1180px;
+    background-position: top 0px left calc(50% + 0px);
 
   }
 
