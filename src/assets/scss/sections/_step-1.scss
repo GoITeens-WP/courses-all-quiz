@@ -14,18 +14,18 @@
   @include mq(desktop) {
     background-image: url(../images/sections/step-1/bg-lap.webp);
     background-size: 2400px auto;
-    background-position: top -535px left calc(50% + 600px);
+    background-position: top -555px left calc(50% + 600px);
 
   }
 
   @include mq(big-desktop) {
     background-image: url(../images/sections/step-1/bg-desk.webp);
-    background-position: top -555px left calc(50% + 400px);
+    background-position: top -600px left calc(50% + 400px);
 
 
   }
 
-  @apply py-10 font-Inter  md:py-20  xl:py-[172px];
+  @apply py-10 font-Inter  md:py-20  xl:py-[172px] xxl:py-[208px];
 
   .title {
     @apply text-black-1A text-[26px] font-bold leading-[130%] md:text-[40px] md:w-[690px]
@@ -67,6 +67,6 @@
   }
 
   .btn {
-    @apply px-6 py-3 bg-[#C8F428] rounded-[40px] block text-sm text-black-1A w-full font-bold mt-10 xl:max-w-[320px] xxl:text-base
+    @apply px-6 py-3 bg-[#C8F428] rounded-[40px] block text-sm text-black-1A w-full font-bold mt-10 xl:max-w-[320px] xxl:text-base hover:bg-[#A9D703] duration-300 active:bg-[#D3F652]
   }
 }

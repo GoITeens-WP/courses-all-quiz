@@ -14,8 +14,8 @@ module.exports = {
       mdOnly: { min: '768px', max: '1279.98px' },
       notXl: { max: '1279.98px' },
     },
-    safelist: [ "translate-x-[-100%]",
-      "hidden", "right-[-100%]", "min-h-[1140px]", "min-h-[888px]", "xl:h-[80vh]", "xl:h-[720px]"
+    safelist: ["translate-x-[-100%]",
+      "hidden", "right-[-100%]", "min-h-[1140px]", "min-h-[888px]", "xl:h-[80vh]", "xl:h-[720px]", "md:min-h-[1344px]"
     ],
     // FONTS
     fontFamily: {

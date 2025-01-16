@@ -1,28 +1,28 @@
 .step-2 {
-  @apply xl:min-h-[80vh] xl:h-full;
+  @apply md:min-h-[80vh] md:h-[1344px] xl:h-full;
   background-image: url(../images/sections/step-2/bg-mob.webp);
   background-repeat: no-repeat;
-  background-size: 804px auto;
-  background-position: top 0px left calc(50% + 25px);
+  background-size: 768px 888px;
+  background-position: top 0px left calc(50% + 0px);
 
   @include mq(tablet) {
     background-image: url(../images/sections/step-2/bg-tab.webp);
-    background-size: auto 100%;
-    // background-position: top 0px left calc(50% + 0px);
+    background-size: auto 1844px;
+    background-position: top -500px left calc(50% + 0px);
   }
 
   @include mq(desktop) {
     background-image: url(../images/sections/step-2/bg-desk.webp);
     // background-size: cover;
-    background-size: auto 1130px;
-    background-position: top 0px left calc(50% + 30px);
+    background-size: auto 1344px;
+    background-position: top -100px left calc(50% + 30px);
 
   }
 
   @include mq(big-desktop) {
     background-image: url(../images/sections/step-2/bg-big-desk.webp);
     background-size: auto 1180px;
-    background-position: top 0px left calc(50% + 0px);
+    background-position: top -45px left calc(50% + 0px);
 
   }
 
