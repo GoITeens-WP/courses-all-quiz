@@ -15,14 +15,14 @@
     background-image: url(../images/sections/step-2/bg-desk.webp);
     // background-size: cover;
     background-size: auto 1344px;
-    background-position: top -100px left calc(50% + 30px);
+    background-position: top -70px left calc(50% + 30px);
 
   }
 
   @include mq(big-desktop) {
     background-image: url(../images/sections/step-2/bg-big-desk.webp);
     background-size: auto 1180px;
-    background-position: top -45px left calc(50% + 0px);
+    background-position: top 5px left calc(50% + 0px);
 
   }
 
