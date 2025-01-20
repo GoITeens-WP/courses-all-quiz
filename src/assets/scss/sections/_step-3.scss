@@ -6,20 +6,21 @@
   // background-image: url(../images/sections/quiz/python-bg.webp);
 
   @include mq(tablet) {
-    background-size: 1365px auto;
-    background-position: top -60px center;
+    background-size: 1280px auto;
+  background-position: bottom left;
+
 
   }
 
   @include mq(desktop) {
-    background-size: auto 100%;
+    background-size:1600px auto;
     background-position: top center;
 
   }
 
   @include mq(big-desktop) {
-    // background-size: 2000px auto;
-    background-position: top right calc(50% - 110px);
+    background-size: 1920px auto;
+
   }
 
   .item {

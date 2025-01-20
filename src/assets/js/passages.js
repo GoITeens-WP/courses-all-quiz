@@ -7,6 +7,6 @@ stepOneBtn.addEventListener('click', () => {
   stepTwoSection.classList.remove('right-[-100%]');
   stepTwoSection.classList.add('right-0');
   stepOneSection.classList.remove('min-h-[888px]', "md:min-h-[1344px]", "xl:min-h-[80vh]");
-  stepOneSection.classList.add('min-h-[888px]','md:min-h-[1344px]', 'xl:min-h-[80vh]');
+  stepOneSection.classList.add('min-h-[888px]','md:min-h-[1344px]', 'xl:min-h-full', 'xl:h-[720px]', "xxl:h-[800px]");
 
 })
