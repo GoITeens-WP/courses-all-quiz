@@ -382,19 +382,19 @@ $(window).on('load', async function () {
                 /* That redirects user to some URL after send form. */
                 switch (category) {
                   case "Python":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/' + queryString;
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/?' + queryString;
                     break;
                   case "Frontend":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/' + queryString;
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/?' + queryString;
                     break;
                   case "GameDev":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/' + queryString;
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/?' + queryString;
                     break;
                   case "Design":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/' + queryString;
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/?' + queryString;
                     break;
                   default:
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/' + queryString;
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/?' + queryString;
                     break;
                 }
 
