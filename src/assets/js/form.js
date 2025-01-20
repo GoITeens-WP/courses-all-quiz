@@ -377,22 +377,24 @@ $(window).on('load', async function () {
                 // service.showSuccess(service.translate('reply'), true, loading, true);
                 // $(form).css('display', 'block');
 
+                const queryString = service.convertFormDataToQueryString(data);
+
                 /* That redirects user to some URL after send form. */
                 switch (category) {
                   case "Python":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/';
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/' + queryString;
                     break;
                   case "Frontend":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/';
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/' + queryString;
                     break;
                   case "GameDev":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/';
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/' + queryString;
                     break;
                   case "Design":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/';
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/' + queryString;
                     break;
                   default:
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/';
+                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/' + queryString;
                     break;
                 }
 
