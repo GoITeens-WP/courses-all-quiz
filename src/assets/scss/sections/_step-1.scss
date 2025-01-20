@@ -2,7 +2,7 @@
   background-image: url(../images/sections/step-1/bg-mob.webp);
   background-repeat: no-repeat;
   background-size: 768px auto;
-  background-position: bottom 0 left calc(50% + 0px);
+  background-position: top 0 left calc(50% + 0px);
 
   @include mq(tablet) {
     background-image: url(../images/sections/step-1/bg-tab.webp);
