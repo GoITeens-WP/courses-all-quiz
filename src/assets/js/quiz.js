@@ -16,7 +16,7 @@ export const refs = {
   countQuestionSpan: quizWrapper?.querySelector('.count-question-span'),
   form: document.querySelector('#coursesAll'),
 };
-
+const selectedAnswers = {};
 const categoryConfig = {
   Python: {
     countsKey: 'Python',
@@ -31,7 +31,7 @@ const categoryConfig = {
       large: './assets/images/sections/quiz/python-bg-lap.webp',
       extraLarge: './assets/images/sections/quiz/python-bg-desk.webp'
     },
-    title: 'Ідеальний напрям для вашої дитини — <br class="sm:hidden"> Python!',
+    title: 'Ідеальний напрям для вашої дитини — <br class="xs:hidden"> Python!',
     subtitle: 'Записатися на безоплатний урок з Python'
   },
   Design: {
@@ -47,14 +47,14 @@ const categoryConfig = {
       large: './assets/images/sections/quiz/design-bg-lap.webp',
       extraLarge: './assets/images/sections/quiz/design-bg-desk.webp'
     },
-    title: 'Ідеальний напрям для вашої дитини — <br class="sm:hidden"> Design!',
+    title: 'Ідеальний напрям для вашої дитини — <br class="xs:hidden"> Design!',
     subtitle: 'Записатися на безоплатний урок з Design'
   },
   Frontend: {
     countsKey: 'Frontend',
     benefits: [
       "<b>На першому уроці</b> ваша дитина створить власний простий сайт",
-      "<b>На курсі</b> і вивчатиме HTML, CSS, JavaScript та основи сучасних фреймворків",
+      "<b>На курсі</b> вивчатиме HTML, CSS, JavaScript та основи сучасних фреймворків",
       "<b>Перспективи:</b> кар'єра веброзробника, full-stack інженера, frontend-розробника"
     ],
     backgrounds: {
@@ -63,7 +63,7 @@ const categoryConfig = {
       large: './assets/images/sections/quiz/frontend-bg-lap.webp',
       extraLarge: './assets/images/sections/quiz/frontend-bg-desk.webp'
     },
-    title: 'Ідеальний напрям для вашої дитини — <br class="sm:hidden"> Frontend!',
+    title: 'Ідеальний напрям для вашої дитини — <br class="xs:hidden"> Frontend!',
     subtitle: 'Записатися на безоплатний урок з Frontend'
   },
   GameDev: {
@@ -79,7 +79,7 @@ const categoryConfig = {
       large: './assets/images/sections/quiz/game-dev-bg-lap.webp',
       extraLarge: './assets/images/sections/quiz/game-dev-bg-desk.webp'
     },
-    title: 'Ідеальний напрям для вашої дитини — <br class="sm:hidden"> GameDev!',
+    title: 'Ідеальний напрям для вашої дитини — <br class="xs:hidden"> GameDev!',
     subtitle: 'Записатися на безоплатний урок з GameDev'
   }
 };
@@ -121,8 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentStep >= refs.quizItems.length) {
       refs.sectionStepTwo.classList.add('translate-x-[-100%]');
-      // refs.sectionStepTwo.classList.remove('right-0');
-
       refs.sectionStepThree.classList.remove('right-[-100%]');
       refs.sectionStepThree.classList.add('right-0');
 
@@ -167,10 +165,23 @@ document.addEventListener('DOMContentLoaded', () => {
       .join('');
   }
 
+  const handleAnswerChange = (index, selectedCategory) => {
+    // Якщо була вибрана попередня відповідь, скидаємо її з counter
+    if (selectedAnswers[index]) {
+      counts[selectedAnswers[index]]--;
+    }
+
+    // Оновлюємо вибрану відповідь для поточного питання
+    selectedAnswers[index] = selectedCategory;
+    counts[selectedCategory]++;
+
+    console.log("Оновлені counts:", counts);
+  };
 
   refs.quizItems.forEach((item, index) => {
     const radios = item.querySelectorAll('input[type="radio"]');
     radios.forEach(radio => {
+
       radio.addEventListener('change', () => {
 
         const category = radio.parentElement.dataset.id;
@@ -180,9 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
           refs.sectionStepOne.classList.remove('min-h-[888px]', "md:h-[1344px]", "xl:h-[80vh]");
         }
+        handleAnswerChange(index, category);
+        // counts[categoryConfig[category].countsKey]++;
+        let maxCategory = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+        const uniqueValues = new Set(Object.values(counts));
 
-        counts[categoryConfig[category].countsKey]++;
-        const maxCategory = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+        if (uniqueValues.size === Object.keys(counts).length - 2) {
+          console.log(category);
+          maxCategory = category;
+        }
         updateUI(maxCategory, refs);
 
         console.log(maxCategory);
@@ -190,6 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
           refs.sectionStepThree.style.backgroundImage = `url(${updateBackground(categoryConfig[maxCategory].backgrounds)})`;
         });
+
+
 
 
         console.log(counts);
@@ -213,8 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
   refs.quizItems.forEach((item, index) => {
     item.addEventListener('click', (e) => {
       if (e.target.classList.contains('back-btn')) {
+        // resetRadioButtons(currentStep);
         currentStep--;
         updateQuizStep();
+        const prevRadios = refs.quizItems[currentStep]?.querySelectorAll('input[type="radio"]');
+
+        prevRadios.forEach(prevRadio => {
+          prevRadio.checked = false; // Робимо кнопку доступною
+        });
       }
     })
   })

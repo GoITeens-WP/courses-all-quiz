@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     // MEDIA QUERIES
     screens: {
-      // xs: '375px', // (goiteens)
+      xs: '430px', // (goiteens)
       sm: '480px',
       md: '768px',
       xl: '1280px',

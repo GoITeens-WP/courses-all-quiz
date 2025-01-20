@@ -1,8 +1,8 @@
 .step-1 {
   background-image: url(../images/sections/step-1/bg-mob.webp);
   background-repeat: no-repeat;
-  background-size: 2400px auto;
-  background-position: top -240px left calc(50% + 205px);
+  background-size: 768px auto;
+  background-position: top 0px left calc(50% + 0px);
 
   @include mq(tablet) {
     background-image: url(../images/sections/step-1/bg-tab.webp);
