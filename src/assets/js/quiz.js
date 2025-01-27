@@ -20,6 +20,7 @@ const selectedAnswers = {};
 const categoryConfig = {
   Python: {
     countsKey: 'Python',
+    height: 'h-[1176px]',
     benefits: [
       "<b>На першому уроці</b> ваша дитина створить телеграм-бота",
       "<b>На курсі</b> вивчатиме основи Python, автоматизацію процесів, аналіз даних",
@@ -36,6 +37,8 @@ const categoryConfig = {
   },
   Design: {
     countsKey: 'Design',
+    height: 'h-[1140px]',
+
     benefits: [
       "<b>На першому уроці</b> ваша дитина створить листівку, банер або GIF-анімацію",
       "<b>На курсі</b> вивчатиме роботу у Figma, основи цифрового дизайну та брендингу",
@@ -52,6 +55,8 @@ const categoryConfig = {
   },
   Frontend: {
     countsKey: 'Frontend',
+    height: 'h-[1156px]',
+
     benefits: [
       "<b>На першому уроці</b> ваша дитина створить власний простий сайт",
       "<b>На курсі</b> вивчатиме HTML, CSS, JavaScript та основи сучасних фреймворків",
@@ -68,6 +73,8 @@ const categoryConfig = {
   },
   GameDev: {
     countsKey: 'GameDev',
+    height: 'h-[1176px]',
+
     benefits: [
       "<b>На першому уроці</b> ваша дитина створить математичну гру-угадайку",
       "<b>На курсі</b> вивчатиме Unity, C#, 2D та 3D дизайн ігор",
@@ -156,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateUI = (categoryKey, refs) => {
     const config = categoryConfig[categoryKey];
     refs.sectionStepThree.style.backgroundImage = `url(${updateBackground(config.backgrounds)})`;
+    refs.sectionStepThree.classList.add(`${config?.height}`);
     refs.formTitle.innerHTML = config.title;
     refs.formSubtitle.textContent = config.subtitle;
     console.log(refs.form);

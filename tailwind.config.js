@@ -15,7 +15,7 @@ module.exports = {
       notXl: { max: '1279.98px' },
     },
     safelist: ["translate-x-[-100%]",
-      "hidden", "right-[-100%]", "min-h-[1140px]", "min-h-[888px]", "xl:h-[80vh]", "xl:h-[720px]", "md:min-h-[1344px]", "xl:h-[720px]", "xl:min-h-full", "xxl:h-[800px]"
+      "hidden", "right-[-100%]", "min-h-[1140px]", "min-h-[888px]", "xl:h-[80vh]", "xl:h-[720px]", "md:min-h-[1344px]", "xl:h-[720px]", "xl:min-h-full", "xxl:h-[800px]", "h-[1176px]", "h-[1156px]"
     ],
     // FONTS
     fontFamily: {

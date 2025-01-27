@@ -1,5 +1,5 @@
 .step-3 {
-  @apply min-h-[1140px] md:min-h-[960px] xl:h-[80vh] xl:min-h-[720px] xxl:min-h-[800px];
+  @apply min-h-[1140px] md:min-h-[960px] xl:h-[82vh] xl:min-h-[725px] xxl:min-h-[800px];
   background-repeat: no-repeat;
   background-size: 768px auto;
   background-position: bottom center;
@@ -27,7 +27,7 @@
     @apply text-sm text-black-1A flex gap-4;
 
     p {
-      @apply w-[295px] sm:w-full md:text-base xl:text-lg
+      @apply w-[295px] sm:w-full md:text-base xxl:text-lg
     }
   }
 

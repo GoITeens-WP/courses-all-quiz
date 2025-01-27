@@ -816,6 +816,20 @@ function convertFormDataToQueryString(formData) {
   return new URLSearchParams(params).toString();
 }
 
+function resetAnswersAfterSendForm() {
+  const answers = document.querySelectorAll('.quiz-item');
+
+
+  answers.forEach(item => {
+    const radios = item.querySelectorAll('input[type="radio"]');
+
+    radios.forEach(radio => {
+      radio.checked = false;
+    });
+  });
+
+}
+
 export default {
   addDisabledAttributeToSubmitBtn,
   removeDisabledAttributeFromSubmitBtn,
@@ -842,4 +856,5 @@ export default {
   uid,
   validationOptions,
   initCustomSelect,
+  resetAnswersAfterSendForm
 };

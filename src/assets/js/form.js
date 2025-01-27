@@ -374,11 +374,11 @@ $(window).on('load', async function () {
               if (resp.status === 200) {
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
-                // service.showSuccess(service.translate('reply'), true, loading, true);
-                // $(form).css('display', 'block');
+                service.showSuccess(service.translate('reply'), true, loading, true);
+                $(form).css('display', 'block');
 
                 const queryString = service.convertFormDataToQueryString(data);
-
+                service.resetAnswersAfterSendForm()
                 /* That redirects user to some URL after send form. */
                 switch (category) {
                   case "Python":
