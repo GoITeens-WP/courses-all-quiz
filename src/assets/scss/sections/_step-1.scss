@@ -21,7 +21,7 @@
 
   }
 
-  @apply py-10 font-Inter md:py-20 xl:py-[172px] xxl:py-[208px];
+  @apply py-10 font-Inter md:py-20 xl:py-[172px] xxl:py-[208px] md:h-auto;
 
   .title {
     @apply text-black-1A text-[26px] font-bold leading-[130%] md:text-[40px] md:w-[690px]

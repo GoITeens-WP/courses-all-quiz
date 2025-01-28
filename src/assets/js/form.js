@@ -374,7 +374,14 @@ $(window).on('load', async function () {
               if (resp.status === 200) {
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
-                service.showSuccess(service.translate('reply'), true, loading, true);
+                // service.showSuccess(service.translate('reply'), true, loading, true);
+                if (loading) {
+                  loading.hide();
+                }
+                const submitButton = form.querySelector('button[type="submit"]');
+                if (submitButton) {
+                   submitButton.disabled = false;
+                }
                 $(form).css('display', 'block');
 
                 const queryString = service.convertFormDataToQueryString(data);

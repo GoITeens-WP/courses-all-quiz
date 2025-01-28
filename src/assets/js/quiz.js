@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const config = categoryConfig[categoryKey];
     refs.sectionStepThree.style.backgroundImage = `url(${updateBackground(config.backgrounds)})`;
     refs.sectionStepThree.classList.add(`${config?.height}`);
+
     refs.formTitle.innerHTML = config.title;
     refs.formSubtitle.textContent = config.subtitle;
     console.log(refs.form);
@@ -198,6 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
           refs.sectionStepOne.classList.add('min-h-[1140px]', "md:min-h-[960px]", "xl:min-h-[80vh]");
 
           refs.sectionStepOne.classList.remove('min-h-[888px]', "md:h-[1344px]", "xl:h-[80vh]");
+        }
+        const config = categoryConfig[category];
+        if(currentStep === 2){
+          console.log('happens');
+          refs.sectionStepOne.classList.add(`${config?.height}`);
         }
         handleAnswerChange(index, category);
         // counts[categoryConfig[category].countsKey]++;
