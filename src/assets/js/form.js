@@ -149,7 +149,6 @@ $(window).on('load', async function () {
     const email = form.querySelector('[name="email"]');
     const promocode = form.querySelector('[name="promocode"]');
 
-
     let userType = null;
     if (params.radio) {
       const radio = form.querySelectorAll('[name="user"]');
@@ -205,33 +204,28 @@ $(window).on('load', async function () {
         console.log('category', category);
 
         if (category === 'Python') {
-          window.productName = 'GoITeens_Python_Courses_All_Quiz'
+          window.productName = 'GoITeens_Python_Courses_All_Quiz';
           window.productId = '550375000515161314';
           window.esputnik_formType = 'segment_13_17';
           window.esputnik_groups_name = 'GoITeens_Python';
-
-
         }
         if (category === 'Frontend') {
-          window.productName = 'GoITeens_Frontend_Courses_All_Quiz'
+          window.productName = 'GoITeens_Frontend_Courses_All_Quiz';
           window.productId = '550375000515161286';
           window.esputnik_formType = 'segment_13_17';
           window.esputnik_groups_name = 'GoITeens_FrontEnd';
-
         }
-        if (category === "Design") {
-          window.productName = 'GoITeens_Design_Courses_All_Quiz'
+        if (category === 'Design') {
+          window.productName = 'GoITeens_Design_Courses_All_Quiz';
           window.productId = '550375000515161272';
           window.esputnik_formType = 'segment_13_17';
           window.esputnik_groups_name = 'GoITeens_Design';
-
         }
-        if (category === "GameDev") {
-          window.productName = 'GoITeens_Game_Dev_Courses_All_Quiz'
+        if (category === 'GameDev') {
+          window.productName = 'GoITeens_Game_Dev_Courses_All_Quiz';
           window.productId = '550375000515161300';
           window.esputnik_formType = 'segment_13_17';
           window.esputnik_groups_name = 'GoITeens_GameDev';
-
         }
 
         /* Adds "disabled" attribute to button with type submit. */
@@ -290,7 +284,6 @@ $(window).on('load', async function () {
             productId: window.productId,
             esputnik_formType: window.esputnik_formType,
             esputnik_groups_name: window.esputnik_groups_name,
-
           };
 
           /* It's a function that generates data for the CRM. */
@@ -325,15 +318,14 @@ $(window).on('load', async function () {
           }
           // return showLeelooBlock(window.leelooHash);
 
-
           /* It's a function that redirects the user to the Leeloo CRM. */
           async function showLeelooBlock(leelooHash) {
             service.setParamsForLeeloo(data);
 
             try {
-              const resp = await response;
+              const crmResponse = await response;
 
-              if (resp.status === 200) {
+              if (crmResponse.status === 200) {
                 service.setUrlParameter('name2', name.value);
 
                 if (window.elzaToken) {
@@ -345,7 +337,7 @@ $(window).on('load', async function () {
                 $(form).css('display', 'none');
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
-
+                loading.hide();
                 const checkLeeloo = setInterval(() => {
                   const iframe = form.querySelector('.leeloo-lgt-form');
                   if (iframe) {
@@ -354,24 +346,28 @@ $(window).on('load', async function () {
                   }
                 }, 2000);
               } else {
-                console.log('error ', resp.statusText);
                 $(form).css('display', 'block');
                 service.showError();
+                loading.hide();
+                const parsedResponse = await crmResponse?.json();
+                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
+                await service.reportError(errorMessage, data);
+                console.error(errorMessage);
               }
             } catch (error) {
-              console.log(error);
               $(form).css('display', 'block');
               service.showError();
-            } finally {
               loading.hide();
+              console.error('error', error);
+              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
 
           async function showDefaultBlock() {
             try {
-              const resp = await response;
+              const crmResponse = await response;
 
-              if (resp.status === 200) {
+              if (crmResponse.status === 200) {
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
                 // service.showSuccess(service.translate('reply'), true, loading, true);
@@ -380,42 +376,50 @@ $(window).on('load', async function () {
                 }
                 const submitButton = form.querySelector('button[type="submit"]');
                 if (submitButton) {
-                   submitButton.disabled = false;
+                  submitButton.disabled = false;
                 }
                 $(form).css('display', 'block');
 
                 const queryString = service.convertFormDataToQueryString(data);
-                service.resetAnswersAfterSendForm()
+                service.resetAnswersAfterSendForm();
                 /* That redirects user to some URL after send form. */
                 switch (category) {
-                  case "Python":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/python/?' + queryString;
+                  case 'Python':
+                    window.location.href =
+                      'https://courses-all.goiteens.com/quiz/success/python/?' + queryString;
                     break;
-                  case "Frontend":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/frontend/?' + queryString;
+                  case 'Frontend':
+                    window.location.href =
+                      'https://courses-all.goiteens.com/quiz/success/frontend/?' + queryString;
                     break;
-                  case "GameDev":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/gamedev/?' + queryString;
+                  case 'GameDev':
+                    window.location.href =
+                      'https://courses-all.goiteens.com/quiz/success/gamedev/?' + queryString;
                     break;
-                  case "Design":
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/design/?' + queryString;
+                  case 'Design':
+                    window.location.href =
+                      'https://courses-all.goiteens.com/quiz/success/design/?' + queryString;
                     break;
                   default:
-                    window.location.href = 'https://courses-all.goiteens.com/quiz/success/?' + queryString;
+                    window.location.href =
+                      'https://courses-all.goiteens.com/quiz/success/?' + queryString;
                     break;
                 }
-
-
               } else {
-                console.log('error ', resp?.statusText);
                 $(form).css('display', 'block');
                 service.showError();
+                loading.hide();
+                const parsedResponse = await crmResponse?.json();
+                const errorMessage = `Message: ${parsedResponse.message || 'Unknown'}, Status: ${parsedResponse.status || 'Unknown'}`;
+                await service.reportError(errorMessage, data);
+                console.error(errorMessage);
               }
             } catch (error) {
-              console.log(error);
               $(form).css('display', 'block');
               service.showError();
               loading.hide();
+              console.error('error', error);
+              await service.reportError(error?.message || 'Unknown error occurred', data);
             }
           }
         }
