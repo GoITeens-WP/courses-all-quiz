@@ -192,7 +192,7 @@ $(window).on('load', async function () {
       .setFormValidation(validationForm)
       .addField(`#${phone.id}`, [
         {
-          validator: value => iti.isValidNumberPrecise(),
+          validator: () => iti.isValidNumber(),
           errorMessage: 'Phone number is invalid!',
         },
       ])

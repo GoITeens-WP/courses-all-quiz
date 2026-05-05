@@ -71,15 +71,23 @@ async function geoIpLookup(defaultCountry = 'ua') {
  * utilsScript: The path to the utils.js file.
  */
 async function getItiConfig(preferredCountries, excludeCountries) {
-  const country_code = window.itiInitialCountry || (await geoIpLookup());
-
   return {
-    initialCountry: country_code,
+    initialCountry: 'ua',
+    countryOrder: preferredCountries, // v28: renamed from `preferredCountries`
     excludeCountries,
-    countryOrder: preferredCountries,
-    loadUtilsOnInit: () => import('./utils.js'),
-    separateDialCode: false,
-    useFullscreenPopup: false,
+    separateDialCode: false, // v28 default became `true` — keep flag-only selector
+    nationalMode: true,
+    autoPlaceholder: 'polite',
+    customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
+      if (selectedCountryData?.iso2 === 'ua' && selectedCountryPlaceholder) {
+        const normalizedPlaceholder = selectedCountryPlaceholder.replace(/\s+/g, ' ').trim();
+        return normalizedPlaceholder.startsWith('0')
+          ? normalizedPlaceholder
+          : `0${normalizedPlaceholder}`;
+      }
+      return selectedCountryPlaceholder;
+    },
+    loadUtils: () => import('intl-tel-input/utils'),
   };
 }
 
