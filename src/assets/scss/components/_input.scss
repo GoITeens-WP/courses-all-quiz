@@ -19,7 +19,7 @@
 }
 
 .input-label--float {
-  @apply pointer-events-none absolute left-4 top-1/2 z-[2] mb-0 -translate-y-1/2 text-[10px] font-medium leading-none opacity-0 transition-all duration-200;
+  @apply pointer-events-none font-IBMPlexSans absolute left-4 top-1/2 z-[2] mb-0 -translate-y-1/2 text-[10px] font-semibold leading-none opacity-0 transition-all duration-200;
   color: #6e6e6e;
 }
 
