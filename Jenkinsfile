@@ -1,9 +1,6 @@
+
 @Library('jenkins-common')_
 
-// *
-// "node("go-web"){" for goit
-// "node("goiteens"){" for goiteens
-// *
 node("goiteens"){
     stage('Load credentials') {
         withCredentials([
@@ -26,17 +23,21 @@ node("goiteens"){
     stage('Setup texts') {
         def buildUrl = env.RUN_DISPLAY_URL;
 
-        env.startBuildText = java.net.URLEncoder.encode("➡️ *${JOB_NAME}* started.\n[Go to build](${buildUrl})", "UTF-8");
-        env.successBuildText = java.net.URLEncoder.encode("✅ *${JOB_NAME}* SUCCESS.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
-        env.failedBuildText = java.net.URLEncoder.encode("❌ *${JOB_NAME}* FAILED.\nTime: TIME\n[Go to build](${buildUrl})", "UTF-8");
+        // Храним шаблоны как чистые строки с Markdown (БЕЗ преждевременного кодирования)
+        env.startBuildText = "➡️ *${JOB_NAME}* started.\n[Go to build](${buildUrl})";
+        env.successBuildText = "✅ *${JOB_NAME}* SUCCESS.\nTime: TIME\n[Go to build](${buildUrl})";
+        env.failedBuildText = "❌ *${JOB_NAME}* FAILED.\nTime: TIME\n[Go to build](${buildUrl})";
     }
 
     stage('Pre Build Notify') {
+        // Кодируем строку непосредственно перед отправкой в Telegram
+        def encodedStartText = java.net.URLEncoder.encode(env.startBuildText, "UTF-8");
+
         //Send message to channel
         sendTelegramChannelMessage(
             env.telegramNotifyChannelBotApiToken,
             env.telegramNotifyChannelChatId,
-            env.startBuildText
+            encodedStartText
         );
     }
 
@@ -51,7 +52,11 @@ node("goiteens"){
 
        if (success) {
            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-               sh "./build.sh"
+               // Инициализируем созданную Node-24 и пакеты (pnpm, bun) внутри этого блока
+               nodejs('Node-24-GoTeens') {
+                   sh "chmod +x ./build.sh"
+                   sh "./build.sh"
+               }
            }
        }
    }
@@ -89,13 +94,17 @@ node("goiteens"){
         def durationMinutes = (int) (durationSeconds / 60);
         durationSeconds -= durationMinutes * 60;
 
+        // ШАГ 1: Сначала заменяем TIME на реальное время в чистой строке (пробелы пока безопасны)
         message = message.replace('TIME', "${durationMinutes} min ${durationSeconds} sec");
 
-        //Send message to global notify channel
+        // ШАГ 2: И только теперь кодируем всю готовую строку целиком в URL-формат
+        def encodedMessage = java.net.URLEncoder.encode(message, "UTF-8");
+
+        // Send message to global notify channel
         sendTelegramChannelMessage(
             env.telegramNotifyChannelBotApiToken,
             env.telegramNotifyChannelChatId,
-            message
+            encodedMessage
         )
     }
 }
