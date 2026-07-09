@@ -7,16 +7,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "Ім'я *",
+        "title": "Ім'я",
         "type": "text",
         "name": "name",
-        "placeholder": "Ім'я",
+        "placeholder": "Ваше ім'я*",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "Телефон *",
+        "title": "Номер телефону*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -25,10 +25,10 @@
         "autocomplete": "tel"
       },
       {
-        "title": "Пошта *",
+        "title": "Пошта*",
         "type": "email",
         "name": "email",
-        "placeholder": "email@gmail.com",
+        "placeholder": "Ваш email*",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
@@ -63,16 +63,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "Imię *",
+        "title": "Imię",
         "type": "text",
         "name": "name",
-        "placeholder": "Imię",
+        "placeholder": "Twoje imię*",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "Telefon *",
+        "title": "Numer telefonu*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -81,10 +81,10 @@
         "autocomplete": "tel"
       },
       {
-        "title": "Email *",
+        "title": "Email*",
         "type": "email",
         "name": "email",
-        "placeholder": "email@gmail.com",
+        "placeholder": "Twój email*",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
@@ -119,16 +119,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "",
+        "title": "Full name*",
         "type": "text",
         "name": "name",
-        "placeholder": "Full name",
+        "placeholder": "Your full name*",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "",
+        "title": "Phone number*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -137,10 +137,10 @@
         "autocomplete": "tel"
       },
       {
-        "title": "",
+        "title": "Email*",
         "type": "email",
         "name": "email",
-        "placeholder": "Email address",
+        "placeholder": "Your email*",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
@@ -175,16 +175,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "Nume *",
+        "title": "Nume",
         "type": "text",
         "name": "name",
-        "placeholder": "Nume",
+        "placeholder": "Numele tău*",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "Telefon *",
+        "title": "Număr de telefon*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -193,10 +193,10 @@
         "autocomplete": "tel"
       },
       {
-        "title": "E-mail *",
+        "title": "E-mail*",
         "type": "email",
         "name": "email",
-        "placeholder": "email@gmail.com",
+        "placeholder": "Email-ul tău*",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
@@ -231,16 +231,16 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "Nombre *",
+        "title": "Nombre",
         "type": "text",
         "name": "name",
-        "placeholder": "Nombre",
+        "placeholder": "Tu nombre*",
         "dataField": "name",
         "required": true,
         "autocomplete": "name"
       },
       {
-        "title": "Teléfono *",
+        "title": "Número de teléfono*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -249,10 +249,10 @@
         "autocomplete": "tel"
       },
       {
-        "title": "Correo electrónico *",
+        "title": "Correo electrónico*",
         "type": "email",
         "name": "email",
-        "placeholder": "email@gmail.com",
+        "placeholder": "Tu email*",
         "dataField": "email",
         "required": true,
         "autocomplete": "email"
@@ -287,15 +287,15 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-        "title": "",
+        "title": "Adınız*",
         "type": "text",
         "name": "name",
-        "placeholder": "Adınız",
+        "placeholder": "Adınızı girin*",
         "dataField": "name",
         "required": true
       },
       {
-        "title": "",
+        "title": "Telefon numarası*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -303,10 +303,10 @@
         "required": true
       },
       {
-        "title": "",
+        "title": "E-posta*",
         "type": "email",
         "name": "email",
-        "placeholder": "E-posta adresiniz",
+        "placeholder": "E-postanızı girin*",
         "dataField": "email",
         "required": true
       }

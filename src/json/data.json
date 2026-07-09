@@ -431,7 +431,7 @@
     "steps": ["1", "2", "3"],
     "inputs": [
       {
-
+        "title": "Ім'я",
         "type": "text",
         "name": "name",
         "placeholder": "Ваше імʼя",
@@ -440,7 +440,7 @@
         "autocomplete": "name"
       },
       {
-
+        "title": "Номер телефону*",
         "type": "tel",
         "name": "phone",
         "placeholder": "",
@@ -449,7 +449,7 @@
         "autocomplete": "tel"
       },
       {
-
+        "title": "Пошта*",
         "type": "email",
         "name": "email",
         "placeholder": "Ваш email",

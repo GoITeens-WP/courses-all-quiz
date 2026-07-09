@@ -3,7 +3,7 @@
 // intl-tel-input v28+ ships only a compiled CSS bundle (no SCSS).
 // Sass passes plain `.css` imports through, and `postcss-import` (running
 // after Sass in gulp/tasks/css.js) inlines this from node_modules.
-@import 'intl-tel-input/dist/css/intlTelInput.css';
+@import 'intl-tel-input/build/css/intlTelInput.css';
 
 // In v28 the flag sprite path is configured via CSS variables.
 // Default is `../img/flags.webp` (relative to the CSS file), which does not

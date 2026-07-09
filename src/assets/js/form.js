@@ -11,7 +11,70 @@ import service from './service.js';
 import crm from './submit.js';
 import { es } from 'intl-tel-input/i18n';
 
+function initInputClearHandler() {
+  document.addEventListener('click', event => {
+    const clearBtn = event.target.closest('[data-input-clear]');
+
+    if (!clearBtn) {
+      return;
+    }
+
+    const inputWrap = clearBtn.closest('.input-wrap');
+    const input = inputWrap?.querySelector(
+      '.input-field[type="text"], .input-field[type="email"], .input-field[type="tel"]'
+    );
+
+    if (!input || input.disabled) {
+      return;
+    }
+
+    input.value = '';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    input.focus();
+  });
+}
+
+function updateInputWrapFilledState(input) {
+  const inputWrap = input.closest('.input-wrap');
+
+  if (!inputWrap) {
+    return;
+  }
+
+  const rawValue = input.value.trim();
+  const numericValue = rawValue.replace(/[^\d]/g, '');
+  const isPhonePrefixOnly = input.type === 'tel' && rawValue.startsWith('+') && numericValue.length <= 3;
+
+  inputWrap.classList.toggle('is-filled', Boolean(rawValue) && !isPhonePrefixOnly);
+}
+
+function initFloatingLabelState() {
+  const selector = '.input-field[type="text"], .input-field[type="email"], .input-field[type="tel"]';
+
+  document.querySelectorAll(selector).forEach(updateInputWrapFilledState);
+
+  document.addEventListener('input', event => {
+    const input = event.target.closest(selector);
+    if (!input) {
+      return;
+    }
+    updateInputWrapFilledState(input);
+  });
+
+  document.addEventListener('change', event => {
+    const input = event.target.closest(selector);
+    if (!input) {
+      return;
+    }
+    updateInputWrapFilledState(input);
+  });
+}
+
 $(window).on('load', async function () {
+  initInputClearHandler();
+  initFloatingLabelState();
+
   let defaultLang = null;
 
   switch (window.locale) {

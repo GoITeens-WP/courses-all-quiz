@@ -87,7 +87,9 @@ async function getItiConfig(preferredCountries, excludeCountries) {
       }
       return selectedCountryPlaceholder;
     },
-    loadUtils: () => import('intl-tel-input/utils'),
+    // v24 expects `loadUtilsOnInit` (`loadUtils` is the name of the static method,
+    // not an init option) — without utils autoPlaceholder never kicks in.
+    loadUtilsOnInit: () => import('intl-tel-input/utils'),
   };
 }
 
@@ -152,11 +154,11 @@ function isNumeric(str) {
 const validationOptions = {
   errorFieldCssClass: 'is-invalid',
   errorFieldStyle: {
-    border: '1px solid #ca381f',
+    border: '1px solid #B24132',
   },
   errorLabelCssClass: 'is-label-invalid',
   errorLabelStyle: {
-    color: '#ca381f',
+    color: '#B24132',
     textDecoration: 'underlined',
   },
   focusInvalidField: true,

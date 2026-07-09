@@ -109,8 +109,14 @@
 
   <!-- ➡️ ELSE other inputs -->
   {% else %}
+  {% set isSimpleTextInput = arg.type == "text" or arg.type == "email" or arg.type == "tel" %}
   {% if arg.title %}
-  <label class="input-label" for="{{ id }}_input_{{ arg.name }}">{{ arg.title }}</label>
+  <label
+    class="input-label{% if isSimpleTextInput %} input-label--float{% endif %}{% if arg.type == 'tel' %} input-label--phone{% endif %}"
+    for="{{ id }}_input_{{ arg.name }}"
+  >
+    {{ arg.title }}
+  </label>
   {% endif %}
   <input
     class="input-field"
@@ -124,8 +130,19 @@
     {% if arg.readOnly %} readonly="{{ arg.readOnly }}" {% endif %}
     {% if arg.placeholder %} placeholder="{{ arg.placeholder }}" {% endif %}
     {% if arg.autocomplete %} autocomplete="{{ arg.autocomplete }}" {% endif %}
-
   />
+  {% if isSimpleTextInput %}
+  <button
+    class="input-clear"
+    type="button"
+    aria-label="Очистити поле"
+    data-input-clear
+  >
+    <svg class="input-clear__icon" aria-hidden="true">
+      <use href="./assets/images/sprite.svg#icon-close-menu"></use>
+    </svg>
+  </button>
+  {% endif %}
   {% endif %}
 </div>
 {% endmacro %}

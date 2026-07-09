@@ -1,16 +1,16 @@
 {
   "inputs": [
     {
-      "title": "Ім'я *",
+      "title": "Ім'я",
       "type": "text",
       "name": "name",
-      "placeholder": "Ім'я",
+      "placeholder": "Ваше ім'я*",
       "dataField": "name",
       "required": true,
       "autocomplete": "name"
     },
     {
-      "title": "Телефон *",
+      "title": "Номер телефону*",
       "type": "tel",
       "name": "phone",
       "placeholder": "",
@@ -19,10 +19,10 @@
       "autocomplete": "tel"
     },
     {
-      "title": "Пошта *",
+      "title": "Пошта*",
       "type": "email",
       "name": "email",
-      "placeholder": "email@gmail.com",
+      "placeholder": "Ваш email*",
       "dataField": "email",
       "required": true,
       "autocomplete": "email"

@@ -1,5 +1,5 @@
 .input-wrap {
-  @apply relative w-full font-medium xl:basis-[calc((100%_-_1.5rem)/2)] h-10;
+  @apply relative h-12 w-full font-medium xl:basis-[calc((100%_-_1.5rem)/2)];
 }
 
 .input-wrap-radio {
@@ -18,28 +18,134 @@
   @apply mb-1 inline-block text-[14px] font-medium leading-[1.2] md:mb-2 md:text-[16px] md:leading-[1.6];
 }
 
+.input-label--float {
+  @apply pointer-events-none absolute left-4 top-1/2 z-[2] mb-0 -translate-y-1/2 text-[10px] font-medium leading-none opacity-0 transition-all duration-200;
+  color: #6e6e6e;
+}
+
+.input-label--phone {
+  @apply left-12;
+}
+
 .input-message {
   @apply resize-none;
 }
 
 .input-field {
-  @apply  w-full rounded-[32px] text-sm border border-gray-300 bg-white px-4 py-2 font-normal text-gray-900  md:rounded-[40px] ;
+  @apply h-12 w-full rounded-[144px] border px-4 pb-3 pt-3 text-sm font-normal font-IBMPlexSans transition-colors duration-200;
+  border-color: #d6d6d6;
+  background-color: #ffffff;
+  color: #474747;
 
   &::placeholder {
-    @apply font-IBMPlexSans font-normal text-gray-500;
+    @apply font-IBMPlexSans font-normal transition-all duration-200;
+    color: #6e6e6e;
+  }
+
+  &:hover {
+    border-color: #d6d6d6;
+    background-color: #ffffff;
+  }
+
+  &:not([type='tel']):not(:placeholder-shown) {
+    border-color: #999999;
   }
 
   &:focus {
-    @apply border-accent outline-none;
+    @apply outline-none;
+    border-color: #c2b0f5;
+    background-color: #fafafa;
   }
 
   &.is-invalid {
-    @apply border border-error;
+    border-color: #b24132;
+  }
+
+  &:disabled {
+    border-color: #d6d6d6;
+    background-color: #ffffff;
+    color: #d6d6d6;
+
+    &::placeholder {
+      color: #d6d6d6;
+    }
   }
 }
 
 input[type='tel'].input-field {
   @apply pl-14 pr-4;
+}
+
+.input-wrap:has(.input-label--float) .input-field {
+  @apply py-0;
+}
+
+.input-wrap:has(.input-field:focus) .input-field,
+.input-wrap:has(.input-field:not([type='tel']):not(:placeholder-shown)) .input-field,
+.input-wrap.is-filled .input-field,
+.input-wrap:has(.is-invalid) .input-field {
+  @apply pt-5;
+}
+
+.input-wrap:has(.input-field:focus) .input-label--float,
+.input-wrap:has(.input-field:not([type='tel']):not(:placeholder-shown)) .input-label--float,
+.input-wrap.is-filled .input-label--float,
+.input-wrap:has(.is-invalid) .input-label--float {
+  @apply top-3 -translate-y-0 opacity-100;
+}
+
+.input-wrap:focus-within .input-label--float {
+  @apply top-3 -translate-y-0 opacity-100;
+}
+
+.input-wrap:has(.input-field:focus) .input-label--float {
+  color: #653cd9;
+}
+
+.input-wrap:focus-within .input-label--float {
+  color: #653cd9;
+}
+
+.input-wrap:has(.is-invalid) .input-field,
+.input-wrap:has(.is-invalid) .input-field:hover,
+.input-wrap:has(.is-invalid) .input-field:focus {
+  border-color: #b24132;
+  background-color: #ffffff;
+}
+
+.input-wrap:has(.is-invalid) .input-label--float,
+.input-wrap:has(.is-invalid) .just-validate-error-label {
+  color: #b24132;
+}
+
+.input-wrap:has(.input-field:disabled) .input-label--float {
+  color: #d6d6d6;
+}
+
+.input-clear {
+  @apply pointer-events-none absolute right-4 top-1/2 z-[3] grid size-6 -translate-y-1/2 place-items-center rounded-full border border-transparent bg-transparent opacity-0 transition-all duration-200;
+}
+
+.input-clear__icon {
+  @apply block size-3;
+}
+
+.input-wrap:has(.input-clear) .input-field {
+  @apply pr-12;
+}
+
+.input-wrap:has(.input-field:not([type='tel']):not(:placeholder-shown):not(:disabled)) .input-clear,
+.input-wrap.is-filled .input-clear,
+.input-wrap:has(.is-invalid:not(:placeholder-shown):not(:disabled)) .input-clear {
+  @apply pointer-events-auto opacity-100;
+}
+
+.input-clear:hover {
+  @apply border-lilac-50 bg-gray-50;
+}
+
+.input-clear:focus-visible {
+  @apply border-lilac-50 bg-gray-50 outline-none;
 }
 
 .checkbox {
