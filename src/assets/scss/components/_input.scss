@@ -27,6 +27,14 @@
   @apply left-12;
 }
 
+// Phone has no native placeholder (intl-tel-input owns the input).
+// Keep the title visible in the empty state, same as other fields' placeholders.
+.input-wrap:has(.input-label--phone):not(.is-filled):not(:has(.input-field:focus)):not(:has(.is-invalid))
+  .input-label--phone {
+  @apply top-1/2 -translate-y-1/2 text-sm font-normal leading-none opacity-100;
+  color: #6e6e6e;
+}
+
 .input-message {
   @apply resize-none;
 }
@@ -74,6 +82,11 @@
 
 input[type='tel'].input-field {
   @apply pl-14 pr-4;
+
+  &::placeholder {
+    color: transparent;
+    opacity: 0;
+  }
 }
 
 .input-wrap:has(.input-label--float) .input-field {
@@ -91,18 +104,10 @@ input[type='tel'].input-field {
 .input-wrap:has(.input-field:not([type='tel']):not(:placeholder-shown)) .input-label--float,
 .input-wrap.is-filled .input-label--float,
 .input-wrap:has(.is-invalid) .input-label--float {
-  @apply top-3 -translate-y-0 opacity-100;
-}
-
-.input-wrap:focus-within .input-label--float {
-  @apply top-3 -translate-y-0 opacity-100;
+  @apply top-3 -translate-y-0 text-[10px] font-semibold opacity-100;
 }
 
 .input-wrap:has(.input-field:focus) .input-label--float {
-  color: #653cd9;
-}
-
-.input-wrap:focus-within .input-label--float {
   color: #653cd9;
 }
 

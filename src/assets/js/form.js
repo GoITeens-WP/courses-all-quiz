@@ -9,6 +9,7 @@ import intlTelInput from 'intl-tel-input';
 import JustValidate from 'just-validate';
 import service from './service.js';
 import crm from './submit.js';
+import { sendMetaLead } from './metaLead.js';
 import { es } from 'intl-tel-input/i18n';
 
 function initInputClearHandler() {
@@ -35,18 +36,35 @@ function initInputClearHandler() {
   });
 }
 
-function updateInputWrapFilledState(input) {
+function isPhoneValueFilled(input, iti) {
+  const rawValue = input.value.trim();
+  const numericValue = rawValue.replace(/[^\d]/g, '');
+
+  if (!rawValue) {
+    return false;
+  }
+
+  if (input.type !== 'tel') {
+    return true;
+  }
+
+  const dialCode = iti?.getSelectedCountryData?.()?.dialCode || '';
+
+  if (dialCode && (numericValue === dialCode || numericValue.length <= dialCode.length)) {
+    return false;
+  }
+
+  return !(rawValue.startsWith('+') && numericValue.length <= 3);
+}
+
+function updateInputWrapFilledState(input, iti = input._iti) {
   const inputWrap = input.closest('.input-wrap');
 
   if (!inputWrap) {
     return;
   }
 
-  const rawValue = input.value.trim();
-  const numericValue = rawValue.replace(/[^\d]/g, '');
-  const isPhonePrefixOnly = input.type === 'tel' && rawValue.startsWith('+') && numericValue.length <= 3;
-
-  inputWrap.classList.toggle('is-filled', Boolean(rawValue) && !isPhonePrefixOnly);
+  inputWrap.classList.toggle('is-filled', isPhoneValueFilled(input, iti));
 }
 
 function initFloatingLabelState() {
@@ -233,6 +251,12 @@ $(window).on('load', async function () {
       phone,
       await service.getItiConfig(params.preferredPhoneCountries, params.excludePhoneCountries)
     );
+    phone._iti = iti;
+
+    const syncPhoneFilledState = () => updateInputWrapFilledState(phone, iti);
+    syncPhoneFilledState();
+    phone.addEventListener('countrychange', syncPhoneFilledState);
+    iti.promise?.then(syncPhoneFilledState);
 
     /* It's a function that initializes the validation library. */
     const validationForm = new JustValidate(
@@ -354,13 +378,31 @@ $(window).on('load', async function () {
           /* It's a function that sends data to the CRM. */
           const response = crm.submit(crmParams);
 
-          /* It's a Google Tag Manager event. */
-          dataLayer.push({
-            event: 'lead',
-            phone: phoneNumber,
-            email: email.value,
-            conversionId: service.uid(),
-          });
+          async function fireLeadAndMeta(crmResponse) {
+            let dealId = null;
+
+            try {
+              const crmBody = await crmResponse.json();
+              dealId = crmBody?.Deal_ID || null;
+            } catch (error) {
+              dealId = null;
+            }
+
+            await Promise.all([
+              service.pushGtmEvent('lead', {
+                phone: phoneNumber,
+                email: email.value,
+                conversionId: service.uid(),
+              }),
+              sendMetaLead({
+                dealId,
+                email: email.value,
+                phone: phoneNumber,
+                name: name.value,
+                ip: window.ipData?.ip || null,
+              }),
+            ]);
+          }
 
           // https://www.youtube.com/watch?v=sqcLjcSloXs
 
@@ -389,6 +431,8 @@ $(window).on('load', async function () {
               const crmResponse = await response;
 
               if (crmResponse.status === 200) {
+                await fireLeadAndMeta(crmResponse);
+
                 service.setUrlParameter('name2', name.value);
 
                 if (window.elzaToken) {
@@ -431,6 +475,8 @@ $(window).on('load', async function () {
               const crmResponse = await response;
 
               if (crmResponse.status === 200) {
+                await fireLeadAndMeta(crmResponse);
+
                 $(form).trigger('reset');
                 service.changeFormStep(form, 3);
                 // service.showSuccess(service.translate('reply'), true, loading, true);

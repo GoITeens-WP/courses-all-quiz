@@ -77,18 +77,9 @@ async function getItiConfig(preferredCountries, excludeCountries) {
     excludeCountries,
     separateDialCode: false, // v28 default became `true` — keep flag-only selector
     nationalMode: true,
-    autoPlaceholder: 'polite',
-    customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
-      if (selectedCountryData?.iso2 === 'ua' && selectedCountryPlaceholder) {
-        const normalizedPlaceholder = selectedCountryPlaceholder.replace(/\s+/g, ' ').trim();
-        return normalizedPlaceholder.startsWith('0')
-          ? normalizedPlaceholder
-          : `0${normalizedPlaceholder}`;
-      }
-      return selectedCountryPlaceholder;
-    },
+    autoPlaceholder: 'off',
     // v24 expects `loadUtilsOnInit` (`loadUtils` is the name of the static method,
-    // not an init option) — without utils autoPlaceholder never kicks in.
+    // not an init option) — without utils number validation never kicks in.
     loadUtilsOnInit: () => import('intl-tel-input/utils'),
   };
 }
@@ -704,6 +695,26 @@ function uid() {
   });
 }
 
+function pushGtmEvent(eventName, eventData) {
+  return new Promise(resolve => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        event: eventName,
+        ...(eventData || {}),
+        eventCallback() {
+          resolve('success');
+        },
+        eventTimeout: 2000,
+      });
+      setTimeout(() => {
+        resolve('timeout');
+      }, 2500);
+      return;
+    }
+    resolve('no dataLayer');
+  });
+}
+
 /**
  * It sends an HTTP request to the server, and returns true if the server says the email is available,
  * and false if the server says the email is not available
@@ -900,6 +911,7 @@ export default {
   showSuccess,
   translate,
   uid,
+  pushGtmEvent,
   validationOptions,
   initCustomSelect,
   resetAnswersAfterSendForm,
