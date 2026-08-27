@@ -47,27 +47,73 @@ node("goiteens"){
         }
     }
 
-   stage('Build'){
-       def success = 'SUCCESS'.equals(currentBuild.currentResult);
-
-       if (success) {
-           catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-               // Инициализируем созданную Node-24 и пакеты (pnpm, bun) внутри этого блока
-               nodejs('Node-24-GoTeens') {
-                   sh "chmod +x ./build.sh"
-                   sh "./build.sh"
-               }
-           }
-       }
-   }
-
-    stage('Deploy') {
-         def success = 'SUCCESS'.equals(currentBuild.currentResult);
+    stage('Build') {
+        def success = 'SUCCESS'.equals(currentBuild.currentResult);
 
         if (success) {
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                //sent files to url
+                // Инициализируем созданную Node-24 и пакеты (pnpm, bun) внутри этого блока
+                nodejs('Node-24-GoTeens') {
+                    sh "chmod +x ./build.sh"
+                    sh "./build.sh"
+                }
+            }
+        }
+    }
+
+    stage('Deploy') {
+        def success = 'SUCCESS'.equals(currentBuild.currentResult);
+
+        if (success) {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                def remoteProjectDir = env.folderPath.replaceAll(/\/+$/, '') ?: '.';
+                def ftp = parseNcftpArgs(env.ftpUserAndPass);
+
+                if (!ftp.user || !ftp.host) {
+                    error('Could not parse FTP user/host from ftpUserAndPass');
+                }
+
+                // Сначала заливаем: чужие папки (success и т.п.) не трогаем, сайт не остаётся без файлов.
                 sh "ncftpput ${env.ftpUserAndPass} ${env.folderPath} ./build/*"
+
+                // Потом только _astro и assets: лишние хеши прошлых сборок. Пароль — LFTP_PASSWORD, не argv.
+                withEnv([
+                    "FTP_HOST=${ftp.host}",
+                    "FTP_USER=${ftp.user}",
+                    "LFTP_PASSWORD=${ftp.password}",
+                    "FTP_REMOTE_DIR=${remoteProjectDir}"
+                ]) {
+                    sh '''
+                        command -v lftp >/dev/null 2>&1 || { echo 'ERROR: lftp is not installed on the Jenkins node'; exit 1; }
+                        test -d ./build || { echo 'ERROR: local build dir not found'; exit 1; }
+
+                        remote="${FTP_REMOTE_DIR#./}"
+                        remote="${remote%/}"
+                        case "$remote" in
+                            ""|.) astro_remote="_astro"; assets_remote="assets" ;;
+                            *) astro_remote="$remote/_astro"; assets_remote="$remote/assets" ;;
+                        esac
+
+                        cmds="set cmd:fail-exit yes; set cmd:move-background no; set ftp:passive-mode yes; set ftp:ssl-allow no; set net:timeout 60; open --user '${FTP_USER}' --env-password '${FTP_HOST}';"
+
+                        if [ -d ./build/_astro ]; then
+                            echo "prune ./build/_astro -> ${astro_remote}"
+                            cmds="${cmds} mirror -R --delete --only-missing --no-perms --verbose=1 ./build/_astro ${astro_remote};"
+                        else
+                            echo "skip _astro: not in local build"
+                        fi
+
+                        if [ -d ./build/assets ]; then
+                            echo "prune ./build/assets -> ${assets_remote}"
+                            cmds="${cmds} mirror -R --delete --only-missing --no-perms --verbose=1 ./build/assets ${assets_remote};"
+                        else
+                            echo "skip assets: not in local build"
+                        fi
+
+                        lftp --norc -c "${cmds}"
+                    '''
+                }
+
                 sh "rm -r *"
             }
         }
@@ -107,4 +153,34 @@ node("goiteens"){
             encodedMessage
         )
     }
+}
+
+def parseNcftpArgs(String raw) {
+    def user = '';
+    def pass = '';
+    def host = '';
+    def tokens = raw.trim().tokenize();
+    def flagsWithValue = ['-P', '-f', '-d', '-j', '-o', '-Y', '-W', '-X', '-F', '-z'];
+    def idx = 0;
+
+    while (idx < tokens.size()) {
+        def token = tokens[idx];
+
+        if (token == '-u' && idx + 1 < tokens.size()) {
+            user = tokens[idx + 1];
+            idx += 2;
+        } else if (token == '-p' && idx + 1 < tokens.size()) {
+            pass = tokens[idx + 1];
+            idx += 2;
+        } else if (flagsWithValue.contains(token) && idx + 1 < tokens.size()) {
+            idx += 2;
+        } else if (token.startsWith('-')) {
+            idx += 1;
+        } else {
+            host = token;
+            idx += 1;
+        }
+    }
+
+    return [user: user, password: pass, host: host];
 }
